@@ -14,6 +14,7 @@
     { label: "MUSIC", href: "#music", section: "music" },
     { label: "PERFORMANCE", href: "#live", section: "live" },
   ];
+  const consentStorageKey = "preethi-cookie-consent";
 
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
@@ -424,8 +425,8 @@
 
             <article id="policies" class="note-card">
               <p class="section-micro">Policies</p>
-              <h3>Single-page preview notice</h3>
-              <p>This local build keeps the inquiry form browser-only and leaves unsupported profiles clearly labeled as placeholders until the final launch stack is confirmed.</p>
+              <h3>Cookies and privacy</h3>
+              <p>This build does not currently run analytics cookies or third-party trackers. It only uses local browser storage to remember your consent choice, and keeps the inquiry form browser-only until the final launch stack is confirmed.</p>
             </article>
           </div>
         </section>
@@ -440,14 +441,13 @@
         </div>
       </aside>
 
-      <aside id="preview-toast" class="preview-toast">
+      <aside id="consent-banner" class="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
         <div>
-          <p>Preview Build</p>
-          <span>Public contact details and placeholder music links should be confirmed before publish.</span>
+          <p>Cookies & privacy</p>
         </div>
-        <div class="preview-toast__actions">
-          <a href="#policies">Policies</a>
-          <button id="preview-dismiss" type="button">Hide</button>
+        <div class="consent-banner__actions">
+          <button id="consent-reject" class="consent-button consent-button--ghost" type="button">Reject</button>
+          <button id="consent-accept" class="consent-button consent-button--solid" type="button">Accept</button>
         </div>
       </aside>
     </div>
@@ -494,13 +494,39 @@
     });
   }
 
-  function wireToast() {
-    const toast = document.getElementById("preview-toast");
-    const dismiss = document.getElementById("preview-dismiss");
-    if (!toast || !dismiss) return;
+  function wireConsentBanner() {
+    const banner = document.getElementById("consent-banner");
+    const accept = document.getElementById("consent-accept");
+    const reject = document.getElementById("consent-reject");
+    if (!banner || !accept || !reject) return;
 
-    dismiss.addEventListener("click", function () {
-      toast.classList.add("is-hidden");
+    const persistChoice = function (value) {
+      document.body.dataset.consent = value;
+      try {
+        window.localStorage.setItem(consentStorageKey, value);
+      } catch (error) {
+        // Ignore storage access issues and still honor the in-session choice.
+      }
+      banner.classList.add("is-hidden");
+    };
+
+    try {
+      const storedChoice = window.localStorage.getItem(consentStorageKey);
+      if (storedChoice === "accepted" || storedChoice === "rejected") {
+        document.body.dataset.consent = storedChoice;
+        banner.classList.add("is-hidden");
+        return;
+      }
+    } catch (error) {
+      // Fall through and show the banner if storage is unavailable.
+    }
+
+    accept.addEventListener("click", function () {
+      persistChoice("accepted");
+    });
+
+    reject.addEventListener("click", function () {
+      persistChoice("rejected");
     });
   }
 
@@ -552,6 +578,18 @@
     sections.forEach((section) => observer.observe(section));
   }
 
+  function wireScrollChrome() {
+    const mastNav = document.querySelector(".mast-nav");
+    if (!mastNav) return;
+
+    const syncScrollChrome = function () {
+      mastNav.classList.toggle("is-scrolled", window.scrollY > 36);
+    };
+
+    syncScrollChrome();
+    window.addEventListener("scroll", syncScrollChrome, { passive: true });
+  }
+
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -563,8 +601,9 @@
 
   updateMeta();
   wireForm();
-  wireToast();
+  wireConsentBanner();
   wireNav();
+  wireScrollChrome();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();

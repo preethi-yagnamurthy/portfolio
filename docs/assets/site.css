@@ -114,15 +114,45 @@ main {
   left: 0;
   right: 0;
   z-index: 30;
-  padding: 2rem 2.2rem 0;
+  padding: 1.4rem 1.6rem 0;
+  transition: padding 220ms ease;
 }
 
-.mast-nav__desktop {
-  width: min(100%, 62rem);
+.mast-nav__desktop,
+.mast-nav__mobile {
+  width: min(100%, 64rem);
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(12, 12, 12, 0);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease,
+    -webkit-backdrop-filter 220ms ease,
+    transform 220ms ease;
+}
+
+.mast-nav.is-scrolled {
+  padding-top: 0.95rem;
+}
+
+.mast-nav.is-scrolled .mast-nav__desktop,
+.mast-nav.is-scrolled .mast-nav__mobile {
+  background: rgba(10, 11, 14, 0.52);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
 }
 
 .mast-nav__link,
@@ -145,9 +175,6 @@ main {
 
 .mast-nav__mobile {
   display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
 }
 
 .mobile-brand {
@@ -160,13 +187,19 @@ main {
 .nav-toggle {
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.48);
+  background: rgba(0, 0, 0, 0.32);
   color: var(--text);
   padding: 0.7rem 1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.72rem;
   font-family: "Rothek ExtraLight", "Helvetica Neue", sans-serif;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+
+.mast-nav.is-scrolled .nav-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .nav-drawer {
@@ -205,8 +238,8 @@ main {
 
 .hero-panel__bg {
   background-size: cover;
-  background-position: center 32%;
-  transform: scale(1.04);
+  background-position: center 18%;
+  transform: scale(1.015);
   filter: saturate(0.88);
 }
 
@@ -273,8 +306,7 @@ h1 {
 .format-card p,
 .contact-card p,
 .contact-card small,
-.note-card p,
-.preview-toast span {
+.note-card p {
   color: var(--muted-strong);
   line-height: 1.7;
   font-size: 1rem;
@@ -645,9 +677,10 @@ h1 {
 }
 
 .poster-card__copy h3 {
-  font-family: "Cormorant Garamond", "Iowan Old Style", "Georgia", serif;
+  font-family: "Maison Neue Light", "Maison Neue Book", "Helvetica Neue", sans-serif;
   font-size: clamp(3.2rem, 6vw, 5.4rem);
   line-height: 0.9;
+  letter-spacing: -0.04em;
   margin-bottom: 1rem;
 }
 
@@ -935,17 +968,18 @@ h1 {
   margin-bottom: 0.8rem;
 }
 
-.preview-toast {
+.consent-banner {
   position: fixed;
   left: 50%;
   bottom: 6.8rem;
   z-index: 35;
-  width: min(calc(100% - 2rem), 29rem);
+  width: min(calc(100% - 2rem), 24rem);
   transform: translateX(-50%);
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  padding: 1.1rem 1.2rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1.4rem;
   background: rgba(18, 18, 18, 0.86);
@@ -953,31 +987,51 @@ h1 {
   box-shadow: var(--shadow);
 }
 
-.preview-toast p {
-  margin: 0 0 0.3rem;
-  color: #fff;
-  font-size: 1rem;
+.consent-banner p {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-family: "Rothek ExtraLight", "Helvetica Neue", sans-serif;
 }
 
-.preview-toast__actions {
+.consent-banner__actions {
   display: flex;
-  align-items: end;
+  align-items: center;
   gap: 0.9rem;
+  flex-shrink: 0;
 }
 
-.preview-toast__actions a,
-.preview-toast__actions button {
-  border: 0;
-  background: transparent;
-  color: #fff;
-  padding: 0;
+.consent-button {
+  min-width: 7rem;
+  min-height: 2.9rem;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   font-size: 0.72rem;
+  font-family: "Rothek ExtraLight", "Helvetica Neue", sans-serif;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
-.preview-toast.is-hidden {
+.consent-button:hover {
+  transform: translateY(-1px);
+}
+
+.consent-button--solid {
+  background: rgba(255, 255, 255, 0.92);
+  color: #050505;
+}
+
+.consent-button--ghost {
+  background: transparent;
+  color: #fff;
+}
+
+.consent-banner.is-hidden {
   display: none;
 }
 
@@ -1046,6 +1100,7 @@ h1 {
 
   .mast-nav__mobile {
     display: flex;
+    padding: 0.85rem 1rem;
   }
 
   .hero-panel__content {
@@ -1128,12 +1183,12 @@ h1 {
     width: 100%;
   }
 
-  .preview-toast {
+  .consent-banner {
     bottom: 8.6rem;
   }
 
-  .preview-toast {
-    width: min(calc(100% - 1rem), 29rem);
+  .consent-banner {
+    width: min(calc(100% - 1rem), 24rem);
     flex-direction: column;
     align-items: flex-start;
   }
@@ -1141,7 +1196,7 @@ h1 {
 
 @media (max-width: 560px) {
   .hero-copy__actions,
-  .preview-toast__actions {
+  .consent-banner__actions {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -1168,5 +1223,9 @@ h1 {
   .floating-dock__links {
     gap: 0.5rem;
     justify-content: space-between;
+  }
+
+  .consent-button {
+    width: 100%;
   }
 }
