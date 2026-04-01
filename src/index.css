@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;700&display=swap');
+
+:root {
+  --body-font: 'Manrope', sans-serif;
+  --display-font: 'Syne', sans-serif;
+  --serif-font: 'Instrument Serif', serif;
+  --text-color: #f5efe5;
+  --muted-text: rgba(236, 229, 219, 0.72);
+  --accent-text: #ffe7b4;
+  font-family: var(--body-font);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-color);
+  background:
+    radial-gradient(circle at top left, rgba(255, 190, 112, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(210, 210, 221, 0.08), transparent 24%),
+    linear-gradient(180deg, #06070b 0%, #0b0c12 46%, #090a10 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100svh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent, rgba(0, 0, 0, 0.44) 90%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 18%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  color: #07080c;
+  background: rgba(255, 221, 150, 0.95);
+}

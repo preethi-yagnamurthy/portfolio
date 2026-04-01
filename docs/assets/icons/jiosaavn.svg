@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>JioSaavn</title>
+  <defs>
+    <linearGradient id="js" x1="0%" x2="100%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#js)"/>
+  <path d="M41 16v20.5a8 8 0 1 1-4-6.9V22.5l-10 2.4v15.6a8 8 0 1 1-4-6.9V21.8z" fill="#fff"/>
+  <path d="M46.5 20.5c-1.7-2.3-4.6-4-7.8-4.2" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2.8"/>
+  <path d="M48.8 15.8c-2.6-3.6-6.8-5.9-11.5-6.2" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2.4"/>
+</svg>
