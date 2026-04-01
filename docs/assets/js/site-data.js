@@ -11,6 +11,11 @@ window.SITE_DATA = {
     footerNote:
       "Preview site for Preethi Yagnamurthy. Public booking and profile links are temporary and should be confirmed before launch.",
   },
+  branding: {
+    primaryLogoPath: "assets/icons/py-conjunto.png",
+    faviconPath: "assets/icons/py-conjunto.png",
+    bandLogoPath: "assets/icons/band-anantya.jpg",
+  },
   pages: {
     home: {
       label: "Home",
@@ -198,7 +203,7 @@ window.SITE_DATA = {
     {
       label: "Band Anantya",
       url: "https://www.instagram.com/bandanantya/",
-      iconPath: "assets/icons/band-anantya-logo.svg",
+      iconPath: "assets/icons/band-anantya.jpg",
       trust: "public-profile",
       fallback: "@bandanantya",
     },

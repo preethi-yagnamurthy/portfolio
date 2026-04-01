@@ -178,10 +178,15 @@ main {
 }
 
 .mobile-brand {
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  font-size: 0.76rem;
-  font-family: "Rothek Normal", "Helvetica Neue", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mobile-brand__image {
+  width: 2.7rem;
+  height: 2.7rem;
+  object-fit: contain;
 }
 
 .nav-toggle {
@@ -416,6 +421,17 @@ h1 {
   width: 1.5rem;
   height: 1.5rem;
   object-fit: contain;
+}
+
+.social-dot__image[src*="instagram.svg"],
+.social-dot__image[src*="spotify.svg"],
+.social-dot__image[src*="youtube.svg"],
+.social-dot__image[src*="jiosaavn.svg"],
+.music-pill__icon[src*="instagram.svg"],
+.music-pill__icon[src*="spotify.svg"],
+.music-pill__icon[src*="youtube.svg"],
+.music-pill__icon[src*="jiosaavn.svg"] {
+  filter: brightness(0) invert(1);
 }
 
 .social-dot__fallback {

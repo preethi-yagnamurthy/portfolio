@@ -146,7 +146,13 @@
           ${renderDesktopNav()}
         </div>
         <div class="mast-nav__mobile">
-          <a class="mobile-brand" href="#home">${site.artist.name}</a>
+          <a class="mobile-brand" href="#home" aria-label="${site.artist.name}">
+            ${
+              site.branding && site.branding.primaryLogoPath
+                ? `<img class="mobile-brand__image" src="${site.branding.primaryLogoPath}" alt="${site.artist.name}">`
+                : site.artist.name
+            }
+          </a>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-drawer">
             MENU
           </button>
