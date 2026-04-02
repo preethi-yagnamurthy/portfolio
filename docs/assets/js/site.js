@@ -258,36 +258,6 @@
 
         ${renderFeaturedReleaseSection()}
 
-        <section class="reel-section" aria-label="Artist visual reel">
-          <div class="reel-grid">
-            <figure class="reel-frame reel-frame--tall">
-              <img src="${media["live-marquee"].path}" alt="${media["live-marquee"].alt}" loading="lazy">
-              <figcaption>
-                <p class="section-micro">Live presence</p>
-                <h2>From the first phrase, the stage answers back.</h2>
-              </figcaption>
-            </figure>
-
-            <div class="reel-stack">
-              <figure class="reel-frame reel-frame--stack">
-                <img src="${media["gallery-wide"].path}" alt="${media["gallery-wide"].alt}" loading="lazy">
-                <figcaption>
-                  <p class="section-micro">Band Anantya</p>
-                  <h2>A live ensemble built for lift, rhythm, and shared energy.</h2>
-                </figcaption>
-              </figure>
-
-              <figure class="reel-frame reel-frame--stack">
-                <img src="${media["music-portrait"].path}" alt="${media["music-portrait"].alt}" loading="lazy">
-                <figcaption>
-                  <p class="section-micro">Recorded voice</p>
-                  <h2>Playback instinct with the warmth of a live singer&apos;s pulse.</h2>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
-
         <section id="highlights" class="awards-section">
           <div class="section-head section-head--center">
             <p class="section-label">Highlights</p>
@@ -390,16 +360,17 @@
 
         <section id="private" class="notes-section">
           <div class="notes-grid">
-            <article class="note-card">
-              <p class="section-micro">Press Room</p>
-              <h3>Selected materials available on request.</h3>
-              <p>High-resolution portraits, biography variants, and live materials can be shared for press, promoters, and collaborators.</p>
-            </article>
-
-            <article id="policies" class="note-card">
-              <p class="section-micro">Cookies & privacy</p>
-              <h3>Simple, direct, and browser-based.</h3>
-              <p>This site remembers your cookie choice in your browser and keeps booking enquiries moving directly into WhatsApp.</p>
+            <article class="note-card note-card--brand">
+              ${
+                site.branding && site.branding.primaryLogoPath
+                  ? `
+                    <div class="note-card__logo-wrap">
+                      <img class="note-card__logo" src="${site.branding.primaryLogoPath}" alt="${site.artist.name}">
+                      <span class="note-card__mark" aria-hidden="true">®</span>
+                    </div>
+                  `
+                  : ""
+              }
             </article>
           </div>
         </section>

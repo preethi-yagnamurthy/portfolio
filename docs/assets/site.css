@@ -1657,12 +1657,34 @@ body.dock-visible .floating-dock__socials .social-dot:nth-child(5) {
 .notes-grid {
   width: min(calc(100% - 5rem), var(--container));
   margin: 0 auto;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.note-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.8rem;
+.note-card--brand {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding-block: 2rem;
+}
+
+.note-card__logo-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.note-card__logo {
+  width: min(10rem, 42vw);
+  height: auto;
+  object-fit: contain;
+}
+
+.note-card__mark {
+  position: absolute;
+  top: 0.1rem;
+  right: -0.65rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .consent-banner {
