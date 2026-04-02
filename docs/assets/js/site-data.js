@@ -228,7 +228,7 @@ window.SITE_DATA = {
     eyebrow: "Playback feature",
     title: "Bhimavaram Balma (Hindi)",
     description:
-      "Movie - Anaganaga oka raju<br>Music - Mickey J Meyer<br>Style - Dance Number",
+      "Movie - Anaganaga Oka Raju<br>Music - Mickey J Meyer<br>Style - Dance Number",
     coverPath: "assets/media/bhimavaram-balma-cover.jpg",
     coverAlt:
       "Album cover artwork for Bhimavaram Balma (Hindi) from Anaganaga Oka Raju.",
@@ -248,7 +248,7 @@ window.SITE_DATA = {
     {
       title: "Bhimavaram Balma (Hindi)",
       description:
-        "Movie - Anaganaga oka raju<br>Music - Mickey J Meyer<br>Style - Dance Number",
+        "Movie - Anaganaga Oka Raju<br>Music - Mickey J Meyer<br>Style - Dance Number",
       videoPath: "assets/media/bhimavaram-balma-hindi.mp4",
       posterPath: "assets/media/bhimavaram-balma-cover.jpg",
       posterAlt:
