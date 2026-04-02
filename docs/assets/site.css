@@ -2511,19 +2511,27 @@ body.nav-open .consent-banner {
   }
 
   .floating-dock {
-    width: min(calc(100% - 1rem), 34rem);
+    width: min(calc(100% - 1rem), 21rem);
     bottom: 0.75rem;
-    border-radius: 1.5rem;
-    padding: 0.9rem;
-    flex-direction: column;
+    border-radius: 999px;
+    padding: 0.8rem 0.95rem;
+    flex-direction: row;
     align-items: center;
     text-align: center;
+    justify-content: center;
   }
 
   .floating-dock__links,
   .floating-dock__socials {
-    width: 100%;
     justify-content: center;
+  }
+
+  .floating-dock__links {
+    display: none;
+  }
+
+  .floating-dock__socials {
+    width: auto;
   }
 
   .consent-banner {
@@ -2799,12 +2807,13 @@ body.nav-open .consent-banner {
   }
 
   .floating-dock {
-    width: min(calc(100% - 1rem), 52rem);
+    width: min(calc(100% - 1rem), 18rem);
     bottom: 0.55rem;
     padding: 0.55rem 0.75rem;
-    border-radius: 1.1rem;
+    border-radius: 999px;
     gap: 0.6rem;
     flex-wrap: nowrap;
+    justify-content: center;
   }
 
   .floating-dock__links,
@@ -2814,17 +2823,12 @@ body.nav-open .consent-banner {
   }
 
   .floating-dock__links {
-    min-width: 0;
-  }
-
-  .floating-dock__links a {
-    font-size: 0.66rem;
-    letter-spacing: 0.26em;
-    white-space: nowrap;
+    display: none;
   }
 
   .floating-dock__socials {
     flex-shrink: 0;
+    justify-content: center;
   }
 
   .social-dot {
