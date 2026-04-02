@@ -129,7 +129,12 @@
                   <article class="highlight-carousel-card__slide">
                     <p class="highlight-carousel-card__year">${item.year}</p>
                     <h3>${item.title}</h3>
-                    <p>${item.description}</p>
+                    <p class="highlight-carousel-card__desc">${item.description}</p>
+                    ${
+                      item.url
+                        ? `<a class="highlight-carousel-card__link button button--ghost" href="${item.url}" target="_blank" rel="noopener">${item.linkLabel || "Open link"}</a>`
+                        : ""
+                    }
                   </article>
                 `
               )
@@ -139,19 +144,37 @@
         ${
           items.length > 1
             ? `
-              <div class="highlight-carousel-card__dots" aria-label="${label} navigation">
-                ${items
-                  .map(
-                    (_, index) => `
-                      <button
-                        class="highlight-carousel-card__dot${index === 0 ? " is-active" : ""}"
-                        type="button"
-                        aria-label="Show ${label} item ${index + 1}"
-                        data-highlight-dot="${index}"
-                      ></button>
-                    `
-                  )
-                  .join("")}
+              <div class="highlight-carousel-card__controls">
+                <button
+                  class="highlight-carousel-card__arrow"
+                  type="button"
+                  aria-label="Previous ${label} item"
+                  data-highlight-prev
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div class="highlight-carousel-card__dots" aria-label="${label} navigation">
+                  ${items
+                    .map(
+                      (_, index) => `
+                        <button
+                          class="highlight-carousel-card__dot${index === 0 ? " is-active" : ""}"
+                          type="button"
+                          aria-label="Show ${label} item ${index + 1}"
+                          data-highlight-dot="${index}"
+                        ></button>
+                      `
+                    )
+                    .join("")}
+                </div>
+                <button
+                  class="highlight-carousel-card__arrow"
+                  type="button"
+                  aria-label="Next ${label} item"
+                  data-highlight-next
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
             `
             : ""
@@ -493,6 +516,7 @@
           <article class="spotlight-card">
             <div class="spotlight-card__copy">
               <p class="section-micro story-card__body">${site.bio.intro[0]}</p>
+              <p class="section-micro story-card__body story-card__tagline">${site.bio.intro[1]}</p>
             </div>
             ${renderStoryCarousel()}
           </article>
@@ -852,6 +876,8 @@
       const track = carousel.querySelector(".highlight-carousel-card__track");
       const slides = Array.from(carousel.querySelectorAll(".highlight-carousel-card__slide"));
       const dots = Array.from(carousel.querySelectorAll("[data-highlight-dot]"));
+      const previous = carousel.querySelector("[data-highlight-prev]");
+      const next = carousel.querySelector("[data-highlight-next]");
       if (!track || slides.length < 2) return;
 
       let currentIndex = 0;
@@ -887,6 +913,22 @@
           start();
         });
       });
+
+      if (previous) {
+        previous.addEventListener("click", function () {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          sync();
+          start();
+        });
+      }
+
+      if (next) {
+        next.addEventListener("click", function () {
+          currentIndex = (currentIndex + 1) % slides.length;
+          sync();
+          start();
+        });
+      }
 
       carousel.addEventListener("mouseenter", stop);
       carousel.addEventListener("mouseleave", start);

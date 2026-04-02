@@ -992,17 +992,62 @@ h1 {
   margin-bottom: 0.8rem;
 }
 
-.highlight-carousel-card p:last-child {
+.highlight-carousel-card__desc {
   color: var(--muted-strong);
   line-height: 1.7;
   font-size: 1rem;
+  margin: 0;
+}
+
+.highlight-carousel-card__link {
+  margin-top: 1.2rem;
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
+  font-size: 0.88rem;
+}
+
+.highlight-carousel-card__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 0 1.5rem 1.25rem;
 }
 
 .highlight-carousel-card__dots {
   display: flex;
   justify-content: center;
   gap: 0.55rem;
-  padding: 0 0 1.25rem;
+}
+
+.highlight-carousel-card__arrow {
+  width: 2.45rem;
+  height: 2.45rem;
+  padding: 0;
+  border: 1px solid rgba(214, 181, 106, 0.22);
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(214, 181, 106, 0.12), rgba(214, 181, 106, 0.03)),
+    rgba(10, 7, 3, 0.86);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.highlight-carousel-card__arrow:hover {
+  transform: translateY(-1px);
+  border-color: rgba(214, 181, 106, 0.36);
+}
+
+.highlight-carousel-card__arrow span {
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 .highlight-carousel-card__dot {
@@ -1145,6 +1190,8 @@ h1 {
 }
 
 .spotlight-card__copy {
+  display: flex;
+  flex-direction: column;
   padding: 3.4rem;
   color: var(--text);
 }
@@ -1162,6 +1209,12 @@ h1 {
   letter-spacing: 0.06em;
   text-transform: none;
   max-width: 34rem;
+}
+
+.story-card__tagline.section-micro {
+  margin-top: auto;
+  padding-top: 1.8rem;
+  color: #ffffff;
 }
 
 .spotlight-card__copy h3 {

@@ -76,7 +76,8 @@ window.SITE_DATA = {
   },
   bio: {
     intro: [
-      "Preethi Yagnamurthy’s voice was shaped through early Carnatic training, where discipline, phrasing, and emotional clarity became part of its foundation. That grounding now moves through playback songs, live performances, and a growing multilingual repertoire, carrying forward an evolving artistic identity. Across each space, classical roots continue to find a contemporary expression in her voice.",
+      "Preethi Yagnamurthy’s voice was shaped through early Carnatic training, where discipline, phrasing, and emotional clarity became part of its foundation. That grounding now moves through playback songs, live performances, and a growing multilingual repertoire, carrying forward an evolving artistic identity. In 2023, she also founded Band Anantya, extending that journey into a live identity of its own.",
+      "Across each space, classical roots continue to find a contemporary expression in her voice.",
     ],
     roots: [
       "City: Hyderabad",
@@ -91,13 +92,6 @@ window.SITE_DATA = {
   },
   highlights: [
     {
-      year: "Age 5 onward",
-      title: "Carnatic foundation",
-      description:
-        "Preethi's published interview around Mirchi Singistan says she began Carnatic training at age five and continued for eight years before moving into stage performance.",
-      trust: "verified-public-source",
-    },
-    {
       year: "Jul 2023",
       title: "Mirchi Singistan winner",
       description:
@@ -108,48 +102,43 @@ window.SITE_DATA = {
       year: "Jul 2023",
       title: "Opening act at 'Come Ride with Badshah'",
       description:
-        "The competition win led to an opening-act performance and backstage meet-and-greet opportunity at the concert.",
+        "Preethi performed an energetic opening-act at the concert.",
+      url: "https://www.mediainfoline.com/music/mirchi-singistan-uncovers-aspiring-singers-winner-performs-come-ride-badshah-concert",
+      linkLabel: "Open article",
       trust: "verified-public-source",
     },
     {
       year: "Oct 2023",
-      title: "Band Anantya established",
+      title: "Band Anantya",
       description:
-        "Hyderabad-based live-band listings describe Band Anantya as a project established in late 2023, built around female lead vocals and an expandable full-band format.",
+        "Hyderabad-based live band, built around female lead vocals, and an energetic team performing across genres, languages on multiple platforms including TV shows and live shows.",
       trust: "credible-third-party-profile",
-    },
-    {
-      year: "Feb 18, 2026",
-      title: "Soul Trip release",
-      description:
-        "Amazon Music lists 'Soul Trip' as a 2026 single by Yazin and Preethi Yagnamurthy.",
-      trust: "verified-public-source",
     },
   ],
   upcomingHighlights: [
     {
       year: "Upcoming",
-      title: "Telugu rap song release",
+      title: "Telugu rap song",
       description:
-        "An upcoming Telugu rap track is in the pipeline, with title, collaborators, and release details to be updated.",
+        "An upcoming Telugu rap song is in the pipeline.",
     },
     {
       year: "Upcoming",
-      title: "Private songs - Melody",
+      title: "Private song Telugu melody",
       description:
-        "A new private melody release is in progress, with final credits and launch details to follow.",
+        "A new private melody is going to get released soon.",
     },
     {
       year: "Upcoming",
-      title: "Private songs - Folk",
+      title: "Private song folk",
       description:
-        "A folk-led private song is also lined up, with final production and release notes to be updated.",
+        "A folk-led private song is also lined up.",
     },
     {
       year: "Upcoming",
-      title: "Private song Hindi",
+      title: "Private song - Hindi",
       description:
-        "A Hindi private song is part of the upcoming slate, with final title and rollout details to be announced.",
+        "A Hindi private song is part of the upcoming slate.",
     },
   ],
   press: {
@@ -219,7 +208,7 @@ window.SITE_DATA = {
     recordingCards: [
       {
         label: "Recordings",
-        title: "Playback, devotional, home and live recordings",
+        title: "Cover songs and special performances",
         description: "",
         url: "https://drive.google.com/drive/folders/17Nyai7o55Ft8I5IvG_-Y9VoyW42kinij",
         type: "recordings",
