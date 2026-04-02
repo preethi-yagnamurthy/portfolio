@@ -15,7 +15,6 @@
     { label: "HOME", href: "#home", section: "home" },
     { label: "PRESS", href: "#press", section: "press" },
     { label: "MUSIC", href: "#music", section: "music" },
-    { label: "LISTENING ROOM", href: "#listening-room", section: "listening-room" },
     { label: "PERFORMANCE", href: "#live", section: "live" },
   ];
   const consentStorageKey = "preethi-cookie-consent";
@@ -25,7 +24,6 @@
     { label: "Press", href: "#press", section: "press" },
     { label: "Story", href: "#story", section: "story" },
     { label: "Music", href: "#music", section: "music" },
-    { label: "Listening Room", href: "#listening-room", section: "listening-room" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
     { label: "Performance", href: "#live", section: "live" },
     { label: "Contact", href: "#contact", section: "contact" },
@@ -144,31 +142,29 @@
     `;
   }
 
-  function renderListeningRoomSection() {
+  function renderMusicSubsections() {
     if (!listeningRoom || !listeningRoom.featuredReel || !Array.isArray(listeningRoom.recordingCards) || !listeningRoom.recordingCards.length) return "";
 
     const reel = listeningRoom.featuredReel;
     const embedUrl = buildInstagramEmbedUrl(reel.url, reel.embedMode);
     const [primaryFolder] = listeningRoom.recordingCards;
+    const voiceOnlyFolders = listeningRoom.recordingCards.filter((item) => item.type === "voice-only");
     const previewItems = Array.isArray(listeningRoom.previewItems) ? listeningRoom.previewItems : [];
 
     return `
-      <section id="listening-room" class="listening-room-section">
-        <div class="section-head section-head--center">
-          <p class="section-label">${listeningRoom.eyebrow}</p>
-          <h2>${listeningRoom.title}</h2>
-          <p class="listening-room-section__intro">${listeningRoom.intro}</p>
-        </div>
-
-        <article class="listening-room-feature listening-room-feature--drive">
+      <div class="music-subsections">
+        <article class="listening-room-feature music-subsection">
           <div class="listening-room-feature__copy">
-            <p class="section-micro">${primaryFolder.label}</p>
+            <p class="section-micro">Playback</p>
             <h3>${primaryFolder.title}</h3>
             <p>${primaryFolder.description}</p>
-            <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
+            <div class="music-subsection__actions">
+              <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
+              <a class="button button--ghost" href="${reel.url}" target="_blank" rel="noopener">${reel.fallbackLabel}</a>
+            </div>
           </div>
 
-          <div class="listening-room-feature__media">
+          <div class="listening-room-feature__media music-media-stack">
             <div class="listening-room-preview-card" role="list" aria-label="${primaryFolder.title}">
               <div class="listening-room-preview-card__header">
                 <span>Folder preview</span>
@@ -178,22 +174,7 @@
                 ${renderDrivePreviewItems(previewItems)}
               </div>
             </div>
-          </div>
-        </article>
 
-        <div class="listening-room-grid">
-          ${renderListeningFolderLinks(listeningRoom.recordingCards)}
-        </div>
-
-        <article class="listening-room-feature listening-room-feature--reel">
-          <div class="listening-room-feature__copy">
-            <p class="section-micro">${reel.label}</p>
-            <h3>${reel.title}</h3>
-            <p>After the archive comes the live spark: one featured performance frame that keeps the room moving without taking over the room.</p>
-            <a class="button button--ghost" href="${reel.url}" target="_blank" rel="noopener">${reel.fallbackLabel}</a>
-          </div>
-
-          <div class="listening-room-feature__media">
             <div class="listening-room-frame listening-room-frame--reel">
               <iframe
                 src="${embedUrl}"
@@ -203,10 +184,21 @@
                 allowfullscreen
               ></iframe>
             </div>
-            <p class="listening-room-feature__note">Inline reel preview with direct Instagram fallback.</p>
           </div>
         </article>
-      </section>
+
+        <article class="listening-room-feature music-subsection">
+          <div class="listening-room-feature__copy">
+            <p class="section-micro">Raw vocals</p>
+            <h3>Voice-only selections.</h3>
+            <p>Stripped-back folders where phrasing, tonal range, and melodic contour sit forward without the weight of full production.</p>
+          </div>
+
+          <div class="listening-room-feature__media music-raw-vocals">
+            ${renderListeningFolderLinks(voiceOnlyFolders)}
+          </div>
+        </article>
+      </div>
     `;
   }
 
@@ -308,15 +300,27 @@
   }
 
   function renderDesktopNav() {
-    return desktopNav
-      .map(
-        (item) => `
-          <a class="mast-nav__link" href="${item.href}" data-section="${item.section}">
-            ${item.label}
-          </a>
-        `
-      )
-      .join("");
+    const logoMarkup =
+      site.branding && site.branding.primaryLogoPath
+        ? `<img class="mast-nav__brand-image" src="${site.branding.primaryLogoPath}" alt="${site.artist.name}">`
+        : `<span class="mast-nav__brand-text">${site.artist.name}</span>`;
+
+    return `
+      <a class="mast-nav__brand" href="#home" aria-label="${site.artist.name}">
+        ${logoMarkup}
+      </a>
+      <nav class="mast-nav__desktop-links" aria-label="Primary site navigation">
+        ${desktopNav
+          .map(
+            (item) => `
+              <a class="mast-nav__link" href="${item.href}" data-section="${item.section}">
+                ${item.label}
+              </a>
+            `
+          )
+          .join("")}
+      </nav>
+    `;
   }
 
   function renderMobileNav() {
@@ -491,9 +495,9 @@
               </div>
             </div>
           </article>
-        </section>
 
-        ${renderListeningRoomSection()}
+          ${renderMusicSubsections()}
+        </section>
 
         <section id="stage-collaborations" class="gallery-section">
           <div class="section-head section-head--center">
@@ -842,20 +846,11 @@
 
   function wireScrollChrome() {
     const mastNav = document.querySelector(".mast-nav");
-    const heroSection = document.getElementById("home");
     if (!mastNav) return;
 
     const syncScrollChrome = function () {
       mastNav.classList.toggle("is-scrolled", window.scrollY > 36);
-
-      if (!heroSection) {
-        document.body.classList.add("dock-visible");
-        return;
-      }
-
-      const revealOffset = Math.min(Math.max(window.innerHeight * 0.14, 48), 120);
-      const dockRevealPoint = Math.max(0, heroSection.offsetTop + heroSection.offsetHeight - revealOffset);
-      document.body.classList.toggle("dock-visible", window.scrollY >= dockRevealPoint);
+      document.body.classList.add("dock-visible");
     };
 
     syncScrollChrome();

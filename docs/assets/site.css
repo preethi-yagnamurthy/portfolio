@@ -114,7 +114,7 @@ main {
   left: 0;
   right: 0;
   z-index: 30;
-  padding: 1.4rem 1.6rem 0;
+  padding: 0.88rem 1.35rem 0;
   transition: padding 220ms ease;
 }
 
@@ -126,7 +126,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.95rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   border: 1px solid transparent;
   border-radius: 999px;
   background: rgba(12, 12, 12, 0);
@@ -142,8 +142,36 @@ main {
     transform 220ms ease;
 }
 
+.mast-nav__desktop-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.05rem;
+  flex-wrap: wrap;
+}
+
+.mast-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+.mast-nav__brand-image {
+  width: 4.2rem;
+  height: 4.2rem;
+  object-fit: contain;
+}
+
+.mast-nav__brand-text {
+  font-family: "Maison Neue Light", "Maison Neue Book", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .mast-nav.is-scrolled {
-  padding-top: 0.95rem;
+  padding-top: 0.58rem;
 }
 
 .mast-nav.is-scrolled .mast-nav__desktop,
@@ -184,8 +212,8 @@ main {
 }
 
 .mobile-brand__image {
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 3.7rem;
+  height: 3.7rem;
   object-fit: contain;
 }
 
@@ -1032,6 +1060,20 @@ h1 {
   margin-top: 1.8rem;
 }
 
+.music-subsections {
+  display: grid;
+  gap: 1rem;
+  width: min(calc(100% - 5rem), var(--container));
+  margin: 1rem auto 0;
+}
+
+.music-subsection__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
 .music-pill {
   min-width: 12rem;
   padding: 0.85rem 1rem;
@@ -1105,6 +1147,15 @@ h1 {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.03);
   box-shadow: var(--shadow);
+}
+
+.music-media-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.music-raw-vocals .listening-folder-list {
+  gap: 0.85rem;
 }
 
 .listening-room-frame--reel {
@@ -1723,6 +1774,7 @@ body.nav-open .consent-banner {
   .press-feature,
   .spotlight-card,
   .poster-card,
+  .music-subsections,
   .listening-room-feature,
   .listening-room-grid,
   .gallery-layout,
@@ -1792,7 +1844,7 @@ body.nav-open .consent-banner {
 
 @media (max-width: 860px) {
   .mast-nav {
-    padding: 1.2rem 1rem 0;
+    padding: 0.82rem 1rem 0;
   }
 
   .mast-nav__desktop {
@@ -1801,7 +1853,12 @@ body.nav-open .consent-banner {
 
   .mast-nav__mobile {
     display: flex;
-    padding: 0.85rem 1rem;
+    padding: 0.56rem 0.88rem;
+  }
+
+  .mobile-brand__image {
+    width: 3.35rem;
+    height: 3.35rem;
   }
 
   .hero-panel__content {
@@ -1855,6 +1912,7 @@ body.nav-open .consent-banner {
   .press-feature,
   .spotlight-card,
   .poster-card,
+  .music-subsections,
   .listening-room-feature,
   .listening-room-grid,
   .gallery-layout,
@@ -1889,6 +1947,11 @@ body.nav-open .consent-banner {
   .poster-card__copy,
   .listening-room-feature__copy {
     padding: 2rem 1.5rem;
+  }
+
+  .music-subsection__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .press-feature__media {
@@ -2045,7 +2108,7 @@ body.nav-open .consent-banner {
   }
 
   .mast-nav {
-    padding: 0.85rem 0.9rem 0;
+    padding: 0.64rem 0.85rem 0;
   }
 
   .mast-nav__desktop {
@@ -2055,7 +2118,7 @@ body.nav-open .consent-banner {
   .mast-nav__mobile {
     display: flex;
     width: min(100%, 100%);
-    padding: 0.65rem 0.85rem;
+    padding: 0.48rem 0.74rem;
   }
 
   .mobile-brand__image {
