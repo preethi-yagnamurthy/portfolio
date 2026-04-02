@@ -107,9 +107,8 @@
               <li class="listening-folder-list__item">
                 <a class="listening-folder-link" href="${item.url}" target="_blank" rel="noopener">
                   <span class="listening-folder-link__title">${item.title}</span>
-                  <span class="listening-folder-link__meta">${item.type.replace(/-/g, " ")}</span>
                 </a>
-                <p>${item.description}</p>
+                ${item.description ? `<p>${item.description}</p>` : ""}
               </li>
             `
           )
@@ -201,7 +200,7 @@
       <article class="listening-room-feature listening-room-feature--topic">
         <div class="listening-room-feature__copy">
           <h3>${primaryFolder.title}</h3>
-          <p>${primaryFolder.description}</p>
+          ${primaryFolder.description ? `<p>${primaryFolder.description}</p>` : ""}
           <div class="music-subsection__actions">
             <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
           </div>
@@ -242,13 +241,12 @@
     return `
       <article class="music-topic-card music-topic-card--raw-vocals">
         <div class="music-topic-card__head">
-          <p class="section-micro">Raw vocals</p>
+          <p class="section-micro">Vocals</p>
         </div>
         <div class="music-topic-card__body">
           <article class="listening-room-feature listening-room-feature--topic">
             <div class="listening-room-feature__copy">
               <h3>Voice-only selections.</h3>
-              <p>Stripped-back folders where phrasing, tonal range, and melodic contour sit forward without the weight of full production.</p>
             </div>
 
             <div class="listening-room-feature__media music-raw-vocals">

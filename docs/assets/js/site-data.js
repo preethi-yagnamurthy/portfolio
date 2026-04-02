@@ -201,24 +201,21 @@ window.SITE_DATA = {
       {
         label: "Recordings",
         title: "Playback, devotional, home and live recordings",
-        description:
-          "A primary folder gathering released playback work, devotional material, and a wider trail of home and live recordings.",
+        description: "",
         url: "https://drive.google.com/drive/folders/17Nyai7o55Ft8I5IvG_-Y9VoyW42kinij",
         type: "recordings",
       },
       {
         label: "Voice-only",
-        title: "Voice-only selections I",
-        description:
-          "A more stripped-back listen focused on phrasing, melody, and the texture of the voice without stage visuals.",
+        title: "Raw vocals",
+        description: "",
         url: "https://drive.google.com/drive/folders/1t0EKTeBDoeKgzF-NhWbCviNJkS_C3fjy",
         type: "voice-only",
       },
       {
         label: "Voice-only",
-        title: "Voice-only selections II",
-        description:
-          "A second voice-led folder for a more intimate listening pass across tonal range and song feel.",
+        title: "Raw vocals with reverb",
+        description: "",
         url: "https://drive.google.com/drive/folders/16Ua8sJX6iHtGMnxayAVf7N3WGlM79vT2",
         type: "voice-only",
       },
