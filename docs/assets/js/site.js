@@ -479,13 +479,6 @@
                 ${renderMusicLinks()}
               </div>
             </div>
-
-            <div class="poster-card__media">
-              <img class="poster-card__portrait" src="${media["music-portrait"].path}" alt="${media["music-portrait"].alt}" loading="lazy">
-              <figure class="poster-card__badge">
-                <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
-              </figure>
-            </div>
           </article>
         </section>
 

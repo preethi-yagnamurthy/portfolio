@@ -783,9 +783,7 @@ h1 {
 
 .reel-frame img,
 .gallery-panel img,
-.spotlight-card__media img,
-.poster-card__portrait,
-.poster-card__badge img {
+.spotlight-card__media img {
   height: 100%;
   object-fit: cover;
 }
@@ -1039,10 +1037,7 @@ h1 {
 .poster-card {
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 0.95fr;
-  gap: 1.2rem;
-  min-height: 40rem;
+  min-height: 24rem;
   border-radius: var(--radius-lg);
   background:
     radial-gradient(circle at 18% 24%, rgba(188, 26, 56, 0.48), transparent 28%),
@@ -1058,15 +1053,11 @@ h1 {
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%, rgba(0, 0, 0, 0.28) 100%);
 }
 
-.poster-card__copy,
-.poster-card__media {
+.poster-card__copy {
   position: relative;
   z-index: 1;
-}
-
-.poster-card__copy {
-  padding: 3.5rem 0 3.5rem 3.2rem;
-  align-self: center;
+  max-width: 52rem;
+  padding: 3.5rem 3.2rem;
 }
 
 .poster-card__copy h3 {
@@ -1075,31 +1066,6 @@ h1 {
   line-height: 0.9;
   letter-spacing: -0.04em;
   margin-bottom: 1rem;
-}
-
-.poster-card__media {
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  padding: 2rem 2rem 0 0;
-}
-
-.poster-card__portrait {
-  width: min(100%, 31rem);
-  object-position: center top;
-  filter: drop-shadow(0 28px 64px rgba(0, 0, 0, 0.5));
-}
-
-.poster-card__badge {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: clamp(7rem, 22vw, 11rem);
-  height: clamp(8.5rem, 24vw, 14rem);
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: var(--shadow);
 }
 
 .music-pills {
@@ -1831,16 +1797,6 @@ body.nav-open .consent-banner {
 
   .listening-room-frame--reel {
     aspect-ratio: 9 / 11;
-  }
-
-  .poster-card__media {
-    padding: 0 1.2rem 0;
-    min-height: 25rem;
-  }
-
-  .poster-card__badge {
-    right: 1rem;
-    top: 1rem;
   }
 
   .featured-release-card {
