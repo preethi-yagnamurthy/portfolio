@@ -115,31 +115,32 @@
       const parsed = new URL(url);
       const match = parsed.pathname.match(/\/folders\/([^/?#]+)/);
       if (!match) return "";
-      return `https://drive.google.com/embeddedfolderview?id=${match[1]}#grid`;
+      return `https://drive.google.com/embeddedfolderview?id=${match[1]}#list`;
     } catch (error) {
       return "";
     }
   }
 
-  function renderListeningCards(items) {
+  function renderListeningFolderLinks(items) {
     if (!Array.isArray(items) || !items.length) return "";
 
-    return items
-      .map(
-        (item) => `
-          <article class="listening-card">
-            <p class="section-micro">${item.label}</p>
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
-            <div class="listening-card__meta">
-              <span>${item.type.replace(/-/g, " ")}</span>
-              <span>Open folder</span>
-            </div>
-            <a class="button button--ghost" href="${item.url}" target="_blank" rel="noopener">Open folder</a>
-          </article>
-        `
-      )
-      .join("");
+    return `
+      <ul class="listening-folder-list">
+        ${items
+          .map(
+            (item) => `
+              <li class="listening-folder-list__item">
+                <a class="listening-folder-link" href="${item.url}" target="_blank" rel="noopener">
+                  <span class="listening-folder-link__title">${item.title}</span>
+                  <span class="listening-folder-link__meta">${item.type.replace(/-/g, " ")}</span>
+                </a>
+                <p>${item.description}</p>
+              </li>
+            `
+          )
+          .join("")}
+      </ul>
+    `;
   }
 
   function renderListeningRoomSection() {
@@ -147,7 +148,7 @@
 
     const reel = listeningRoom.featuredReel;
     const embedUrl = buildInstagramEmbedUrl(reel.url, reel.embedMode);
-    const [primaryFolder, ...secondaryFolders] = listeningRoom.recordingCards;
+    const [primaryFolder] = listeningRoom.recordingCards;
     const driveEmbedUrl = buildDriveFolderEmbedUrl(primaryFolder.url);
 
     return `
@@ -164,7 +165,6 @@
             <h3>${primaryFolder.title}</h3>
             <p>${primaryFolder.description}</p>
             <p>A fuller recordings lane sits here inside the page first, so the listening room opens with the archive before moving into the featured reel.</p>
-            <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
           </div>
 
           <div class="listening-room-feature__media">
@@ -179,12 +179,11 @@
                   : `<a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open folder</a>`
               }
             </div>
-            <p class="listening-room-feature__note">Inline Google Drive folder preview with direct folder access if you want the full view.</p>
           </div>
         </article>
 
         <div class="listening-room-grid">
-          ${renderListeningCards(secondaryFolders)}
+          ${renderListeningFolderLinks(listeningRoom.recordingCards)}
         </div>
 
         <article class="listening-room-feature listening-room-feature--reel">
@@ -219,10 +218,6 @@
       .map((paragraph) => `<p>${paragraph}</p>`)
       .join("");
 
-    const keyMoments = featuredPress.keyMoments
-      .map((item) => `<li>${item}</li>`)
-      .join("");
-
     return `
       <section id="press" class="press-section">
         <div class="section-head section-head--center">
@@ -235,9 +230,6 @@
             <p class="section-micro">${featuredPress.source} / ${featuredPress.date}</p>
             <h3>${featuredPress.title}</h3>
             ${summary}
-            <ul class="press-points">
-              ${keyMoments}
-            </ul>
             <a class="button button--ghost" href="${featuredPress.url}" target="_blank" rel="noopener">Read the full article</a>
           </div>
 
@@ -829,14 +821,25 @@
 
   function wireScrollChrome() {
     const mastNav = document.querySelector(".mast-nav");
+    const heroSection = document.getElementById("home");
     if (!mastNav) return;
 
     const syncScrollChrome = function () {
       mastNav.classList.toggle("is-scrolled", window.scrollY > 36);
+
+      if (!heroSection) {
+        document.body.classList.add("dock-visible");
+        return;
+      }
+
+      const revealOffset = Math.min(Math.max(window.innerHeight * 0.14, 48), 120);
+      const dockRevealPoint = Math.max(0, heroSection.offsetTop + heroSection.offsetHeight - revealOffset);
+      document.body.classList.toggle("dock-visible", window.scrollY >= dockRevealPoint);
     };
 
     syncScrollChrome();
     window.addEventListener("scroll", syncScrollChrome, { passive: true });
+    window.addEventListener("resize", syncScrollChrome);
   }
 
   function wireSpotlightReveal() {

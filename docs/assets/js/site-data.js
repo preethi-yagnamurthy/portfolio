@@ -20,7 +20,7 @@ window.SITE_DATA = {
     home: {
       label: "Home",
       href: "index.html",
-      title: "Preethi Yagnamurthy | Singer from Hyderabad",
+      title: "Preethi Yagnamurthy | Playback Singer",
       description:
         "Preethi Yagnamurthy is a Hyderabad-based multilingual singer, playback voice, and Band Anantya founder with Carnatic roots and a cinematic live presence.",
     },
