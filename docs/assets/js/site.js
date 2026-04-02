@@ -51,8 +51,8 @@
       .join("");
   }
 
-  function renderMusicLinks() {
-    return activeMusicLinks
+  function renderMusicLinks(links = activeMusicLinks) {
+    return links
       .map(
         (link) => `
           <a class="music-pill music-pill--icon" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
@@ -279,7 +279,7 @@
       ? `
         <div class="music-video-feature__links">
           <div class="music-pills music-pills--release">
-            ${renderMusicLinks()}
+            ${renderMusicLinks(activeMusicLinks.filter((link) => link.linkContext !== "artist"))}
           </div>
         </div>
       `
@@ -779,7 +779,7 @@
       clearHideDockTimer();
       hideDockTimer = window.setTimeout(function () {
         if (mobileDockQuery.matches) hideDock();
-      }, 5000);
+      }, 3000);
     };
 
     const syncDockMode = function () {
