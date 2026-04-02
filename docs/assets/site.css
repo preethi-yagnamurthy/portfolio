@@ -40,6 +40,10 @@
   --muted-strong: #e6d9ba;
   --gold: #d6b56a;
   --accent: #9e7930;
+  --section-micro-size: 1.095rem;
+  --section-label-size: 1.38rem;
+  --section-micro-size-mobile: 0.99rem;
+  --section-label-size-mobile: 1.11rem;
   --shadow: 0 26px 80px rgba(0, 0, 0, 0.45);
   --radius-lg: 32px;
   --radius-md: 24px;
@@ -327,7 +331,7 @@ main {
   color: var(--muted);
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  font-size: 0.73rem;
+  font-size: var(--section-micro-size);
   font-family: "Rothek Normal", "Helvetica Neue", sans-serif;
   font-weight: 400;
 }
@@ -335,7 +339,7 @@ main {
 .section-label {
   color: var(--gold);
   letter-spacing: 0.16em;
-  font-size: 0.92rem;
+  font-size: var(--section-label-size);
 }
 
 h1,
@@ -653,6 +657,10 @@ h1 {
 .music-pill__icon[src*="youtube.svg"],
 .music-pill__icon[src*="jiosaavn.svg"] {
   filter: brightness(0) invert(1);
+}
+
+.floating-dock .social-dot__image {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(589%) hue-rotate(2deg) brightness(93%) contrast(87%);
 }
 
 .social-dot__fallback {
@@ -2439,8 +2447,12 @@ body.nav-open .consent-banner {
   .section-micro,
   .section-label {
     margin-bottom: 0.65rem;
-    font-size: 0.66rem;
+    font-size: var(--section-micro-size-mobile);
     letter-spacing: 0.28em;
+  }
+
+  .section-label {
+    font-size: var(--section-label-size-mobile);
   }
 
   .hero-copy {
