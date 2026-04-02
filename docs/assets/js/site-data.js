@@ -235,6 +235,16 @@ window.SITE_DATA = {
     videoPath: "assets/media/bhimavaram-balma-hindi.mp4",
     posterPath: "assets/media/bhimavaram-balma-cover.jpg",
   },
+  featuredRelease: {
+    eyebrow: "Latest release",
+    title: "Soul Trip",
+    description:
+      "Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.",
+    videoPath: "assets/media/soul-trip-video.mp4",
+    posterPath: "assets/media/preethi-press-portrait.jpg",
+    posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
+    releaseUrl: "https://music.amazon.in/albums/B0GP2XYRZN",
+  },
   musicLinks: [
     {
       label: "Amazon Music",

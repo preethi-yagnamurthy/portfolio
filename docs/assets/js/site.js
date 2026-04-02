@@ -8,6 +8,7 @@
   );
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
+  const featuredRelease = site.featuredRelease || null;
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
@@ -185,18 +186,44 @@
   }
 
   function renderFeaturedReleaseSection() {
+    const release = featuredRelease || {
+      eyebrow: "Latest release",
+      title: "Soul Trip",
+      description:
+        "Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.",
+      videoPath: "",
+      posterPath: media["press-portrait"].path,
+      posterAlt: media["press-portrait"].alt,
+      releaseUrl: activeMusicLinks[1] ? activeMusicLinks[1].url : "#music",
+    };
+
     return `
       <div class="featured-release-section featured-release-section--within-music" data-featured-release-reveal>
         <article class="featured-release-card">
           <figure class="featured-release-card__media">
-            <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
+            ${
+              release.videoPath
+                ? `
+                  <video
+                    class="featured-release-card__player"
+                    controls
+                    preload="metadata"
+                    playsinline
+                    poster="${release.posterPath}"
+                    aria-label="${release.title}"
+                  >
+                    <source src="${release.videoPath}" type="video/mp4">
+                  </video>
+                `
+                : `<img src="${release.posterPath}" alt="${release.posterAlt}" loading="lazy">`
+            }
           </figure>
           <div class="featured-release-card__shade" aria-hidden="true"></div>
           <div class="featured-release-card__copy">
-            <p class="section-label">Latest release</p>
-            <h2>Soul Trip</h2>
-            <p>Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.</p>
-            <a class="button button--ghost" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Open release</a>
+            <p class="section-label">${release.eyebrow}</p>
+            <h2>${release.title}</h2>
+            <p>${release.description}</p>
+            <a class="button button--ghost" href="${release.releaseUrl}" target="_blank" rel="noopener">Open release</a>
           </div>
         </article>
       </div>

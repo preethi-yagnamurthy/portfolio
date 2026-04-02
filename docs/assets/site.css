@@ -574,6 +574,7 @@ h1 {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   background:
     linear-gradient(
       180deg,
@@ -589,11 +590,17 @@ h1 {
   transition: opacity 220ms ease;
 }
 
-.featured-release-card__media img {
+.featured-release-card__media img,
+.featured-release-card__player {
   height: 100%;
   width: 100%;
   object-fit: contain;
   object-position: center bottom;
+  background: #000;
+}
+
+.featured-release-card__player {
+  display: block;
 }
 
 .hero-cutout {
