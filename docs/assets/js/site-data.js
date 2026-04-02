@@ -158,6 +158,38 @@ window.SITE_DATA = {
     title: "A closer listen, beyond the main streaming trail.",
     intro:
       "A quieter layer of the journey, shaped through a featured reel, playback-led recordings, and voice-forward folders that let the tone sit front and center.",
+    previewItems: [
+      {
+        title: "Appreciations & Articles",
+        url: "https://drive.google.com/drive/folders/18iJ6QjPIcMlQn3OZfg9gleYl3YyRonSA",
+        modified: "11:55 pm",
+      },
+      {
+        title: "Hindi Home and Live",
+        url: "https://drive.google.com/drive/folders/1hse9t3xZFKBvi4RZf-sPJP8WMTuKWVej",
+        modified: "Jan 1",
+      },
+      {
+        title: "MOVIE SONGS",
+        url: "https://drive.google.com/drive/folders/1ANnIXLxbeRcJF4AYWA3JCf_gMzisJXED",
+        modified: "Dec 16, 2025",
+      },
+      {
+        title: "PRIVATES",
+        url: "https://drive.google.com/drive/folders/1GmKFoqZfakCNsq86XhH7N9mo5d3saGMl",
+        modified: "Dec 16, 2025",
+      },
+      {
+        title: "Tamil and Malayalam",
+        url: "https://drive.google.com/drive/folders/1U3zqSCQ5Kpkeqt1uUt9P9aSD78WLY3tq",
+        modified: "Jan 1",
+      },
+      {
+        title: "Telugu Home and Live",
+        url: "https://drive.google.com/drive/folders/1gxZUFIa7sLHcfxrHuRh9UI2EIQfpj_7W",
+        modified: "Jan 1",
+      },
+    ],
     featuredReel: {
       label: "Featured reel",
       title: "A live phrase, carried in one frame.",

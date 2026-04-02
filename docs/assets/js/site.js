@@ -108,17 +108,19 @@
     }
   }
 
-  function buildDriveFolderEmbedUrl(url) {
-    if (!url) return "";
+  function renderDrivePreviewItems(items) {
+    if (!Array.isArray(items) || !items.length) return "";
 
-    try {
-      const parsed = new URL(url);
-      const match = parsed.pathname.match(/\/folders\/([^/?#]+)/);
-      if (!match) return "";
-      return `https://drive.google.com/embeddedfolderview?id=${match[1]}#list`;
-    } catch (error) {
-      return "";
-    }
+    return items
+      .map(
+        (item) => `
+          <a class="listening-room-preview__item" href="${item.url}" target="_blank" rel="noopener">
+            <span class="listening-room-preview__title">${item.title}</span>
+            <span class="listening-room-preview__meta">${item.modified}</span>
+          </a>
+        `
+      )
+      .join("");
   }
 
   function renderListeningFolderLinks(items) {
@@ -149,7 +151,7 @@
     const reel = listeningRoom.featuredReel;
     const embedUrl = buildInstagramEmbedUrl(reel.url, reel.embedMode);
     const [primaryFolder] = listeningRoom.recordingCards;
-    const driveEmbedUrl = buildDriveFolderEmbedUrl(primaryFolder.url);
+    const previewItems = Array.isArray(listeningRoom.previewItems) ? listeningRoom.previewItems : [];
 
     return `
       <section id="listening-room" class="listening-room-section">
@@ -164,20 +166,18 @@
             <p class="section-micro">${primaryFolder.label}</p>
             <h3>${primaryFolder.title}</h3>
             <p>${primaryFolder.description}</p>
-            <p>A fuller recordings lane sits here inside the page first, so the listening room opens with the archive before moving into the featured reel.</p>
+            <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
           </div>
 
           <div class="listening-room-feature__media">
-            <div class="listening-room-frame">
-              ${
-                driveEmbedUrl
-                  ? `<iframe
-                      src="${driveEmbedUrl}"
-                      title="${primaryFolder.title}"
-                      loading="lazy"
-                    ></iframe>`
-                  : `<a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open folder</a>`
-              }
+            <div class="listening-room-preview-card" role="list" aria-label="${primaryFolder.title}">
+              <div class="listening-room-preview-card__header">
+                <span>Folder preview</span>
+                <span>Updated</span>
+              </div>
+              <div class="listening-room-preview-card__body">
+                ${renderDrivePreviewItems(previewItems)}
+              </div>
             </div>
           </div>
         </article>
@@ -190,7 +190,7 @@
           <div class="listening-room-feature__copy">
             <p class="section-micro">${reel.label}</p>
             <h3>${reel.title}</h3>
-            <p>After the archive comes the live spark: one featured performance frame that keeps the room moving, without taking over the section.</p>
+            <p>After the archive comes the live spark: one featured performance frame that keeps the room moving without taking over the room.</p>
             <a class="button button--ghost" href="${reel.url}" target="_blank" rel="noopener">${reel.fallbackLabel}</a>
           </div>
 
@@ -208,6 +208,37 @@
           </div>
         </article>
       </section>
+    `;
+  }
+
+  function renderGalleryCarousel() {
+    const slides = [
+      media["gallery-wide"],
+      media["gallery-portrait"],
+      media["press-portrait"],
+    ].filter(Boolean);
+
+    if (!slides.length) return "";
+
+    return `
+      <div class="gallery-carousel" data-gallery-carousel aria-label="Stage and collaborations mobile carousel">
+        <div class="gallery-carousel__viewport">
+          <div class="gallery-carousel__track">
+            ${slides
+              .map(
+                (item) => `
+                  <figure class="gallery-carousel__slide">
+                    <img src="${item.path}" alt="${item.alt}" loading="lazy">
+                  </figure>
+                `
+              )
+              .join("")}
+          </div>
+        </div>
+        <div class="gallery-carousel__dots" aria-hidden="true">
+          ${slides.map((_, index) => `<span class="${index === 0 ? "is-active" : ""}"></span>`).join("")}
+        </div>
+      </div>
     `;
   }
 
@@ -437,17 +468,6 @@
               <h3>${site.bio.intro[0]}</h3>
               <p>${site.bio.intro[1]}</p>
               <p>${site.bio.intro[2]}</p>
-              <ul class="story-pills">
-                <li>Carnatic training from age 5</li>
-                <li>Mirchi Singistan winner</li>
-                <li>Band Anantya lead vocalist</li>
-                <li>Multilingual live repertoire</li>
-              </ul>
-              <div class="spotlight-card__dots" aria-hidden="true">
-                <span class="is-active"></span>
-                <span></span>
-                <span></span>
-              </div>
             </div>
             <figure class="spotlight-card__media">
               <img src="${media["about-portrait"].path}" alt="${media["about-portrait"].alt}" loading="lazy">
@@ -476,7 +496,7 @@
 
         ${renderListeningRoomSection()}
 
-        <section class="gallery-section">
+        <section id="stage-collaborations" class="gallery-section">
           <div class="section-head section-head--center">
             <p class="section-label">Stage & Collaborations</p>
             <h2>Performance, afterglow, and the stillness between songs.</h2>
@@ -495,6 +515,8 @@
               </figure>
             </div>
           </div>
+
+          ${renderGalleryCarousel()}
         </section>
 
         <section id="live" class="performance-section">
@@ -893,6 +915,75 @@
     window.addEventListener("resize", requestSync);
   }
 
+  function wireGalleryCarousel() {
+    const carousel = document.querySelector("[data-gallery-carousel]");
+    if (!carousel) return;
+
+    const track = carousel.querySelector(".gallery-carousel__track");
+    const slides = Array.from(carousel.querySelectorAll(".gallery-carousel__slide"));
+    const dots = Array.from(carousel.querySelectorAll(".gallery-carousel__dots span"));
+    if (!track || slides.length < 2) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 960px)");
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let activeIndex = 0;
+    let timer = null;
+
+    const sync = function (index) {
+      activeIndex = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === activeIndex);
+      });
+    };
+
+    const stop = function () {
+      if (timer !== null) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    const start = function () {
+      stop();
+      if (!mobileQuery.matches || reducedMotionQuery.matches) {
+        sync(0);
+        return;
+      }
+
+      timer = window.setInterval(function () {
+        sync(activeIndex + 1);
+      }, 2000);
+    };
+
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
+    carousel.addEventListener("focusin", stop);
+    carousel.addEventListener("focusout", start);
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", start);
+    } else if (typeof mobileQuery.addListener === "function") {
+      mobileQuery.addListener(start);
+    }
+
+    if (typeof reducedMotionQuery.addEventListener === "function") {
+      reducedMotionQuery.addEventListener("change", start);
+    } else if (typeof reducedMotionQuery.addListener === "function") {
+      reducedMotionQuery.addListener(start);
+    }
+
+    sync(0);
+    start();
+  }
+
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -908,6 +999,7 @@
   wireNav();
   wireScrollChrome();
   wireFeaturedReleaseReveal();
+  wireGalleryCarousel();
   wireSpotlightReveal();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
