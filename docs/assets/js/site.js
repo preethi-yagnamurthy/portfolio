@@ -6,14 +6,12 @@
   const media = Object.fromEntries(
     site.gallery.map((item) => [item.usageRole, item])
   );
-  const featuredPress = site.press && site.press.featured ? site.press.featured : null;
   const listeningRoom = site.listeningRoom || null;
   const bandLinks = Array.isArray(site.bandLinks) ? site.bandLinks : [];
 
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
-    { label: "PRESS", href: "#press", section: "press" },
     { label: "MUSIC", href: "#music", section: "music" },
     { label: "PERFORMANCE", href: "#live", section: "live" },
   ];
@@ -21,7 +19,6 @@
 
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
-    { label: "Press", href: "#press", section: "press" },
     { label: "Story", href: "#story", section: "story" },
     { label: "Music", href: "#music", section: "music" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
@@ -93,18 +90,6 @@
       .join("");
   }
 
-  function buildInstagramEmbedUrl(url, embedMode) {
-    if (!url || embedMode !== "instagram-reel") return url;
-
-    try {
-      const parsed = new URL(url);
-      const cleanPath = parsed.pathname.replace(/\/+$/, "");
-      return `${parsed.origin}${cleanPath}/embed`;
-    } catch (error) {
-      return url;
-    }
-  }
-
   function renderDrivePreviewItems(items) {
     if (!Array.isArray(items) || !items.length) return "";
 
@@ -143,10 +128,8 @@
   }
 
   function renderMusicSubsections() {
-    if (!listeningRoom || !listeningRoom.featuredReel || !Array.isArray(listeningRoom.recordingCards) || !listeningRoom.recordingCards.length) return "";
+    if (!listeningRoom || !Array.isArray(listeningRoom.recordingCards) || !listeningRoom.recordingCards.length) return "";
 
-    const reel = listeningRoom.featuredReel;
-    const embedUrl = buildInstagramEmbedUrl(reel.url, reel.embedMode);
     const [primaryFolder] = listeningRoom.recordingCards;
     const voiceOnlyFolders = listeningRoom.recordingCards.filter((item) => item.type === "voice-only");
     const previewItems = Array.isArray(listeningRoom.previewItems) ? listeningRoom.previewItems : [];
@@ -160,11 +143,10 @@
             <p>${primaryFolder.description}</p>
             <div class="music-subsection__actions">
               <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
-              <a class="button button--ghost" href="${reel.url}" target="_blank" rel="noopener">${reel.fallbackLabel}</a>
             </div>
           </div>
 
-          <div class="listening-room-feature__media music-media-stack">
+          <div class="listening-room-feature__media">
             <div class="listening-room-preview-card" role="list" aria-label="${primaryFolder.title}">
               <div class="listening-room-preview-card__header">
                 <span>Folder preview</span>
@@ -173,16 +155,6 @@
               <div class="listening-room-preview-card__body">
                 ${renderDrivePreviewItems(previewItems)}
               </div>
-            </div>
-
-            <div class="listening-room-frame listening-room-frame--reel">
-              <iframe
-                src="${embedUrl}"
-                title="${reel.title}"
-                loading="lazy"
-                allowtransparency="true"
-                allowfullscreen
-              ></iframe>
             </div>
           </div>
         </article>
@@ -230,41 +202,6 @@
           ${slides.map((_, index) => `<span class="${index === 0 ? "is-active" : ""}"></span>`).join("")}
         </div>
       </div>
-    `;
-  }
-
-  function renderPressSection() {
-    if (!featuredPress) return "";
-
-    const summary = featuredPress.summary
-      .map((paragraph) => `<p>${paragraph}</p>`)
-      .join("");
-
-    return `
-      <section id="press" class="press-section">
-        <div class="section-head section-head--center">
-          <p class="section-label">Press</p>
-          <h2>${site.press.heading}</h2>
-        </div>
-
-        <article class="press-feature">
-          <div class="press-feature__copy">
-            <p class="section-micro">${featuredPress.source} / ${featuredPress.date}</p>
-            <h3>${featuredPress.title}</h3>
-            ${summary}
-            <a class="button button--ghost" href="${featuredPress.url}" target="_blank" rel="noopener">Read the full article</a>
-          </div>
-
-          <figure class="press-feature__media">
-            <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
-            <figcaption>
-              <p class="section-micro">${featuredPress.mediaEyebrow}</p>
-              <h3>${featuredPress.mediaTitle}</h3>
-              <p>${featuredPress.mediaCaption}</p>
-            </figcaption>
-          </figure>
-        </article>
-      </section>
     `;
   }
 
@@ -375,7 +312,6 @@
             <div class="hero-copy">
               <h1>${site.artist.name}</h1>
               <p class="hero-copy__tagline">Multilingual | Multi-genre playback singer</p>
-              <p class="hero-copy__lead">${site.artist.positioning}</p>
               <div class="hero-copy__actions">
                 <a class="button button--solid" href="#music">Listen now</a>
                 <a class="button button--ghost" href="#live">Book a live set</a>
@@ -433,8 +369,6 @@
             ${renderHighlightCards()}
           </div>
         </section>
-
-        ${renderPressSection()}
 
         <section id="story" class="spotlight-section">
           <div class="section-head section-head--center">

@@ -313,10 +313,6 @@ main {
   animation-delay: 2.7s;
 }
 
-.hero-copy > :nth-child(4) {
-  animation-delay: 3.05s;
-}
-
 .hero-copy h1,
 .hero-copy__tagline,
 .hero-copy__lead {
