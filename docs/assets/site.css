@@ -1063,6 +1063,73 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.spotlight-card__media {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.story-carousel {
+  display: grid;
+  align-content: stretch;
+  min-height: 100%;
+}
+
+.story-carousel__viewport {
+  overflow: hidden;
+  min-height: clamp(26rem, 42vw, 38rem);
+  height: 100%;
+}
+
+.story-carousel__track {
+  display: flex;
+  height: 100%;
+  transition: transform 640ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  will-change: transform;
+}
+
+.story-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  min-height: inherit;
+}
+
+.story-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.story-carousel__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.story-carousel__dot {
+  width: 0.58rem;
+  height: 0.58rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(214, 181, 106, 0.26);
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.story-carousel__dot.is-active {
+  background: rgba(214, 181, 106, 0.92);
+  transform: scale(1.08);
+}
+
 .poster-card {
   position: relative;
   overflow: hidden;
@@ -2196,6 +2263,10 @@ body.nav-open .consent-banner {
 
   .press-feature__media {
     min-height: 24rem;
+  }
+
+  .story-carousel__viewport {
+    min-height: clamp(22rem, 58svh, 32rem);
   }
 
   .listening-room-feature__media {

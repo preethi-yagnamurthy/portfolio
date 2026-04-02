@@ -6,6 +6,12 @@
   const media = Object.fromEntries(
     site.gallery.map((item) => [item.usageRole, item])
   );
+  const storyCarouselItems = [
+    media["about-portrait"],
+    media["press-portrait"],
+    media["home-spotlight"],
+    media["music-portrait"],
+  ].filter(Boolean);
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
   const featuredRelease = site.featuredRelease || null;
@@ -194,7 +200,6 @@
     return `
       <article class="listening-room-feature listening-room-feature--topic">
         <div class="listening-room-feature__copy">
-          <p class="section-micro">Other works</p>
           <h3>${primaryFolder.title}</h3>
           <p>${primaryFolder.description}</p>
           <div class="music-subsection__actions">
@@ -225,7 +230,6 @@
         </div>
         <div class="music-topic-card__body">
           ${playbackFeatures.map(renderPlaybackFeature).join("")}
-          ${renderPlaybackArchive()}
         </div>
       </article>
     `;
@@ -251,6 +255,22 @@
               ${renderListeningFolderLinks(voiceOnlyFolders)}
             </div>
           </article>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderOtherWorksSection() {
+    const archiveMarkup = renderPlaybackArchive();
+    if (!archiveMarkup) return "";
+
+    return `
+      <article class="music-topic-card music-topic-card--other-works">
+        <div class="music-topic-card__head">
+          <p class="section-micro">Other works</p>
+        </div>
+        <div class="music-topic-card__body">
+          ${archiveMarkup}
         </div>
       </article>
     `;
@@ -302,6 +322,48 @@
       .join("");
   }
 
+  function renderStoryCarousel() {
+    if (!storyCarouselItems.length) return "";
+
+    return `
+      <figure class="spotlight-card__media story-carousel" data-story-carousel aria-label="Story portraits">
+        <div class="story-carousel__viewport">
+          <div class="story-carousel__track">
+            ${storyCarouselItems
+              .map(
+                (item) => `
+                  <div class="story-carousel__slide">
+                    <img src="${item.path}" alt="${item.alt}" loading="lazy">
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        </div>
+        ${
+          storyCarouselItems.length > 1
+            ? `
+              <div class="story-carousel__dots" aria-label="Story image navigation">
+                ${storyCarouselItems
+                  .map(
+                    (_, index) => `
+                      <button
+                        class="story-carousel__dot${index === 0 ? " is-active" : ""}"
+                        type="button"
+                        aria-label="Show story image ${index + 1}"
+                        data-story-dot="${index}"
+                      ></button>
+                    `
+                  )
+                  .join("")}
+              </div>
+            `
+            : ""
+        }
+      </figure>
+    `;
+  }
+
   app.innerHTML = `
     <div class="site-shell">
       <header class="mast-nav">
@@ -346,6 +408,7 @@
 
           ${renderPlaybackSection()}
           ${renderRawVocalsSection()}
+          ${renderOtherWorksSection()}
         </section>
 
         <section id="story" class="spotlight-section">
@@ -361,9 +424,7 @@
               <p>${site.bio.intro[1]}</p>
               <p>${site.bio.intro[2]}</p>
             </div>
-            <figure class="spotlight-card__media">
-              <img src="${media["about-portrait"].path}" alt="${media["about-portrait"].alt}" loading="lazy">
-            </figure>
+            ${renderStoryCarousel()}
           </article>
         </section>
 
@@ -689,6 +750,62 @@
     });
   }
 
+  function wireStoryCarousel() {
+    const carousels = Array.from(document.querySelectorAll("[data-story-carousel]"));
+    if (!carousels.length) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    carousels.forEach(function (carousel) {
+      const track = carousel.querySelector(".story-carousel__track");
+      const slides = Array.from(carousel.querySelectorAll(".story-carousel__slide"));
+      const dots = Array.from(carousel.querySelectorAll("[data-story-dot]"));
+      if (!track || slides.length < 2) return;
+
+      let currentIndex = 0;
+      let intervalId = null;
+
+      const sync = function () {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach(function (dot, index) {
+          dot.classList.toggle("is-active", index === currentIndex);
+          dot.setAttribute("aria-pressed", String(index === currentIndex));
+        });
+      };
+
+      const stop = function () {
+        if (intervalId === null) return;
+        window.clearInterval(intervalId);
+        intervalId = null;
+      };
+
+      const start = function () {
+        if (prefersReducedMotion.matches) return;
+        stop();
+        intervalId = window.setInterval(function () {
+          currentIndex = (currentIndex + 1) % slides.length;
+          sync();
+        }, 2000);
+      };
+
+      dots.forEach(function (dot) {
+        dot.addEventListener("click", function () {
+          currentIndex = Number(dot.dataset.storyDot) || 0;
+          sync();
+          start();
+        });
+      });
+
+      carousel.addEventListener("mouseenter", stop);
+      carousel.addEventListener("mouseleave", start);
+      carousel.addEventListener("focusin", stop);
+      carousel.addEventListener("focusout", start);
+
+      sync();
+      start();
+    });
+  }
+
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -705,6 +822,7 @@
   wireScrollChrome();
   wireFeaturedReleaseReveal();
   wireVideoPosterReset();
+  wireStoryCarousel();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();
