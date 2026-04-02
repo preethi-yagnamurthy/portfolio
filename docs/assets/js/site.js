@@ -386,29 +386,6 @@
 
         ${renderFeaturedReleaseSection()}
 
-        <section class="spotlight-reveal" data-spotlight-reveal aria-label="Spotlight reveal section">
-          <div class="spotlight-reveal__stage">
-            <div class="spotlight-reveal__grid">
-              <div class="spotlight-reveal__copy">
-                <p class="section-label">Spotlight On!</p>
-                <h2>When the lights rise, the room listens.</h2>
-                <p>A multilingual voice, rooted in classical training and built for the stage.</p>
-              </div>
-
-              <div class="spotlight-reveal__visual">
-                <div class="spotlight-reveal__beam" aria-hidden="true"></div>
-                <img
-                  class="spotlight-reveal__image"
-                  src="${media["spotlight-reveal"].path}"
-                  alt="${media["spotlight-reveal"].alt}"
-                  loading="lazy"
-                >
-              </div>
-            </div>
-            <div id="spotlight-on" class="spotlight-reveal__anchor" aria-hidden="true"></div>
-          </div>
-        </section>
-
         <section class="reel-section" aria-label="Artist visual reel">
           <figure class="reel-frame reel-frame--wide">
             <img src="${media["home-spotlight"].path}" alt="${media["home-spotlight"].alt}" loading="lazy">
@@ -858,31 +835,6 @@
     window.addEventListener("resize", syncScrollChrome);
   }
 
-  function wireSpotlightReveal() {
-    const section = document.querySelector("[data-spotlight-reveal]");
-    if (!section) return;
-
-    let frame = null;
-
-    const syncReveal = function () {
-      frame = null;
-      const rect = section.getBoundingClientRect();
-      const travel = Math.max(1, rect.height - window.innerHeight);
-      const rawProgress = Math.max(0, Math.min(1, (-rect.top) / travel));
-      const easedProgress = Math.pow(rawProgress, 1.4);
-      section.style.setProperty("--spotlight-progress", easedProgress.toFixed(3));
-    };
-
-    const requestSync = function () {
-      if (frame !== null) return;
-      frame = window.requestAnimationFrame(syncReveal);
-    };
-
-    syncReveal();
-    window.addEventListener("scroll", requestSync, { passive: true });
-    window.addEventListener("resize", requestSync);
-  }
-
   function wireFeaturedReleaseReveal() {
     const section = document.querySelector("[data-featured-release-reveal]");
     if (!section) return;
@@ -999,7 +951,6 @@
   wireScrollChrome();
   wireFeaturedReleaseReveal();
   wireGalleryCarousel();
-  wireSpotlightReveal();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();
