@@ -163,10 +163,7 @@
         <div class="music-video-feature__art">
           <p class="section-micro">${musicFeature.eyebrow}</p>
           <h3>${musicFeature.title}</h3>
-          <p>${musicFeature.description}</p>
-          <figure class="music-video-feature__cover">
-            <img src="${musicFeature.coverPath}" alt="${musicFeature.coverAlt}" loading="lazy">
-          </figure>
+          <p class="music-video-feature__meta">${musicFeature.description}</p>
         </div>
 
         <div class="music-video-feature__media">
@@ -176,6 +173,7 @@
             preload="metadata"
             playsinline
             poster="${musicFeature.posterPath}"
+            data-reset-poster
           >
             <source src="${musicFeature.videoPath}" type="video/mp4">
             Your browser does not support the video tag.
@@ -187,10 +185,9 @@
 
   function renderFeaturedReleaseSection() {
     const release = featuredRelease || {
-      eyebrow: "Latest release",
       title: "Soul Trip",
       description:
-        "Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.",
+        "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
       videoPath: "",
       posterPath: media["press-portrait"].path,
       posterAlt: media["press-portrait"].alt,
@@ -198,35 +195,32 @@
     };
 
     return `
-      <div class="featured-release-section featured-release-section--within-music" data-featured-release-reveal>
-        <article class="featured-release-card">
-          <figure class="featured-release-card__media">
-            ${
-              release.videoPath
-                ? `
-                  <video
-                    class="featured-release-card__player"
-                    controls
-                    preload="metadata"
-                    playsinline
-                    poster="${release.posterPath}"
-                    aria-label="${release.title}"
-                  >
-                    <source src="${release.videoPath}" type="video/mp4">
-                  </video>
-                `
-                : `<img src="${release.posterPath}" alt="${release.posterAlt}" loading="lazy">`
-            }
-          </figure>
-          <div class="featured-release-card__shade" aria-hidden="true"></div>
-          <div class="featured-release-card__copy">
-            <p class="section-label">${release.eyebrow}</p>
-            <h2>${release.title}</h2>
-            <p>${release.description}</p>
-            <a class="button button--ghost" href="${release.releaseUrl}" target="_blank" rel="noopener">Open release</a>
-          </div>
-        </article>
-      </div>
+      <article class="music-video-feature music-video-feature--release">
+        <div class="music-video-feature__art">
+          <h3>${release.title}</h3>
+          <p class="music-video-feature__meta">${release.description}</p>
+        </div>
+
+        <div class="music-video-feature__media">
+          ${
+            release.videoPath
+              ? `
+                <video
+                  class="music-video-feature__player"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  poster="${release.posterPath}"
+                  data-reset-poster
+                  aria-label="${release.title}"
+                >
+                  <source src="${release.videoPath}" type="video/mp4">
+                </video>
+              `
+              : `<img class="music-video-feature__poster" src="${release.posterPath}" alt="${release.posterAlt}" loading="lazy">`
+          }
+        </div>
+      </article>
     `;
   }
 
@@ -316,23 +310,15 @@
         <section id="music" class="poster-section">
           <div class="section-head section-head--center">
             <p class="section-label">Music</p>
-            <h2>Songs that travel from playback rooms to live listening.</h2>
           </div>
 
           ${renderMusicVideoFeature()}
           ${renderFeaturedReleaseSection()}
-
-          <article class="poster-card">
-            <div class="poster-card__wash"></div>
-            <div class="poster-card__copy">
-              <p class="section-micro">Now listening</p>
-              <h3>Soul Trip</h3>
-              <p>From Soul Trip to streaming trails across Amazon Music, Spotify, YouTube, and JioSaavn, the listening path gathers around a voice built for studio detail and stage immediacy.</p>
-              <div class="music-pills">
-                ${renderMusicLinks()}
-              </div>
+          <div class="music-platform-strip">
+            <div class="music-pills music-pills--release">
+              ${renderMusicLinks()}
             </div>
-          </article>
+          </div>
 
           ${renderMusicSubsections()}
         </section>
@@ -661,6 +647,23 @@
     window.addEventListener("resize", requestSync);
   }
 
+  function wireVideoPosterReset() {
+    const resetVideos = Array.from(document.querySelectorAll("video[data-reset-poster]"));
+    if (!resetVideos.length) return;
+
+    resetVideos.forEach(function (video) {
+      video.addEventListener("ended", function () {
+        try {
+          video.currentTime = 0;
+        } catch (error) {
+          // Ignore seek issues and still fall back to reload.
+        }
+        video.pause();
+        video.load();
+      });
+    });
+  }
+
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -676,6 +679,7 @@
   wireNav();
   wireScrollChrome();
   wireFeaturedReleaseReveal();
+  wireVideoPosterReset();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();

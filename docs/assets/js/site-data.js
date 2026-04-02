@@ -236,10 +236,9 @@ window.SITE_DATA = {
     posterPath: "assets/media/bhimavaram-balma-cover.jpg",
   },
   featuredRelease: {
-    eyebrow: "Latest release",
     title: "Soul Trip",
     description:
-      "Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.",
+      "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
     videoPath: "assets/media/soul-trip-video.mp4",
     posterPath: "assets/media/preethi-press-portrait.jpg",
     posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
