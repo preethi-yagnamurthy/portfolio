@@ -268,18 +268,18 @@
 
   function renderFeaturedReleaseSection() {
     return `
-      <section id="featured-release" class="featured-release-section">
+      <section id="featured-release" class="featured-release-section" data-featured-release-reveal>
         <article class="featured-release-card">
-          <div class="featured-release-card__copy">
-            <p class="section-label">Featured release</p>
-            <h2>Soul Trip</h2>
-            <p>Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy, and now moved below the landing frame so the hero can stay fully with the image.</p>
-            <a class="button button--ghost" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Open release</a>
-          </div>
-
           <figure class="featured-release-card__media">
             <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
           </figure>
+          <div class="featured-release-card__shade" aria-hidden="true"></div>
+          <div class="featured-release-card__copy">
+            <p class="section-label">Featured release</p>
+            <h2>Soul Trip</h2>
+            <p>Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.</p>
+            <a class="button button--ghost" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Open release</a>
+          </div>
         </article>
       </section>
     `;
@@ -871,6 +871,32 @@
     window.addEventListener("resize", requestSync);
   }
 
+  function wireFeaturedReleaseReveal() {
+    const section = document.querySelector("[data-featured-release-reveal]");
+    if (!section) return;
+
+    let frame = null;
+
+    const syncReveal = function () {
+      frame = null;
+      const rect = section.getBoundingClientRect();
+      const start = window.innerHeight * 0.92;
+      const end = window.innerHeight * 0.34;
+      const rawProgress = Math.max(0, Math.min(1, (start - rect.top) / Math.max(1, start - end)));
+      const easedProgress = Math.pow(rawProgress, 1.18);
+      section.style.setProperty("--featured-release-progress", easedProgress.toFixed(3));
+    };
+
+    const requestSync = function () {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(syncReveal);
+    };
+
+    syncReveal();
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync);
+  }
+
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -885,6 +911,7 @@
   wireConsentBanner();
   wireNav();
   wireScrollChrome();
+  wireFeaturedReleaseReveal();
   wireSpotlightReveal();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);

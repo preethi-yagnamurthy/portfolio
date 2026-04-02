@@ -415,6 +415,10 @@ h1 {
     animation: none;
   }
 
+  .featured-release-section {
+    --featured-release-progress: 1;
+  }
+
   .hero-copy > * {
     opacity: 1;
     transform: none;
@@ -467,6 +471,7 @@ h1 {
 }
 
 .featured-release-section {
+  --featured-release-progress: 0;
   position: relative;
   z-index: 1;
   padding: 2rem 0 0;
@@ -475,20 +480,24 @@ h1 {
 .featured-release-card {
   width: min(calc(100% - 5rem), 58rem);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(220px, 0.72fr);
-  gap: 1rem;
+  position: relative;
+  min-height: min(78svh, 42rem);
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background:
-    radial-gradient(circle at top left, rgba(186, 159, 97, 0.12), transparent 24%),
-    linear-gradient(135deg, rgba(12, 12, 13, 0.96), rgba(6, 6, 7, 0.9));
+  background: #030303;
   box-shadow: var(--shadow);
 }
 
 .featured-release-card__copy {
-  padding: 2.2rem 2.4rem;
+  position: absolute;
+  left: clamp(1.2rem, 4vw, 2.4rem);
+  right: clamp(1.2rem, 4vw, 2.4rem);
+  bottom: clamp(1.2rem, 4vw, 2.4rem);
+  z-index: 2;
+  max-width: 26rem;
+  opacity: calc(0.08 + var(--featured-release-progress) * 0.92);
+  transform: translateY(calc((1 - var(--featured-release-progress)) * 1.2rem));
 }
 
 .featured-release-card__copy h2 {
@@ -496,6 +505,12 @@ h1 {
   line-height: 0.92;
   letter-spacing: -0.04em;
   margin-bottom: 0.9rem;
+  text-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+}
+
+.featured-release-card__copy p,
+.featured-release-card__copy .section-label {
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
 }
 
 .featured-release-card__copy .button {
@@ -503,13 +518,34 @@ h1 {
 }
 
 .featured-release-card__media {
-  min-height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.featured-release-card__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, calc(0.02 + var(--featured-release-progress) * 0.12)) 0%,
+      rgba(0, 0, 0, calc(0.06 + var(--featured-release-progress) * 0.18)) 42%,
+      rgba(0, 0, 0, calc(0.14 + var(--featured-release-progress) * 0.56)) 100%
+    ),
+    radial-gradient(
+      circle at 22% 78%,
+      rgba(0, 0, 0, calc(var(--featured-release-progress) * 0.38)) 0%,
+      rgba(0, 0, 0, 0) 52%
+    );
+  transition: opacity 220ms ease;
 }
 
 .featured-release-card__media img {
   height: 100%;
+  width: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 12%;
 }
 
 .hero-cutout {
@@ -672,7 +708,7 @@ h1 {
 
 .spotlight-reveal__visual {
   position: relative;
-  min-height: min(78svh, 46rem);
+  min-height: min(84svh, 54rem);
   display: flex;
   align-items: end;
   justify-content: center;
@@ -700,14 +736,14 @@ h1 {
 
 .spotlight-reveal__image {
   width: auto;
-  max-width: min(100%, 34rem);
-  max-height: min(82svh, 44rem);
+  max-width: min(100%, 42rem);
+  max-height: min(90svh, 54rem);
   object-fit: contain;
   object-position: center bottom;
   opacity: calc(0.12 + var(--spotlight-progress) * 0.88);
   transform:
     translateY(calc((1 - var(--spotlight-progress)) * 2.2rem))
-    scale(calc(0.9 + var(--spotlight-progress) * 0.1));
+    scale(calc(0.82 + var(--spotlight-progress) * 0.24));
   filter:
     brightness(calc(0.03 + var(--spotlight-progress) * 1.05))
     saturate(calc(0.35 + var(--spotlight-progress) * 0.9))
@@ -1722,12 +1758,12 @@ body.nav-open .consent-banner {
   }
 
   .spotlight-reveal__visual {
-    min-height: 25rem;
+    min-height: min(82svh, 38rem);
   }
 
   .spotlight-reveal__image {
-    max-width: min(100%, 20rem);
-    max-height: min(58svh, 25rem);
+    max-width: min(100%, 26rem);
+    max-height: min(82svh, 38rem);
   }
 
   .hero-cutout {
@@ -1777,8 +1813,7 @@ body.nav-open .consent-banner {
   .spotlight-card__copy,
   .press-feature__copy,
   .poster-card__copy,
-  .listening-room-feature__copy,
-  .featured-release-card__copy {
+  .listening-room-feature__copy {
     padding: 2rem 1.5rem;
   }
 
@@ -1808,8 +1843,15 @@ body.nav-open .consent-banner {
     top: 1rem;
   }
 
-  .featured-release-card__media {
-    min-height: 18rem;
+  .featured-release-card {
+    min-height: min(64svh, 30rem);
+  }
+
+  .featured-release-card__copy {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    max-width: 22rem;
   }
 
   .band-links-card__brand {
@@ -1868,12 +1910,12 @@ body.nav-open .consent-banner {
   }
 
   .spotlight-reveal__visual {
-    min-height: 21rem;
+    min-height: min(78svh, 32rem);
   }
 
   .spotlight-reveal__image {
-    max-width: min(100%, 17rem);
-    max-height: min(48svh, 21rem);
+    max-width: min(100%, 22rem);
+    max-height: min(78svh, 32rem);
   }
 
   .button,
@@ -1995,12 +2037,12 @@ body.nav-open .consent-banner {
   }
 
   .spotlight-reveal__visual {
-    min-height: min(58svh, 20rem);
+    min-height: min(62svh, 22rem);
   }
 
   .spotlight-reveal__image {
-    max-width: min(100%, 15rem);
-    max-height: min(52svh, 19rem);
+    max-width: min(100%, 17rem);
+    max-height: min(56svh, 20rem);
   }
 
   h1 {
@@ -2039,10 +2081,14 @@ body.nav-open .consent-banner {
 
   .featured-release-card {
     width: min(calc(100% - 2rem), 38rem);
+    min-height: min(62svh, 27rem);
   }
 
   .featured-release-card__copy {
-    padding: 1.4rem 1.2rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: 19rem;
   }
 
   .featured-release-card__copy h2 {
