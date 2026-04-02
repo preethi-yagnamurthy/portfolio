@@ -308,7 +308,6 @@
               <p class="hero-copy__tagline">Multilingual | Multi-genre playback singer</p>
               <div class="hero-copy__actions">
                 <a class="button button--solid" href="#music">Listen now</a>
-                <a class="button button--ghost" href="#contact">Book a live set</a>
               </div>
             </div>
           </div>
