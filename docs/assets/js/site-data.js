@@ -240,7 +240,7 @@ window.SITE_DATA = {
     description:
       "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
     videoPath: "assets/media/soul-trip-video.mp4",
-    posterPath: "assets/media/preethi-press-portrait.jpg",
+    posterPath: "assets/media/soul-trip-poster.jpeg",
     posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
     releaseUrl: "https://music.amazon.in/albums/B0GP2XYRZN",
   },
@@ -259,7 +259,7 @@ window.SITE_DATA = {
       description:
         "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
       videoPath: "assets/media/soul-trip-video.mp4",
-      posterPath: "assets/media/preethi-press-portrait.jpg",
+      posterPath: "assets/media/soul-trip-poster.jpeg",
       posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
     },
     {
@@ -267,7 +267,7 @@ window.SITE_DATA = {
       description:
         "Movie: Missterious<br>Music: M L Raja<br>Style: Melody",
       videoPath: "assets/media/manase-hayiga-missterious.mp4",
-      posterPath: "assets/media/manase-hayiga-poster.jpeg",
+      posterPath: "assets/media/missterious-poster.webp",
       posterAlt: "Poster artwork for Manase Hayiga from Missterious.",
     },
     {
