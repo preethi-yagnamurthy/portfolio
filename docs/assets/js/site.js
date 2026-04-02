@@ -131,6 +131,39 @@
   function renderPlaybackFeature(feature) {
     if (!feature) return "";
 
+    const mediaMarkup =
+      feature.mediaType === "audio" || feature.audioPath
+        ? `
+          <div class="music-video-feature__media music-video-feature__media--audio">
+            <img
+              class="music-audio-feature__poster"
+              src="${feature.posterPath}"
+              alt="${feature.posterAlt || feature.title}"
+              loading="lazy"
+            >
+            <audio class="music-audio-feature__player" controls preload="metadata">
+              <source src="${feature.audioPath}" type="audio/mp4">
+              Your browser does not support the audio tag.
+            </audio>
+          </div>
+        `
+        : `
+          <div class="music-video-feature__media">
+            <video
+              class="music-video-feature__player"
+              controls
+              preload="metadata"
+              playsinline
+              poster="${feature.posterPath}"
+              data-reset-poster
+              aria-label="${feature.title}"
+            >
+              <source src="${feature.videoPath}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        `;
+
     return `
       <article class="music-video-feature">
         <div class="music-video-feature__art">
@@ -138,20 +171,7 @@
           <p class="music-video-feature__meta">${feature.description}</p>
         </div>
 
-        <div class="music-video-feature__media">
-          <video
-            class="music-video-feature__player"
-            controls
-            preload="metadata"
-            playsinline
-            poster="${feature.posterPath}"
-            data-reset-poster
-            aria-label="${feature.title}"
-          >
-            <source src="${feature.videoPath}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        ${mediaMarkup}
       </article>
     `;
   }

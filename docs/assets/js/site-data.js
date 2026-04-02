@@ -286,6 +286,23 @@ window.SITE_DATA = {
       posterPath: "assets/media/sreerama-bhaktudu-poster.jpg",
       posterAlt: "Poster artwork for Sreerama Bhaktudu.",
     },
+    {
+      title: "Munagapaka Muddugumma",
+      description:
+        "Movie: Kaliyuga Bhagawan<br>Style: Item Number",
+      videoPath: "assets/media/munagapaka-muddugumma.mp4",
+      posterPath: "assets/media/munagapaka-muddugumma-poster.jpg",
+      posterAlt: "Poster artwork for Munagapaka Muddugumma from Kaliyuga Bhagawan.",
+    },
+    {
+      title: "Yevevo Kalale Kannale",
+      description:
+        "Movie: Rudrakshapuram 3KM<br>Style: Melody",
+      mediaType: "audio",
+      audioPath: "assets/media/yevevo-kalale-kannale.m4a",
+      posterPath: "assets/media/rudra-3km-poster.jpg",
+      posterAlt: "Poster artwork for Yevevo Kalale Kannale from Rudrakshapuram 3KM.",
+    },
   ],
   musicLinks: [
     {
