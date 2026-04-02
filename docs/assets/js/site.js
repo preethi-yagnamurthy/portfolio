@@ -320,8 +320,8 @@
             <h2>Songs that travel from playback rooms to live listening.</h2>
           </div>
 
-          ${renderFeaturedReleaseSection()}
           ${renderMusicVideoFeature()}
+          ${renderFeaturedReleaseSection()}
 
           <article class="poster-card">
             <div class="poster-card__wash"></div>

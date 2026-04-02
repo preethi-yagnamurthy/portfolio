@@ -228,7 +228,7 @@ window.SITE_DATA = {
     eyebrow: "Playback feature",
     title: "Bhimavaram Balma (Hindi)",
     description:
-      "A featured playback video from Anaganaga Oka Raju, now embedded directly into the music section with its cover art held alongside it.",
+      "Movie - Anaganaga oka raju<br>Music - Mickey J Meyer",
     coverPath: "assets/media/bhimavaram-balma-cover.jpg",
     coverAlt:
       "Album cover artwork for Bhimavaram Balma (Hindi) from Anaganaga Oka Raju.",
