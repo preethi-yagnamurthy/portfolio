@@ -919,10 +919,11 @@
     const carousel = document.querySelector("[data-gallery-carousel]");
     if (!carousel) return;
 
+    const viewport = carousel.querySelector(".gallery-carousel__viewport");
     const track = carousel.querySelector(".gallery-carousel__track");
     const slides = Array.from(carousel.querySelectorAll(".gallery-carousel__slide"));
     const dots = Array.from(carousel.querySelectorAll(".gallery-carousel__dots span"));
-    if (!track || slides.length < 2) return;
+    if (!viewport || !track || slides.length < 2) return;
 
     const mobileQuery = window.matchMedia("(max-width: 960px)");
     const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -931,7 +932,8 @@
 
     const sync = function (index) {
       activeIndex = (index + slides.length) % slides.length;
-      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+      const offset = viewport.clientWidth * activeIndex;
+      track.style.transform = `translate3d(-${offset}px, 0, 0)`;
       dots.forEach((dot, dotIndex) => {
         dot.classList.toggle("is-active", dotIndex === activeIndex);
       });
@@ -966,6 +968,9 @@
       } else {
         start();
       }
+    });
+    window.addEventListener("resize", function () {
+      sync(activeIndex);
     });
 
     if (typeof mobileQuery.addEventListener === "function") {
