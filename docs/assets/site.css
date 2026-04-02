@@ -846,6 +846,7 @@ h1 {
 .press-feature,
 .spotlight-card,
 .poster-card,
+.music-video-feature,
 .listening-room-feature,
 .listening-room-grid,
 .gallery-layout,
@@ -1063,6 +1064,70 @@ h1 {
   line-height: 0.9;
   letter-spacing: -0.04em;
   margin-bottom: 1rem;
+}
+
+.music-video-feature {
+  width: min(calc(100% - 5rem), var(--container));
+  margin: 1rem auto 0;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  gap: 1rem;
+}
+
+.music-video-feature__art,
+.music-video-feature__media {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.music-video-feature__art {
+  padding: 2rem;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  background:
+    radial-gradient(circle at top left, rgba(186, 159, 97, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(14, 12, 12, 0.98), rgba(8, 8, 9, 0.92));
+}
+
+.music-video-feature__art h3 {
+  font-size: clamp(2rem, 3vw, 3.15rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.music-video-feature__art p:not(.section-micro) {
+  color: var(--muted-strong);
+}
+
+.music-video-feature__cover {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  aspect-ratio: 1 / 1;
+}
+
+.music-video-feature__cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.music-video-feature__media {
+  padding: 0.75rem;
+}
+
+.music-video-feature__player {
+  width: 100%;
+  min-height: min(46vw, 31rem);
+  height: 100%;
+  display: block;
+  border-radius: calc(var(--radius-lg) - 0.35rem);
+  background: #000;
 }
 
 .music-pills {
@@ -1786,6 +1851,7 @@ body.nav-open .consent-banner {
   .press-feature,
   .spotlight-card,
   .poster-card,
+  .music-video-feature,
   .music-subsections,
   .listening-room-feature,
   .listening-room-grid,
@@ -1810,6 +1876,7 @@ body.nav-open .consent-banner {
   .gallery-layout,
   .spotlight-card,
   .poster-card,
+  .music-video-feature,
   .listening-room-feature,
   .featured-release-card {
     grid-template-columns: 1fr;
@@ -1924,6 +1991,7 @@ body.nav-open .consent-banner {
   .press-feature,
   .spotlight-card,
   .poster-card,
+  .music-video-feature,
   .music-subsections,
   .listening-room-feature,
   .listening-room-grid,
@@ -1957,6 +2025,7 @@ body.nav-open .consent-banner {
   .spotlight-card__copy,
   .press-feature__copy,
   .poster-card__copy,
+  .music-video-feature__art,
   .listening-room-feature__copy {
     padding: 2rem 1.5rem;
   }
@@ -1991,6 +2060,10 @@ body.nav-open .consent-banner {
     right: 1.25rem;
     bottom: 1.25rem;
     max-width: 22rem;
+  }
+
+  .music-video-feature__player {
+    min-height: clamp(15rem, 46svh, 22rem);
   }
 
   .band-links-card__brand {

@@ -7,6 +7,7 @@
     site.gallery.map((item) => [item.usageRole, item])
   );
   const listeningRoom = site.listeningRoom || null;
+  const musicFeature = site.musicFeature || null;
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
@@ -153,6 +154,36 @@
     `;
   }
 
+  function renderMusicVideoFeature() {
+    if (!musicFeature) return "";
+
+    return `
+      <article class="music-video-feature">
+        <div class="music-video-feature__art">
+          <p class="section-micro">${musicFeature.eyebrow}</p>
+          <h3>${musicFeature.title}</h3>
+          <p>${musicFeature.description}</p>
+          <figure class="music-video-feature__cover">
+            <img src="${musicFeature.coverPath}" alt="${musicFeature.coverAlt}" loading="lazy">
+          </figure>
+        </div>
+
+        <div class="music-video-feature__media">
+          <video
+            class="music-video-feature__player"
+            controls
+            preload="metadata"
+            playsinline
+            poster="${musicFeature.posterPath}"
+          >
+            <source src="${musicFeature.videoPath}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </article>
+    `;
+  }
+
   function renderFeaturedReleaseSection() {
     return `
       <div class="featured-release-section featured-release-section--within-music" data-featured-release-reveal>
@@ -263,6 +294,7 @@
           </div>
 
           ${renderFeaturedReleaseSection()}
+          ${renderMusicVideoFeature()}
 
           <article class="poster-card">
             <div class="poster-card__wash"></div>
