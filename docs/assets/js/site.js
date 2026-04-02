@@ -275,11 +275,17 @@
           </div>
         `;
 
-    const linkMarkup = feature.showMusicLinks
+    const featureLinks = Array.isArray(feature.musicLinks) && feature.musicLinks.length
+      ? feature.musicLinks
+      : feature.showMusicLinks
+        ? activeMusicLinks.filter((link) => link.linkContext !== "artist")
+        : [];
+
+    const linkMarkup = featureLinks.length
       ? `
         <div class="music-video-feature__links">
           <div class="music-pills music-pills--release">
-            ${renderMusicLinks(activeMusicLinks.filter((link) => link.linkContext !== "artist"))}
+            ${renderMusicLinks(featureLinks)}
           </div>
         </div>
       `
@@ -290,10 +296,10 @@
         <div class="music-video-feature__art">
           <h3>${feature.title}</h3>
           <p class="music-video-feature__meta">${feature.description}</p>
+          ${linkMarkup}
         </div>
 
         ${mediaMarkup}
-        ${linkMarkup}
       </article>
     `;
   }

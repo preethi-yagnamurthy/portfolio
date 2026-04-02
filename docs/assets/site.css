@@ -1453,12 +1453,33 @@ h1 {
 }
 
 .music-video-feature__links {
-  grid-column: 1 / -1;
-  padding-top: 0.15rem;
+  padding-top: 0.65rem;
 }
 
 .music-video-feature__links .music-pills {
   margin-top: 0;
+  gap: 0.65rem;
+}
+
+.music-video-feature__links .music-pill {
+  border-color: rgba(214, 181, 106, 0.28);
+  background:
+    linear-gradient(135deg, rgba(214, 181, 106, 0.12), rgba(214, 181, 106, 0.035)),
+    rgba(12, 9, 4, 0.72);
+}
+
+.music-video-feature__links .music-pill--icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 1rem;
+}
+
+.music-video-feature__links .music-pill__icon {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(589%) hue-rotate(2deg) brightness(93%) contrast(87%);
+}
+
+.music-video-feature__links .music-pill__fallback {
+  color: var(--gold);
 }
 
 .music-pills {

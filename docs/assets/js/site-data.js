@@ -22,7 +22,7 @@ window.SITE_DATA = {
       href: "index.html",
       title: "Preethi Yagnamurthy | Playback Singer",
       description:
-        "Preethi Yagnamurthy is a Hyderabad-based multilingual singer, playback voice, and Band Anantya founder with Carnatic roots and a cinematic live presence.",
+        "Rooted, Expressive, Unmistakably her Own.",
     },
     about: {
       label: "About",
@@ -283,6 +283,13 @@ window.SITE_DATA = {
       videoPath: "assets/media/neti-bharatam.mp4",
       posterPath: "assets/media/neti-bharatam-poster.jpg",
       posterAlt: "Poster frame for Nee Padam from Neti Bharatam.",
+      musicLinks: [
+        {
+          label: "Spotify",
+          url: "https://open.spotify.com/track/5Fjn6YI51MinhFshZYh721?si=ZpVZoKwCR7ShdFTQPxvKyA",
+          iconPath: "assets/icons/spotify.svg",
+        },
+      ],
     },
     {
       title: "Sreerama Bhaktudu",
@@ -299,6 +306,13 @@ window.SITE_DATA = {
       videoPath: "assets/media/munagapaka-muddugumma.mp4",
       posterPath: "assets/media/munagapaka-muddugumma-poster.png",
       posterAlt: "Poster artwork for Munagapaka Muddugumma from Kaliyuga Bhagawan.",
+      musicLinks: [
+        {
+          label: "Spotify",
+          url: "https://open.spotify.com/track/1j1X5v1aGQUaR04a2Z9x9S?si=TJe6Oe_XT3aKNyQKJXGfBQ",
+          iconPath: "assets/icons/spotify.svg",
+        },
+      ],
     },
     {
       title: "Yevevo Kalale Kannale",
