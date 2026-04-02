@@ -76,9 +76,7 @@ window.SITE_DATA = {
   },
   bio: {
     intro: [
-      "Preethi Yagnamurthy is a Hyderabad-based singer whose voice moves between classical discipline, playback expression, and contemporary live performance.",
-      "Her musical journey began at age five with eight formative years of Carnatic training, shaping the control, phrasing, and emotional clarity that continue to guide her work.",
-      "Today, that foundation opens into multilingual stage sets, released songs, and the evolving sound of Band Anantya.",
+      "Preethi Yagnamurthy’s voice was shaped through early Carnatic training, where discipline, phrasing, and emotional clarity became part of its foundation. That grounding now moves through playback songs, live performances, and a growing multilingual repertoire, carrying forward an evolving artistic identity. Across each space, classical roots continue to find a contemporary expression in her voice.",
     ],
     roots: [
       "City: Hyderabad",
@@ -128,6 +126,32 @@ window.SITE_DATA = {
       trust: "verified-public-source",
     },
   ],
+  upcomingHighlights: [
+    {
+      year: "Upcoming",
+      title: "Telugu rap song release",
+      description:
+        "An upcoming Telugu rap track is in the pipeline, with title, collaborators, and release details to be updated.",
+    },
+    {
+      year: "Upcoming",
+      title: "Private songs - Melody",
+      description:
+        "A new private melody release is in progress, with final credits and launch details to follow.",
+    },
+    {
+      year: "Upcoming",
+      title: "Private songs - Folk",
+      description:
+        "A folk-led private song is also lined up, with final production and release notes to be updated.",
+    },
+    {
+      year: "Upcoming",
+      title: "Private song Hindi",
+      description:
+        "A Hindi private song is part of the upcoming slate, with final title and rollout details to be announced.",
+    },
+  ],
   press: {
     heading: "A breakthrough moment, carried into print.",
     featured: {
@@ -170,11 +194,6 @@ window.SITE_DATA = {
         modified: "Jan 1",
       },
       {
-        title: "Movie and OTT songs",
-        url: "https://drive.google.com/drive/folders/1ANnIXLxbeRcJF4AYWA3JCf_gMzisJXED",
-        modified: "Dec 16, 2025",
-      },
-      {
         title: "Cover songs Telugu",
         url: "https://drive.google.com/drive/folders/1GmKFoqZfakCNsq86XhH7N9mo5d3saGMl",
         modified: "Dec 16, 2025",
@@ -185,7 +204,7 @@ window.SITE_DATA = {
         modified: "Jan 1",
       },
       {
-        title: "Telugu Home and Live",
+        title: "Special performances",
         url: "https://drive.google.com/drive/folders/1gxZUFIa7sLHcfxrHuRh9UI2EIQfpj_7W",
         modified: "Jan 1",
       },
@@ -447,16 +466,16 @@ window.SITE_DATA = {
     },
   },
   contactForm: {
-    whatsappNumber: "+91 95506 41961",
-    eyebrow: "Bookings",
+    whatsappNumber: "+91 96662 89784",
+    eyebrow: "We are just a chat away",
     title: "Start the conversation",
     intro:
       "Send the brief here and step straight into WhatsApp with the essentials already composed.",
-    submitLabel: "Continue on WhatsApp",
+    submitLabel: "Send message",
     featureEyebrow: "Direct booking flow",
     featureTitle: "Your brief, ready in one message.",
     featureBody:
-      "Name, email, event type, date, city, and creative notes are shaped into one WhatsApp brief so the conversation can begin with clarity.",
+      "Name, email, city, and creative notes are shaped into one WhatsApp brief so the conversation can begin with clarity.",
     featureFootnote:
       "Based in Hyderabad. Available for live venues, private celebrations, corporate stages, and selected collaborations.",
   },

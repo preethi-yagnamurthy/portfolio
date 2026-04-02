@@ -67,46 +67,129 @@
       .join("");
   }
 
-  function renderHighlightCards() {
-    return site.highlights
-      .map(
-        (item) => `
-          <article class="award-card">
-            <p class="award-card__year">${item.year}</p>
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
-          </article>
-        `
-      )
-      .join("");
+  function getHighlightSortValue(item, index) {
+    const months = {
+      jan: 0,
+      feb: 1,
+      mar: 2,
+      apr: 3,
+      may: 4,
+      jun: 5,
+      jul: 6,
+      aug: 7,
+      sep: 8,
+      oct: 9,
+      nov: 10,
+      dec: 11,
+    };
+
+    const value = String(item.year || "").trim();
+    if (/age/i.test(value)) return { score: 0, index };
+
+    const directDate = Date.parse(value);
+    if (!Number.isNaN(directDate)) return { score: directDate, index };
+
+    const monthYear = value.match(/^([A-Za-z]{3})\s+(\d{4})$/);
+    if (monthYear) {
+      const month = months[monthYear[1].toLowerCase()] ?? 0;
+      return { score: new Date(Number(monthYear[2]), month, 1).getTime(), index };
+    }
+
+    const yearOnly = value.match(/(\d{4})/);
+    if (yearOnly) {
+      return { score: new Date(Number(yearOnly[1]), 0, 1).getTime(), index };
+    }
+
+    return { score: 0, index };
   }
 
-  function renderDrivePreviewItems(items) {
+  function sortHighlightsDescending(items) {
+    return [...items]
+      .map((item, index) => ({ item, order: getHighlightSortValue(item, index) }))
+      .sort((left, right) => {
+        if (right.order.score !== left.order.score) return right.order.score - left.order.score;
+        return left.order.index - right.order.index;
+      })
+      .map((entry) => entry.item);
+  }
+
+  function renderHighlightCarouselCard(label, items, key) {
     if (!Array.isArray(items) || !items.length) return "";
 
-    return items
-      .map(
-        (item) => `
-          <a class="listening-room-preview__item" href="${item.url}" target="_blank" rel="noopener">
-            <span class="listening-room-preview__title">${item.title}</span>
-            <span class="listening-room-preview__meta">${item.modified}</span>
-          </a>
-        `
-      )
-      .join("");
+    return `
+      <article class="highlight-carousel-card" data-highlight-carousel="${key}">
+        <div class="highlight-carousel-card__head">
+          <p class="section-micro">${label}</p>
+        </div>
+        <div class="highlight-carousel-card__viewport">
+          <div class="highlight-carousel-card__track">
+            ${items
+              .map(
+                (item) => `
+                  <article class="highlight-carousel-card__slide">
+                    <p class="highlight-carousel-card__year">${item.year}</p>
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+        </div>
+        ${
+          items.length > 1
+            ? `
+              <div class="highlight-carousel-card__dots" aria-label="${label} navigation">
+                ${items
+                  .map(
+                    (_, index) => `
+                      <button
+                        class="highlight-carousel-card__dot${index === 0 ? " is-active" : ""}"
+                        type="button"
+                        aria-label="Show ${label} item ${index + 1}"
+                        data-highlight-dot="${index}"
+                      ></button>
+                    `
+                  )
+                  .join("")}
+              </div>
+            `
+            : ""
+        }
+      </article>
+    `;
+  }
+
+  function renderHighlightsPanels() {
+    const milestoneItems = sortHighlightsDescending(site.highlights || []);
+    const upcomingItems = Array.isArray(site.upcomingHighlights) ? site.upcomingHighlights : [];
+
+    return `
+      <div class="highlight-carousel-stack">
+        ${renderHighlightCarouselCard("Milestones so far", milestoneItems, "milestones")}
+        ${renderHighlightCarouselCard("Upcoming", upcomingItems, "upcoming")}
+      </div>
+    `;
   }
 
   function renderListeningFolderLinks(items) {
     if (!Array.isArray(items) || !items.length) return "";
 
+    const sortedItems = [...items].sort(function (left, right) {
+      return left.title.localeCompare(right.title, undefined, { sensitivity: "base" });
+    });
+
     return `
       <ul class="listening-folder-list">
-        ${items
+        ${sortedItems
           .map(
             (item) => `
               <li class="listening-folder-list__item">
                 <a class="listening-folder-link" href="${item.url}" target="_blank" rel="noopener">
-                  <span class="listening-folder-link__title">${item.title}</span>
+                  <span class="listening-folder-link__lead">
+                    <span class="listening-folder-link__play" aria-hidden="true"></span>
+                    <span class="listening-folder-link__title">${item.title}</span>
+                  </span>
                 </a>
                 ${item.description ? `<p>${item.description}</p>` : ""}
               </li>
@@ -206,16 +289,8 @@
           </div>
         </div>
 
-        <div class="listening-room-feature__media">
-          <div class="listening-room-preview-card" role="list" aria-label="${primaryFolder.title}">
-            <div class="listening-room-preview-card__header">
-              <span>Folder preview</span>
-              <span>Updated</span>
-            </div>
-            <div class="listening-room-preview-card__body">
-              ${renderDrivePreviewItems(previewItems)}
-            </div>
-          </div>
+        <div class="listening-room-feature__media music-raw-vocals">
+          ${renderListeningFolderLinks(previewItems)}
         </div>
       </article>
     `;
@@ -412,15 +487,12 @@
         <section id="story" class="spotlight-section">
           <div class="section-head section-head--center">
             <p class="section-label">Story</p>
-            <h2>Where classical grounding meets stage light.</h2>
+            <h2>Rooted, Expressive, Unmistakably Her Own</h2>
           </div>
 
           <article class="spotlight-card">
             <div class="spotlight-card__copy">
-              <p class="section-micro">From Hyderabad</p>
-              <h3>${site.bio.intro[0]}</h3>
-              <p>${site.bio.intro[1]}</p>
-              <p>${site.bio.intro[2]}</p>
+              <p class="section-micro story-card__body">${site.bio.intro[0]}</p>
             </div>
             ${renderStoryCarousel()}
           </article>
@@ -431,22 +503,18 @@
             <p class="section-label">Highlights</p>
             <h2>Milestones in a voice still gathering momentum.</h2>
           </div>
-          <div class="awards-grid">
-            ${renderHighlightCards()}
-          </div>
+          ${renderHighlightsPanels()}
         </section>
 
         <section id="contact" class="contact-section">
           <div class="section-head">
             <p class="section-label">Contact</p>
-            <h2>Bookings and collaborations begin with a single note.</h2>
+            <h2>Conversations and collaborations begin with a single note.</h2>
           </div>
 
           <div class="contact-layout">
             <article class="contact-panel">
               <p class="section-micro">${site.contactForm.eyebrow}</p>
-              <h3>${site.contactForm.title}</h3>
-              <p>${site.contactForm.intro}</p>
               <form id="contact-form" class="contact-form">
                 <label>
                   <span>Name</span>
@@ -457,27 +525,12 @@
                   <input type="email" name="email" placeholder="you@example.com" required>
                 </label>
                 <label>
-                  <span>Event type</span>
-                  <select name="eventType" required>
-                    <option value="">Choose one</option>
-                    <option>Club / lounge</option>
-                    <option>Private celebration</option>
-                    <option>Corporate event</option>
-                    <option>Campus / festival</option>
-                    <option>Media / collaboration</option>
-                  </select>
-                </label>
-                <label>
-                  <span>Event date</span>
-                  <input type="date" name="eventDate" required>
-                </label>
-                <label>
                   <span>City</span>
                   <input type="text" name="city" placeholder="Hyderabad" required>
                 </label>
                 <label>
                   <span>Message</span>
-                  <textarea name="message" rows="5" placeholder="Share venue, audience, repertoire ideas, and any special notes." required></textarea>
+                  <textarea name="message" rows="5" required></textarea>
                 </label>
                 <button class="button button--solid" type="submit">${site.contactForm.submitLabel}</button>
                 <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
@@ -561,23 +614,10 @@
       return String(value || "").replace(/\D/g, "");
     };
 
-    const formatEventDate = function (value) {
-      if (!value) return "";
-      const parsed = new Date(`${value}T00:00:00`);
-      if (Number.isNaN(parsed.getTime())) return value;
-      return parsed.toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      });
-    };
-
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       const name = form.elements.name.value.trim();
       const email = form.elements.email.value.trim();
-      const eventType = form.elements.eventType.value.trim();
-      const eventDate = formatEventDate(form.elements.eventDate.value);
       const city = form.elements.city.value.trim();
       const message = form.elements.message.value.trim();
       const whatsappNumber = sanitizeWhatsappNumber(site.contactForm.whatsappNumber);
@@ -588,12 +628,10 @@
       }
 
       const whatsappMessage = [
-        `Hello, I would like to enquire about booking ${site.artist.name}.`,
+        `I would like to reach out to ${site.artist.name}'s Team.`,
         "",
         `Name: ${name}`,
         `Email: ${email}`,
-        `Event type: ${eventType}`,
-        `Event date: ${eventDate}`,
         `City: ${city}`,
         "",
         "Brief:",
@@ -783,12 +821,68 @@
         intervalId = window.setInterval(function () {
           currentIndex = (currentIndex + 1) % slides.length;
           sync();
-        }, 2000);
+        }, 5000);
       };
 
       dots.forEach(function (dot) {
         dot.addEventListener("click", function () {
           currentIndex = Number(dot.dataset.storyDot) || 0;
+          sync();
+          start();
+        });
+      });
+
+      carousel.addEventListener("mouseenter", stop);
+      carousel.addEventListener("mouseleave", start);
+      carousel.addEventListener("focusin", stop);
+      carousel.addEventListener("focusout", start);
+
+      sync();
+      start();
+    });
+  }
+
+  function wireHighlightCarousels() {
+    const carousels = Array.from(document.querySelectorAll("[data-highlight-carousel]"));
+    if (!carousels.length) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    carousels.forEach(function (carousel) {
+      const track = carousel.querySelector(".highlight-carousel-card__track");
+      const slides = Array.from(carousel.querySelectorAll(".highlight-carousel-card__slide"));
+      const dots = Array.from(carousel.querySelectorAll("[data-highlight-dot]"));
+      if (!track || slides.length < 2) return;
+
+      let currentIndex = 0;
+      let intervalId = null;
+
+      const sync = function () {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach(function (dot, index) {
+          dot.classList.toggle("is-active", index === currentIndex);
+          dot.setAttribute("aria-pressed", String(index === currentIndex));
+        });
+      };
+
+      const stop = function () {
+        if (intervalId === null) return;
+        window.clearInterval(intervalId);
+        intervalId = null;
+      };
+
+      const start = function () {
+        if (prefersReducedMotion.matches) return;
+        stop();
+        intervalId = window.setInterval(function () {
+          currentIndex = (currentIndex + 1) % slides.length;
+          sync();
+        }, 5000);
+      };
+
+      dots.forEach(function (dot) {
+        dot.addEventListener("click", function () {
+          currentIndex = Number(dot.dataset.highlightDot) || 0;
           sync();
           start();
         });
@@ -821,6 +915,7 @@
   wireFeaturedReleaseReveal();
   wireVideoPosterReset();
   wireStoryCarousel();
+  wireHighlightCarousels();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();
