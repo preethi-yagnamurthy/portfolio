@@ -9,6 +9,10 @@
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
   const featuredRelease = site.featuredRelease || null;
+  const playbackFeatures =
+    Array.isArray(site.playbackFeatures) && site.playbackFeatures.length
+      ? site.playbackFeatures
+      : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
@@ -108,62 +112,30 @@
     `;
   }
 
-  function renderMusicSubsections() {
-    if (!listeningRoom || !Array.isArray(listeningRoom.recordingCards) || !listeningRoom.recordingCards.length) return "";
+  function getListeningRoomParts() {
+    if (!listeningRoom || !Array.isArray(listeningRoom.recordingCards) || !listeningRoom.recordingCards.length) {
+      return {
+        primaryFolder: null,
+        voiceOnlyFolders: [],
+        previewItems: [],
+      };
+    }
 
-    const [primaryFolder] = listeningRoom.recordingCards;
-    const voiceOnlyFolders = listeningRoom.recordingCards.filter((item) => item.type === "voice-only");
-    const previewItems = Array.isArray(listeningRoom.previewItems) ? listeningRoom.previewItems : [];
-
-    return `
-      <div class="music-subsections">
-        <article class="listening-room-feature music-subsection">
-          <div class="listening-room-feature__copy">
-            <p class="section-micro">Playback</p>
-            <h3>${primaryFolder.title}</h3>
-            <p>${primaryFolder.description}</p>
-            <div class="music-subsection__actions">
-              <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
-            </div>
-          </div>
-
-          <div class="listening-room-feature__media">
-            <div class="listening-room-preview-card" role="list" aria-label="${primaryFolder.title}">
-              <div class="listening-room-preview-card__header">
-                <span>Folder preview</span>
-                <span>Updated</span>
-              </div>
-              <div class="listening-room-preview-card__body">
-                ${renderDrivePreviewItems(previewItems)}
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="listening-room-feature music-subsection">
-          <div class="listening-room-feature__copy">
-            <p class="section-micro">Raw vocals</p>
-            <h3>Voice-only selections.</h3>
-            <p>Stripped-back folders where phrasing, tonal range, and melodic contour sit forward without the weight of full production.</p>
-          </div>
-
-          <div class="listening-room-feature__media music-raw-vocals">
-            ${renderListeningFolderLinks(voiceOnlyFolders)}
-          </div>
-        </article>
-      </div>
-    `;
+    return {
+      primaryFolder: listeningRoom.recordingCards[0] || null,
+      voiceOnlyFolders: listeningRoom.recordingCards.filter((item) => item.type === "voice-only"),
+      previewItems: Array.isArray(listeningRoom.previewItems) ? listeningRoom.previewItems : [],
+    };
   }
 
-  function renderMusicVideoFeature() {
-    if (!musicFeature) return "";
+  function renderPlaybackFeature(feature) {
+    if (!feature) return "";
 
     return `
       <article class="music-video-feature">
         <div class="music-video-feature__art">
-          <p class="section-micro">${musicFeature.eyebrow}</p>
-          <h3>${musicFeature.title}</h3>
-          <p class="music-video-feature__meta">${musicFeature.description}</p>
+          <h3>${feature.title}</h3>
+          <p class="music-video-feature__meta">${feature.description}</p>
         </div>
 
         <div class="music-video-feature__media">
@@ -172,10 +144,11 @@
             controls
             preload="metadata"
             playsinline
-            poster="${musicFeature.posterPath}"
+            poster="${feature.posterPath}"
             data-reset-poster
+            aria-label="${feature.title}"
           >
-            <source src="${musicFeature.videoPath}" type="video/mp4">
+            <source src="${feature.videoPath}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -183,42 +156,75 @@
     `;
   }
 
-  function renderFeaturedReleaseSection() {
-    const release = featuredRelease || {
-      title: "Soul Trip",
-      description:
-        "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
-      videoPath: "",
-      posterPath: media["press-portrait"].path,
-      posterAlt: media["press-portrait"].alt,
-      releaseUrl: activeMusicLinks[1] ? activeMusicLinks[1].url : "#music",
-    };
+  function renderPlaybackArchive() {
+    const { primaryFolder, previewItems } = getListeningRoomParts();
+    if (!primaryFolder) return "";
 
     return `
-      <article class="music-video-feature music-video-feature--release">
-        <div class="music-video-feature__art">
-          <h3>${release.title}</h3>
-          <p class="music-video-feature__meta">${release.description}</p>
+      <article class="listening-room-feature listening-room-feature--topic">
+        <div class="listening-room-feature__copy">
+          <p class="section-micro">Playback archive</p>
+          <h3>${primaryFolder.title}</h3>
+          <p>${primaryFolder.description}</p>
+          <div class="music-subsection__actions">
+            <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
+          </div>
         </div>
 
-        <div class="music-video-feature__media">
-          ${
-            release.videoPath
-              ? `
-                <video
-                  class="music-video-feature__player"
-                  controls
-                  preload="metadata"
-                  playsinline
-                  poster="${release.posterPath}"
-                  data-reset-poster
-                  aria-label="${release.title}"
-                >
-                  <source src="${release.videoPath}" type="video/mp4">
-                </video>
-              `
-              : `<img class="music-video-feature__poster" src="${release.posterPath}" alt="${release.posterAlt}" loading="lazy">`
-          }
+        <div class="listening-room-feature__media">
+          <div class="listening-room-preview-card" role="list" aria-label="${primaryFolder.title}">
+            <div class="listening-room-preview-card__header">
+              <span>Folder preview</span>
+              <span>Updated</span>
+            </div>
+            <div class="listening-room-preview-card__body">
+              ${renderDrivePreviewItems(previewItems)}
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderPlaybackSection() {
+    return `
+      <article class="music-topic-card music-topic-card--playback">
+        <div class="music-topic-card__head">
+          <p class="section-micro">Playback Feature</p>
+        </div>
+        <div class="music-topic-card__body">
+          ${playbackFeatures.map(renderPlaybackFeature).join("")}
+          <div class="music-platform-strip">
+            <div class="music-pills music-pills--release">
+              ${renderMusicLinks()}
+            </div>
+          </div>
+          ${renderPlaybackArchive()}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderRawVocalsSection() {
+    const { voiceOnlyFolders } = getListeningRoomParts();
+    if (!voiceOnlyFolders.length) return "";
+
+    return `
+      <article class="music-topic-card music-topic-card--raw-vocals">
+        <div class="music-topic-card__head">
+          <p class="section-micro">Raw vocals</p>
+        </div>
+        <div class="music-topic-card__body">
+          <article class="listening-room-feature listening-room-feature--topic">
+            <div class="listening-room-feature__copy">
+              <h3>Voice-only selections.</h3>
+              <p>Stripped-back folders where phrasing, tonal range, and melodic contour sit forward without the weight of full production.</p>
+            </div>
+
+            <div class="listening-room-feature__media music-raw-vocals">
+              ${renderListeningFolderLinks(voiceOnlyFolders)}
+            </div>
+          </article>
         </div>
       </article>
     `;
@@ -312,15 +318,8 @@
             <p class="section-label">Music</p>
           </div>
 
-          ${renderMusicVideoFeature()}
-          ${renderFeaturedReleaseSection()}
-          <div class="music-platform-strip">
-            <div class="music-pills music-pills--release">
-              ${renderMusicLinks()}
-            </div>
-          </div>
-
-          ${renderMusicSubsections()}
+          ${renderPlaybackSection()}
+          ${renderRawVocalsSection()}
         </section>
 
         <section id="story" class="spotlight-section">

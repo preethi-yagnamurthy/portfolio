@@ -244,6 +244,41 @@ window.SITE_DATA = {
     posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
     releaseUrl: "https://music.amazon.in/albums/B0GP2XYRZN",
   },
+  playbackFeatures: [
+    {
+      title: "Bhimavaram Balma (Hindi)",
+      description:
+        "Movie - Anaganaga oka raju<br>Music - Mickey J Meyer",
+      videoPath: "assets/media/bhimavaram-balma-hindi.mp4",
+      posterPath: "assets/media/bhimavaram-balma-cover.jpg",
+      posterAlt:
+        "Album cover artwork for Bhimavaram Balma (Hindi) from Anaganaga Oka Raju.",
+    },
+    {
+      title: "Soul Trip",
+      description:
+        "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
+      videoPath: "assets/media/soul-trip-video.mp4",
+      posterPath: "assets/media/preethi-press-portrait.jpg",
+      posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
+    },
+    {
+      title: "Manase Hayiga",
+      description:
+        "Movie: Missterious<br>Music: M L Raja<br>Style: Melody",
+      videoPath: "assets/media/manase-hayiga-missterious.mp4",
+      posterPath: "assets/media/missterious-poster.webp",
+      posterAlt: "Poster artwork for Manase Hayiga from Missterious.",
+    },
+    {
+      title: "Nee Padam",
+      description:
+        "Movie: Neti Bharatam<br>Style: Semi-classical",
+      videoPath: "assets/media/neti-bharatam.mp4",
+      posterPath: "assets/media/neti-bharatam-poster.jpg",
+      posterAlt: "Poster frame for Nee Padam from Neti Bharatam.",
+    },
+  ],
   musicLinks: [
     {
       label: "Amazon Music",
