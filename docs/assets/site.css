@@ -1225,6 +1225,15 @@ h1 {
   background: rgba(12, 9, 4, 0.84);
 }
 
+.music-video-feature__links {
+  grid-column: 1 / -1;
+  padding-top: 0.15rem;
+}
+
+.music-video-feature__links .music-pills {
+  margin-top: 0;
+}
+
 .music-pills {
   display: flex;
   flex-wrap: wrap;

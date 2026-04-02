@@ -165,17 +165,17 @@ window.SITE_DATA = {
         modified: "11:55 pm",
       },
       {
-        title: "Hindi Home and Live",
+        title: "Cover songs Hindi",
         url: "https://drive.google.com/drive/folders/1hse9t3xZFKBvi4RZf-sPJP8WMTuKWVej",
         modified: "Jan 1",
       },
       {
-        title: "MOVIE SONGS",
+        title: "Movie and OTT songs",
         url: "https://drive.google.com/drive/folders/1ANnIXLxbeRcJF4AYWA3JCf_gMzisJXED",
         modified: "Dec 16, 2025",
       },
       {
-        title: "PRIVATES",
+        title: "Cover songs Telugu",
         url: "https://drive.google.com/drive/folders/1GmKFoqZfakCNsq86XhH7N9mo5d3saGMl",
         modified: "Dec 16, 2025",
       },
@@ -238,7 +238,7 @@ window.SITE_DATA = {
   featuredRelease: {
     title: "Soul Trip",
     description:
-      "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
+      "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
     videoPath: "assets/media/soul-trip-video.mp4",
     posterPath: "assets/media/soul-trip-poster.jpeg",
     posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
@@ -257,10 +257,11 @@ window.SITE_DATA = {
     {
       title: "Soul Trip",
       description:
-        "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar",
+        "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
       videoPath: "assets/media/soul-trip-video.mp4",
       posterPath: "assets/media/soul-trip-poster.jpeg",
       posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
+      showMusicLinks: true,
     },
     {
       title: "Manase Hayiga",
@@ -291,7 +292,7 @@ window.SITE_DATA = {
       description:
         "Movie: Kaliyuga Bhagawan<br>Style: Item Number",
       videoPath: "assets/media/munagapaka-muddugumma.mp4",
-      posterPath: "assets/media/munagapaka-muddugumma-poster.jpg",
+      posterPath: "assets/media/munagapaka-muddugumma-poster.png",
       posterAlt: "Poster artwork for Munagapaka Muddugumma from Kaliyuga Bhagawan.",
     },
     {

@@ -164,6 +164,16 @@
           </div>
         `;
 
+    const linkMarkup = feature.showMusicLinks
+      ? `
+        <div class="music-video-feature__links">
+          <div class="music-pills music-pills--release">
+            ${renderMusicLinks()}
+          </div>
+        </div>
+      `
+      : "";
+
     return `
       <article class="music-video-feature">
         <div class="music-video-feature__art">
@@ -172,6 +182,7 @@
         </div>
 
         ${mediaMarkup}
+        ${linkMarkup}
       </article>
     `;
   }
@@ -183,7 +194,7 @@
     return `
       <article class="listening-room-feature listening-room-feature--topic">
         <div class="listening-room-feature__copy">
-          <p class="section-micro">Playback archive</p>
+          <p class="section-micro">Other works</p>
           <h3>${primaryFolder.title}</h3>
           <p>${primaryFolder.description}</p>
           <div class="music-subsection__actions">
@@ -214,11 +225,6 @@
         </div>
         <div class="music-topic-card__body">
           ${playbackFeatures.map(renderPlaybackFeature).join("")}
-          <div class="music-platform-strip">
-            <div class="music-pills music-pills--release">
-              ${renderMusicLinks()}
-            </div>
-          </div>
           ${renderPlaybackArchive()}
         </div>
       </article>
