@@ -59,7 +59,6 @@
             }
             <span class="music-pill__content">
               <span>${link.label}</span>
-              <small>${link.trust.replace(/-/g, " ")}</small>
             </span>
           </a>
         `

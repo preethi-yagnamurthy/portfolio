@@ -226,7 +226,7 @@ window.SITE_DATA = {
   },
   musicLinks: [
     {
-      label: "Amazon Music artist page",
+      label: "Amazon Music",
       url: "https://music.amazon.com/artists/B0GP34JY96/preethi-yagnamurthy",
       iconPath: "assets/icons/amazon-music.svg",
       trust: "verified-public-source",

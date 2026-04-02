@@ -1051,19 +1051,11 @@ h1 {
 }
 
 .music-pill__content {
-  display: grid;
-  gap: 0.25rem;
+  display: block;
 }
 
 .music-pill__content > span {
   font-size: 0.95rem;
-}
-
-.music-pill__content small {
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .listening-room-section__intro {
