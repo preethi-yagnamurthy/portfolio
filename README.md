@@ -9,6 +9,7 @@ The current production-style website lives in `docs/`, and future iterations sho
 - `docs/`: the full static one-page site that we are actively shaping
 - `SCOPE.md`: current site direction, constraints, content plan, and next priorities
 - `REFERENCES.md`: public-source links and research references
+- `ARTIST_GROUND_TRUTH.md`: artist-provided journey, links, claims, and website-usage tracking status
 - `assets/`: the original supplied media and supporting source files
 
 ## Local Preview

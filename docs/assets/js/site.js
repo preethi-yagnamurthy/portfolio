@@ -6,20 +6,26 @@
   const media = Object.fromEntries(
     site.gallery.map((item) => [item.usageRole, item])
   );
+  const featuredPress = site.press && site.press.featured ? site.press.featured : null;
+  const listeningRoom = site.listeningRoom || null;
+  const bandLinks = Array.isArray(site.bandLinks) ? site.bandLinks : [];
 
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
-  const placeholderMusicLinks = site.musicLinks.filter((item) => !item.active);
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
+    { label: "PRESS", href: "#press", section: "press" },
     { label: "MUSIC", href: "#music", section: "music" },
+    { label: "LISTENING ROOM", href: "#listening-room", section: "listening-room" },
     { label: "PERFORMANCE", href: "#live", section: "live" },
   ];
   const consentStorageKey = "preethi-cookie-consent";
 
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
+    { label: "Press", href: "#press", section: "press" },
     { label: "Story", href: "#story", section: "story" },
     { label: "Music", href: "#music", section: "music" },
+    { label: "Listening Room", href: "#listening-room", section: "listening-room" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
     { label: "Performance", href: "#live", section: "live" },
     { label: "Contact", href: "#contact", section: "contact" },
@@ -61,21 +67,6 @@
       .join("");
   }
 
-  function renderPlaceholders() {
-    return placeholderMusicLinks
-      .map(
-        (link) => `
-          <span class="music-pill music-pill--placeholder">
-            <span class="music-pill__content">
-              <span>${link.label}</span>
-              <small>${link.fallback}</small>
-            </span>
-          </span>
-        `
-      )
-      .join("");
-  }
-
   function renderHighlightCards() {
     return site.highlights
       .map(
@@ -103,6 +94,195 @@
         `
       )
       .join("");
+  }
+
+  function buildInstagramEmbedUrl(url, embedMode) {
+    if (!url || embedMode !== "instagram-reel") return url;
+
+    try {
+      const parsed = new URL(url);
+      const cleanPath = parsed.pathname.replace(/\/+$/, "");
+      return `${parsed.origin}${cleanPath}/embed`;
+    } catch (error) {
+      return url;
+    }
+  }
+
+  function buildDriveFolderEmbedUrl(url) {
+    if (!url) return "";
+
+    try {
+      const parsed = new URL(url);
+      const match = parsed.pathname.match(/\/folders\/([^/?#]+)/);
+      if (!match) return "";
+      return `https://drive.google.com/embeddedfolderview?id=${match[1]}#grid`;
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function renderListeningCards(items) {
+    if (!Array.isArray(items) || !items.length) return "";
+
+    return items
+      .map(
+        (item) => `
+          <article class="listening-card">
+            <p class="section-micro">${item.label}</p>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <div class="listening-card__meta">
+              <span>${item.type.replace(/-/g, " ")}</span>
+              <span>Open folder</span>
+            </div>
+            <a class="button button--ghost" href="${item.url}" target="_blank" rel="noopener">Open folder</a>
+          </article>
+        `
+      )
+      .join("");
+  }
+
+  function renderListeningRoomSection() {
+    if (!listeningRoom || !listeningRoom.featuredReel || !Array.isArray(listeningRoom.recordingCards) || !listeningRoom.recordingCards.length) return "";
+
+    const reel = listeningRoom.featuredReel;
+    const embedUrl = buildInstagramEmbedUrl(reel.url, reel.embedMode);
+    const [primaryFolder, ...secondaryFolders] = listeningRoom.recordingCards;
+    const driveEmbedUrl = buildDriveFolderEmbedUrl(primaryFolder.url);
+
+    return `
+      <section id="listening-room" class="listening-room-section">
+        <div class="section-head section-head--center">
+          <p class="section-label">${listeningRoom.eyebrow}</p>
+          <h2>${listeningRoom.title}</h2>
+          <p class="listening-room-section__intro">${listeningRoom.intro}</p>
+        </div>
+
+        <article class="listening-room-feature listening-room-feature--drive">
+          <div class="listening-room-feature__copy">
+            <p class="section-micro">${primaryFolder.label}</p>
+            <h3>${primaryFolder.title}</h3>
+            <p>${primaryFolder.description}</p>
+            <p>A fuller recordings lane sits here inside the page first, so the listening room opens with the archive before moving into the featured reel.</p>
+            <a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open full folder</a>
+          </div>
+
+          <div class="listening-room-feature__media">
+            <div class="listening-room-frame">
+              ${
+                driveEmbedUrl
+                  ? `<iframe
+                      src="${driveEmbedUrl}"
+                      title="${primaryFolder.title}"
+                      loading="lazy"
+                    ></iframe>`
+                  : `<a class="button button--ghost" href="${primaryFolder.url}" target="_blank" rel="noopener">Open folder</a>`
+              }
+            </div>
+            <p class="listening-room-feature__note">Inline Google Drive folder preview with direct folder access if you want the full view.</p>
+          </div>
+        </article>
+
+        <div class="listening-room-grid">
+          ${renderListeningCards(secondaryFolders)}
+        </div>
+
+        <article class="listening-room-feature listening-room-feature--reel">
+          <div class="listening-room-feature__copy">
+            <p class="section-micro">${reel.label}</p>
+            <h3>${reel.title}</h3>
+            <p>After the archive comes the live spark: one featured performance frame that keeps the room moving, without taking over the section.</p>
+            <a class="button button--ghost" href="${reel.url}" target="_blank" rel="noopener">${reel.fallbackLabel}</a>
+          </div>
+
+          <div class="listening-room-feature__media">
+            <div class="listening-room-frame listening-room-frame--reel">
+              <iframe
+                src="${embedUrl}"
+                title="${reel.title}"
+                loading="lazy"
+                allowtransparency="true"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="listening-room-feature__note">Inline reel preview with direct Instagram fallback.</p>
+          </div>
+        </article>
+      </section>
+    `;
+  }
+
+  function renderPressSection() {
+    if (!featuredPress) return "";
+
+    const summary = featuredPress.summary
+      .map((paragraph) => `<p>${paragraph}</p>`)
+      .join("");
+
+    const keyMoments = featuredPress.keyMoments
+      .map((item) => `<li>${item}</li>`)
+      .join("");
+
+    return `
+      <section id="press" class="press-section">
+        <div class="section-head section-head--center">
+          <p class="section-label">Press</p>
+          <h2>${site.press.heading}</h2>
+        </div>
+
+        <article class="press-feature">
+          <div class="press-feature__copy">
+            <p class="section-micro">${featuredPress.source} / ${featuredPress.date}</p>
+            <h3>${featuredPress.title}</h3>
+            ${summary}
+            <ul class="press-points">
+              ${keyMoments}
+            </ul>
+            <a class="button button--ghost" href="${featuredPress.url}" target="_blank" rel="noopener">Read the full article</a>
+          </div>
+
+          <figure class="press-feature__media">
+            <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
+            <figcaption>
+              <p class="section-micro">${featuredPress.mediaEyebrow}</p>
+              <h3>${featuredPress.mediaTitle}</h3>
+              <p>${featuredPress.mediaCaption}</p>
+            </figcaption>
+          </figure>
+        </article>
+      </section>
+    `;
+  }
+
+  function renderBandLinks() {
+    return bandLinks
+      .map(
+        (link) => `
+          <a class="band-link-pill" href="${link.url}" target="_blank" rel="noopener">
+            <span>${link.label}</span>
+          </a>
+        `
+      )
+      .join("");
+  }
+
+  function renderFeaturedReleaseSection() {
+    return `
+      <section id="featured-release" class="featured-release-section">
+        <article class="featured-release-card">
+          <div class="featured-release-card__copy">
+            <p class="section-label">Featured release</p>
+            <h2>Soul Trip</h2>
+            <p>Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy, and now moved below the landing frame so the hero can stay fully with the image.</p>
+            <a class="button button--ghost" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Open release</a>
+          </div>
+
+          <figure class="featured-release-card__media">
+            <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
+          </figure>
+        </article>
+      </section>
+    `;
   }
 
   function renderDesktopNav() {
@@ -165,26 +345,41 @@
       <main>
         <section id="home" class="hero-panel">
           <div class="hero-panel__bg" style="background-image:url('${media["home-hero"].path}')"></div>
-          <div class="hero-panel__shade"></div>
           <div class="hero-panel__content">
             <div class="hero-copy">
-              <p class="section-micro">Hyderabad / Singer / Band Anantya</p>
               <h1>${site.artist.name}</h1>
+              <p class="hero-copy__tagline">Multilingual | Multi-genre playback singer</p>
               <p class="hero-copy__lead">${site.artist.positioning}</p>
               <div class="hero-copy__actions">
                 <a class="button button--solid" href="#music">Listen now</a>
                 <a class="button button--ghost" href="#live">Book a live set</a>
               </div>
             </div>
+          </div>
+        </section>
 
-            <aside class="hero-note">
-              <p class="section-micro">Featured release</p>
-              <h2>Soul Trip</h2>
-              <p>Publicly listed on Amazon Music as a February 18, 2026 release by Yazin and Preethi Yagnamurthy.</p>
-              <a href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Open release</a>
-            </aside>
+        ${renderFeaturedReleaseSection()}
 
-            <img class="hero-cutout" src="${media["hero-overlay"].path}" alt="${media["hero-overlay"].alt}">
+        <section class="spotlight-reveal" data-spotlight-reveal aria-label="Spotlight reveal section">
+          <div class="spotlight-reveal__stage">
+            <div class="spotlight-reveal__grid">
+              <div class="spotlight-reveal__copy">
+                <p class="section-label">Spotlight On!</p>
+                <h2>When the lights rise, the room listens.</h2>
+                <p>A multilingual voice, rooted in classical training and built for the stage.</p>
+              </div>
+
+              <div class="spotlight-reveal__visual">
+                <div class="spotlight-reveal__beam" aria-hidden="true"></div>
+                <img
+                  class="spotlight-reveal__image"
+                  src="${media["spotlight-reveal"].path}"
+                  alt="${media["spotlight-reveal"].alt}"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+            <div id="spotlight-on" class="spotlight-reveal__anchor" aria-hidden="true"></div>
           </div>
         </section>
 
@@ -192,8 +387,8 @@
           <figure class="reel-frame reel-frame--wide">
             <img src="${media["home-spotlight"].path}" alt="${media["home-spotlight"].alt}" loading="lazy">
             <figcaption>
-              <p class="section-micro">Scene One</p>
-              <h2>Outdoor performance energy with a softer city-frame mood</h2>
+              <p class="section-micro">Open air</p>
+              <h2>A voice that settles into dusk, skyline, and first note.</h2>
             </figcaption>
           </figure>
 
@@ -202,7 +397,7 @@
               <img src="${media["live-marquee"].path}" alt="${media["live-marquee"].alt}" loading="lazy">
               <figcaption>
                 <p class="section-micro">Live presence</p>
-                <h2>Built for stage light, movement, and front-of-room focus</h2>
+                <h2>From the first phrase, the stage answers back.</h2>
               </figcaption>
             </figure>
 
@@ -211,7 +406,7 @@
                 <img src="${media["gallery-wide"].path}" alt="${media["gallery-wide"].alt}" loading="lazy">
                 <figcaption>
                   <p class="section-micro">Band Anantya</p>
-                  <h2>Female-fronted live format with room to scale</h2>
+                  <h2>A live ensemble built for lift, rhythm, and shared energy.</h2>
                 </figcaption>
               </figure>
 
@@ -219,7 +414,7 @@
                 <img src="${media["music-portrait"].path}" alt="${media["music-portrait"].alt}" loading="lazy">
                 <figcaption>
                   <p class="section-micro">Recorded voice</p>
-                  <h2>Studio-ready material and a growing release narrative</h2>
+                  <h2>Playback instinct with the warmth of a live singer&apos;s pulse.</h2>
                 </figcaption>
               </figure>
             </div>
@@ -229,17 +424,19 @@
         <section id="highlights" class="awards-section">
           <div class="section-head section-head--center">
             <p class="section-label">Highlights</p>
-            <h2>Verified milestones, arranged with the same sparse editorial pacing</h2>
+            <h2>Milestones in a voice still gathering momentum.</h2>
           </div>
           <div class="awards-grid">
             ${renderHighlightCards()}
           </div>
         </section>
 
+        ${renderPressSection()}
+
         <section id="story" class="spotlight-section">
           <div class="section-head section-head--center">
             <p class="section-label">Story</p>
-            <h2>Classical grounding, contemporary stagecraft</h2>
+            <h2>Where classical grounding meets stage light.</h2>
           </div>
 
           <article class="spotlight-card">
@@ -269,7 +466,7 @@
         <section id="music" class="poster-section">
           <div class="section-head section-head--center">
             <p class="section-label">Music</p>
-            <h2>A poster-like release panel instead of a generic card grid</h2>
+            <h2>Songs that travel from playback rooms to live listening.</h2>
           </div>
 
           <article class="poster-card">
@@ -277,10 +474,9 @@
             <div class="poster-card__copy">
               <p class="section-micro">Now listening</p>
               <h3>Soul Trip</h3>
-              <p>Amazon Music currently provides the strongest public listening proof-point, while Spotify, Apple Music, and a formal press kit remain clearly marked placeholders.</p>
+              <p>From Soul Trip to streaming trails across Amazon Music, Spotify, YouTube, and JioSaavn, the listening path gathers around a voice built for studio detail and stage immediacy.</p>
               <div class="music-pills">
                 ${renderMusicLinks()}
-                ${renderPlaceholders()}
               </div>
             </div>
 
@@ -293,10 +489,12 @@
           </article>
         </section>
 
+        ${renderListeningRoomSection()}
+
         <section class="gallery-section">
           <div class="section-head section-head--center">
             <p class="section-label">Stage & Collaborations</p>
-            <h2>Black-space composition, monochrome live stills, and a cleaner press lane</h2>
+            <h2>Performance, afterglow, and the stillness between songs.</h2>
           </div>
 
           <div class="gallery-layout">
@@ -316,7 +514,7 @@
 
         <section id="live" class="performance-section">
           <div class="performance-tabs" aria-hidden="true">
-            <span class="is-active">Upcoming</span>
+            <span class="is-active">Live</span>
             <span>Bookings</span>
           </div>
 
@@ -327,8 +525,8 @@
                 <p>Hyderabad / Pan-India</p>
               </div>
               <div>
-                <p>Flexible 4-piece to 6-piece format</p>
-                <strong>Clubs, private events, corporate stages</strong>
+                <p>4-piece to 6-piece live ensemble</p>
+                <strong>Clubs, private celebrations, corporate stages</strong>
               </div>
               <a class="ticket-button" href="#contact">Start Booking</a>
             </article>
@@ -336,11 +534,11 @@
             <article class="performance-row">
               <div>
                 <h3>Soul Trip Showcase</h3>
-                <p>Artist-led set with originals and curated covers</p>
+                <p>Originals, reinterpretations, and multilingual favourites</p>
               </div>
               <div>
-                <p>2026 schedule</p>
-                <strong>Available on request</strong>
+                <p>Artist-led set</p>
+                <strong>Select stage bookings</strong>
               </div>
               <a class="ticket-button" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Listen First</a>
             </article>
@@ -349,18 +547,37 @@
           <div class="format-grid">
             ${renderShowCards()}
           </div>
+
+          <article class="band-links-card">
+            <div class="band-links-card__brand">
+              ${
+                site.branding && site.branding.bandLogoPath
+                  ? `<img class="band-links-card__logo" src="${site.branding.bandLogoPath}" alt="Band Anantya">`
+                  : ""
+              }
+              <div>
+                <p class="section-micro">Band Anantya</p>
+                <h3>Supporting channels for the live project.</h3>
+                <p>Kept separate from the main artist socials, but close at hand when the full ensemble story matters.</p>
+              </div>
+            </div>
+            <div class="band-links-card__links">
+              ${renderBandLinks()}
+            </div>
+          </article>
         </section>
 
         <section id="contact" class="contact-section">
           <div class="section-head">
             <p class="section-label">Contact</p>
-            <h2>Use the local form now, keep the public booking routes visible until launch</h2>
+            <h2>Bookings and collaborations begin with a single note.</h2>
           </div>
 
           <div class="contact-layout">
             <article class="contact-panel">
-              <p class="section-micro">Preview inquiry</p>
-              <h3>Tell us about the event</h3>
+              <p class="section-micro">${site.contactForm.eyebrow}</p>
+              <h3>${site.contactForm.title}</h3>
+              <p>${site.contactForm.intro}</p>
               <form id="contact-form" class="contact-form">
                 <label>
                   <span>Name</span>
@@ -382,37 +599,29 @@
                   </select>
                 </label>
                 <label>
-                  <span>Message</span>
-                  <textarea name="message" rows="5" placeholder="Share date, city, format, and expectations." required></textarea>
+                  <span>Event date</span>
+                  <input type="date" name="eventDate" required>
                 </label>
-                <button class="button button--solid" type="submit">Send preview inquiry</button>
+                <label>
+                  <span>City</span>
+                  <input type="text" name="city" placeholder="Hyderabad" required>
+                </label>
+                <label>
+                  <span>Message</span>
+                  <textarea name="message" rows="5" placeholder="Share venue, audience, repertoire ideas, and any special notes." required></textarea>
+                </label>
+                <button class="button button--solid" type="submit">${site.contactForm.submitLabel}</button>
                 <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
               </form>
             </article>
 
             <div class="contact-column">
               <article class="contact-card">
-                <p class="section-micro">Temporary public booking contact</p>
-                <h3>${site.bookingContacts.primary.name}</h3>
-                <p>${site.bookingContacts.primary.role}</p>
-                <a href="tel:${site.bookingContacts.primary.phone.replace(/\s+/g, "")}">${site.bookingContacts.primary.phone}</a>
-                <a href="mailto:${site.bookingContacts.primary.email}">${site.bookingContacts.primary.email}</a>
-                <small>${site.bookingContacts.primary.sourceLabel}</small>
-              </article>
-
-              <article class="contact-card">
-                <p class="section-micro">Alternative booking desk</p>
-                <h3>${site.bookingContacts.secondary.name}</h3>
-                <a href="tel:${site.bookingContacts.secondary.phone.replace(/\s+/g, "")}">${site.bookingContacts.secondary.phone}</a>
-                <a href="https://wa.me/919550641961" target="_blank" rel="noopener">${site.bookingContacts.secondary.whatsapp}</a>
-                <a href="mailto:${site.bookingContacts.secondary.email}">${site.bookingContacts.secondary.email}</a>
-                <small>${site.bookingContacts.secondary.sourceLabel}</small>
-              </article>
-
-              <article class="contact-card">
-                <p class="section-micro">Location & socials</p>
-                <h3>${site.artist.city}</h3>
-                <p>${site.bio.narrative[1]}</p>
+                <p class="section-micro">${site.contactForm.featureEyebrow}</p>
+                <h3>${site.contactForm.featureTitle}</h3>
+                <p>${site.contactForm.featureBody}</p>
+                <p class="contact-card__location">${site.artist.city}</p>
+                <p>${site.contactForm.featureFootnote}</p>
                 <div class="contact-socials">
                   ${renderSocialDots()}
                 </div>
@@ -424,15 +633,15 @@
         <section id="private" class="notes-section">
           <div class="notes-grid">
             <article class="note-card">
-              <p class="section-micro">Private EPK route</p>
-              <h3>Reserved for a future press room</h3>
-              <p>Use this lane later for hi-res portraits, technical rider details, stage plot, and downloadable biography variants.</p>
+              <p class="section-micro">Press Room</p>
+              <h3>Selected materials available on request.</h3>
+              <p>High-resolution portraits, biography variants, and live materials can be shared for press, promoters, and collaborators.</p>
             </article>
 
             <article id="policies" class="note-card">
-              <p class="section-micro">Policies</p>
-              <h3>Cookies and privacy</h3>
-              <p>This build does not currently run analytics cookies or third-party trackers. It only uses local browser storage to remember your consent choice, and keeps the inquiry form browser-only until the final launch stack is confirmed.</p>
+              <p class="section-micro">Cookies & privacy</p>
+              <h3>Simple, direct, and browser-based.</h3>
+              <p>This site remembers your cookie choice in your browser and keeps booking enquiries moving directly into WhatsApp.</p>
             </article>
           </div>
         </section>
@@ -491,12 +700,53 @@
     const feedback = document.getElementById("form-feedback");
     if (!form || !feedback) return;
 
+    const sanitizeWhatsappNumber = function (value) {
+      return String(value || "").replace(/\D/g, "");
+    };
+
+    const formatEventDate = function (value) {
+      if (!value) return "";
+      const parsed = new Date(`${value}T00:00:00`);
+      if (Number.isNaN(parsed.getTime())) return value;
+      return parsed.toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+    };
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      const name = form.elements.name.value.trim() || "there";
-      feedback.textContent =
-        `Thanks, ${name}. This preview form stays local for now. Use the booking cards on this page while the final workflow is being set up.`;
-      form.reset();
+      const name = form.elements.name.value.trim();
+      const email = form.elements.email.value.trim();
+      const eventType = form.elements.eventType.value.trim();
+      const eventDate = formatEventDate(form.elements.eventDate.value);
+      const city = form.elements.city.value.trim();
+      const message = form.elements.message.value.trim();
+      const whatsappNumber = sanitizeWhatsappNumber(site.contactForm.whatsappNumber);
+
+      if (!whatsappNumber) {
+        feedback.textContent = "WhatsApp booking is not configured yet.";
+        return;
+      }
+
+      const whatsappMessage = [
+        `Hello, I would like to enquire about booking ${site.artist.name}.`,
+        "",
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Event type: ${eventType}`,
+        `Event date: ${eventDate}`,
+        `City: ${city}`,
+        "",
+        "Brief:",
+        message,
+      ].join("\n");
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+      feedback.innerHTML =
+        `Opening WhatsApp with your booking brief. If it doesn't open, <a href="${whatsappUrl}" target="_blank" rel="noopener">continue here</a>.`;
+      window.location.assign(whatsappUrl);
     });
   }
 
@@ -596,6 +846,31 @@
     window.addEventListener("scroll", syncScrollChrome, { passive: true });
   }
 
+  function wireSpotlightReveal() {
+    const section = document.querySelector("[data-spotlight-reveal]");
+    if (!section) return;
+
+    let frame = null;
+
+    const syncReveal = function () {
+      frame = null;
+      const rect = section.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      const rawProgress = Math.max(0, Math.min(1, (-rect.top) / travel));
+      const easedProgress = Math.pow(rawProgress, 1.4);
+      section.style.setProperty("--spotlight-progress", easedProgress.toFixed(3));
+    };
+
+    const requestSync = function () {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(syncReveal);
+    };
+
+    syncReveal();
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync);
+  }
+
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -610,6 +885,7 @@
   wireConsentBanner();
   wireNav();
   wireScrollChrome();
+  wireSpotlightReveal();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();

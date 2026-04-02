@@ -3,13 +3,13 @@ window.SITE_DATA = {
     name: "Preethi Yagnamurthy",
     shortName: "Preethi",
     city: "Hyderabad, India",
-    tagline: "Singer, performer, and Band Anantya lead vocalist",
+    tagline: "Playback singer, multilingual performer, and Band Anantya founder",
     positioning:
-      "A Hyderabad-based vocalist with early Carnatic grounding, a growing live-performance identity, and a contemporary stage language that moves across Telugu, Hindi, English, devotional, and fusion repertoire.",
-    previewNote:
-      "This preview build replaces the original mirrored artist site. Public links are included where credible, and placeholders are clearly labeled until final profiles are confirmed.",
+      "A multilingual singer from Hyderabad, shaped by Carnatic training and drawn toward playback, live stages, and emotionally direct performance across Telugu, Hindi, devotional, and crossover repertoire.",
+    brandNote:
+      "A cinematic artist site shaped around live presence, playback work, and a growing listening trail.",
     footerNote:
-      "Preview site for Preethi Yagnamurthy. Public booking and profile links are temporary and should be confirmed before launch.",
+      "For bookings, collaborations, and listening links, continue through the live and contact sections.",
   },
   branding: {
     primaryLogoPath: "assets/icons/py-conjunto.png",
@@ -22,7 +22,7 @@ window.SITE_DATA = {
       href: "index.html",
       title: "Preethi Yagnamurthy | Singer from Hyderabad",
       description:
-        "Preview site for Preethi Yagnamurthy, a Hyderabad-based singer and Band Anantya lead vocalist with Carnatic roots, live-stage energy, and a growing recorded catalog.",
+        "Preethi Yagnamurthy is a Hyderabad-based multilingual singer, playback voice, and Band Anantya founder with Carnatic roots and a cinematic live presence.",
     },
     about: {
       label: "About",
@@ -43,7 +43,7 @@ window.SITE_DATA = {
       href: "performance.html",
       title: "Live & Bookings | Preethi Yagnamurthy",
       description:
-        "Live formats, Band Anantya details, and temporary public booking contacts for Preethi Yagnamurthy.",
+        "Discover live formats, Band Anantya stage energy, and booking access for Preethi Yagnamurthy.",
     },
     highlights: {
       label: "Highlights",
@@ -57,28 +57,28 @@ window.SITE_DATA = {
       href: "contact.html",
       title: "Contact | Preethi Yagnamurthy",
       description:
-        "Get in touch with Preethi Yagnamurthy through temporary public booking channels and a preview contact form.",
+        "Book or collaborate with Preethi Yagnamurthy through a direct WhatsApp-ready enquiry flow.",
     },
     terms: {
       label: "Terms & Privacy",
       href: "Terms-&-Conditions.html",
       title: "Terms & Privacy | Preethi Yagnamurthy",
       description:
-        "Preview terms, privacy, and placeholder site policies for the Preethi Yagnamurthy artist site.",
+        "Cookies, privacy, and contact-use notes for the Preethi Yagnamurthy website.",
     },
     epk: {
       label: "Private EPK",
       href: "private-22.html",
       title: "Private EPK | Preethi Yagnamurthy",
       description:
-        "Private-share placeholder for future press kit, stage plot, and downloadable media assets.",
+        "Private materials room for press, promoters, and selected collaborators.",
     },
   },
   bio: {
     intro: [
-      "Preethi Yagnamurthy is a Hyderabad-based singer whose musical identity bridges classical discipline and contemporary stagecraft.",
-      "Public coverage around Mirchi Singistan describes her as a Finance Analyst by profession whose music journey began at age five, when she started Carnatic training that continued for eight formative years.",
-      "She later moved from classical grounding into stage performances, and today her work spans solo sets, recorded releases, and full-band performances with Band Anantya.",
+      "Preethi Yagnamurthy is a Hyderabad-based singer whose voice moves between classical discipline, playback expression, and contemporary live performance.",
+      "Her musical journey began at age five with eight formative years of Carnatic training, shaping the control, phrasing, and emotional clarity that continue to guide her work.",
+      "Today, that foundation opens into multilingual stage sets, released songs, and the evolving sound of Band Anantya.",
     ],
     roots: [
       "City: Hyderabad",
@@ -87,8 +87,8 @@ window.SITE_DATA = {
       "Supporting live identity: founder / lead vocalist, Band Anantya",
     ],
     narrative: [
-      "Her public artist and booking profiles position her as an adaptable vocalist who can move from intimate acoustic moments to fuller club, private-event, and festival-ready band sets.",
-      "Rather than imitate a legacy-artist archive, this site frames Preethi as an emerging contemporary voice with strong live presence, cinematic visuals, and room for a growing catalog.",
+      "Across solo sets and fuller band performances, she carries a repertoire that can turn intimate, celebratory, devotional, or cinematic without losing its centre.",
+      "Her musical world is built on presence, atmosphere, and a voice that can hold both detail and scale.",
     ],
   },
   highlights: [
@@ -128,13 +128,77 @@ window.SITE_DATA = {
       trust: "verified-public-source",
     },
   ],
+  press: {
+    heading: "A breakthrough moment, carried into print.",
+    featured: {
+      source: "Media Infoline",
+      date: "July 4, 2023",
+      title:
+        "Mirchi Singistan Uncovers Aspiring Singers, Winner Performs at 'Come Ride with Badshah' Concert",
+      url: "https://www.mediainfoline.com/music/mirchi-singistan-uncovers-aspiring-singers-winner-performs-come-ride-badshah-concert",
+      summary: [
+        "Media Infoline captured the Mirchi Singistan win as a Hyderabad breakthrough, following a three-week 95 Mirchi Hyderabad initiative built to uncover emerging voices across the city.",
+        "The coverage places Preethi Yagnamurthy at the center of that moment, tracing the win into an opening-act slot at the 'Come Ride with Badshah' concert and a larger public stage.",
+        "It also ties the milestone back to the discipline of Carnatic training from age five, framing a live voice shaped by early grounding and stage-ready presence.",
+      ],
+      keyMoments: [
+        "95 Mirchi Hyderabad initiative",
+        "Opening act at 'Come Ride with Badshah'",
+        "Backstage meet-and-greet with Badshah",
+        "Carnatic training from age 5",
+      ],
+      mediaEyebrow: "Featured coverage",
+      mediaTitle: "A headline moment for a rising live voice.",
+      mediaCaption:
+        "One of the earliest public milestones to carry the live journey from city competition to a much larger crowd.",
+    },
+  },
+  listeningRoom: {
+    eyebrow: "Listening Room",
+    title: "A closer listen, beyond the main streaming trail.",
+    intro:
+      "A quieter layer of the journey, shaped through a featured reel, playback-led recordings, and voice-forward folders that let the tone sit front and center.",
+    featuredReel: {
+      label: "Featured reel",
+      title: "A live phrase, carried in one frame.",
+      url: "https://www.instagram.com/reel/DR6CZ2cid05/",
+      embedMode: "instagram-reel",
+      fallbackLabel: "Open reel on Instagram",
+    },
+    recordingCards: [
+      {
+        label: "Recordings",
+        title: "Playback, devotional, home and live recordings",
+        description:
+          "A primary folder gathering released playback work, devotional material, and a wider trail of home and live recordings.",
+        url: "https://drive.google.com/drive/folders/17Nyai7o55Ft8I5IvG_-Y9VoyW42kinij",
+        type: "recordings",
+      },
+      {
+        label: "Voice-only",
+        title: "Voice-only selections I",
+        description:
+          "A more stripped-back listen focused on phrasing, melody, and the texture of the voice without stage visuals.",
+        url: "https://drive.google.com/drive/folders/1t0EKTeBDoeKgzF-NhWbCviNJkS_C3fjy",
+        type: "voice-only",
+      },
+      {
+        label: "Voice-only",
+        title: "Voice-only selections II",
+        description:
+          "A second voice-led folder for a more intimate listening pass across tonal range and song feel.",
+        url: "https://drive.google.com/drive/folders/16Ua8sJX6iHtGMnxayAVf7N3WGlM79vT2",
+        type: "voice-only",
+      },
+    ],
+  },
   musicLinks: [
     {
       label: "Amazon Music artist page",
       url: "https://music.amazon.com/artists/B0GP34JY96/preethi-yagnamurthy",
       iconPath: "assets/icons/amazon-music.svg",
       trust: "verified-public-source",
-      fallback: "Primary public listening profile currently available.",
+      fallback: "Artist page on Amazon Music.",
       active: true,
     },
     {
@@ -151,7 +215,7 @@ window.SITE_DATA = {
       iconPath: "assets/icons/instagram.svg",
       trust: "public-profile",
       fallback: "Best current place to see live snippets and short-form performance updates.",
-      active: true,
+      active: false,
     },
     {
       label: "Spotify",
@@ -201,13 +265,6 @@ window.SITE_DATA = {
       fallback: "@preethiyagnamurthy_singer",
     },
     {
-      label: "Band Anantya",
-      url: "https://www.instagram.com/bandanantya/",
-      iconPath: "assets/icons/band-anantya.jpg",
-      trust: "public-profile",
-      fallback: "@bandanantya",
-    },
-    {
       label: "Amazon Music",
       url: "https://music.amazon.com/artists/B0GP34JY96/preethi-yagnamurthy",
       iconPath: "assets/icons/amazon-music.svg",
@@ -236,9 +293,26 @@ window.SITE_DATA = {
       fallback: "JioSaavn artist profile",
     },
   ],
+  bandLinks: [
+    {
+      label: "Instagram",
+      url: "https://www.instagram.com/bandanantya/",
+      trust: "public-profile",
+    },
+    {
+      label: "YouTube",
+      url: "https://youtube.com/@bandanantya",
+      trust: "public-profile",
+    },
+    {
+      label: "Facebook",
+      url: "https://www.facebook.com/share/16m8NvHPA1/?mibextid=qi2Omg",
+      trust: "public-profile",
+    },
+  ],
   bookingContacts: {
     note:
-      "The contacts below come from public artist and booking listings. They are included for preview purposes and should be verified before this site is published.",
+      "The contacts below come from public artist and booking listings and should be verified before final publishing.",
     primary: {
       label: "Band Anantya public profile",
       name: "Y. Chandra Sekhar",
@@ -262,23 +336,37 @@ window.SITE_DATA = {
       trust: "verified-public-source",
     },
   },
+  contactForm: {
+    whatsappNumber: "+91 95506 41961",
+    eyebrow: "Bookings",
+    title: "Start the conversation",
+    intro:
+      "Send the brief here and step straight into WhatsApp with the essentials already composed.",
+    submitLabel: "Continue on WhatsApp",
+    featureEyebrow: "Direct booking flow",
+    featureTitle: "Your brief, ready in one message.",
+    featureBody:
+      "Name, email, event type, date, city, and creative notes are shaped into one WhatsApp brief so the conversation can begin with clarity.",
+    featureFootnote:
+      "Based in Hyderabad. Available for live venues, private celebrations, corporate stages, and selected collaborations.",
+  },
   shows: [
     {
       title: "Club & lounge sets",
       description:
-        "Contemporary Bollywood, indie, regional, and crossover sets designed for lounges, listening rooms, and evening live circuits.",
+        "Late-evening sets shaped for lounges, listening rooms, and close audiences that want melody, texture, and presence.",
       cta: "Request a live set",
     },
     {
       title: "Private celebrations",
       description:
-        "Flexible formats for weddings, sangeets, engagements, birthdays, and private celebrations, with acoustic or fuller band scaling.",
+        "Flexible formats for weddings, sangeets, engagements, birthdays, and private gatherings, scaled acoustically or with the full band.",
       cta: "Start a booking brief",
     },
     {
       title: "Corporate & campus performances",
       description:
-        "Stage-friendly sets for festivals, campus shows, team events, and headline support slots.",
+        "High-energy stage sets for festivals, campus shows, team events, and headline-support nights.",
       cta: "Discuss event format",
     },
   ],
@@ -305,11 +393,11 @@ window.SITE_DATA = {
       placement: "live",
     },
     {
-      path: "assets/media/preethi-cutout.png",
-      usageRole: "hero-overlay",
+      path: "assets/media/preethi-spotlight-source.png",
+      usageRole: "spotlight-reveal",
       alt: "Cutout performance pose of Preethi Yagnamurthy singing on stage.",
       cropPreference: "transparent-cutout",
-      placement: "home-contact",
+      placement: "spotlight",
     },
     {
       path: "assets/media/preethi-music-portrait.jpg",
@@ -347,10 +435,4 @@ window.SITE_DATA = {
       placement: "highlights",
     },
   ],
-  placeholders: {
-    spotify: "Spotify profile coming soon.",
-    appleMusic: "Apple Music link coming soon.",
-    pressKit: "Downloadable press kit coming soon.",
-    newsletter: "Mailing list and announcement sign-up coming soon.",
-  },
 };
