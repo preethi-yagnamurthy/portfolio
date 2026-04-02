@@ -7,13 +7,11 @@
     site.gallery.map((item) => [item.usageRole, item])
   );
   const listeningRoom = site.listeningRoom || null;
-  const bandLinks = Array.isArray(site.bandLinks) ? site.bandLinks : [];
-
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
     { label: "MUSIC", href: "#music", section: "music" },
-    { label: "PERFORMANCE", href: "#live", section: "live" },
+    { label: "CONTACT", href: "#contact", section: "contact" },
   ];
   const consentStorageKey = "preethi-cookie-consent";
 
@@ -22,7 +20,6 @@
     { label: "Story", href: "#story", section: "story" },
     { label: "Music", href: "#music", section: "music" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
-    { label: "Performance", href: "#live", section: "live" },
     { label: "Contact", href: "#contact", section: "contact" },
   ];
 
@@ -46,15 +43,12 @@
     return activeMusicLinks
       .map(
         (link) => `
-          <a class="music-pill" href="${link.url}" target="_blank" rel="noopener">
+          <a class="music-pill music-pill--icon" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
             ${
               link.iconPath
                 ? `<img class="music-pill__icon" src="${link.iconPath}" alt="" aria-hidden="true">`
-                : ""
+                : `<span class="music-pill__fallback" aria-hidden="true">${link.label.slice(0, 2).toUpperCase()}</span>`
             }
-            <span class="music-pill__content">
-              <span>${link.label}</span>
-            </span>
           </a>
         `
       )
@@ -69,21 +63,6 @@
             <p class="award-card__year">${item.year}</p>
             <h3>${item.title}</h3>
             <p>${item.description}</p>
-          </article>
-        `
-      )
-      .join("");
-  }
-
-  function renderShowCards() {
-    return site.shows
-      .map(
-        (show) => `
-          <article class="format-card">
-            <p class="section-micro">Format</p>
-            <h3>${show.title}</h3>
-            <p>${show.description}</p>
-            <a href="#contact">${show.cta}</a>
           </article>
         `
       )
@@ -172,49 +151,6 @@
         </article>
       </div>
     `;
-  }
-
-  function renderGalleryCarousel() {
-    const slides = [
-      media["gallery-wide"],
-      media["gallery-portrait"],
-      media["press-portrait"],
-    ].filter(Boolean);
-
-    if (!slides.length) return "";
-
-    return `
-      <div class="gallery-carousel" data-gallery-carousel aria-label="Stage and collaborations mobile carousel">
-        <div class="gallery-carousel__viewport">
-          <div class="gallery-carousel__track">
-            ${slides
-              .map(
-                (item) => `
-                  <figure class="gallery-carousel__slide">
-                    <img src="${item.path}" alt="${item.alt}" loading="lazy">
-                  </figure>
-                `
-              )
-              .join("")}
-          </div>
-        </div>
-        <div class="gallery-carousel__dots" aria-hidden="true">
-          ${slides.map((_, index) => `<span class="${index === 0 ? "is-active" : ""}"></span>`).join("")}
-        </div>
-      </div>
-    `;
-  }
-
-  function renderBandLinks() {
-    return bandLinks
-      .map(
-        (link) => `
-          <a class="band-link-pill" href="${link.url}" target="_blank" rel="noopener">
-            <span>${link.label}</span>
-          </a>
-        `
-      )
-      .join("");
   }
 
   function renderFeaturedReleaseSection() {
@@ -314,7 +250,7 @@
               <p class="hero-copy__tagline">Multilingual | Multi-genre playback singer</p>
               <div class="hero-copy__actions">
                 <a class="button button--solid" href="#music">Listen now</a>
-                <a class="button button--ghost" href="#live">Book a live set</a>
+                <a class="button button--ghost" href="#contact">Book a live set</a>
               </div>
             </div>
           </div>
@@ -323,14 +259,6 @@
         ${renderFeaturedReleaseSection()}
 
         <section class="reel-section" aria-label="Artist visual reel">
-          <figure class="reel-frame reel-frame--wide">
-            <img src="${media["home-spotlight"].path}" alt="${media["home-spotlight"].alt}" loading="lazy">
-            <figcaption>
-              <p class="section-micro">Open air</p>
-              <h2>A voice that settles into dusk, skyline, and first note.</h2>
-            </figcaption>
-          </figure>
-
           <div class="reel-grid">
             <figure class="reel-frame reel-frame--tall">
               <img src="${media["live-marquee"].path}" alt="${media["live-marquee"].alt}" loading="lazy">
@@ -410,84 +338,6 @@
           ${renderMusicSubsections()}
         </section>
 
-        <section id="stage-collaborations" class="gallery-section">
-          <div class="section-head section-head--center">
-            <p class="section-label">Stage & Collaborations</p>
-            <h2>Performance, afterglow, and the stillness between songs.</h2>
-          </div>
-
-          <div class="gallery-layout">
-            <figure class="gallery-panel gallery-panel--wide">
-              <img src="${media["gallery-wide"].path}" alt="${media["gallery-wide"].alt}" loading="lazy">
-            </figure>
-            <div class="gallery-column">
-              <figure class="gallery-panel">
-                <img src="${media["gallery-portrait"].path}" alt="${media["gallery-portrait"].alt}" loading="lazy">
-              </figure>
-              <figure class="gallery-panel">
-                <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
-              </figure>
-            </div>
-          </div>
-
-          ${renderGalleryCarousel()}
-        </section>
-
-        <section id="live" class="performance-section">
-          <div class="performance-tabs" aria-hidden="true">
-            <span class="is-active">Live</span>
-            <span>Bookings</span>
-          </div>
-
-          <div class="performance-list">
-            <article class="performance-row">
-              <div>
-                <h3>Band Anantya Live Set</h3>
-                <p>Hyderabad / Pan-India</p>
-              </div>
-              <div>
-                <p>4-piece to 6-piece live ensemble</p>
-                <strong>Clubs, private celebrations, corporate stages</strong>
-              </div>
-              <a class="ticket-button" href="#contact">Start Booking</a>
-            </article>
-
-            <article class="performance-row">
-              <div>
-                <h3>Soul Trip Showcase</h3>
-                <p>Originals, reinterpretations, and multilingual favourites</p>
-              </div>
-              <div>
-                <p>Artist-led set</p>
-                <strong>Select stage bookings</strong>
-              </div>
-              <a class="ticket-button" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Listen First</a>
-            </article>
-          </div>
-
-          <div class="format-grid">
-            ${renderShowCards()}
-          </div>
-
-          <article class="band-links-card">
-            <div class="band-links-card__brand">
-              ${
-                site.branding && site.branding.bandLogoPath
-                  ? `<img class="band-links-card__logo" src="${site.branding.bandLogoPath}" alt="Band Anantya">`
-                  : ""
-              }
-              <div>
-                <p class="section-micro">Band Anantya</p>
-                <h3>Supporting channels for the live project.</h3>
-                <p>Kept separate from the main artist socials, but close at hand when the full ensemble story matters.</p>
-              </div>
-            </div>
-            <div class="band-links-card__links">
-              ${renderBandLinks()}
-            </div>
-          </article>
-        </section>
-
         <section id="contact" class="contact-section">
           <div class="section-head">
             <p class="section-label">Contact</p>
@@ -535,19 +385,6 @@
                 <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
               </form>
             </article>
-
-            <div class="contact-column">
-              <article class="contact-card">
-                <p class="section-micro">${site.contactForm.featureEyebrow}</p>
-                <h3>${site.contactForm.featureTitle}</h3>
-                <p>${site.contactForm.featureBody}</p>
-                <p class="contact-card__location">${site.artist.city}</p>
-                <p>${site.contactForm.featureFootnote}</p>
-                <div class="contact-socials">
-                  ${renderSocialDots()}
-                </div>
-              </article>
-            </div>
           </div>
         </section>
 
@@ -795,80 +632,6 @@
     window.addEventListener("resize", requestSync);
   }
 
-  function wireGalleryCarousel() {
-    const carousel = document.querySelector("[data-gallery-carousel]");
-    if (!carousel) return;
-
-    const viewport = carousel.querySelector(".gallery-carousel__viewport");
-    const track = carousel.querySelector(".gallery-carousel__track");
-    const slides = Array.from(carousel.querySelectorAll(".gallery-carousel__slide"));
-    const dots = Array.from(carousel.querySelectorAll(".gallery-carousel__dots span"));
-    if (!viewport || !track || slides.length < 2) return;
-
-    const mobileQuery = window.matchMedia("(max-width: 960px)");
-    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let activeIndex = 0;
-    let timer = null;
-
-    const sync = function (index) {
-      activeIndex = (index + slides.length) % slides.length;
-      const offset = viewport.clientWidth * activeIndex;
-      track.style.transform = `translate3d(-${offset}px, 0, 0)`;
-      dots.forEach((dot, dotIndex) => {
-        dot.classList.toggle("is-active", dotIndex === activeIndex);
-      });
-    };
-
-    const stop = function () {
-      if (timer !== null) {
-        window.clearInterval(timer);
-        timer = null;
-      }
-    };
-
-    const start = function () {
-      stop();
-      if (!mobileQuery.matches || reducedMotionQuery.matches) {
-        sync(0);
-        return;
-      }
-
-      timer = window.setInterval(function () {
-        sync(activeIndex + 1);
-      }, 2000);
-    };
-
-    carousel.addEventListener("mouseenter", stop);
-    carousel.addEventListener("mouseleave", start);
-    carousel.addEventListener("focusin", stop);
-    carousel.addEventListener("focusout", start);
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        stop();
-      } else {
-        start();
-      }
-    });
-    window.addEventListener("resize", function () {
-      sync(activeIndex);
-    });
-
-    if (typeof mobileQuery.addEventListener === "function") {
-      mobileQuery.addEventListener("change", start);
-    } else if (typeof mobileQuery.addListener === "function") {
-      mobileQuery.addListener(start);
-    }
-
-    if (typeof reducedMotionQuery.addEventListener === "function") {
-      reducedMotionQuery.addEventListener("change", start);
-    } else if (typeof reducedMotionQuery.addListener === "function") {
-      reducedMotionQuery.addListener(start);
-    }
-
-    sync(0);
-    start();
-  }
-
   function scrollToHash() {
     if (!window.location.hash) return;
     const target = document.querySelector(window.location.hash);
@@ -884,7 +647,6 @@
   wireNav();
   wireScrollChrome();
   wireFeaturedReleaseReveal();
-  wireGalleryCarousel();
   scrollToHash();
   window.addEventListener("hashchange", scrollToHash);
 })();

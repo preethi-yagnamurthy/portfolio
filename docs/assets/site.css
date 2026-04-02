@@ -272,7 +272,7 @@ main {
 
 .hero-panel__bg {
   background-size: cover;
-  background-position: center 18%;
+  background-position: center 3%;
   transform: scale(1.085);
   transform-origin: center center;
   filter: saturate(0.88);
@@ -1089,11 +1089,26 @@ h1 {
   gap: 0.8rem;
 }
 
+.music-pill--icon {
+  min-width: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0;
+  justify-content: center;
+  border-radius: 1.05rem;
+}
+
 .music-pill__icon {
   width: 2rem;
   height: 2rem;
   flex: 0 0 auto;
   object-fit: contain;
+}
+
+.music-pill__fallback {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .music-pill__content {
@@ -1502,19 +1517,13 @@ h1 {
 }
 
 .contact-layout {
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr;
 }
 
 .contact-panel,
-.contact-card,
 .note-card {
   border-radius: var(--radius-md);
   padding: 1.7rem;
-}
-
-.contact-column {
-  display: grid;
-  gap: 1rem;
 }
 
 .contact-form {
@@ -1544,37 +1553,6 @@ h1 {
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   padding: 0.95rem 1rem;
-}
-
-.contact-card {
-  display: grid;
-  gap: 0.55rem;
-}
-
-.contact-card h3 {
-  font-size: 1.55rem;
-}
-
-.contact-card__location {
-  font-size: 1.1rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62);
-}
-
-.contact-card a {
-  color: #fff;
-}
-
-.contact-card small {
-  color: rgba(255, 255, 255, 0.42);
-}
-
-.contact-socials {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.6rem;
 }
 
 .floating-dock {
