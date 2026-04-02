@@ -521,6 +521,10 @@ h1 {
   padding: 2rem 0 0;
 }
 
+.featured-release-section--within-music {
+  padding: 0 0 2rem;
+}
+
 .featured-release-card {
   width: min(calc(100% - 5rem), 58rem);
   margin: 0 auto;
@@ -667,6 +671,10 @@ h1 {
 .contact-section,
 .notes-section {
   padding: 7rem 0;
+}
+
+.notes-section {
+  padding: 2.25rem 0 3rem;
 }
 
 .reel-frame,
@@ -1664,7 +1672,7 @@ body.dock-visible .floating-dock__socials .social-dot:nth-child(5) {
   display: grid;
   justify-items: center;
   text-align: center;
-  padding-block: 2rem;
+  padding-block: 1rem;
 }
 
 .note-card__logo-wrap {

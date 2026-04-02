@@ -17,8 +17,8 @@
 
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
-    { label: "Story", href: "#story", section: "story" },
     { label: "Music", href: "#music", section: "music" },
+    { label: "Story", href: "#story", section: "story" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
     { label: "Contact", href: "#contact", section: "contact" },
   ];
@@ -155,20 +155,20 @@
 
   function renderFeaturedReleaseSection() {
     return `
-      <section id="featured-release" class="featured-release-section" data-featured-release-reveal>
+      <div class="featured-release-section featured-release-section--within-music" data-featured-release-reveal>
         <article class="featured-release-card">
           <figure class="featured-release-card__media">
             <img src="${media["press-portrait"].path}" alt="${media["press-portrait"].alt}" loading="lazy">
           </figure>
           <div class="featured-release-card__shade" aria-hidden="true"></div>
           <div class="featured-release-card__copy">
-            <p class="section-label">Featured release</p>
+            <p class="section-label">Latest release</p>
             <h2>Soul Trip</h2>
             <p>Listed on Amazon Music as a February 18, 2026 single by Yazin and Preethi Yagnamurthy.</p>
             <a class="button button--ghost" href="${activeMusicLinks[1].url}" target="_blank" rel="noopener">Open release</a>
           </div>
         </article>
-      </section>
+      </div>
     `;
   }
 
@@ -256,16 +256,27 @@
           </div>
         </section>
 
-        ${renderFeaturedReleaseSection()}
-
-        <section id="highlights" class="awards-section">
+        <section id="music" class="poster-section">
           <div class="section-head section-head--center">
-            <p class="section-label">Highlights</p>
-            <h2>Milestones in a voice still gathering momentum.</h2>
+            <p class="section-label">Music</p>
+            <h2>Songs that travel from playback rooms to live listening.</h2>
           </div>
-          <div class="awards-grid">
-            ${renderHighlightCards()}
-          </div>
+
+          ${renderFeaturedReleaseSection()}
+
+          <article class="poster-card">
+            <div class="poster-card__wash"></div>
+            <div class="poster-card__copy">
+              <p class="section-micro">Now listening</p>
+              <h3>Soul Trip</h3>
+              <p>From Soul Trip to streaming trails across Amazon Music, Spotify, YouTube, and JioSaavn, the listening path gathers around a voice built for studio detail and stage immediacy.</p>
+              <div class="music-pills">
+                ${renderMusicLinks()}
+              </div>
+            </div>
+          </article>
+
+          ${renderMusicSubsections()}
         </section>
 
         <section id="story" class="spotlight-section">
@@ -287,25 +298,14 @@
           </article>
         </section>
 
-        <section id="music" class="poster-section">
+        <section id="highlights" class="awards-section">
           <div class="section-head section-head--center">
-            <p class="section-label">Music</p>
-            <h2>Songs that travel from playback rooms to live listening.</h2>
+            <p class="section-label">Highlights</p>
+            <h2>Milestones in a voice still gathering momentum.</h2>
           </div>
-
-          <article class="poster-card">
-            <div class="poster-card__wash"></div>
-            <div class="poster-card__copy">
-              <p class="section-micro">Now listening</p>
-              <h3>Soul Trip</h3>
-              <p>From Soul Trip to streaming trails across Amazon Music, Spotify, YouTube, and JioSaavn, the listening path gathers around a voice built for studio detail and stage immediacy.</p>
-              <div class="music-pills">
-                ${renderMusicLinks()}
-              </div>
-            </div>
-          </article>
-
-          ${renderMusicSubsections()}
+          <div class="awards-grid">
+            ${renderHighlightCards()}
+          </div>
         </section>
 
         <section id="contact" class="contact-section">
