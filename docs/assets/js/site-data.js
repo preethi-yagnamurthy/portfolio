@@ -267,7 +267,7 @@ window.SITE_DATA = {
       description:
         "Movie: Missterious<br>Music: M L Raja<br>Style: Melody",
       videoPath: "assets/media/manase-hayiga-missterious.mp4",
-      posterPath: "assets/media/missterious-poster.webp",
+      posterPath: "assets/media/manase-hayiga-poster.jpeg",
       posterAlt: "Poster artwork for Manase Hayiga from Missterious.",
     },
     {
@@ -277,6 +277,14 @@ window.SITE_DATA = {
       videoPath: "assets/media/neti-bharatam.mp4",
       posterPath: "assets/media/neti-bharatam-poster.jpg",
       posterAlt: "Poster frame for Nee Padam from Neti Bharatam.",
+    },
+    {
+      title: "Sreerama Bhaktudu",
+      description:
+        "Style: Devotional",
+      videoPath: "assets/media/sreerama-bhaktudu.mp4",
+      posterPath: "assets/media/sreerama-bhaktudu-poster.jpg",
+      posterAlt: "Poster artwork for Sreerama Bhaktudu.",
     },
   ],
   musicLinks: [
