@@ -23,7 +23,7 @@
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
     { label: "MUSIC", href: "#music", section: "music" },
-    { label: "CONTACT", href: "#contact", section: "contact" },
+    { label: "STORY", href: "#story", section: "story" },
   ];
   const consentStorageKey = "preethi-cookie-consent";
 
@@ -410,7 +410,6 @@
 
   function renderDockNav() {
     return [
-      { label: "Story", href: "#story" },
       { label: "Highlights", href: "#highlights" },
       { label: "Contact", href: "#contact" },
     ]
@@ -756,15 +755,74 @@
   function wireScrollChrome() {
     const mastNav = document.querySelector(".mast-nav");
     if (!mastNav) return;
+    const mobileDockQuery = window.matchMedia(
+      "(max-width: 860px), (max-width: 960px) and (max-height: 520px)"
+    );
+    let lastScrollY = window.scrollY;
+    let hideDockTimer = null;
 
-    const syncScrollChrome = function () {
-      mastNav.classList.toggle("is-scrolled", window.scrollY > 36);
+    const clearHideDockTimer = function () {
+      if (hideDockTimer === null) return;
+      window.clearTimeout(hideDockTimer);
+      hideDockTimer = null;
+    };
+
+    const showDock = function () {
       document.body.classList.add("dock-visible");
     };
 
-    syncScrollChrome();
+    const hideDock = function () {
+      document.body.classList.remove("dock-visible");
+    };
+
+    const scheduleDockHide = function () {
+      clearHideDockTimer();
+      hideDockTimer = window.setTimeout(function () {
+        if (mobileDockQuery.matches) hideDock();
+      }, 5000);
+    };
+
+    const syncDockMode = function () {
+      clearHideDockTimer();
+      mastNav.classList.toggle("is-scrolled", window.scrollY > 36);
+      if (mobileDockQuery.matches) {
+        hideDock();
+      } else {
+        showDock();
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    const syncScrollChrome = function () {
+      const currentScrollY = window.scrollY;
+      mastNav.classList.toggle("is-scrolled", currentScrollY > 36);
+
+      if (mobileDockQuery.matches) {
+        if (currentScrollY > lastScrollY + 1) {
+          showDock();
+          scheduleDockHide();
+        } else if (currentScrollY <= 0) {
+          clearHideDockTimer();
+          hideDock();
+        } else if (currentScrollY < lastScrollY - 1) {
+          showDock();
+          scheduleDockHide();
+        }
+      } else {
+        showDock();
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    syncDockMode();
     window.addEventListener("scroll", syncScrollChrome, { passive: true });
-    window.addEventListener("resize", syncScrollChrome);
+    window.addEventListener("resize", syncDockMode);
+    if (typeof mobileDockQuery.addEventListener === "function") {
+      mobileDockQuery.addEventListener("change", syncDockMode);
+    } else if (typeof mobileDockQuery.addListener === "function") {
+      mobileDockQuery.addListener(syncDockMode);
+    }
   }
 
   function wireFeaturedReleaseReveal() {
@@ -806,6 +864,22 @@
         }
         video.pause();
         video.load();
+      });
+    });
+  }
+
+  function wireExclusiveMediaPlayback() {
+    const players = Array.from(
+      document.querySelectorAll(".music-video-feature__player, .music-audio-feature__player")
+    );
+    if (players.length < 2) return;
+
+    players.forEach(function (player) {
+      player.addEventListener("play", function () {
+        players.forEach(function (otherPlayer) {
+          if (otherPlayer === player) return;
+          if (!otherPlayer.paused) otherPlayer.pause();
+        });
       });
     });
   }
@@ -956,6 +1030,7 @@
   wireScrollChrome();
   wireFeaturedReleaseReveal();
   wireVideoPosterReset();
+  wireExclusiveMediaPlayback();
   wireStoryCarousel();
   wireHighlightCarousels();
   scrollToHash();

@@ -243,7 +243,7 @@ window.SITE_DATA = {
   featuredRelease: {
     title: "Soul Trip",
     description:
-      "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
+      "OTT: Soul Trip (Travel Talk Show)<br>Director: Vijay Datla<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
     videoPath: "assets/media/soul-trip-video.mp4",
     posterPath: "assets/media/soul-trip-poster.jpeg",
     posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
@@ -262,7 +262,7 @@ window.SITE_DATA = {
     {
       title: "Soul Trip",
       description:
-        "OTT: Soul Trip (Travel Talk Show)<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
+        "OTT: Soul Trip (Travel Talk Show)<br>Director: Vijay Datla<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
       videoPath: "assets/media/soul-trip-video.mp4",
       posterPath: "assets/media/soul-trip-poster.jpeg",
       posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
