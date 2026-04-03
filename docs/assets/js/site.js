@@ -16,6 +16,20 @@
     media["story-vidyajyothi-felicitation"],
     media["story-incois-felicitation"],
   ].filter(Boolean);
+  const storyCarouselTuning = {
+    desktopHeight: 420,
+    mobileHeight: 280,
+    values: {
+      "story-nmims-felicitation": { fit: "cover", x: 50, y: 50 },
+      "story-py-with-badshah": { fit: "cover", x: 64, y: 12 },
+      "story-performing-badshah-concert": { fit: "cover", x: 50, y: 50 },
+      "story-performing-nmims": { fit: "cover", x: 50, y: 50 },
+      "story-trophy-badshah-concert": { fit: "contain", x: 50, y: 38 },
+      "story-st-marys-felicitation": { fit: "cover", x: 50, y: 38 },
+      "story-vidyajyothi-felicitation": { fit: "cover", x: 50, y: 45 },
+      "story-incois-felicitation": { fit: "contain", x: 50, y: 50 },
+    },
+  };
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
   const featuredRelease = site.featuredRelease || null;
@@ -613,21 +627,38 @@
   function renderStoryCarousel() {
     if (!storyCarouselItems.length) return "";
 
+    const carouselStyle = [
+      `--story-desktop-height: ${storyCarouselTuning.desktopHeight}px`,
+      `--story-mobile-height: ${storyCarouselTuning.mobileHeight}px`,
+    ].join("; ");
+
     return `
-      <figure class="spotlight-card__media story-carousel" data-story-carousel aria-label="Story portraits">
+      <figure class="spotlight-card__media story-carousel" data-story-carousel aria-label="Story portraits" style="${carouselStyle}">
         <div class="story-carousel__viewport">
           <div class="story-carousel__track">
             ${storyCarouselItems
-              .map(
-                (item) => `
+              .map((item) => {
+                const tuning = storyCarouselTuning.values[item.usageRole] || {
+                  fit: "cover",
+                  x: 50,
+                  y: 50,
+                };
+                const slideStyle = [
+                  `--story-object-fit: ${tuning.fit}`,
+                  `--story-object-position-x: ${tuning.x}%`,
+                  `--story-object-position-y: ${tuning.y}%`,
+                ].join("; ");
+
+                return `
                   <div
                     class="story-carousel__slide"
                     data-story-orientation="${String(item.cropPreference || "").includes("portrait") ? "portrait" : "landscape"}"
+                    style="${slideStyle}"
                   >
                     <img src="${item.path}" alt="${item.alt}" loading="lazy">
                   </div>
                 `
-              )
+              })
               .join("")}
           </div>
         </div>
