@@ -160,7 +160,7 @@ window.SITE_DATA = {
       title: "Actor - Apple Ad",
       description:
         "Acted in the Apple MacBook Pro Ad streamed across the globe.",
-      url: "https://www.instagram.com/reels/C8JJm3GPz-y/",
+      url: "https://www.instagram.com/reel/C8JJm3GPz-y/",
       linkLabel: "View Ad",
       trust: "artist-provided",
     },
