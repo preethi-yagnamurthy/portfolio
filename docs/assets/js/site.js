@@ -467,6 +467,7 @@
 
   function renderDockNav() {
     return [
+      { label: "Voiceover & Ads", href: "#voiceovers-ads" },
       { label: "Highlights", href: "#highlights" },
       { label: "Contact", href: "#contact" },
     ]
@@ -513,6 +514,25 @@
             : ""
         }
       </figure>
+    `;
+  }
+
+  function renderStoryBody() {
+    const intro = Array.isArray(site.bio && site.bio.intro) ? site.bio.intro : [];
+    if (!intro.length) return "";
+
+    const bodyParagraphs = intro.slice(0, -1);
+    const tagline = intro[intro.length - 1];
+
+    return `
+      ${bodyParagraphs
+        .map(
+          (paragraph) => `
+            <p class="section-micro story-card__body">${paragraph}</p>
+          `
+        )
+        .join("")}
+      <p class="section-micro story-card__body story-card__tagline">${tagline}</p>
     `;
   }
 
@@ -578,8 +598,7 @@
 
           <article class="spotlight-card">
             <div class="spotlight-card__copy">
-              <p class="section-micro story-card__body">${site.bio.intro[0]}</p>
-              <p class="section-micro story-card__body story-card__tagline">${site.bio.intro[1]}</p>
+              ${renderStoryBody()}
             </div>
             ${renderStoryCarousel()}
           </article>
@@ -1083,7 +1102,20 @@
     const target = document.querySelector(window.location.hash);
     if (!target) return;
     window.requestAnimationFrame(function () {
-      target.scrollIntoView({ block: "start" });
+      if (window.location.hash === "#home") {
+        window.scrollTo({ top: 0 });
+        return;
+      }
+
+      const mastNav = document.querySelector(".mast-nav");
+      const mastNavHeight = mastNav ? mastNav.getBoundingClientRect().height : 0;
+      const offset = mastNavHeight + 20;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
     });
   }
 

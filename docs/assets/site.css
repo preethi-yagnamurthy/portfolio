@@ -1232,6 +1232,10 @@ h1 {
   max-width: 34rem;
 }
 
+.story-card__body.section-micro + .story-card__body.section-micro:not(.story-card__tagline) {
+  margin-top: 1.15rem;
+}
+
 .story-card__tagline.section-micro {
   margin-top: auto;
   padding-top: 1.8rem;

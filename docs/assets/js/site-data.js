@@ -77,6 +77,7 @@ window.SITE_DATA = {
   bio: {
     intro: [
       "Preethi Yagnamurthy’s voice was shaped through early Carnatic training, where discipline, phrasing, and emotional clarity became part of its foundation. That grounding now moves through playback songs, live performances, and a growing multilingual repertoire, carrying forward an evolving artistic identity. In 2023, she also founded Band Anantya, extending that journey into a live identity of its own.",
+      "Her journey also extends into television stages, judging panels at reputed institutions, flea-market stage performances, acting in ad films, and voice works for movies and web series.",
       "Across each space, classical roots continue to find a contemporary expression in her voice.",
     ],
     roots: [
