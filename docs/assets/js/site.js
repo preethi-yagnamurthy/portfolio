@@ -14,6 +14,7 @@
     media["story-trophy-badshah-concert"],
     media["story-st-marys-felicitation"],
     media["story-vidyajyothi-felicitation"],
+    media["story-incois-felicitation"],
   ].filter(Boolean);
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;

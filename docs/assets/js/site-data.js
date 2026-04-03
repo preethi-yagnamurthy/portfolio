@@ -644,6 +644,13 @@ window.SITE_DATA = {
       placement: "story",
     },
     {
+      path: "assets/media/story-incois-felicitation.jpg",
+      usageRole: "story-incois-felicitation",
+      alt: "Preethi Yagnamurthy on stage at the International Indian Ocean Science Conference.",
+      cropPreference: "landscape-event",
+      placement: "story",
+    },
+    {
       path: "assets/media/preethi-press-portrait.jpg",
       usageRole: "press-portrait",
       alt: "Clean editorial portrait of Preethi Yagnamurthy in a blue sweater.",
