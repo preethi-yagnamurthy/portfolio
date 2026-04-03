@@ -440,7 +440,9 @@ main {
 }
 
 .hero-copy > :nth-child(1) {
-  animation-delay: 2s;
+  animation:
+    hero-copy-reveal 0.9s cubic-bezier(0.2, 0.9, 0.2, 1) 2s forwards,
+    hero-heading-color-shift 6s ease-in-out 2s infinite alternate;
 }
 
 .hero-copy > :nth-child(2) {
@@ -487,6 +489,10 @@ h1 {
   font-size: clamp(4.1rem, 8vw, 7.7rem);
   line-height: 0.88;
   letter-spacing: -0.05em;
+}
+
+.hero-copy h1 {
+  color: #fff8ec;
 }
 
 .hero-copy__lead,
@@ -585,6 +591,20 @@ h1 {
   }
 }
 
+@keyframes hero-heading-color-shift {
+  0% {
+    color: #fff8ec;
+  }
+
+  50% {
+    color: var(--gold);
+  }
+
+  100% {
+    color: #050402;
+  }
+}
+
 @keyframes hero-cta-glare {
   0% {
     opacity: 0;
@@ -676,6 +696,10 @@ h1 {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .hero-copy h1 {
+    color: var(--gold);
   }
 
   .hero-cta-button::before,
