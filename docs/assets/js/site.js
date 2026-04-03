@@ -16,6 +16,12 @@
     media["story-vidyajyothi-felicitation"],
     media["story-incois-felicitation"],
   ].filter(Boolean);
+  const storyBottomFocusRoles = new Set([
+    "story-py-with-badshah",
+    "story-trophy-badshah-concert",
+    "story-st-marys-felicitation",
+    "story-vidyajyothi-felicitation",
+  ]);
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
   const featuredRelease = site.featuredRelease || null;
@@ -623,6 +629,7 @@
                   <div
                     class="story-carousel__slide"
                     data-story-orientation="${String(item.cropPreference || "").includes("portrait") ? "portrait" : "landscape"}"
+                    data-story-focus="${storyBottomFocusRoles.has(item.usageRole) ? "bottom" : "center"}"
                   >
                     <img src="${item.path}" alt="${item.alt}" loading="lazy">
                   </div>
@@ -723,7 +730,7 @@
               <h1>${site.artist.name}</h1>
               <p class="hero-copy__tagline">Multilingual | Multi-genre playback singer</p>
               <div class="hero-copy__actions">
-                <a class="button button--solid" href="#music">Listen now</a>
+                <a class="button button--solid hero-cta-button" href="#music">Listen now</a>
               </div>
             </div>
           </div>
