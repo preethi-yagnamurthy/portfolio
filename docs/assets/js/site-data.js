@@ -114,6 +114,54 @@ window.SITE_DATA = {
         "Hyderabad-based live band, built around female lead vocals, and an energetic team performing across genres, languages on multiple platforms including TV shows and live shows.",
       trust: "credible-third-party-profile",
     },
+    {
+      year: "2025",
+      title: "Dubbed for a Telugu movie",
+      description:
+        "Dubbed for the female lead in the movie Gedela Raju Kakinada Taluka, pending release.",
+      trust: "artist-provided",
+    },
+    {
+      year: "2025",
+      title: "Judged several singing competitions",
+      description:
+        "Honored to be the judge for singing competitions at several reputed institutes in Hyderabad including Narsee Monjee Institute of Management Studies, Vidya Jyothi Institute of Technology, St.Mary's college and so on.",
+      trust: "artist-provided",
+    },
+    {
+      year: "Recent",
+      title: "Dubbed for a web series on Youtube",
+      description:
+        "Dubbed for the female lead in the YouTube web series Avida ma Avide hosted on the channel What The Fun Telugu and Anaganaga Talks.",
+      url: "https://youtube.com/playlist?list=PLTty8pC_QV5iK_agBIUnHrzFCV7tcluW_&si=pMVsdKp6M08ghaaY",
+      linkLabel: "Open on youtube",
+      trust: "artist-provided",
+    },
+    {
+      year: "Recent",
+      title: "Special Performances on ETV",
+      description:
+        "Performed on ETV shows Sridevi Drama Company and Jai Jai Ganesha.",
+      trust: "artist-provided",
+    },
+    {
+      year: "Recent",
+      title: "Actor - Apple Ad",
+      description:
+        "Acted in the Apple MacBook Pro Ad streamed across the globe.",
+      url: "https://www.instagram.com/reels/C8JJm3GPz-y/",
+      linkLabel: "View Ad",
+      trust: "artist-provided",
+    },
+    {
+      year: "Recent",
+      title: "Actor - LRSA Battery Ad",
+      description:
+        "Acted in a battery review Ad for LRSA battery, explaining the features, specifications, and overall review.",
+      url: "https://youtu.be/1vpBnhwCpTc?si=p_mNyT-lXAp983p1",
+      linkLabel: "View Ad",
+      trust: "artist-provided",
+    },
   ],
   upcomingHighlights: [
     {
@@ -545,6 +593,55 @@ window.SITE_DATA = {
       alt: "Smiling outdoor portrait of Preethi Yagnamurthy in Hyderabad.",
       cropPreference: "portrait-natural",
       placement: "about",
+    },
+    {
+      path: "assets/media/story-nmims-felicitation.jpg",
+      usageRole: "story-nmims-felicitation",
+      alt: "Preethi Yagnamurthy receiving a felicitation on stage at NMIMS.",
+      cropPreference: "portrait-event",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-py-with-badshah.jpg",
+      usageRole: "story-py-with-badshah",
+      alt: "Preethi Yagnamurthy posing with Badshah backstage.",
+      cropPreference: "portrait-backstage",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-performing-badshah-concert.jpg",
+      usageRole: "story-performing-badshah-concert",
+      alt: "Preethi Yagnamurthy performing on stage at Badshah's concert.",
+      cropPreference: "landscape-stage",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-performing-nmims.jpg",
+      usageRole: "story-performing-nmims",
+      alt: "Preethi Yagnamurthy performing live on stage at NMIMS.",
+      cropPreference: "landscape-stage",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-trophy-badshah-concert.jpg",
+      usageRole: "story-trophy-badshah-concert",
+      alt: "Preethi Yagnamurthy holding a certificate and flowers after the Badshah concert milestone.",
+      cropPreference: "portrait-award",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-st-marys-felicitation.png",
+      usageRole: "story-st-marys-felicitation",
+      alt: "Preethi Yagnamurthy receiving a felicitation at St. Mary's.",
+      cropPreference: "portrait-felicitation",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-vidyajyothi-felicitation.jpg",
+      usageRole: "story-vidyajyothi-felicitation",
+      alt: "Preethi Yagnamurthy receiving a felicitation at Vidya Jyothi.",
+      cropPreference: "portrait-felicitation",
+      placement: "story",
     },
     {
       path: "assets/media/preethi-press-portrait.jpg",

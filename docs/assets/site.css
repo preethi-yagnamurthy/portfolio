@@ -943,14 +943,16 @@ h1 {
   line-height: 1.04;
 }
 
-.highlight-carousel-stack {
+.highlight-carousel-stack,
+.highlight-list-stack {
   width: min(calc(100% - 5rem), 54rem);
   margin: 0 auto;
   display: grid;
   gap: 1rem;
 }
 
-.highlight-carousel-card {
+.highlight-carousel-card,
+.highlight-list-card {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background:
@@ -987,19 +989,38 @@ h1 {
   color: rgba(214, 181, 106, 0.5);
 }
 
-.highlight-carousel-card h3 {
+.highlight-list-card__body {
+  min-height: 15.5rem;
+  padding: 1.8rem 2rem 2.1rem;
+}
+
+.voiceovers-section .highlight-list-card__body {
+  min-height: auto;
+  padding-bottom: 1.7rem;
+}
+
+.highlight-list-card__year,
+.highlight-carousel-card__year {
+  margin: 0 0 1rem;
+  color: rgba(214, 181, 106, 0.5);
+}
+
+.highlight-carousel-card h3,
+.highlight-list-card h3 {
   font-size: 1.85rem;
   margin-bottom: 0.8rem;
 }
 
-.highlight-carousel-card__desc {
+.highlight-carousel-card__desc,
+.highlight-list-card__desc {
   color: var(--muted-strong);
   line-height: 1.7;
   font-size: 1rem;
   margin: 0;
 }
 
-.highlight-carousel-card__link {
+.highlight-carousel-card__link,
+.highlight-list-card__link {
   margin-top: 1.2rem;
   min-height: 2.75rem;
   padding-inline: 1.1rem;
@@ -2293,6 +2314,7 @@ body.nav-open .consent-banner {
   .reel-frame--wide,
   .reel-grid,
   .highlight-carousel-stack,
+  .highlight-list-stack,
   .awards-grid,
   .press-feature,
   .spotlight-card,
@@ -2436,6 +2458,7 @@ body.nav-open .consent-banner {
   .reel-frame--wide,
   .reel-grid,
   .highlight-carousel-stack,
+  .highlight-list-stack,
   .awards-grid,
   .press-feature,
   .spotlight-card,
@@ -2479,7 +2502,8 @@ body.nav-open .consent-banner {
   .music-video-feature__art,
   .listening-room-feature__copy,
   .highlight-carousel-card__head,
-  .highlight-carousel-card__slide {
+  .highlight-carousel-card__slide,
+  .highlight-list-card__body {
     padding: 2rem 1.5rem;
   }
 

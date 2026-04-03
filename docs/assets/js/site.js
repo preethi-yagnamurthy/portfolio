@@ -7,10 +7,13 @@
     site.gallery.map((item) => [item.usageRole, item])
   );
   const storyCarouselItems = [
-    media["about-portrait"],
-    media["press-portrait"],
-    media["home-spotlight"],
-    media["music-portrait"],
+    media["story-nmims-felicitation"],
+    media["story-py-with-badshah"],
+    media["story-performing-badshah-concert"],
+    media["story-performing-nmims"],
+    media["story-trophy-badshah-concert"],
+    media["story-st-marys-felicitation"],
+    media["story-vidyajyothi-felicitation"],
   ].filter(Boolean);
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
@@ -20,6 +23,12 @@
       ? site.playbackFeatures
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
+  const voiceoversAdsTitles = [
+    "Dubbed for a Telugu movie",
+    "Dubbed for a web series on Youtube",
+    "Actor - Apple Ad",
+    "Actor - LRSA Battery Ad",
+  ];
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
     { label: "MUSIC", href: "#music", section: "music" },
@@ -113,6 +122,19 @@
       .map((entry) => entry.item);
   }
 
+  function getVoiceoversAdsItems() {
+    return voiceoversAdsTitles
+      .map((title) => (site.highlights || []).find((item) => item.title === title))
+      .filter(Boolean);
+  }
+
+  function getMilestoneItems() {
+    const excludedTitles = new Set(voiceoversAdsTitles);
+    return sortHighlightsDescending(
+      (site.highlights || []).filter((item) => !excludedTitles.has(item.title))
+    );
+  }
+
   function renderHighlightCarouselCard(label, items, key) {
     if (!Array.isArray(items) || !items.length) return "";
 
@@ -183,8 +205,36 @@
     `;
   }
 
+  function renderHighlightListCard(item) {
+    return `
+      <article class="highlight-list-card">
+        <div class="highlight-list-card__body">
+          <p class="highlight-list-card__year">${item.year}</p>
+          <h3>${item.title}</h3>
+          <p class="highlight-list-card__desc">${item.description}</p>
+          ${
+            item.url
+              ? `<a class="highlight-list-card__link button button--ghost" href="${item.url}" target="_blank" rel="noopener">${item.linkLabel || "Open link"}</a>`
+              : ""
+          }
+        </div>
+      </article>
+    `;
+  }
+
+  function renderVoiceoversAdsPanels() {
+    const items = getVoiceoversAdsItems();
+    if (!items.length) return "";
+
+    return `
+      <div class="highlight-list-stack">
+        ${items.map((item) => renderHighlightListCard(item)).join("")}
+      </div>
+    `;
+  }
+
   function renderHighlightsPanels() {
-    const milestoneItems = sortHighlightsDescending(site.highlights || []);
+    const milestoneItems = getMilestoneItems();
     const upcomingItems = Array.isArray(site.upcomingHighlights) ? site.upcomingHighlights : [];
 
     return `
@@ -510,6 +560,13 @@
           ${renderPlaybackSection()}
           ${renderRawVocalsSection()}
           ${renderOtherWorksSection()}
+        </section>
+
+        <section id="voiceovers-ads" class="voiceovers-section">
+          <div class="section-head section-head--center">
+            <p class="section-label">Voiceover & Ads</p>
+          </div>
+          ${renderVoiceoversAdsPanels()}
         </section>
 
         <section id="story" class="spotlight-section">
