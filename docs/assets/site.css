@@ -2458,6 +2458,10 @@ body.dock-visible .floating-dock__socials .social-dot:nth-child(5) {
   transition-delay: 0.9s;
 }
 
+body.dock-visible .floating-dock__socials .social-dot:nth-child(6) {
+  transition-delay: 0.98s;
+}
+
 .form-feedback {
   margin: 0;
   color: var(--gold);
