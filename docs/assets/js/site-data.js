@@ -169,7 +169,7 @@ window.SITE_DATA = {
       title: "Actor - LRSA Battery Ad",
       description:
         "Acted in a battery review Ad for LRSA battery, explaining the features, specifications, and overall review.",
-      url: "https://youtu.be/1vpBnhwCpTc?si=p_mNyT-lXAp983p1",
+      url: "https://www.instagram.com/reel/DTe0OYSEfzs/",
       linkLabel: "View Ad",
       trust: "artist-provided",
     },

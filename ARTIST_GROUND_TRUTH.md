@@ -87,11 +87,11 @@ For this first pass, every structured item starts with the same status by defaul
 | ID | Status | Item | URL |
 | --- | --- | --- | --- |
 | GT-036 | Used in website | Home and live recordings folder | https://drive.google.com/drive/folders/17Nyai7o55Ft8I5IvG_-Y9VoyW42kinij |
-| GT-037 | Used in website | Instagram reel | https://www.instagram.com/reel/DR6CZ2cid05/?igsh=MTBud2t1YTYxYjJqcA |
+| GT-037 | Used in website | Instagram reel | https://www.instagram.com/reel/DR6CZ2cid05/ |
 | GT-038 | Used in website | Voice-only songs folder 1 | https://drive.google.com/drive/folders/1t0EKTeBDoeKgzF-NhWbCviNJkS_C3fjy |
 | GT-039 | Used in website | Voice-only songs folder 2 | https://drive.google.com/drive/folders/16Ua8sJX6iHtGMnxayAVf7N3WGlM79vT2 |
-| GT-040 | Used in website | Instagram: Band ANANTYA | https://www.instagram.com/bandanantya?igsh=MWt2aTF1MWI5NzdpMw== |
-| GT-041 | Used in website | Instagram: Preethi Yagnamurthy Singer | https://www.instagram.com/preethiyagnamurthy_singer?igsh=MTYzY2dpcWx6bGszbg== |
+| GT-040 | Used in website | Instagram: Band ANANTYA | https://www.instagram.com/bandanantya/ |
+| GT-041 | Used in website | Instagram: Preethi Yagnamurthy Singer | https://www.instagram.com/preethiyagnamurthy_singer/ |
 | GT-042 | Used in website | YouTube: Band ANANTYA | https://youtube.com/@bandanantya?si=V4zhVN8XkjTnQto9 |
 | GT-043 | Used in website | Facebook: Band ANANTYA | https://www.facebook.com/share/16m8NvHPA1/?mibextid=qi2Omg |
 
@@ -119,7 +119,7 @@ Am a trained Carnatic Classical Singer.
 
 https://drive.google.com/drive/folders/17Nyai7o55Ft8I5IvG_-Y9VoyW42kinij
 
-https://www.instagram.com/reel/DR6CZ2cid05/?igsh=MTBud2t1YTYxYjJqcA
+https://www.instagram.com/reel/DR6CZ2cid05/
 ======
 Total 26 songs recorded with S/s ML Raja, Sahityya Sagar, Micky J Meyer, Sukumar, Gopinadh Konda, Praveen Kumar garu, etc., (2 Hindi, 1 Kannada movie songs to release).
 ======
@@ -139,9 +139,9 @@ Thanks a lot.
 Many more in my pages:
 Media:
 Instagram:
-https://www.instagram.com/bandanantya?igsh=MWt2aTF1MWI5NzdpMw==
+https://www.instagram.com/bandanantya/
 
-https://www.instagram.com/preethiyagnamurthy_singer?igsh=MTYzY2dpcWx6bGszbg==
+https://www.instagram.com/preethiyagnamurthy_singer/
 
 YouTube:
 Band ANANTYA
