@@ -236,18 +236,20 @@ main {
 }
 
 .mast-nav__link {
+  display: inline-flex;
+  align-items: center;
   color: rgba(234, 220, 186, 0.8);
 }
 
 .mast-nav__link--has-submenu::after {
   content: "";
   display: inline-block;
-  margin-left: 0.55rem;
-  width: 0.38rem;
-  height: 0.38rem;
+  margin-left: 0.22rem;
+  width: 0.34rem;
+  height: 0.34rem;
   border-right: 1px solid currentColor;
   border-bottom: 1px solid currentColor;
-  transform: translateY(-0.12rem) rotate(45deg);
+  transform: translateY(-0.08rem) rotate(45deg);
   opacity: 0.85;
 }
 
