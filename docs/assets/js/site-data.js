@@ -148,6 +148,10 @@ window.SITE_DATA = {
           label: "View performance 1",
           url: "https://drive.google.com/file/d/1EhpQOBDH2vep5dkKWb4IRHrvJ2KSLNE_/view?usp=drivesdk",
         },
+        {
+          label: "View performance 2",
+          url: "https://drive.google.com/file/d/1EhpQOBDH2vep5dkKWb4IRHrvJ2KSLNE_/view?usp=drivesdk",
+        },
       ],
       trust: "artist-provided",
     },
@@ -306,15 +310,6 @@ window.SITE_DATA = {
   },
   playbackFeatures: [
     {
-      title: "Bhimavaram Balma (Hindi)",
-      description:
-        "Movie - Anaganaga Oka Raju<br>Music - Mickey J Meyer<br>Style - Dance Number",
-      videoPath: "assets/media/bhimavaram-balma-hindi.mp4",
-      posterPath: "assets/media/bhimavaram-balma-cover.jpg",
-      posterAlt:
-        "Album cover artwork for Bhimavaram Balma (Hindi) from Anaganaga Oka Raju.",
-    },
-    {
       title: "Soul Trip",
       description:
         "OTT: Soul Trip (Travel Talk Show)<br>Director: Vijay Datla<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
@@ -322,6 +317,15 @@ window.SITE_DATA = {
       posterPath: "assets/media/soul-trip-poster.jpeg",
       posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
       showMusicLinks: true,
+    },
+    {
+      title: "Bhimavaram Balma (Hindi)",
+      description:
+        "Movie - Anaganaga Oka Raju<br>Music - Mickey J Meyer<br>Style - Dance Number",
+      videoPath: "assets/media/bhimavaram-balma-hindi.mp4",
+      posterPath: "assets/media/bhimavaram-balma-cover.jpg",
+      posterAlt:
+        "Album cover artwork for Bhimavaram Balma (Hindi) from Anaganaga Oka Raju.",
     },
     {
       title: "Manase Hayiga",
