@@ -1390,6 +1390,14 @@ h1 {
   overflow: hidden;
   height: clamp(15rem, 24vw, 18.5rem);
   min-height: clamp(15rem, 24vw, 18.5rem);
+  transition:
+    height 260ms ease,
+    min-height 260ms ease;
+}
+
+.story-carousel.is-portrait-active .story-carousel__viewport {
+  height: clamp(19rem, 34vw, 25rem);
+  min-height: clamp(19rem, 34vw, 25rem);
 }
 
 .story-carousel__track {
@@ -2739,6 +2747,11 @@ body.nav-open .consent-banner {
     min-height: clamp(11rem, 30svh, 14rem);
   }
 
+  .story-carousel.is-portrait-active .story-carousel__viewport {
+    height: clamp(14rem, 42svh, 19rem);
+    min-height: clamp(14rem, 42svh, 19rem);
+  }
+
   .music-video-feature {
     grid-template-columns: 1fr;
     gap: 0.75rem;
@@ -3018,6 +3031,11 @@ body.nav-open .consent-banner {
   .story-carousel__viewport {
     height: clamp(8.5rem, 22svh, 10.5rem);
     min-height: clamp(8.5rem, 22svh, 10.5rem);
+  }
+
+  .story-carousel.is-portrait-active .story-carousel__viewport {
+    height: clamp(11.5rem, 34svh, 15rem);
+    min-height: clamp(11.5rem, 34svh, 15rem);
   }
 
   .story-carousel__controls {

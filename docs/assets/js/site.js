@@ -620,7 +620,10 @@
             ${storyCarouselItems
               .map(
                 (item) => `
-                  <div class="story-carousel__slide">
+                  <div
+                    class="story-carousel__slide"
+                    data-story-orientation="${String(item.cropPreference || "").includes("portrait") ? "portrait" : "landscape"}"
+                  >
                     <img src="${item.path}" alt="${item.alt}" loading="lazy">
                   </div>
                 `
@@ -1230,6 +1233,12 @@
 
       const sync = function () {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        const activeSlide = slides[currentIndex];
+        const activeOrientation =
+          activeSlide && activeSlide.dataset.storyOrientation === "portrait"
+            ? "portrait"
+            : "landscape";
+        carousel.classList.toggle("is-portrait-active", activeOrientation === "portrait");
         dots.forEach(function (dot, index) {
           dot.classList.toggle("is-active", index === currentIndex);
           dot.setAttribute("aria-pressed", String(index === currentIndex));
