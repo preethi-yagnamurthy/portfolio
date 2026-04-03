@@ -136,6 +136,28 @@
     );
   }
 
+  function renderHighlightActions(item, linkClass, actionsClass) {
+    const links = Array.isArray(item.links) && item.links.length
+      ? item.links
+      : item.url
+        ? [{ url: item.url, label: item.linkLabel || "Open link" }]
+        : [];
+
+    if (!links.length) return "";
+
+    return `
+      <div class="${actionsClass}">
+        ${links
+          .map(
+            (link) => `
+              <a class="${linkClass} button button--ghost" href="${link.url}" target="_blank" rel="noopener">${link.label || "Open link"}</a>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
   function renderHighlightCarouselCard(label, items, key) {
     if (!Array.isArray(items) || !items.length) return "";
 
@@ -152,11 +174,11 @@
                   <article class="highlight-carousel-card__slide">
                     <h3>${item.title}</h3>
                     <p class="highlight-carousel-card__desc">${item.description}</p>
-                    ${
-                      item.url
-                        ? `<a class="highlight-carousel-card__link button button--ghost" href="${item.url}" target="_blank" rel="noopener">${item.linkLabel || "Open link"}</a>`
-                        : ""
-                    }
+                    ${renderHighlightActions(
+                      item,
+                      "highlight-carousel-card__link",
+                      "highlight-carousel-card__actions"
+                    )}
                   </article>
                 `
               )
@@ -211,11 +233,11 @@
         <div class="highlight-list-card__body">
           <h3>${item.title}</h3>
           <p class="highlight-list-card__desc">${item.description}</p>
-          ${
-            item.url
-              ? `<a class="highlight-list-card__link button button--ghost" href="${item.url}" target="_blank" rel="noopener">${item.linkLabel || "Open link"}</a>`
-              : ""
-          }
+          ${renderHighlightActions(
+            item,
+            "highlight-list-card__link",
+            "highlight-list-card__actions"
+          )}
         </div>
       </article>
     `;

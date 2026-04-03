@@ -143,6 +143,12 @@ window.SITE_DATA = {
       title: "Special Performances on ETV",
       description:
         "Performed on ETV shows Sridevi Drama Company and Jai Jai Ganesha.",
+      links: [
+        {
+          label: "View performance 1",
+          url: "https://drive.google.com/file/d/1EhpQOBDH2vep5dkKWb4IRHrvJ2KSLNE_/view?usp=drivesdk",
+        },
+      ],
       trust: "artist-provided",
     },
     {
