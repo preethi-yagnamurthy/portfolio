@@ -150,7 +150,6 @@
               .map(
                 (item) => `
                   <article class="highlight-carousel-card__slide">
-                    <p class="highlight-carousel-card__year">${item.year}</p>
                     <h3>${item.title}</h3>
                     <p class="highlight-carousel-card__desc">${item.description}</p>
                     ${
@@ -210,7 +209,6 @@
     return `
       <article class="highlight-list-card">
         <div class="highlight-list-card__body">
-          <p class="highlight-list-card__year">${item.year}</p>
           <h3>${item.title}</h3>
           <p class="highlight-list-card__desc">${item.description}</p>
           ${
@@ -496,19 +494,37 @@
         ${
           storyCarouselItems.length > 1
             ? `
-              <div class="story-carousel__dots" aria-label="Story image navigation">
-                ${storyCarouselItems
-                  .map(
-                    (_, index) => `
-                      <button
-                        class="story-carousel__dot${index === 0 ? " is-active" : ""}"
-                        type="button"
-                        aria-label="Show story image ${index + 1}"
-                        data-story-dot="${index}"
-                      ></button>
-                    `
-                  )
-                  .join("")}
+              <div class="story-carousel__controls">
+                <button
+                  class="story-carousel__arrow highlight-carousel-card__arrow"
+                  type="button"
+                  aria-label="Previous story image"
+                  data-story-prev
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div class="story-carousel__dots" aria-label="Story image navigation">
+                  ${storyCarouselItems
+                    .map(
+                      (_, index) => `
+                        <button
+                          class="story-carousel__dot${index === 0 ? " is-active" : ""}"
+                          type="button"
+                          aria-label="Show story image ${index + 1}"
+                          data-story-dot="${index}"
+                        ></button>
+                      `
+                    )
+                    .join("")}
+                </div>
+                <button
+                  class="story-carousel__arrow highlight-carousel-card__arrow"
+                  type="button"
+                  aria-label="Next story image"
+                  data-story-next
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
             `
             : ""
@@ -977,6 +993,8 @@
       const track = carousel.querySelector(".story-carousel__track");
       const slides = Array.from(carousel.querySelectorAll(".story-carousel__slide"));
       const dots = Array.from(carousel.querySelectorAll("[data-story-dot]"));
+      const previous = carousel.querySelector("[data-story-prev]");
+      const next = carousel.querySelector("[data-story-next]");
       if (!track || slides.length < 2) return;
 
       let currentIndex = 0;
@@ -1012,6 +1030,22 @@
           start();
         });
       });
+
+      if (previous) {
+        previous.addEventListener("click", function () {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          sync();
+          start();
+        });
+      }
+
+      if (next) {
+        next.addEventListener("click", function () {
+          currentIndex = (currentIndex + 1) % slides.length;
+          sync();
+          start();
+        });
+      }
 
       carousel.addEventListener("mouseenter", stop);
       carousel.addEventListener("mouseleave", start);
