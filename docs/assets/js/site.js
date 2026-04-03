@@ -771,9 +771,6 @@
         </section>
 
         <section id="voiceovers-ads" class="voiceovers-section">
-          <div class="section-head section-head--center">
-            <p class="section-label">Voiceover & Ads</p>
-          </div>
           ${renderVoiceoversAdsPanels()}
         </section>
 
