@@ -150,7 +150,7 @@ window.SITE_DATA = {
         },
         {
           label: "View performance 2",
-          url: "https://drive.google.com/file/d/1EhpQOBDH2vep5dkKWb4IRHrvJ2KSLNE_/view?usp=drivesdk",
+          url: "https://drive.google.com/file/d/1NoqBtdsRsKHHbV5spQTmlncNIz6VPzOC/view?usp=drivesdk",
         },
       ],
       trust: "artist-provided",
@@ -180,6 +180,12 @@ window.SITE_DATA = {
       title: "Telugu rap song",
       description:
         "An upcoming Telugu rap song is in the pipeline.",
+    },
+    {
+      year: "Upcoming",
+      title: "Kannada song - Nooraaru kalale",
+      description:
+        "Awaiting release is a kannada melody song.",
     },
     {
       year: "Upcoming",
@@ -252,7 +258,7 @@ window.SITE_DATA = {
         modified: "Jan 1",
       },
       {
-        title: "Special performances",
+        title: "TV, special performances",
         url: "https://drive.google.com/drive/folders/1gxZUFIa7sLHcfxrHuRh9UI2EIQfpj_7W",
         modified: "Jan 1",
       },

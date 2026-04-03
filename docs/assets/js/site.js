@@ -30,16 +30,27 @@
     "Actor - Apple Ad",
     "Actor - LRSA Battery Ad",
   ];
+  const musicSubsections = [
+    { label: "Playback", href: "#playback", section: "music" },
+    { label: "Vocals", href: "#vocals", section: "music" },
+    {
+      label: "Covers & special performances",
+      href: "#covers-special-performances",
+      section: "music",
+    },
+    { label: "Voiceover & Ads", href: "#voiceovers-ads", section: "voiceovers-ads" },
+  ];
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
-    { label: "MUSIC", href: "#music", section: "music" },
+    { label: "MUSIC", href: "#music", section: "music", children: musicSubsections },
     { label: "STORY", href: "#story", section: "story" },
   ];
   const consentStorageKey = "preethi-cookie-consent";
+  let hashScrollCorrectionTimer = null;
 
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
-    { label: "Music", href: "#music", section: "music" },
+    { label: "Music", href: "#music", section: "music", children: musicSubsections },
     { label: "Story", href: "#story", section: "story" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
     { label: "Contact", href: "#contact", section: "contact" },
@@ -398,7 +409,7 @@
 
   function renderPlaybackSection() {
     return `
-      <article class="music-topic-card music-topic-card--playback">
+      <article id="playback" class="music-topic-card music-topic-card--playback">
         <div class="music-topic-card__head">
           <p class="section-micro">Playback Feature</p>
         </div>
@@ -414,7 +425,7 @@
     if (!voiceOnlyFolders.length) return "";
 
     return `
-      <article class="music-topic-card music-topic-card--raw-vocals">
+      <article id="vocals" class="music-topic-card music-topic-card--raw-vocals">
         <div class="music-topic-card__head">
           <p class="section-micro">Vocals</p>
         </div>
@@ -438,7 +449,7 @@
     if (!archiveMarkup) return "";
 
     return `
-      <article class="music-topic-card music-topic-card--other-works">
+      <article id="covers-special-performances" class="music-topic-card music-topic-card--other-works">
         <div class="music-topic-card__head">
           <p class="section-micro">Other works</p>
         </div>
@@ -463,9 +474,28 @@
         ${desktopNav
           .map(
             (item) => `
-              <a class="mast-nav__link" href="${item.href}" data-section="${item.section}">
-                ${item.label}
-              </a>
+              <div class="mast-nav__item${item.children ? " mast-nav__item--with-submenu" : ""}">
+                <a class="mast-nav__link${item.children ? " mast-nav__link--has-submenu" : ""}" href="${item.href}" data-section="${item.section}">
+                  ${item.label}
+                </a>
+                ${
+                  item.children
+                    ? `
+                      <div class="mast-nav__submenu" aria-label="${item.label} subsections">
+                        ${item.children
+                          .map(
+                            (child) => `
+                              <a class="mast-nav__submenu-link" href="${child.href}" data-section="${child.section}">
+                                ${child.label}
+                              </a>
+                            `
+                          )
+                          .join("")}
+                      </div>
+                    `
+                    : ""
+                }
+              </div>
             `
           )
           .join("")}
@@ -477,9 +507,28 @@
     return mobileNav
       .map(
         (item) => `
-          <a class="drawer-link" href="${item.href}" data-section="${item.section}">
-            ${item.label}
-          </a>
+          <div class="drawer-group${item.children ? " drawer-group--with-submenu" : ""}">
+            <a class="drawer-link" href="${item.href}" data-section="${item.section}">
+              ${item.label}
+            </a>
+            ${
+              item.children
+                ? `
+                  <div class="drawer-submenu">
+                    ${item.children
+                      .map(
+                        (child) => `
+                          <a class="drawer-sublink" href="${child.href}" data-section="${child.section}">
+                            ${child.label}
+                          </a>
+                        `
+                      )
+                      .join("")}
+                  </div>
+                `
+                : ""
+            }
+          </div>
         `
       )
       .join("");
@@ -487,7 +536,6 @@
 
   function renderDockNav() {
     return [
-      { label: "Voiceover & Ads", href: "#voiceovers-ads" },
       { label: "Highlights", href: "#highlights" },
       { label: "Contact", href: "#contact" },
     ]
@@ -677,6 +725,7 @@
                   <textarea name="message" rows="5" required></textarea>
                 </label>
                 <button class="button button--solid" type="submit">${site.contactForm.submitLabel}</button>
+                <p class="contact-form__email">Email: <a href="mailto:preethiyagna@gmail.com">preethiyagna@gmail.com</a></p>
                 <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
               </form>
             </article>
@@ -825,10 +874,77 @@
     });
   }
 
+  function getHashScrollTop(hash = window.location.hash) {
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return null;
+
+    if (hash === "#home") return 0;
+
+    const anchorTarget = target.querySelector(".section-head") || target;
+    const mastNav = document.querySelector(".mast-nav");
+    let restoreScrolledState = false;
+
+    if (mastNav && !mastNav.classList.contains("is-scrolled")) {
+      mastNav.classList.add("is-scrolled");
+      restoreScrolledState = true;
+    }
+
+    const mastNavHeight = mastNav ? mastNav.getBoundingClientRect().height : 0;
+
+    if (restoreScrolledState) {
+      mastNav.classList.remove("is-scrolled");
+    }
+
+    const offset = mastNavHeight + 16;
+    const targetTop =
+      anchorTarget.getBoundingClientRect().top + window.scrollY - offset;
+
+    return Math.max(0, targetTop);
+  }
+
+  function scrollToHash(hash = window.location.hash, behavior = "smooth") {
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    if (hashScrollCorrectionTimer !== null) {
+      window.clearTimeout(hashScrollCorrectionTimer);
+      hashScrollCorrectionTimer = null;
+    }
+
+    window.requestAnimationFrame(function () {
+      const initialTop = getHashScrollTop(hash);
+      if (typeof initialTop !== "number") return;
+
+      window.scrollTo({
+        top: initialTop,
+        behavior,
+      });
+
+      hashScrollCorrectionTimer = window.setTimeout(function () {
+        const correctedTop = getHashScrollTop(hash);
+        if (typeof correctedTop !== "number") return;
+        if (Math.abs(window.scrollY - correctedTop) < 2) return;
+
+        window.scrollTo({
+          top: correctedTop,
+          behavior: "auto",
+        });
+      }, 420);
+    });
+  }
+
   function wireNav() {
     const toggle = document.querySelector(".nav-toggle");
     const drawer = document.getElementById("nav-drawer");
     const drawerLinks = drawer ? Array.from(drawer.querySelectorAll("a")) : [];
+    const internalHashLinks = Array.from(document.querySelectorAll('a[href^="#"]')).filter(
+      function (link) {
+        const href = link.getAttribute("href");
+        return Boolean(href && href.length > 1);
+      }
+    );
 
     if (toggle && drawer) {
       toggle.addEventListener("click", function () {
@@ -845,6 +961,29 @@
         toggle.setAttribute("aria-expanded", "false");
         drawer.classList.remove("is-open");
         document.body.classList.remove("nav-open");
+      });
+    });
+
+    internalHashLinks.forEach((link) => {
+      link.addEventListener("click", function (event) {
+        const hash = link.getAttribute("href");
+        if (!hash) return;
+
+        event.preventDefault();
+
+        if (toggle && drawer) {
+          toggle.setAttribute("aria-expanded", "false");
+          drawer.classList.remove("is-open");
+          document.body.classList.remove("nav-open");
+        }
+
+        if (window.location.hash === hash) {
+          window.history.replaceState(null, "", hash);
+        } else {
+          window.history.pushState(null, "", hash);
+        }
+
+        scrollToHash(hash, "smooth");
       });
     });
 
@@ -1153,28 +1292,6 @@
     });
   }
 
-  function scrollToHash() {
-    if (!window.location.hash) return;
-    const target = document.querySelector(window.location.hash);
-    if (!target) return;
-    window.requestAnimationFrame(function () {
-      if (window.location.hash === "#home") {
-        window.scrollTo({ top: 0 });
-        return;
-      }
-
-      const mastNav = document.querySelector(".mast-nav");
-      const mastNavHeight = mastNav ? mastNav.getBoundingClientRect().height : 0;
-      const offset = mastNavHeight + 20;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
-
-      window.scrollTo({
-        top: Math.max(0, targetTop),
-        behavior: "smooth",
-      });
-    });
-  }
-
   updateMeta();
   wireForm();
   wireConsentBanner();
@@ -1185,6 +1302,8 @@
   wireExclusiveMediaPlayback();
   wireStoryCarousel();
   wireHighlightCarousels();
-  scrollToHash();
-  window.addEventListener("hashchange", scrollToHash);
+  scrollToHash(window.location.hash, "auto");
+  window.addEventListener("hashchange", function () {
+    scrollToHash(window.location.hash, "smooth");
+  });
 })();
