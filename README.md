@@ -12,6 +12,7 @@ The current production-style website lives in `docs/`, and future iterations sho
 - `ARTIST_GROUND_TRUTH.md`: artist-provided journey, links, claims, and website-usage tracking status
 - `FUTURE_IMPLEMENTATIONS.md`: backlog of site changes we want to pick up in later passes
 - `assets/`: the original supplied media and supporting source files
+- `tools/story-carousel-tuner.html`: local-only tuning utility for Story image framing, intentionally kept out of the published `docs/` site
 
 ## Local Preview
 
