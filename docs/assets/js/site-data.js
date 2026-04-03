@@ -484,6 +484,13 @@ window.SITE_DATA = {
       fallback: "YouTube channel",
     },
     {
+      label: "Facebook",
+      url: "https://www.facebook.com/preethi.yagnamurthy.2025",
+      iconPath: "assets/icons/facebook.svg",
+      trust: "public-profile",
+      fallback: "Facebook profile",
+    },
+    {
       label: "JioSaavn",
       url: "https://www.jiosaavn.com/artist/preethi-yagnamurthy-songs/7PJFiSqJVoc_",
       iconPath: "assets/icons/jiosaavn.svg",

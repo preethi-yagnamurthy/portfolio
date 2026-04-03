@@ -55,9 +55,57 @@
     { label: "Highlights", href: "#highlights", section: "highlights" },
     { label: "Contact", href: "#contact", section: "contact" },
   ];
+  const platformOrder = [
+    "instagram",
+    "youtube",
+    "facebook",
+    "spotify",
+    "amazon-music",
+    "jiosaavn",
+  ];
+
+  function getPlatformKey(item = {}) {
+    const label = String(item.label || "").toLowerCase();
+    const iconPath = String(item.iconPath || "").toLowerCase();
+
+    if (label.includes("instagram") || iconPath.includes("instagram")) return "instagram";
+    if (label.includes("youtube") || iconPath.includes("youtube")) return "youtube";
+    if (label.includes("facebook") || iconPath.includes("facebook")) return "facebook";
+    if (label.includes("spotify") || iconPath.includes("spotify")) return "spotify";
+    if (
+      label.includes("amazon") ||
+      iconPath.includes("amazon-music") ||
+      iconPath.includes("amazon")
+    ) {
+      return "amazon-music";
+    }
+    if (
+      label.includes("jiosaavn") ||
+      label.includes("jio saavn") ||
+      iconPath.includes("jiosaavn")
+    ) {
+      return "jiosaavn";
+    }
+
+    return "other";
+  }
+
+  function sortPlatformLinks(items = []) {
+    return [...items].sort(function (left, right) {
+      const leftIndex = platformOrder.indexOf(getPlatformKey(left));
+      const rightIndex = platformOrder.indexOf(getPlatformKey(right));
+      const normalizedLeft = leftIndex === -1 ? Number.MAX_SAFE_INTEGER : leftIndex;
+      const normalizedRight = rightIndex === -1 ? Number.MAX_SAFE_INTEGER : rightIndex;
+
+      if (normalizedLeft !== normalizedRight) return normalizedLeft - normalizedRight;
+      return String(left.label || "").localeCompare(String(right.label || ""), undefined, {
+        sensitivity: "base",
+      });
+    });
+  }
 
   function renderSocialDots() {
-    return site.socialLinks
+    return sortPlatformLinks(site.socialLinks)
       .map((link) => {
         return `
           <a class="social-dot" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}">
@@ -73,7 +121,7 @@
   }
 
   function renderMusicLinks(links = activeMusicLinks) {
-    return links
+    return sortPlatformLinks(links)
       .map(
         (link) => `
           <a class="music-pill music-pill--icon" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
@@ -254,14 +302,33 @@
     `;
   }
 
+  function renderVoiceoverEntry(item) {
+    return `
+      <article class="voiceover-list__item">
+        <div class="voiceover-list__body">
+          <h3>${item.title}</h3>
+          <p class="voiceover-list__desc">${item.description}</p>
+          ${renderHighlightActions(item, "voiceover-list__link", "voiceover-list__actions")}
+        </div>
+      </article>
+    `;
+  }
+
   function renderVoiceoversAdsPanels() {
     const items = getVoiceoversAdsItems();
     if (!items.length) return "";
 
     return `
-      <div class="highlight-list-stack">
-        ${items.map((item) => renderHighlightListCard(item)).join("")}
-      </div>
+      <article class="music-topic-card music-topic-card--voiceovers">
+        <div class="music-topic-card__head">
+          <p class="section-micro">Voiceover & Ads</p>
+        </div>
+        <div class="music-topic-card__body">
+          <div class="voiceover-list">
+            ${items.map((item) => renderVoiceoverEntry(item)).join("")}
+          </div>
+        </div>
+      </article>
     `;
   }
 
