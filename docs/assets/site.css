@@ -1517,6 +1517,18 @@ h1 {
   object-position: center bottom;
 }
 
+.story-carousel__slide[data-story-role="story-trophy-badshah-concert"] img {
+  object-position: center 82%;
+}
+
+.story-carousel__slide[data-story-role="story-st-marys-felicitation"] img {
+  object-position: center 90%;
+}
+
+.story-carousel__slide[data-story-role="story-vidyajyothi-felicitation"] img {
+  object-position: center 80%;
+}
+
 .story-carousel__controls {
   display: flex;
   align-items: center;

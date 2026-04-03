@@ -630,6 +630,7 @@
                     class="story-carousel__slide"
                     data-story-orientation="${String(item.cropPreference || "").includes("portrait") ? "portrait" : "landscape"}"
                     data-story-focus="${storyBottomFocusRoles.has(item.usageRole) ? "bottom" : "center"}"
+                    data-story-role="${item.usageRole || ""}"
                   >
                     <img src="${item.path}" alt="${item.alt}" loading="lazy">
                   </div>
