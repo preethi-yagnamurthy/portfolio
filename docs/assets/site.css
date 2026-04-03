@@ -1467,16 +1467,11 @@ h1 {
 
 .story-carousel__viewport {
   overflow: hidden;
-  height: clamp(15rem, 24vw, 18.5rem);
-  min-height: clamp(15rem, 24vw, 18.5rem);
-  transition:
-    height 260ms ease,
-    min-height 260ms ease;
-}
-
-.story-carousel.is-portrait-active .story-carousel__viewport {
-  height: clamp(19rem, 34vw, 25rem);
-  min-height: clamp(19rem, 34vw, 25rem);
+  height: clamp(15.5rem, 24vw, 18.75rem);
+  min-height: clamp(15.5rem, 24vw, 18.75rem);
+  border-radius: calc(var(--radius-lg) - 0.35rem);
+  background:
+    linear-gradient(180deg, rgba(6, 4, 2, 0.94), rgba(12, 9, 4, 0.88));
 }
 
 .story-carousel__track {
@@ -1490,43 +1485,29 @@ h1 {
   flex: 0 0 100%;
   width: 100%;
   min-width: 100%;
-  min-height: inherit;
-  display: grid;
-  place-items: center;
-  padding: 0.6rem 0.6rem 0;
-  background:
-    linear-gradient(180deg, rgba(6, 4, 2, 0.94), rgba(12, 9, 4, 0.88));
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .story-carousel__slide img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: calc(100% - 0.6rem);
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   display: block;
 }
 
-.story-carousel__slide[data-story-focus="bottom"] img {
+.story-carousel__slide[data-story-orientation="landscape"] img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.story-carousel__slide[data-story-orientation="portrait"] img {
   width: 100%;
-  max-width: none;
   height: 100%;
-  max-height: none;
   object-fit: cover;
   object-position: center bottom;
-}
-
-.story-carousel__slide[data-story-role="story-trophy-badshah-concert"] img {
-  object-position: center 70%;
-}
-
-.story-carousel__slide[data-story-role="story-st-marys-felicitation"] img {
-  object-position: center 82%;
-}
-
-.story-carousel__slide[data-story-role="story-vidyajyothi-felicitation"] img {
-  object-position: center 66%;
 }
 
 .story-carousel__controls {
@@ -2843,13 +2824,8 @@ body.nav-open .consent-banner {
   }
 
   .story-carousel__viewport {
-    height: clamp(11rem, 30svh, 14rem);
-    min-height: clamp(11rem, 30svh, 14rem);
-  }
-
-  .story-carousel.is-portrait-active .story-carousel__viewport {
-    height: clamp(14rem, 42svh, 19rem);
-    min-height: clamp(14rem, 42svh, 19rem);
+    height: clamp(12rem, 31svh, 15rem);
+    min-height: clamp(12rem, 31svh, 15rem);
   }
 
   .music-video-feature {
@@ -3129,13 +3105,8 @@ body.nav-open .consent-banner {
   }
 
   .story-carousel__viewport {
-    height: clamp(8.5rem, 22svh, 10.5rem);
-    min-height: clamp(8.5rem, 22svh, 10.5rem);
-  }
-
-  .story-carousel.is-portrait-active .story-carousel__viewport {
-    height: clamp(11.5rem, 34svh, 15rem);
-    min-height: clamp(11.5rem, 34svh, 15rem);
+    height: clamp(9.75rem, 24svh, 11.5rem);
+    min-height: clamp(9.75rem, 24svh, 11.5rem);
   }
 
   .story-carousel__controls {
