@@ -797,7 +797,7 @@
         </section>
 
         <section id="contact" class="contact-section">
-          <div class="section-head">
+          <div class="section-head section-head--center">
             <p class="section-label">Contact</p>
             <h2>Conversations and collaborations begin with a single note.</h2>
           </div>
@@ -820,10 +820,10 @@
                 </label>
                 <label>
                   <span>Message</span>
-                  <textarea name="message" rows="5" required></textarea>
+                  <textarea name="message" rows="3" required></textarea>
                 </label>
                 <button class="button button--solid" type="submit">${site.contactForm.submitLabel}</button>
-                <p class="contact-form__email">Email: <a href="mailto:preethiyagna@gmail.com">preethiyagna@gmail.com</a></p>
+                <p class="contact-form__email">or e-mail us at: <a href="mailto:preethiyagna@gmail.com">preethiyagna@gmail.com</a></p>
                 <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
               </form>
             </article>

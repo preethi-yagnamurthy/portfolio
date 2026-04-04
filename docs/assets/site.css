@@ -2356,6 +2356,8 @@ h1 {
 
 .contact-layout {
   grid-template-columns: 1fr;
+  width: min(calc(100% - 2.5rem), 30rem);
+  margin: 0 auto;
 }
 
 .contact-panel,
@@ -2663,6 +2665,10 @@ body.nav-open .consent-banner {
     width: min(calc(100% - 3rem), var(--container));
   }
 
+  .contact-layout {
+    width: min(calc(100% - 3rem), 30rem);
+  }
+
   .awards-grid,
   .press-feature,
   .format-grid,
@@ -2805,6 +2811,10 @@ body.nav-open .consent-banner {
   .footer-utility,
   .footer-meta {
     width: min(calc(100% - 2rem), var(--container));
+  }
+
+  .contact-layout {
+    width: min(calc(100% - 2rem), 30rem);
   }
 
   .award-card,
