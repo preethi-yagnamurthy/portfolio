@@ -509,6 +509,260 @@
           "citation": "Page 275 (Pdf_Folio: 275): \"This paragraph should not contain any new information, but should refer only to information presented or disclosed in the financial statements (ISA 706 (Revised), para. 9).\""
         }
       ]
+    },
+    {
+      "id": "batch-5",
+      "title": "Batch 5",
+      "subtitle": "Multiple-Choice Questions (MCQs)",
+      "questions": [
+        {
+          "id": "b5-q1",
+          "prompt": "Under the Australian differential reporting framework (ASRE 2415), a Tier 2 company limited by guarantee may elect to have its financial statements reviewed instead of audited. If the appointed auditor has previously conducted an audit of the company’s financial statements, which specific standard dictates how the review must be conducted, and why?",
+          "options": [
+            { "key": "A", "text": "ASRE 2400, because the practitioner is no longer acting as the auditor of the entity for the current period." },
+            { "key": "B", "text": "ASRE 2405, because the financial statements are considered historical financial information other than a complete financial report." },
+            { "key": "C", "text": "ASRE 2410, because the auditor has obtained an understanding of the company and its environment, including its internal control." },
+            { "key": "D", "text": "ASAE 3000, because it is an overarching standard for engagements providing limited assurance on historical data." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 308 (also repeated at Pdf_Folio: 311): \"Under ASRE 2415, when a company limited by guarantee elects to have its financial statements reviewed instead of audited, an auditor who has not conducted an audit of the previous statements should undertake the review in accordance with ASRE 2400. However, where that auditor has conducted an audit of the company’s previous financial statements, that auditor will have obtained an understanding of the company and its environment, including the company’s internal control, and should conduct the review in accordance with ASRE 2410.\""
+        },
+        {
+          "id": "b5-q2",
+          "prompt": "According to Figure 1.6, \"The characteristics, attitudes and behaviours of scepticism\" (adapted from CAQ, Hurtt, and IAASB), which of the following specific behaviours or mindsets is explicitly categorised under the characteristic of \"Autonomy\" rather than \"Self-esteem\"?",
+          "options": [
+            { "key": "A", "text": "Resist persuasion" },
+            { "key": "B", "text": "Challenge assumptions" },
+            { "key": "C", "text": "Investigate beyond the obvious" },
+            { "key": "D", "text": "Decide for oneself" }
+          ],
+          "answer": "D",
+          "citation": "Pdf_Folio: 38: \"Autonomy - Self-direction - Moral independence - Conviction - Decide for oneself - Do not simply accept the claims of others\" (Note: 'Resist persuasion', 'Challenge assumptions', and 'Challenge conclusions' belong strictly to 'Self-esteem')."
+        },
+        {
+          "id": "b5-q3",
+          "prompt": "When an auditor is evaluating the effect of uncorrected misstatements on the financial statements as a whole, ISA 450 paragraph 11 requires the auditor to consider the size and nature of the misstatements and their effect on specific financial statement totals. Which of the following represents the exact list of totals the auditor is explicitly required to consider?",
+          "options": [
+            { "key": "A", "text": "Total current assets and current liabilities, total assets and liabilities, net income, and total revenue and expenses." },
+            { "key": "B", "text": "Total tangible and intangible assets, current and non-current liabilities, gross profit, and operating cash flows." },
+            { "key": "C", "text": "Total equity, long-term debt, cost of goods sold, and comprehensive income." },
+            { "key": "D", "text": "Total assets, net assets, retained earnings, and operating expenses." }
+          ],
+          "answer": "A",
+          "citation": "Pdf_Folio: 230: \"ISA 450, paragraph 11, requires the auditor to: consider the size and nature of these misstatements; consider 'the effect of uncorrected misstatements related to prior periods on the relevant classes of transactions, account balances or disclosures, and the financial statements as a whole', including: - total current assets and current liabilities - total assets and liabilities - net income - total revenue and expenses.\""
+        },
+        {
+          "id": "b5-q4",
+          "prompt": "When issuing a report of factual findings for an Agreed-Upon Procedures engagement under ISRS 4400 (Revised) / ASRS 4400, what precise statement must the practitioner include in the report regarding their independence?",
+          "options": [
+            { "key": "A", "text": "A statement confirming that independence is generally presumed unless management provides evidence of a conflict of interest." },
+            { "key": "B", "text": "A statement that the engagement is not an assurance engagement, and therefore the practitioner is permanently exempt from all ethical requirements." },
+            { "key": "C", "text": "A statement that, for the purpose of the engagement, there are no independence requirements with which the practitioner is required to comply; OR a statement that the practitioner has complied with the relevant independence requirements." },
+            { "key": "D", "text": "A statement declaring that the practitioner guarantees absolute independence in mind and appearance in accordance with the Corporations Act 2001." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 379: \"(l) With respect to independence: (i) ... a statement that, for the purpose of the engagement, there are no independence requirements with which the practitioner is required to comply; or (ii) ... a statement that the practitioner has complied with the relevant independence requirements. The statement shall identify the relevant independence requirements;\""
+        },
+        {
+          "id": "b5-q5",
+          "prompt": "ASAE 3500 outlines the principles for public sector performance engagements. According to paragraph 16 of ASAE 3500, how is the specific concept of \"Effectiveness\" strictly defined?",
+          "options": [
+            { "key": "A", "text": "The minimisation of inputs employed to deliver the intended outputs in terms of quality, quantity and timing." },
+            { "key": "B", "text": "The performance principle relating to the extent to which the intended objectives at a program or entity level are achieved." },
+            { "key": "C", "text": "The minimisation of the costs of resources, within the operational requirements of timeliness and availability of required quantity or quality." },
+            { "key": "D", "text": "The relationship between resource inputs and outputs of goods and services." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 347: \"According to ASAE 3500, paragraph 16: ... (b) Effectiveness - the performance principle relating to the extent to which the intended objectives at a program or entity level are achieved.\""
+        },
+        {
+          "id": "b5-q6",
+          "prompt": "Unconscious auditor biases can act as impediments to the exercise of professional scepticism. According to ISA 220 (Revised), paragraph A35, which of the following lists correctly identifies the specific unconscious biases an auditor might face?",
+          "options": [
+            { "key": "A", "text": "Optimism bias, recency bias, familiarity bias, and selection bias." },
+            { "key": "B", "text": "Availability bias, confirmation bias, group think, overconfidence bias, anchoring bias, and automation bias." },
+            { "key": "C", "text": "Hindsight bias, cultural bias, authority bias, and delegation bias." },
+            { "key": "D", "text": "Projection bias, framing bias, halo effect, and representation bias." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 88: \"The unconscious biases that an auditor might face include availability bias, confirmation bias, group think, overconfidence bias, anchoring bias, and automation bias (ISA 220 (Revised), para. A35).\""
+        },
+        {
+          "id": "b5-q7",
+          "prompt": "According to the textbook’s standard \"Example indexing system for audit documentation\" (Figure 3.6), which exact index numbering range is assigned to \"File completion, such as memos on significant decisions, checklists and management representation letters\"?",
+          "options": [
+            { "key": "A", "text": "100-200" },
+            { "key": "B", "text": "301-400" },
+            { "key": "C", "text": "501-600" },
+            { "key": "D", "text": "701-799" }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 225: \"FIGURE 3.6 Example indexing system for audit documentation (extracts) ... 301-400 File completion, such as memos on significant decisions, checklists and management representation letters\""
+        },
+        {
+          "id": "b5-q8",
+          "prompt": "Table 5.3 compares the elements of a generic assurance engagement, a public sector performance audit, and a financial statement audit. In a public sector performance audit, who are specifically classified as the \"Intended users\" of the assurance report?",
+          "options": [
+            { "key": "A", "text": "Shareholders, investors, responsible party (i.e. board and executive management)." },
+            { "key": "B", "text": "The Auditor-General and the head of the government agency." },
+            { "key": "C", "text": "Parliament, the general public, responsible party (i.e. agency)." },
+            { "key": "D", "text": "The engaging party, the measurer, and the evaluator." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 357: \"TABLE 5.3 Comparing the elements of a generic assurance engagement, public sector performance audit and financial statement audit ... [Row] Intended users ... [Column: Public sector performance audit] Parliament, the general public, responsible party (i.e. agency)\""
+        },
+        {
+          "id": "b5-q9",
+          "prompt": "During the final review and completion of an audit, the auditor obtains a management representation letter. According to the textbook's summary of key issues in the final review, the management representation letter may complement other auditing procedures in connection with two specific areas. What are those two areas?",
+          "options": [
+            { "key": "A", "text": "(1) The mathematical accuracy of the general ledger, and (2) the physical existence of property, plant, and equipment." },
+            { "key": "B", "text": "(1) The evaluation of audit firm independence, and (2) the computation of component performance materiality." },
+            { "key": "C", "text": "(1) The completeness of identified contingent liabilities and related party transactions, or (2) the existence of mitigating factors in the presence of going concern problems." },
+            { "key": "D", "text": "(1) The verification of cash flow projections, and (2) the approval of the audit planning memorandum." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 253: \"The management representation letter may complement other auditing procedures (e.g. in connection with (1) the completeness of identified contingent liabilities and related party transactions or (2) the existence of mitigating factors in the presence of going concern problems).\""
+        },
+        {
+          "id": "b5-q10",
+          "prompt": "When evaluating internal controls in an IT environment, an auditor reviews input controls designed to ensure the accuracy of data conversion. How does the textbook define \"Hash totals\" in the context of batch processing?",
+          "options": [
+            { "key": "A", "text": "Redundant digits inserted in account numbers and verified for correctness by a key-entry device prior to processing." },
+            { "key": "B", "text": "Non-financial fields that are totalled for control purposes only (e.g. all sales invoice numbers in a batch)." },
+            { "key": "C", "text": "An information field that is totalled, usually in dollar amounts, for all records of a batch." },
+            { "key": "D", "text": "A control that ensures an item in a data field is not greater or less than a predetermined limit." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 125: \"Hash totals. Non-financial fields are totalled for control purposes only (e.g. all sales invoice numbers in a batch).\""
+        }
+      ]
+    },
+    {
+      "id": "batch-6",
+      "title": "Batch 6",
+      "subtitle": "Multiple-Choice Questions (MCQs)",
+      "questions": [
+        {
+          "id": "b6-q1",
+          "prompt": "Advancements in IT have led to the implementation of \"continuous auditing\" for gathering assurance. According to the textbook, what is the defining characteristic of continuous auditing?",
+          "options": [
+            { "key": "A", "text": "It entirely eliminates the need for an annual financial statement audit by submitting a live digital feed to the regulatory authority." },
+            { "key": "B", "text": "It requires the auditor to be physically present at the client's premises every business day of the financial year." },
+            { "key": "C", "text": "It involves the use of embedded modules in a client’s computer system to perform auditing activities, producing audit results simultaneously with, or a short period of time after, the relevant events." },
+            { "key": "D", "text": "It relies exclusively on external benchmark reports to validate management's daily cash flow estimates." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 337: \"Continuous auditing involves the use of embedded modules in a client’s computer system to perform auditing activities, such as control and risk assessments, on a more frequent basis. The key to continuous auditing is that it produces audit results simultaneously with, or a short period of time after, the relevant events.\""
+        },
+        {
+          "id": "b6-q2",
+          "prompt": "When an auditor uses the work of an auditor's expert under ISA 620, there are strict rules regarding how the expert is referenced in the auditor's report. If the auditor decides to issue an unmodified opinion, when is the only time the auditor should refer to the work of the expert?",
+          "options": [
+            { "key": "A", "text": "Only when the expert's fees exceed 10% of the overall audit engagement fee." },
+            { "key": "B", "text": "Only if required by law or regulation." },
+            { "key": "C", "text": "Only when the expert is formally registered as a co-signatory on the audit report." },
+            { "key": "D", "text": "The auditor is fully permitted to reference the expert at their own discretion to enhance the credibility of the audit opinion." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 221: \"The auditor should 'not refer to the work of an auditor’s expert in an auditor’s report containing an unmodified opinion unless required by law or regulation' (ISA 620, para. 14).\""
+        },
+        {
+          "id": "b6-q3",
+          "prompt": "ISA 560 Subsequent Events divides the timeline of subsequent events into three distinct periods. In \"Period 3\" (for facts which become known to the auditor after the financial statements have been issued), what is the auditor's immediate obligation regarding the performance of audit procedures?",
+          "options": [
+            { "key": "A", "text": "The auditor must recall the financial statements and perform a full re-audit of the entire reporting period." },
+            { "key": "B", "text": "The auditor must request the client to physically recount all inventory on hand." },
+            { "key": "C", "text": "The auditor has no obligation to perform audit procedures." },
+            { "key": "D", "text": "The auditor is legally obligated to immediately notify the stock exchange of a potential fraud investigation." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 248: \"Period 3: For facts which become known to the auditor after the financial statements have been issued, the auditor has no obligation to perform audit procedures.\""
+        },
+        {
+          "id": "b6-q4",
+          "prompt": "If an auditor determines that misstatements are, either individually or in aggregate, material and pervasive to the financial statements, ISA 705 (Revised) dictates that an adverse opinion must be issued. According to the text, what is the underlying message the auditor is trying to convey by issuing an adverse opinion?",
+          "options": [
+            { "key": "A", "text": "That the audit firm was unable to gather sufficient appropriate audit evidence due to management obstruction." },
+            { "key": "B", "text": "That they consider the financial statements to be misleading or of little use to the intended users." },
+            { "key": "C", "text": "That the entity is guaranteed to enter liquidation within the next 12 months." },
+            { "key": "D", "text": "That management has committed a criminal act of fraudulent financial reporting." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 282: \"An adverse opinion is a very serious form of modified opinion issued when the auditor concludes that misstatements are, either individually or in aggregate, material and pervasive to the financial statements (ISA 705 (Revised), para. 8). The underlying message that the auditor is trying to convey is that they consider the financial statements to be misleading or of little use to the intended users.\""
+        },
+        {
+          "id": "b6-q5",
+          "prompt": "When dealing with comparative information in an audit (ISA 710), a distinction is made between corresponding figures and comparative financial statements. How does ISA 710 paragraph 6(c) specifically define comparative financial statements?",
+          "options": [
+            { "key": "A", "text": "Comparative information where amounts and other disclosures for the prior period are included as an integral part of the current period financial statements, and are intended to be read only in relation to the current period." },
+            { "key": "B", "text": "Comparative information where amounts and other disclosures for the prior period are included for comparison with the financial statements of the current period but, if audited, are referred to in the auditor’s opinion." },
+            { "key": "C", "text": "Prospective financial information detailing management's best estimates for the upcoming twelve months compared to historical data." },
+            { "key": "D", "text": "Unaudited internal management accounts from prior periods appended to the annual report strictly for shareholder reference." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 275: \"Comparative financial statements are defined as: Comparative information where amounts and other disclosures for the prior period are included for comparison with the financial statements of the current period but, if audited, are referred to in the auditor’s opinion. The level of information included in those comparative financial statements is comparable with that of the financial statements of the current period (ISA 710, para. 6(c)).\""
+        },
+        {
+          "id": "b6-q6",
+          "prompt": "When evaluating internal controls over the processing of data, auditors look for specific controls that ensure data integrity. How does the textbook describe the function of a Check-digit test?",
+          "options": [
+            { "key": "A", "text": "It totals non-financial fields for control purposes only (e.g. totalling all sales invoice numbers in a batch)." },
+            { "key": "B", "text": "It ensures that an item in a data field is not greater or less than a predetermined limit." },
+            { "key": "C", "text": "It verifies that the fields in sequential items are in the proper alphanumeric sequence." },
+            { "key": "D", "text": "It involves redundant digits inserted in account numbers and verified for correctness by a computer edit run during processing to permit the detection of data coding errors." }
+          ],
+          "answer": "D",
+          "citation": "Pdf_Folio: 126: \"Check-digit test. These are redundant digits inserted in account numbers (e.g. part number, file number) and verified for correctness by a computer edit run during processing... A check digit permits the detection of data coding errors by ensuring the integrity of codes.\""
+        },
+        {
+          "id": "b6-q7",
+          "prompt": "Under the quality management standards, an engagement quality review must be undertaken for the audits of listed entities. According to ISQM 1, paragraph 16(d), what is the strict definition of an engagement quality review?",
+          "options": [
+            { "key": "A", "text": "An internal audit of the firm's overall profitability and operational efficiency for the financial year." },
+            { "key": "B", "text": "A review by the client's audit committee of the external auditor's proposed audit strategy and fee structure." },
+            { "key": "C", "text": "An objective evaluation of the significant judgments made by the engagement team and the conclusions reached thereon [in formulating the auditor’s report]." },
+            { "key": "D", "text": "A peer review conducted by an external competing audit firm to guarantee market competitiveness." }
+          ],
+          "answer": "C",
+          "citation": "Pdf_Folio: 258: \"An engagement quality review is 'an objective evaluation of the significant judgments made by the engagement team and the conclusions reached thereon [in formulating the auditor’s report]' (ISQM 1, para. 16(d)).\""
+        },
+        {
+          "id": "b6-q8",
+          "prompt": "In public sector performance auditing, effectiveness indicators are concerned with outputs and outcomes. According to the text, which of the following is specifically listed as a Scale or magnitude indicator of effectiveness?",
+          "options": [
+            { "key": "A", "text": "The number of days lost to absenteeism per annum." },
+            { "key": "B", "text": "The size of a target group and the proportion reached or served." },
+            { "key": "C", "text": "The gross cost per available hour/day." },
+            { "key": "D", "text": "The total number of hours of WHS training per person on induction." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 349: \"Scale or magnitude indicators of effectiveness could include measures such as: - the level of outcome sought and the level achieved - the size of a target group and the proportion reached or served - market size and market share.\""
+        },
+        {
+          "id": "b6-q9",
+          "prompt": "When public sector auditors are planning performance audits, they must select and prioritise potential audit topics. According to the ANAO's factors for selecting audit topics, how is Materiality explicitly defined in this context?",
+          "options": [
+            { "key": "A", "text": "The maximum acceptable dollar error before a government department's financial statements must be qualified." },
+            { "key": "B", "text": "The significance of the program in terms of the value, dependence and citizen reach, and the extent to which the program contributes to the broader objectives of government." },
+            { "key": "C", "text": "The physical size of the government agency's headquarters and total number of full-time equivalent employees." },
+            { "key": "D", "text": "The total amount of consulting fees paid to external accounting firms by the department in question." }
+          ],
+          "answer": "B",
+          "citation": "Pdf_Folio: 360: \"4. Materiality: the significance of the program in terms of the value, dependence and citizen reach, and the extent to which the program contributes to the broader objectives of government, or to changing or influencing decisions.\""
+        },
+        {
+          "id": "b6-q10",
+          "prompt": "Under ASRS 4450 Comfort Letter Engagements, an auditor provides a comfort letter to requesting parties (like underwriters) relating to financial information in a funding document. According to ASRS 4450 paragraph 60, what specific confirmation regarding the restriction of the letter must be explicitly stated?",
+          "options": [
+            { "key": "A", "text": "Confirmation that the use of the comfort letter is restricted to its addressees and is prepared for the sole purpose of assisting the requesting parties in their due diligence defence of the offering document." },
+            { "key": "B", "text": "Confirmation that the comfort letter must be published openly on the Australian Securities Exchange (ASX) platform within five business days." },
+            { "key": "C", "text": "Confirmation that the comfort letter provides absolute assurance to all future shareholders of the entity." },
+            { "key": "D", "text": "Confirmation that the letter may only be read by the board of directors and the internal audit function." }
+          ],
+          "answer": "A",
+          "citation": "Pdf_Folio: 380: \"confirmation that the use of the comfort letter is restricted to its addressees and is prepared for the sole purpose of assisting the requesting parties in their due diligence defence of the offering document ...; (ASRS 4450, para. 60).\""
+        }
+      ]
     }
   ]
 }
