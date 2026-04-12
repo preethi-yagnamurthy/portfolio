@@ -1,0 +1,514 @@
+{
+  "title": "Audit Quiz Sets",
+  "intro": "Each question can be checked individually. The answer key stays hidden unless you explicitly reveal it.",
+  "batches": [
+    {
+      "id": "batch-1",
+      "title": "Batch 1",
+      "subtitle": "Multiple-Choice Questions (MCQs)",
+      "questions": [
+        {
+          "id": "b1-q1",
+          "prompt": "According to Australian legislation (the Corporations Act) and the APES 110 Code of Ethics for Professional Accountants (including Independence Standards), what is the mandatory audit partner rotation cooling-off requirement for the audit of a listed entity?",
+          "options": [
+            { "key": "A", "text": "5 years on, 5 years off" },
+            { "key": "B", "text": "7 years on, 2 years off" },
+            { "key": "C", "text": "5 years on, 2 years off" },
+            { "key": "D", "text": "5 years on, 3 years off" }
+          ],
+          "answer": "C",
+          "citation": "Page 82, Paragraph 1 (under \"Australian Context\"): \"This applies in Australia as the applicable law (the Corporations Act) prescribes a cooling-off period... The requirements under the Corporations Act for listed entities of five years on and two years off are more restrictive than the APES 110 Code of Ethics for Professional Accountants (including Independence Standards) for PIEs. Therefore, the legislative requirements take precedence.\""
+        },
+        {
+          "id": "b1-q2",
+          "prompt": "To improve and maintain audit quality, ASIC audit inspection program reports and the International Standard on Quality Management (ISQM 1 / ASQM 1) dictate specific responses to identified deficiencies. Under the recently adopted ISQM 1 / ASQM 1 standard, what new specific requirement is mandated for audit firms regarding negative findings from internal quality reviews?",
+          "options": [
+            { "key": "A", "text": "Immediate disclosure to the Financial Reporting Council" },
+            { "key": "B", "text": "Conducting root cause analyses" },
+            { "key": "C", "text": "Mandatory rotation of the firm's engagement quality reviewer" },
+            { "key": "D", "text": "Publication of the findings in the firm's annual transparency report" }
+          ],
+          "answer": "B",
+          "citation": "Page 25, Paragraphs 2 and 3 (under \"Inspection Programs in Australia\"): \"The report posits that, to improve audit quality, audit firms should: identify root causes of negative findings from internal quality reviews of their audits... The previous version of the standard did not mandate root cause analyses. However, following the recent adoption of the amended standard (ISQM 1/ASQM 1), firms will be required to conduct root cause analyses.\""
+        },
+        {
+          "id": "b1-q3",
+          "prompt": "When exercising professional scepticism during an assurance engagement, auditors must apply both a critical assessment of evidence and an awareness of behavioural biases. How do Nolder and Kadous (2018) conceptually differentiate the core components of professional scepticism?",
+          "options": [
+            { "key": "A", "text": "It comprises independence in appearance and independence of mind." },
+            { "key": "B", "text": "It comprises an objective evaluation and a subjective interpretation." },
+            { "key": "C", "text": "It comprises a sceptical mindset (critical thinking) and a sceptical attitude (feelings and beliefs)." },
+            { "key": "D", "text": "It comprises rigorous follow-up and engagement risk mitigation." }
+          ],
+          "answer": "C",
+          "citation": "Page 38, Paragraph 3 (under \"Professional Scepticism\"): \"According to Nolder and Kadous (2018), professional scepticism comprises a sceptical mindset and a sceptical attitude. The mindset component of professional scepticism captures the critical thinking and objective decision making reflected in the auditor’s judgements. However, the attitude component of professional scepticism captures the auditor’s feelings and beliefs about the evidence gathered...\""
+        },
+        {
+          "id": "b1-q4",
+          "prompt": "During the audit planning phase of a retail company, an auditor considers potential misstatements in the revenue cycle. If the auditor identifies the specific risk that \"credit memos are not issued or recorded for returns on a timely basis or at all\", which of the following financial statement assertions are most directly at risk of material misstatement for Sales (Transactions) and Trade Debtors (Balances) respectively?",
+          "options": [
+            { "key": "A", "text": "Completeness; Rights and obligations" },
+            { "key": "B", "text": "Occurrence; Existence" },
+            { "key": "C", "text": "Cutoff; Classification" },
+            { "key": "D", "text": "Accuracy; Valuation" }
+          ],
+          "answer": "B",
+          "citation": "Page 98, Table (Identifying assertions): Under the row \"Credit memos are not issued or recorded for returns on a timely basis or at all.\", the relevant assertions for Sales (Transactions) and Trade Debtors (Balances) are listed as \"Occurrence\" and \"Existence\"."
+        },
+        {
+          "id": "b1-q5",
+          "prompt": "Advancements in IT have fundamentally changed assurance engagements, particularly through the implementation of continuous auditing. Which of the following best describes the defining characteristic of \"continuous auditing\" as applied to an entity's internal systems?",
+          "options": [
+            { "key": "A", "text": "It relies on the external auditor being physically present at the client's premises throughout the financial year to observe transaction flows." },
+            { "key": "B", "text": "It uses embedded modules in the client's computer system to produce audit results simultaneously with, or shortly after, the relevant events." },
+            { "key": "C", "text": "It mandates the continuous reporting of all immaterial exceptions directly to the entity's Board of Directors." },
+            { "key": "D", "text": "It entirely replaces the need for a year-end financial statement audit by generating automated real-time audit opinions." }
+          ],
+          "answer": "B",
+          "citation": "Page 337, Paragraph \"Continuous Auditing\": \"Continuous auditing involves the use of embedded modules in a client’s computer system to perform auditing activities, such as control and risk assessments, on a more frequent basis. The key to continuous auditing is that it produces audit results simultaneously with, or a short period of time after, the relevant events.\""
+        },
+        {
+          "id": "b1-q6",
+          "prompt": "An audit firm was appointed to an engagement after the financial year-end and could not observe the physical inventory count. Furthermore, the introduction of a new computerized accounts receivable system resulted in numerous errors in the trade debtors balance, and the auditors were unable to confirm or verify the balance by alternative means. The auditor concludes that the possible effects of these undetected misstatements could be both material and pervasive. Under these circumstances, what type of audit opinion must be issued?",
+          "options": [
+            { "key": "A", "text": "Qualified opinion" },
+            { "key": "B", "text": "Unmodified opinion with an Emphasis of Matter paragraph" },
+            { "key": "C", "text": "Adverse opinion" },
+            { "key": "D", "text": "Disclaimer of opinion" }
+          ],
+          "answer": "D",
+          "citation": "Page 282, Example 4.16 (\"Basis for Disclaimer of Opinion\") and Page 287, Key Points: \"When the auditor is unable to obtain sufficient appropriate audit evidence on which to base the opinion, and the auditor concludes that the possible effects of the adjustments could be both material and pervasive, a disclaimer of opinion is expressed indicating that the auditor cannot determine whether the financial statements can be relied upon.\""
+        },
+        {
+          "id": "b1-q7",
+          "prompt": "The auditor's report is required to disclose Key Audit Matters (KAMs) to provide greater transparency about the audit process to financial statement users. According to ISA 701, from which population of matters does the auditor select KAMs for inclusion in the auditor's report?",
+          "options": [
+            { "key": "A", "text": "Only those matters that resulted in a modification of the audit opinion." },
+            { "key": "B", "text": "All matters documented in the auditor's working papers that required a substantive adjustment." },
+            { "key": "C", "text": "Those matters that were communicated to those charged with governance." },
+            { "key": "D", "text": "Matters that management has already publicly disclosed in the directors' report." }
+          ],
+          "answer": "C",
+          "citation": "Page 264, Paragraph 2 (under \"Key Audit Matters\"): \"Key audit matters (KAMs) are ‘those matters that, in the auditor’s professional judgment, were of most significance in the audit of the [current period’s] financial statements’ (ISA 701, para. 8). The KAMs that may be selected are from the population of those matters that are communicated to those charged with governance (ISA 701, para. 9).\""
+        },
+        {
+          "id": "b1-q8",
+          "prompt": "Public sector performance audits are concerned with assessing the economy, efficiency, and effectiveness of an organisation's activities. Under the ASAE 3500 Performance Engagements framework, which of the following best defines the concept of \"efficiency\"?",
+          "options": [
+            { "key": "A", "text": "The acquisition of the appropriate quality and quantity of resources at the appropriate times and at the lowest cost." },
+            { "key": "B", "text": "The achievement of the objectives or other intended effects of the activities." },
+            { "key": "C", "text": "The use of resources such that output is maximised for any given set of resource inputs, or input is minimised for any given quantity and quality of output." },
+            { "key": "D", "text": "The ability to guarantee that no fraudulent activities or resource wastage occurs during the execution of a government program." }
+          ],
+          "answer": "C",
+          "citation": "Page 349, Table \"Performance audit concept\": Next to \"Efficiency\", the definition provided is \"The use of resources such that output is maximised for any given set of resource inputs, or input is minimised for any given quantity and quality of output.\""
+        },
+        {
+          "id": "b1-q9",
+          "prompt": "In Australia, various schemes legislated by the government for measuring, managing, reducing, or offsetting carbon emissions are administered by the Clean Energy Regulator (CER). To be eligible to conduct assurance engagements (NGERS audits) under any of these specific schemes, an assurance practitioner must hold which of the following specific registrations?",
+          "options": [
+            { "key": "A", "text": "Certified Carbon and Energy Assessor (CCEA)" },
+            { "key": "B", "text": "Registered Greenhouse and Energy Auditor (RGEA)" },
+            { "key": "C", "text": "Environmental and Sustainability Audit Practitioner (ESAP)" },
+            { "key": "D", "text": "Certified Clean Energy Auditor (CCEA)" }
+          ],
+          "answer": "B",
+          "citation": "Page 316-317, Paragraph 2 (under \"Schemes Regulated by Australia’s Clean Energy Regulator\"): \"The assurance practitioner must be a registered greenhouse and energy auditor (RGEA) to be eligible to conduct assurance engagements (NGERS audits) under any of these schemes.\""
+        },
+        {
+          "id": "b1-q10",
+          "prompt": "Under Section 311 of the Australian Corporations Act, an auditor has a statutory obligation to report to the Australian Securities and Investments Commission (ASIC) if they have reasonable grounds to suspect a contravention of the Act during the audit and believe the matter will not be adequately dealt with by the board of directors. According to ASIC regulatory requirements, within what timeframe must the auditor notify ASIC in writing of such circumstances?",
+          "options": [
+            { "key": "A", "text": "Within 7 days of becoming aware of the circumstances." },
+            { "key": "B", "text": "Within 14 days of becoming aware of the circumstances." },
+            { "key": "C", "text": "Within 21 days of becoming aware of the circumstances." },
+            { "key": "D", "text": "Within 28 days of becoming aware of the circumstances." }
+          ],
+          "answer": "D",
+          "citation": "Page 293, Paragraph 3 (under \"Reporting to a Regulatory Body\"): \"If the auditor has reasonable grounds to suspect a contravention... ASIC requires auditors to notify it in writing within 28 days of becoming aware of the circumstances.\""
+        }
+      ]
+    },
+    {
+      "id": "batch-2",
+      "title": "Batch 2",
+      "subtitle": "Multiple-Choice Questions (MCQs)",
+      "questions": [
+        {
+          "id": "b2-q1",
+          "prompt": "In the context of an assurance report on internal controls, how does an attestation (assertion-based) engagement fundamentally differ from a direct reporting engagement?",
+          "options": [
+            { "key": "A", "text": "In an attestation engagement, the practitioner evaluates the internal control system directly and reports findings to the users, whereas in a direct engagement, the practitioner provides a conclusion on management's assessment." },
+            { "key": "B", "text": "In a direct reporting engagement, the auditor gives an opinion directly on the internal controls themselves, whereas in an assertion-based engagement, management makes assertions about the effectiveness of controls and the auditor provides an opinion on those assertions." },
+            { "key": "C", "text": "Attestation engagements are strictly reserved for historical financial information, whereas direct engagements are reserved for prospective financial information." },
+            { "key": "D", "text": "In an attestation engagement, the auditor designs the internal controls, whereas in a direct engagement, management designs the internal controls." }
+          ],
+          "answer": "B",
+          "citation": "Page 46, Paragraph 2 (under \"Internal Controls\"): \"These engagements may be direct reporting engagements, where the auditor gives an opinion directly on the internal controls themselves, or an assertion-based engagement, where management has made assertions (usually in the form of a written report) about the effectiveness of their control procedures and the auditor is providing an opinion on those assertions.\""
+        },
+        {
+          "id": "b2-q2",
+          "prompt": "During an audit, an auditor suspects a client of significant non-compliance with laws and regulations (NOCLAR) that could result in substantial harm to stakeholders. According to the APES 110 Code of Ethics and ISA 250 (Revised), how does the duty of confidentiality apply if the auditor determines it is appropriate to report this non-compliance to an external authority?",
+          "options": [
+            { "key": "A", "text": "The auditor must obtain legal clearance from the client's board of directors before breaching the duty of confidentiality." },
+            { "key": "B", "text": "The duty of confidentiality strictly prohibits the auditor from disclosing the matter externally; they must instead withdraw from the engagement." },
+            { "key": "C", "text": "When disclosure of identified or suspected NOCLAR to an appropriate authority is an appropriate course of action in the circumstances, this is not considered a breach of the duty of confidentiality." },
+            { "key": "D", "text": "The auditor must first issue an adverse audit opinion to publicly signal the breach before notifying any external regulatory authorities." }
+          ],
+          "answer": "C",
+          "citation": "Page 290, Paragraph 4 (under \"Identified or Suspected Fraud\"): \"The Code of Ethics explains that when disclosure of identified or suspected non-compliance with laws and regulations (NOCLAR) to an appropriate authority is an appropriate course of action in the circumstances, this is not considered a breach of the duty of confidentiality (the Code, para. R360.26).\""
+        },
+        {
+          "id": "b2-q3",
+          "prompt": "Under ISQM 1 and ISA 220 (Revised), an audit firm must establish policies for the acceptance and continuance of client relationships to ensure quality management. Which of the following factors should explicitly NOT lead to inappropriate judgements regarding whether to accept or continue a specific engagement?",
+          "options": [
+            { "key": "A", "text": "The financial and operational priorities of the audit firm." },
+            { "key": "B", "text": "The integrity and ethical values of the client's management." },
+            { "key": "C", "text": "The firm's ability to perform the engagement in accordance with professional standards." },
+            { "key": "D", "text": "The firm's ability to allocate sufficient and appropriate resources to perform the engagement." }
+          ],
+          "answer": "A",
+          "citation": "Page 20, Paragraph 3 (under \"Acceptance and Continuance of Client Relationships and Specific Engagements\"): \"The assurance firm should establish the following objectives... (b) The financial and operational priorities of the firm do not lead to inappropriate judgments about whether to accept or continue a client relationship or specific engagement (ISQM 1, para. 30).\""
+        },
+        {
+          "id": "b2-q4",
+          "prompt": "When determining materiality during the planning phase of an audit under ISA 320, why is \"performance materiality\" typically set at an amount lower than the \"overall materiality\" for the financial statements as a whole?",
+          "options": [
+            { "key": "A", "text": "To account for the qualitative nature of fraud risks that cannot be effectively quantified by the auditor." },
+            { "key": "B", "text": "To guarantee that absolutely no misstatements of any size exist in the final published financial statements." },
+            { "key": "C", "text": "To comply with specific tax reporting thresholds mandated by local regulatory authorities." },
+            { "key": "D", "text": "To reduce to an appropriately low level the probability that the aggregate of uncorrected or undetected misstatements exceeds materiality for the financial statements as a whole." }
+          ],
+          "answer": "D",
+          "citation": "Page 103, Paragraph 2 (under \"Overall vs Performance Materiality\"): \"...performance materiality means the amount: set by the auditor at less than materiality for the financial statements as a whole to reduce to an appropriately low level the probability that the aggregate of uncorrected or undetected misstatements exceeds materiality for the financial statements as a whole (ISA 320, para. 9).\""
+        },
+        {
+          "id": "b2-q5",
+          "prompt": "In the context of a group audit conducted in accordance with ISA 600 (Revised), which of the following principles correctly applies to the determination of \"component performance materiality\" by the group auditor?",
+          "options": [
+            { "key": "A", "text": "It must be strictly calculated as a direct proportional percentage of the group performance materiality based solely on the component's revenue." },
+            { "key": "B", "text": "To address aggregation risk, the component’s performance materiality must be lower than the group performance materiality." },
+            { "key": "C", "text": "It must be set at an amount exactly equal to the group performance materiality for all components deemed to be significant." },
+            { "key": "D", "text": "It is determined exclusively by the component auditor without any consultation with the group engagement partner." }
+          ],
+          "answer": "B",
+          "citation": "Page 218 and 219, Paragraphs 4 and 1 (under \"Component Auditors\"): \"ISA 600 (Revised)... requires component performance materiality to be determined for each component of the group. Component performance materiality could be different for each component and should not necessarily be a proportion of the group performance materiality... To address aggregation risk, ISA 600 (Revised) requires the component’s performance materiality to be lower than that of group performance materiality, especially if the level of disaggregation across components is high.\""
+        },
+        {
+          "id": "b2-q6",
+          "prompt": "According to ISA 560 Subsequent Events, if an auditor becomes aware of a material fact after the date of the auditor's report but before the financial statements are issued, what is the auditor's immediate required course of action?",
+          "options": [
+            { "key": "A", "text": "The auditor should automatically withdraw the issued auditor's report and notify the regulatory authorities of a potential misstatement." },
+            { "key": "B", "text": "The auditor should perform detailed substantive audit procedures on all account balances to identify any other unknown subsequent events." },
+            { "key": "C", "text": "The auditor should discuss the matter with management (and those charged with governance), determine whether the financial statements need amendment, and inquire how management intends to address the matter." },
+            { "key": "D", "text": "No action is required because the auditor's active responsibility for identifying subsequent events officially ceases on the date of the auditor's report." }
+          ],
+          "answer": "C",
+          "citation": "Page 247, Paragraph 3 (under \"Period 2\"): \"For facts which become known to the auditor after the date of the auditor’s report but before the financial statements are issued... if the auditor becomes aware of a fact that may have caused them to amend their report... they should: (a) Discuss the matter with management and, where appropriate, those charged with governance; (b) Determine whether the financial statements need amendment and, if so, (c) Inquire how management intends to address the matter in the financial statements (ISA 560, para. 10).\""
+        },
+        {
+          "id": "b2-q7",
+          "prompt": "Under ISA 240, the risk of management override of controls is considered a significant risk in all entities because management is in a unique position to perpetrate financial reporting fraud. Which specific audit procedure is explicitly mandated to address this pervasive risk?",
+          "options": [
+            { "key": "A", "text": "Confirming all related party transactions exceeding performance materiality with external legal counsel." },
+            { "key": "B", "text": "Requesting absolute assurance in the management representation letter that no override has occurred during the financial year." },
+            { "key": "C", "text": "Engaging an external auditor's expert to completely re-evaluate the entity's internal control environment component." },
+            { "key": "D", "text": "Testing the appropriateness of journal entries recorded in the general ledger and other adjustments made in the preparation of the financial statements." }
+          ],
+          "answer": "D",
+          "citation": "Page 239, Paragraphs 3 and 4 (under \"Fraud\"): \"The risk of management override of controls varies from entity to entity, but it is present in all entities and is, therefore, considered to be a significant risk. Given the significant risk, the auditor should undertake audit procedures to reduce this risk, including testing the 'appropriateness of journal entries recorded in the general ledger and other adjustments made in the preparation of the financial statements' (ISA 240, para. 33(a)).\""
+        },
+        {
+          "id": "b2-q8",
+          "prompt": "During an audit, the auditor evaluates uncorrected misstatements and concludes that they are, either individually or in aggregate, both material and pervasive to the financial statements. According to ISA 705 (Revised), what type of audit opinion must the auditor issue to indicate that the financial statements are misleading or of little use?",
+          "options": [
+            { "key": "A", "text": "Unmodified opinion with an Emphasis of Matter paragraph" },
+            { "key": "B", "text": "Qualified opinion" },
+            { "key": "C", "text": "Disclaimer of opinion" },
+            { "key": "D", "text": "Adverse opinion" }
+          ],
+          "answer": "D",
+          "citation": "Page 288, Bullet 6 (under \"Key Points 4.4\"): \"When the auditor concludes that misstatements are, either individually or in aggregate, material and pervasive to the financial statements, an adverse audit opinion is issued, indicating that the auditor considers the financial statements to be misleading or of little use to the intended users.\""
+        },
+        {
+          "id": "b2-q9",
+          "prompt": "According to ISA 701 Communicating Key Audit Matters in the Independent Auditor’s Report, from which population of matters does the auditor determine Key Audit Matters (KAMs), and what factors are primarily taken into account during this determination?",
+          "options": [
+            { "key": "A", "text": "Selected from matters communicated with those charged with governance; taking into account areas of higher assessed risk, significant auditor/management judgements, and the effect of significant events or transactions." },
+            { "key": "B", "text": "Selected from all general ledger accounts; focusing primarily on transaction volume and the mathematical accuracy of the entity's records." },
+            { "key": "C", "text": "Selected strictly from matters disclosed by management in the Directors' Report; focusing solely on the entity's going concern status and profitability margins." },
+            { "key": "D", "text": "Selected from correspondence with regulatory authorities; focusing entirely on instances of non-compliance with laws and regulations (NOCLAR) and fraud indicators." }
+          ],
+          "answer": "A",
+          "citation": "Page 266, Paragraphs 4 and 5 (under \"Key Audit Matters\"): \"The KAMs that may be selected are from the population of those matters that are communicated to those charged with governance... In making this determination, the auditor takes into account: (a) Areas of higher assessed risk of material misstatement... (b) Significant auditor judgments relating to areas in the financial statements that involved significant management judgment... (c) The effect on the audit of significant events or transactions that occurred during the period (ISA 701, para. 9).\""
+        },
+        {
+          "id": "b2-q10",
+          "prompt": "An audit team engages an external auditor's expert to assist in valuing a complex financial instrument. The auditor concludes the expert's work is adequate and subsequently decides to issue an unmodified audit opinion. According to ISA 620 Using the Work of an Auditor’s Expert, how should the auditor's expert be referenced in the auditor's report?",
+          "options": [
+            { "key": "A", "text": "The auditor must explicitly name the expert in the Basis for Opinion section to justify the reliance on the valuation." },
+            { "key": "B", "text": "The auditor should only reference the expert in an Other Matter paragraph to highlight the complexity of the audit." },
+            { "key": "C", "text": "The auditor should not refer to the work of the auditor's expert in an auditor's report containing an unmodified opinion unless required by law or regulation." },
+            { "key": "D", "text": "The auditor must co-sign the audit report with the expert to transparently denote shared responsibility to the shareholders." }
+          ],
+          "answer": "C",
+          "citation": "Page 221, Paragraph 4 (under \"Using the Work of an Auditor's Expert\"): \"The auditor should 'not refer to the work of an auditor’s expert in an auditor’s report containing an unmodified opinion unless required by law or regulation' (ISA 620, para. 14). This is to ensure that the auditor’s sole responsibility for the audit opinion is not confused or diminished.\""
+        }
+      ]
+    },
+    {
+      "id": "batch-3",
+      "title": "Batch 3",
+      "subtitle": "Multiple-Choice Questions (MCQs)",
+      "questions": [
+        {
+          "id": "b3-q1",
+          "prompt": "During an audit, the auditor evaluates accumulated misstatements according to ISA 450 Evaluation of Misstatements Identified during the Audit. If the auditor and management disagree over the fair value estimate of goodwill, and management refuses to adjust their estimate to the amount the auditor considers appropriate, which of the following classifications best describes this specific type of misstatement?",
+          "options": [
+            { "key": "A", "text": "Factual misstatement" },
+            { "key": "B", "text": "Judgemental misstatement" },
+            { "key": "C", "text": "Projected misstatement" },
+            { "key": "D", "text": "Extrapolated misstatement" }
+          ],
+          "answer": "B",
+          "citation": "\"Paragraph A6 of ISA 450 classifies misstatements into three categories: factual, judgemental and projected misstatements... After performing audit procedures, auditors may determine an amount for an accounting estimate that is different from the amount estimated by management... Any difference between what management decides to record and what the auditor recommends to be recorded would be considered a misstatement [judgemental].\""
+        },
+        {
+          "id": "b3-q2",
+          "prompt": "When evaluating whether to use the work of an entity's internal audit function under ISA 610 (Revised) Using the Work of Internal Auditors, there is a specific divergence in the Australian auditing standards (ASA 610). How does the Australian standard differ from the international standard regarding the use of internal auditors?",
+          "options": [
+            { "key": "A", "text": "ASA 610 mandates that internal auditors must perform at least 20% of the external audit's substantive procedures." },
+            { "key": "B", "text": "ASA 610 permits direct assistance only if the internal auditor is a registered company auditor." },
+            { "key": "C", "text": "ASA 610 completely prohibits internal auditors from providing direct assistance to the external auditor." },
+            { "key": "D", "text": "ASA 610 requires the external auditor to independently re-perform 100% of the internal auditor's work." }
+          ],
+          "answer": "C",
+          "citation": "\"Note that the Australian standard ASA 610 Using the Work of Internal Auditors (Compiled) differs from ISA 610 (Revised) in that the Australian standard does not allow internal auditors to provide direct assistance to the external auditor... This is to strengthen the external auditor’s independence and to ensure that the external auditor takes responsibility for the audit work undertaken.\""
+        },
+        {
+          "id": "b3-q3",
+          "prompt": "Assurance practitioners frequently examine prospective financial information under ISAE 3400. In defining the nature of the information being evaluated, how does ISAE 3400 conceptually differentiate a \"forecast\" from a \"projection\"?",
+          "options": [
+            { "key": "A", "text": "A forecast relies solely on audited historical financial data, whereas a projection relies entirely on macroeconomic market indicators." },
+            { "key": "B", "text": "A forecast provides reasonable assurance to users, whereas a projection provides only limited assurance." },
+            { "key": "C", "text": "A forecast is prepared using management's best-estimate assumptions of future events, whereas a projection is based on hypothetical assumptions that are not necessarily expected to take place." },
+            { "key": "D", "text": "A forecast covers a maximum period of twelve months, whereas a projection spans a minimum of five years." }
+          ],
+          "answer": "C",
+          "citation": "\"A ‘forecast’ is defined as: … prospective financial information prepared on the basis of assumptions as to future events which management expects to take place and the actions management expects to take as of the date the information is prepared (best-estimate assumptions) (ISAE 3400, para. 4)... The procedure for collecting evidence varies between management’s best-estimate assumptions... and their hypothetical assumptions (i.e. future events and management actions that are not necessarily expected to take place).\""
+        },
+        {
+          "id": "b3-q4",
+          "prompt": "Under ISA 250 (Revised), the auditor has specific responsibilities regarding a client's non-compliance with laws and regulations (NOCLAR). The auditor's required procedures change depending on whether the laws have a \"direct\" or \"indirect\" effect on the financial statements. Which of the following is considered an \"indirect\" effect where the auditor's responsibility is limited to undertaking specified audit procedures to help identify non-compliance?",
+          "options": [
+            { "key": "A", "text": "Tax laws that dictate the recognition of income tax liabilities." },
+            { "key": "B", "text": "Pension laws that regulate the accrual of employee superannuation provisions." },
+            { "key": "C", "text": "Environmental regulations where non-compliance might lead to material penalties or affect the entity's operating license." },
+            { "key": "D", "text": "Revenue recognition standards dictating the timing of sales recording." }
+          ],
+          "answer": "C",
+          "citation": "\"indirect — where NOCLAR does not directly affect the financial statements, but may be fundamental to the entity’s ability to continue its business, or to avoid material penalties; examples include ‘compliance with the terms of an operating license, compliance with regulatory solvency requirements, or compliance with environmental regulations’ (ISA 250 (Revised), para. 6(b)).\""
+        },
+        {
+          "id": "b3-q5",
+          "prompt": "When an auditor concludes that an entity's use of the going concern basis of accounting is appropriate, but a material uncertainty exists, the auditor must consider the adequacy of the disclosures in the financial statements. According to ISA 570 (Revised), if management has adequately disclosed this material uncertainty, what is the correct reporting action for the auditor?",
+          "options": [
+            { "key": "A", "text": "Issue a qualified opinion with an \"Except For\" paragraph explaining the uncertainty." },
+            { "key": "B", "text": "Issue an unmodified opinion and include an \"Emphasis of Matter\" paragraph highlighting the note." },
+            { "key": "C", "text": "Issue an adverse opinion because the entity is on the verge of liquidation." },
+            { "key": "D", "text": "Issue an unmodified opinion and include a separate section headed \"Material Uncertainty Related to Going Concern\"." }
+          ],
+          "answer": "D",
+          "citation": "\"When there is adequate disclosure of the existing material uncertainty, the auditor should express an unmodified opinion and include a separate section under the heading ‘material uncertainty related to going concern’. This paragraph should highlight the material uncertainty and draw attention to the note in the financial statements where this matter is disclosed (ISA 570 (Revised), para. 22).\""
+        },
+        {
+          "id": "b3-q6",
+          "prompt": "The International Framework for Assurance Engagements defines various types of engagements. What is the fundamental difference between an \"attestation engagement\" and a \"direct engagement\"?",
+          "options": [
+            { "key": "A", "text": "In an attestation engagement, a party other than the practitioner measures or evaluates the underlying subject matter against criteria; in a direct engagement, the practitioner directly measures or evaluates the underlying subject matter." },
+            { "key": "B", "text": "In an attestation engagement, the practitioner provides absolute assurance; in a direct engagement, only reasonable assurance can be provided." },
+            { "key": "C", "text": "Attestation engagements apply exclusively to historical financial statements, while direct engagements are used only for prospective financial information." },
+            { "key": "D", "text": "Direct engagements require the practitioner to implement the internal controls, whereas attestation engagements only evaluate them." }
+          ],
+          "answer": "A",
+          "citation": "\"12. In an attestation engagement, a party other than the practitioner measures or evaluates the underlying subject matter against the criteria... 13. In a direct engagement, the practitioner measures or evaluates the underlying subject matter against the criteria.\""
+        },
+        {
+          "id": "b3-q7",
+          "prompt": "Professional accountants in Australia who hold or control client money are subject to compliance engagements governed by APES 310 Client Monies. Under the regulatory requirements of APES 310, if an auditor identifies a deficiency of client monies during this compliance engagement, within what timeframe must the auditor report this deficiency to the applicable Professional Body (e.g., CPA Australia)?",
+          "options": [
+            { "key": "A", "text": "Within 5 business days." },
+            { "key": "B", "text": "Within 14 business days." },
+            { "key": "C", "text": "Within 15 business days." },
+            { "key": "D", "text": "Within 28 business days." }
+          ],
+          "answer": "A",
+          "citation": "\"An auditor is also required to report any identified deficiency of client monies to CPA Australia (or auditee’s Professional Body) within five business days (APES 310, para. 8.9).\""
+        },
+        {
+          "id": "b3-q8",
+          "prompt": "When performing a performance audit in the public sector, auditors often utilise different methodological approaches to evaluate the economy, efficiency, and effectiveness of an activity. What is the primary purpose of conducting a \"systems-based review\" in a performance engagement?",
+          "options": [
+            { "key": "A", "text": "To independently recalculate the financial performance metrics included in the entity's annual report." },
+            { "key": "B", "text": "To evaluate whether the entity's IT hardware infrastructure is compliant with the latest cybersecurity standards." },
+            { "key": "C", "text": "To provide the auditor with knowledge of key systems, processes, and controls so they can identify risks to service delivery and potential sources of data errors." },
+            { "key": "D", "text": "To formulate hypothetical assumptions regarding future government funding requirements." }
+          ],
+          "answer": "C",
+          "citation": "\"Systems-based reviews provide the auditor with knowledge of the key systems, processes and controls that are involved in the audited function or entity so they can identify: risks to delivery of services and risks to achievement of outcomes; sources of and potential errors in performance data...\""
+        },
+        {
+          "id": "b3-q9",
+          "prompt": "In public practice, an intimidation threat to a practitioner's objectivity can arise when a client engages in \"opinion shopping\" by seeking a second opinion on an accounting treatment from a different accountant. According to the APES 110 Code of Ethics, what is an appropriate safeguard the accountant providing the second opinion should apply?",
+          "options": [
+            { "key": "A", "text": "Requesting a written guarantee from the client's board of directors that the existing auditor will not be replaced." },
+            { "key": "B", "text": "Seeking the client's permission to contact the existing accountant and providing the existing accountant with a copy of the second opinion." },
+            { "key": "C", "text": "Issuing the opinion verbally without written documentation to minimize legal liability." },
+            { "key": "D", "text": "Withdrawing entirely from providing the second opinion, as it is strictly prohibited under the Code." }
+          ],
+          "answer": "B",
+          "citation": "\"Safeguards include the accountant who is asked to provide the second opinion seeking client permission to contact the existing accountant, describing the limitations surrounding the opinion with the client as well as providing the existing accountant with a copy of the second opinion (the Code, para. 321.3 A3).\""
+        },
+        {
+          "id": "b3-q10",
+          "prompt": "According to ISA 701, the auditor must determine Key Audit Matters (KAMs) from those matters communicated with those charged with governance. Which of the following is a primary factor the auditor must explicitly take into account when determining which matters are KAMs?",
+          "options": [
+            { "key": "A", "text": "The total number of audit hours budgeted to test the specific account balance." },
+            { "key": "B", "text": "Significant auditor judgments relating to areas in the financial statements that involved significant management judgment, including highly uncertain accounting estimates." },
+            { "key": "C", "text": "The historical accuracy of the entity's unadjusted trial balance." },
+            { "key": "D", "text": "Matters that resulted in corrected factual misstatements that were immaterial to the financial statements as a whole." }
+          ],
+          "answer": "B",
+          "citation": "\"In making this determination, the auditor takes into account: ... (b) Significant auditor judgments relating to areas in the financial statements that involved significant management judgment, including accounting estimates that are subject to a high degree of estimation uncertainty...\""
+        }
+      ]
+    },
+    {
+      "id": "batch-4",
+      "title": "Batch 4",
+      "subtitle": "Multiple-Choice Questions (MCQs)",
+      "questions": [
+        {
+          "id": "b4-q1",
+          "prompt": "According to the IAASB's A Framework for Audit Quality, what are the three distinct stages of an audit that are capable of being identified at the engagement, firm, and national levels to create an environment for audit quality?",
+          "options": [
+            { "key": "A", "text": "Planning, execution, and reporting stages." },
+            { "key": "B", "text": "Input, process, and output stages." },
+            { "key": "C", "text": "Ethics, independence, and objectivity stages." },
+            { "key": "D", "text": "Client acceptance, testing, and conclusion stages." }
+          ],
+          "answer": "B",
+          "citation": "Page 28 (Pdf_Folio: 28): \"There are three parts to the audit quality framework. As outlined diagrammatically in figure 1.3, these are the input, process and output stages of the audit, with each of these capable of being identified at the engagement, firm and national level.\""
+        },
+        {
+          "id": "b4-q2",
+          "prompt": "Under the International Framework for Assurance Engagements, an assurance engagement consists of five essential elements. Which of the following correctly identifies the three distinct parties involved in the \"three-party relationship\" element?",
+          "options": [
+            { "key": "A", "text": "The practitioner, the responsible party, and the intended users." },
+            { "key": "B", "text": "The practitioner, the engaging party, and the regulatory body." },
+            { "key": "C", "text": "The responsible party, the internal auditor, and the external auditor." },
+            { "key": "D", "text": "The intended users, the board of directors, and the practitioner." }
+          ],
+          "answer": "A",
+          "citation": "Page 31 (Pdf_Folio: 31): \"The five elements of an assurance engagement are: (a) a three-party relationship involving – a practitioner (the assurance practitioner) – a responsible party (responsible for the underlying subject matter and the preparation of the subject matter information) – intended users (of the assurance report)\""
+        },
+        {
+          "id": "b4-q3",
+          "prompt": "In assessing threats to an auditor's independence under the APES 110 Code of Ethics, how is a \"self-review\" threat specifically defined?",
+          "options": [
+            { "key": "A", "text": "The loss of objectivity from financial or related reasons." },
+            { "key": "B", "text": "The loss of objectivity through becoming too close to the client." },
+            { "key": "C", "text": "The loss of objectivity through development of a 'pro-client' state of mind." },
+            { "key": "D", "text": "The loss of its objectivity through situations of reviewing its own work." }
+          ],
+          "answer": "D",
+          "citation": "Page 67 (Pdf_Folio: 67): \"Self-review. The loss of its objectivity through situations of reviewing its own work.\""
+        },
+        {
+          "id": "b4-q4",
+          "prompt": "According to ISA 620, why is an auditor generally prohibited from referring to the work of an auditor's expert in an auditor's report containing an unmodified opinion?",
+          "options": [
+            { "key": "A", "text": "Because the expert's work is protected under client confidentiality agreements." },
+            { "key": "B", "text": "Because the expert is not formally registered as a lead engagement partner." },
+            { "key": "C", "text": "Because doing so may be construed by the reader as an attempt by the auditor to reduce their responsibility for the auditor’s opinion." },
+            { "key": "D", "text": "Because the expert's findings are always considered secondary to management's representations." }
+          ],
+          "answer": "C",
+          "citation": "Page 222 (Pdf_Folio: 222): \"The auditor does not refer to the work of the expert in an auditor’s report containing an unmodified opinion, because doing so may be construed by the reader as an attempt by the auditor to reduce their responsibility for the auditor’s opinion.\""
+        },
+        {
+          "id": "b4-q5",
+          "prompt": "When an assurance practitioner is engaged to provide a statement of findings to management regarding the completeness and accuracy of purchase ledger balances, what level of assurance and opinion are provided under an agreed-upon procedures engagement?",
+          "options": [
+            { "key": "A", "text": "Limited assurance is provided with a negative form opinion." },
+            { "key": "B", "text": "Reasonable assurance is provided with a positive form opinion." },
+            { "key": "C", "text": "Absolute assurance is provided with a factual opinion." },
+            { "key": "D", "text": "No assurance is provided and no opinion will be given." }
+          ],
+          "answer": "D",
+          "citation": "Page 453 (Pdf_Folio: 453): \"This is an agreed-upon procedures engagement. A statement of findings provides a statement of the results of the procedures performed without giving an opinion as to whether the purchase ledger balance is or is not fairly stated. No assurance is provided and no opinion will be given.\""
+        },
+        {
+          "id": "b4-q6",
+          "prompt": "Under ASRS 4450 Comfort Letter Engagements, a comfort letter is typically issued in connection with a prospectus. According to ASRS 4450, what must the auditor explicitly confirm regarding the restriction of the comfort letter's use?",
+          "options": [
+            { "key": "A", "text": "It is restricted to the securities exchange to ensure market efficiency." },
+            { "key": "B", "text": "It is restricted to its addressees and is prepared for the sole purpose of assisting the requesting parties in their due diligence defence." },
+            { "key": "C", "text": "It is restricted to the entity's internal auditors to verify management assertions." },
+            { "key": "D", "text": "It is restricted to the external legal counsel of the entity for litigation defense." }
+          ],
+          "answer": "B",
+          "citation": "Page 380 (Pdf_Folio: 380): \"confirmation that the use of the comfort letter is restricted to its addressees and is prepared for the sole purpose of assisting the requesting parties in their due diligence defence of the offering document …; (ASRS 4450, para. 60).\""
+        },
+        {
+          "id": "b4-q7",
+          "prompt": "In relation to subsequent events in Australia, what statutory duty is imposed on directors during the period from the balance date to the date of signing the directors' statement?",
+          "options": [
+            { "key": "A", "text": "To issue a revised audit report to the Financial Reporting Council." },
+            { "key": "B", "text": "To adjust all comparative figures from the previous five financial years." },
+            { "key": "C", "text": "To immediately notify the Australian Securities Exchange (ASX) of all uncorrected misstatements." },
+            { "key": "D", "text": "To consider and disclose any matter arising that prejudices the truth and fairness of the accounts." }
+          ],
+          "answer": "D",
+          "citation": "Page 248 (Pdf_Folio: 248): \"In Australia, directors have a duty to consider and disclose any matter arising in the period from the balance date to the date of signing the directors’ statement when such a matter prejudices the truth and fairness of the accounts (Corporations Act, ss. 297, 298, 299, 300).\""
+        },
+        {
+          "id": "b4-q8",
+          "prompt": "During an audit of property, plant, and equipment, an auditor finds systematic errors in a sample representing an error rate of 4.3%. Even if the sample error amount itself is below the tolerable error threshold, why might the auditor incorrectly conclude that no further audit work is required?",
+          "options": [
+            { "key": "A", "text": "Because systematic errors are strictly isolated and never extrapolated to the entire population." },
+            { "key": "B", "text": "Because the extrapolated error rate applied to the population as a whole could result in a material misstatement." },
+            { "key": "C", "text": "Because systematic errors only affect the presentation assertion and not the valuation assertion." },
+            { "key": "D", "text": "Because an error rate below 5% is deemed clearly trivial by auditing standards." }
+          ],
+          "answer": "B",
+          "citation": "Page 449 (Pdf_Folio: 449): \"The errors in the sample are systematic, suggesting that they would be repeated throughout. When extrapolating this error to the population as a whole, an error rate of 4.3% would give a misstatement of $712 000 (16 564 000 × 4.3%, rounded to thousands).\""
+        },
+        {
+          "id": "b4-q9",
+          "prompt": "In assurance engagements, the criteria used to measure or evaluate the underlying subject matter must possess certain characteristics to be considered suitable. According to the Framework, how is the characteristic of \"reliability\" defined in this context?",
+          "options": [
+            { "key": "A", "text": "Reliable criteria are capable of illustrating the extent to which objectives have been achieved in absolute measures." },
+            { "key": "B", "text": "Reliable criteria represent what they purport to represent and are free from bias." },
+            { "key": "C", "text": "Reliable criteria allow reasonably consistent evaluation or measurement of the subject matter." },
+            { "key": "D", "text": "Reliable criteria balance the benefits of the information against the costs of preparing them." }
+          ],
+          "answer": "C",
+          "citation": "Page 35 (Pdf_Folio: 35): \"Reliable criteria allow reasonably consistent evaluation or measurement of the subject matter.\""
+        },
+        {
+          "id": "b4-q10",
+          "prompt": "When an auditor determines it is necessary to include an Emphasis of Matter paragraph in the auditor's report to draw attention to a significant matter, what specific restriction applies to the content of this paragraph according to ISA 706 (Revised)?",
+          "options": [
+            { "key": "A", "text": "It must introduce newly discovered risks that management failed to document." },
+            { "key": "B", "text": "It must explicitly state that the audit opinion is modified due to the highlighted matter." },
+            { "key": "C", "text": "It must replace the Key Audit Matters (KAMs) section for that specific financial year." },
+            { "key": "D", "text": "It should not contain any new information, but should refer only to information presented or disclosed in the financial statements." }
+          ],
+          "answer": "D",
+          "citation": "Page 275 (Pdf_Folio: 275): \"This paragraph should not contain any new information, but should refer only to information presented or disclosed in the financial statements (ISA 706 (Revised), para. 9).\""
+        }
+      ]
+    }
+  ]
+}
