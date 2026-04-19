@@ -129,6 +129,133 @@
           "citation": "Quote: \"agile organisation An organisation with a stable core, but with the ability to change quickly to respond to changes in the external environment, market changes, technology changes or changes by competitors.\" Location: Pdf_Folio: 498, Glossary."
         }
       ]
+    },
+    {
+      "id": "gsl-batch-2",
+      "title": "Batch 2",
+      "subtitle": "Innovation, service design, and business model strategy",
+      "questions": [
+        {
+          "id": "gsl-batch-2-q1",
+          "prompt": "A development team is categorizing customer feedback for a newly launched streaming platform. They identify certain baseline features where their fulfillment doesn't explicitly increase overall customer satisfaction, but failing to fulfill them guarantees severe customer dissatisfaction. Which author or creator's model formally classifies these specific features as \"Threshold attributes — Must-be's\"?",
+          "options": [
+            { "key": "A", "text": "Sangiorgi and Prendiville" },
+            { "key": "B", "text": "Noriaki Kano" },
+            { "key": "C", "text": "Kim and Mauborgne" },
+            { "key": "D", "text": "Tom Kelley" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Kano classification... Threshold attributes — Must-be's If this attribute isn't fulfilled, then customers will be dissatisfied. However, fulfilment doesn't increase satisfaction.\" Location: Pdf_Folio: 331. Also referenced as Kano's performance attributes at Pdf_Folio: 115."
+        },
+        {
+          "id": "gsl-batch-2-q2",
+          "prompt": "A multinational corporation realizes that its highly experienced engineers hold undocumented, intuitive expertise that is at risk of being lost when they retire. Management implements a mentoring program where junior staff absorb this know-how through observation, and this individual expertise is eventually socialized into shared organizational routines. According to the theory proposed by Nonaka (1994), what dynamic does this conversion process produce?",
+          "options": [
+            { "key": "A", "text": "A knowledge spiral" },
+            { "key": "B", "text": "Strategic stretch" },
+            { "key": "C", "text": "The productivity frontier" },
+            { "key": "D", "text": "Value co-creation" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"Nonaka (1994) proposed that knowledge conversion between tacit and explicit forms and between individual and organisational levels produces a 'knowledge spiral' in which the organisation's stock of knowledge broadens and deepens.\" Location: Pdf_Folio: 91."
+        },
+        {
+          "id": "gsl-batch-2-q3",
+          "prompt": "An established tech firm is venturing into an entirely new market characterized by high uncertainty. Instead of fully funding the project upfront based on long-term projections, the board decides to release funds strictly based on the accomplishment of key milestones, adjusting planning parameters as new information is revealed. Which planning technique, originally introduced by McGrath and MacMillan, is the board applying?",
+          "options": [
+            { "key": "A", "text": "Agile project management" },
+            { "key": "B", "text": "The double-diamond model" },
+            { "key": "C", "text": "Discovery-driven planning" },
+            { "key": "D", "text": "The strategy compass" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"Discovery-driven planning is a planning technique introduced by McGrath and MacMillan (1995)... In discovery-driven planning, funds are released based on the accomplishment of key milestones or checkpoints, at which point additional funding can be made available predicated on reasonable expectations for future success.\" Location: Pdf_Folio: 226."
+        },
+        {
+          "id": "gsl-batch-2-q4",
+          "prompt": "When reviewing its customer interaction protocols, a retail business applies a framework that specifically analyzes \"the experiences people have as they engage in interactions with touchpoints provided by others.\" According to Sangiorgi and Prendiville's framework, which core component of service design is the business focusing on?",
+          "options": [
+            { "key": "A", "text": "Sociocultural configuration" },
+            { "key": "B", "text": "Value co-creating system" },
+            { "key": "C", "text": "Experience architecture" },
+            { "key": "D", "text": "The service encounter" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"According to Sangiorgi and Prendiville (2019), there are three components to service design... The service encounter: A focus on the experiences people have as they engage in interactions with touchpoints provided by others, often organisations but possibly by other individuals\" Location: Pdf_Folio: 119."
+        },
+        {
+          "id": "gsl-batch-2-q5",
+          "prompt": "An emerging tech start-up must decide whether to compete directly against industry incumbents or collaborate with them. It must also choose whether to closely protect its intellectual property to prevent imitation or execute rapidly to control a new value chain. Which framework, specifically developed by Gans, Scott, and Stern to help navigate these choices, should the founders utilize?",
+          "options": [
+            { "key": "A", "text": "The Balanced Scorecard" },
+            { "key": "B", "text": "The strategy compass" },
+            { "key": "C", "text": "The McKinsey 7-S framework" },
+            { "key": "D", "text": "Rumelt's evaluation criteria" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Gans et al. (2018) developed a strategy compass for entrepreneurs... start-ups need to make choices: between collaboration and competition... between protecting their intellectual property to prevent imitation and collaborating with others to enable speed to market and disruption.\" Location: Pdf_Folio: 234 & 237."
+        },
+        {
+          "id": "gsl-batch-2-q6",
+          "prompt": "During an organizational restructuring, a firm seeks to deliberately embed specific innovation personas into its cross-functional project teams. They are currently looking for an individual who actively explores other industries and cultures, translates what they see, and overlays those learnings to fit the needs of the organization. According to Tom Kelley's \"Ten Faces of Innovation\" framework, which specific persona are they seeking?",
+          "options": [
+            { "key": "A", "text": "The anthropologist" },
+            { "key": "B", "text": "The experimenter" },
+            { "key": "C", "text": "The cross-pollinator" },
+            { "key": "D", "text": "The collaborator" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"The cross-pollinator: Explores other industries and cultures, translates what they see and learn and overlays to fit the needs of the organisation\" Location: Pdf_Folio: 140, Table 4.20 IDEO's 10 faces of innovation personas."
+        },
+        {
+          "id": "gsl-batch-2-q7",
+          "prompt": "A logistics company is reevaluating its operational logic to improve efficiency. It decides to shift inventory forecasting responsibilities directly to its suppliers, under the rationale that the suppliers have access to better real-time supply data and are best equipped to handle the consequences. This approach aligns with which authors' theory that a business model can be improved by assigning decision-making to the best-informed people?",
+          "options": [
+            { "key": "A", "text": "Girotra and Netessine" },
+            { "key": "B", "text": "Kaplan and Norton" },
+            { "key": "C", "text": "Blanchard and Zigarmi" },
+            { "key": "D", "text": "Johnson and Scholes" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"Girotra and Netessine (2014) suggest that a business model is a set of key decisions and that the business model can be improved by changing when decisions are made, who makes them and why... assign decision making to the best-informed people (e.g. a supplier may be able to better make inventory decisions than the organisation itself...)\" Location: Pdf_Folio: 253-254."
+        },
+        {
+          "id": "gsl-batch-2-q8",
+          "prompt": "A financial services firm is struggling to ensure its high-level strategic objectives are translating effectively into daily operations. To resolve this, management implements a performance measurement tool that explicitly aligns strategy development, strategic drivers, operational levers, and people levers. Whose foundational view forms the core of this specific alignment approach?",
+          "options": [
+            { "key": "A", "text": "Blake and Mouton" },
+            { "key": "B", "text": "Kaplan and Norton" },
+            { "key": "C", "text": "Dunphy and Stace" },
+            { "key": "D", "text": "Hamel and Prahalad" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"At the core of Kaplan and Norton's view is the alignment of strategy development, strategic drivers, operational levers, people and organisational levers (all discussed in this module) and implementation, monitoring and adaptation\" Location: Pdf_Folio: 159."
+        },
+        {
+          "id": "gsl-batch-2-q9",
+          "prompt": "A technology conglomerate realizes that keeping all its research and development strictly in-house is limiting its speed to market. The CEO adopts a new strategic paradigm, stating that because the organization operates in a world of abundant knowledge, it must actively seek out, connect with, and build upon the expertise of smart people outside the company. Which author is credited with articulating this fundamental premise of \"open innovation\"?",
+          "options": [
+            { "key": "A", "text": "Henry Chesbrough" },
+            { "key": "B", "text": "Richard Rumelt" },
+            { "key": "C", "text": "John Kotter" },
+            { "key": "D", "text": "Tim Brown" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"According to Henry Chesbrough: 'Open innovation is fundamentally about operating in a world of abundant knowledge, where not all the smart people work for you, so you'd better go find them, connect to them, and build upon what they can do.'\" Location: Pdf_Folio: 142."
+        },
+        {
+          "id": "gsl-batch-2-q10",
+          "prompt": "During a product development workshop, a facilitator insists that the team must strictly separate the phase of understanding the market opportunity from the phase of developing the actual solution. Which organization or creator's model actively advocates for this clear separation between problem definition and solution development to prevent premature investment decisions?",
+          "options": [
+            { "key": "A", "text": "IDEO's design thinking model" },
+            { "key": "B", "text": "The Boston Consulting Group's product matrix" },
+            { "key": "C", "text": "The Design Council's double-diamond model" },
+            { "key": "D", "text": "McKinsey & Company's agile network model" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"The Design Council's double-diamond model advocates a clear separation between problem definition and solution development to ensure the problem or opportunity is fully understood and that all problems and opportunities have been evaluated before decisions about investment in solution development.\" Location: Pdf_Folio: 117."
+        }
+      ]
     }
   ]
 }
