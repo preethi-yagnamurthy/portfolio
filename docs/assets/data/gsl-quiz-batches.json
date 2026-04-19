@@ -256,6 +256,387 @@
           "citation": "Quote: \"The Design Council's double-diamond model advocates a clear separation between problem definition and solution development to ensure the problem or opportunity is fully understood and that all problems and opportunities have been evaluated before decisions about investment in solution development.\" Location: Pdf_Folio: 117."
         }
       ]
+    },
+    {
+      "id": "gsl-batch-3",
+      "title": "Batch 3",
+      "subtitle": "Stakeholders, integration, knowledge, and portfolio strategy",
+      "questions": [
+        {
+          "id": "gsl-batch-3-q1",
+          "prompt": "An organization is mapping out its stakeholders prior to a major strategic restructuring. During the analysis, they identify a specific group—comprising the CEO, senior executives, and major shareholders—who possess both significant influence over the company's direction and a strong vested interest in the strategic outcomes. Within the power-interest grid, how is this highly critical stakeholder group formally classified?",
+          "options": [
+            { "key": "A", "text": "Subjects" },
+            { "key": "B", "text": "Crowd" },
+            { "key": "C", "text": "Players" },
+            { "key": "D", "text": "Bystanders" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"Players are those with high interest and high power. These are the most critical stakeholders to be considered in strategy decisions as they are the most likely to exert influence on strategic decisions. Specific employees, such as the CEO, senior executives and particular employees with specialist skills, may be players. Larger shareholders and directors are likely be in this quadrant as well.\" Location: Pdf_Folio: 145, Module 3, Section 3.1."
+        },
+        {
+          "id": "gsl-batch-3-q2",
+          "prompt": "A telecommunications firm wants to rapidly expand its market share and eliminate a major rival. Rather than growing its customer base organically over several years, the firm decides to execute a buyout and purchase the rival company outright. Which strategic growth approach does this action specifically represent?",
+          "options": [
+            { "key": "A", "text": "Vertical integration" },
+            { "key": "B", "text": "Horizontal integration" },
+            { "key": "C", "text": "Market penetration" },
+            { "key": "D", "text": "Diversification" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Horizontal integration describes the merger with, or the purchase of, a competitor. Instead of relying on creating growth internally (organic growth), this approach provides a rapid path to growth while also reducing the amount of competition in a marketplace.\" Location: Pdf_Folio: 179, Module 4, Section 4.6."
+        },
+        {
+          "id": "gsl-batch-3-q3",
+          "prompt": "An engineering firm realizes that its senior engineers hold highly valuable, experience-based insights that have never been formally recorded in manuals, process documents, or databases. Management fears this crucial expertise will be permanently lost when these engineers eventually retire. What specific term formally describes this type of unrecorded, individual experience?",
+          "options": [
+            { "key": "A", "text": "Explicit knowledge" },
+            { "key": "B", "text": "Dynamic capabilities" },
+            { "key": "C", "text": "Tacit knowledge" },
+            { "key": "D", "text": "Routine capabilities" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"tacit knowledge — the undocumented knowledge and experience of the individuals in the organisation. Tacit knowledge is often highly valuable and most at risk — it is wasted if it is not used and it is lost if the employee leaves the organisation.\" Location: Pdf_Folio: 154, Module 3, Section 3.5."
+        },
+        {
+          "id": "gsl-batch-3-q4",
+          "prompt": "A government agency is developing a new long-term strategic plan. Rather than focusing solely on calculated financial objectives and a purely rational economic perspective, the planning committee structures the strategy to heavily account for the sociological behaviors of the community, institutional constraints, and prevailing regulatory policies in its environment. Which perspective on strategy formulation is the committee applying?",
+          "options": [
+            { "key": "A", "text": "Classical formulation" },
+            { "key": "B", "text": "Evolutionary formulation" },
+            { "key": "C", "text": "Systemic formulation" },
+            { "key": "D", "text": "Processual formulation" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"A systemic formulation reflects the internal and external context in which strategy takes place. It allows for the behaviour of people, institutions and organisations, and is influenced by the social and economic systems in which they operate.\" Location: Pdf_Folio: 250, Module 7, Section 7.3."
+        },
+        {
+          "id": "gsl-batch-3-q5",
+          "prompt": "A successful coffee roasting company currently purchases all its raw coffee beans from independent agricultural wholesalers. To secure its supply chain and reduce long-term material costs, the company decides to acquire its own coffee plantations overseas. In terms of strategic market entry and growth, how is this strategic acquisition classified?",
+          "options": [
+            { "key": "A", "text": "Horizontal integration" },
+            { "key": "B", "text": "Vertical integration" },
+            { "key": "C", "text": "Greenfield operation" },
+            { "key": "D", "text": "Strategic alliance" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Vertical integration involves moving up or down the value chain.\" Location: Pdf_Folio: 179, Module 4, Section 4.6."
+        },
+        {
+          "id": "gsl-batch-3-q6",
+          "prompt": "A consumer goods corporation has a legacy household cleaning product that consistently commands the largest share of its market. However, the overall industry for this product is highly mature and experiencing minimal growth. The product generates substantial ongoing revenue with almost no requirement for new capital investment. Within the BCG product matrix, how is this product categorized?",
+          "options": [
+            { "key": "A", "text": "Star" },
+            { "key": "B", "text": "Dog" },
+            { "key": "C", "text": "Question mark" },
+            { "key": "D", "text": "Cash cow" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"Cash cows are products and services with large market share in low-growth industries. Such products are considered attractive due to their large generation of cash and little need for investment.\" Location: Pdf_Folio: 148, Module 3, Section 3.2."
+        },
+        {
+          "id": "gsl-batch-3-q7",
+          "prompt": "An entrepreneur is pitching a start-up concept to a board of venture capitalists. While the business plan details the daily operations, the investors specifically ask for a concise explanation of the overarching system detailing how the enterprise intends to interact with its customers, generate revenue, and prove its fundamental economic logic. What foundational concept are the investors asking to evaluate?",
+          "options": [
+            { "key": "A", "text": "Strategic fit" },
+            { "key": "B", "text": "Business model" },
+            { "key": "C", "text": "Value proposition" },
+            { "key": "D", "text": "Productivity frontier" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Module 1 introduced the broad concept that a business model explains how a business works and the economic logic behind it.\" Location: Pdf_Folio: 244, Module 7, Section 7.2."
+        },
+        {
+          "id": "gsl-batch-3-q8",
+          "prompt": "A regional airline decides to strip away all complimentary in-flight meals, entertainment screens, and checked baggage allowances. By aggressively minimizing operational overhead, the airline is able to offer ticket prices significantly cheaper than any competing carrier in the region. According to Porter's generic strategies framework, what type of competitive advantage is this airline primarily pursuing?",
+          "options": [
+            { "key": "A", "text": "Differentiation advantage" },
+            { "key": "B", "text": "Blue ocean advantage" },
+            { "key": "C", "text": "Low-cost advantage" },
+            { "key": "D", "text": "Narrow focus advantage" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"Porter (1980) described two basic types of competitive advantage an organisation can have — an organisation can pursue a low-cost advantage or a differentiation advantage. Low cost means producing the product or service at a cheaper cost than competitors...\" Location: Pdf_Folio: 149, Module 3, Section 3.3."
+        },
+        {
+          "id": "gsl-batch-3-q9",
+          "prompt": "The newly appointed CEO of a manufacturing firm insists that all strategic planning must center exclusively on maximizing financial returns. She requires her management team to utilize strict mathematical modeling and objective data analysis to achieve this singular economic goal, largely ignoring emerging sociological trends or institutional behaviors. Which approach to strategy formulation does this executive's style most closely resemble?",
+          "options": [
+            { "key": "A", "text": "Processual formulation" },
+            { "key": "B", "text": "Classical formulation" },
+            { "key": "C", "text": "Systemic formulation" },
+            { "key": "D", "text": "Evolutionary formulation" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"A classical formulation adopts profit as the principal objective and pursues this in a rational and calculating manner. It has strong connections with classical economics theory where the strategy is driven by a single decision maker with a single objective: the economist pursues clear, financial goals through rational and analytic means.\" Location: Pdf_Folio: 249, Module 7, Section 7.3."
+        },
+        {
+          "id": "gsl-batch-3-q10",
+          "prompt": "A technology conglomerate has recently launched a new virtual reality headset. The virtual reality industry is currently experiencing explosive, rapid growth; however, the conglomerate's new headset currently holds only a very small fraction of the total market share. Management faces a strategic dilemma because the product requires massive cash investments to grow its market share, but risks failing altogether. How is this specific product classified within the BCG portfolio matrix?",
+          "options": [
+            { "key": "A", "text": "Question mark" },
+            { "key": "B", "text": "Star" },
+            { "key": "C", "text": "Dog" },
+            { "key": "D", "text": "Cash cow" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"Question marks are products and services with small market share in fast-growing industries. They often provide a strategic dilemma due to their potential for gaining market share and transforming into a star or cash cow, or for deteriorating into a dog. Question marks often consume excess cash, so should be treated with careful consideration.\" Location: Pdf_Folio: 148, Module 3, Section 3.2."
+        }
+      ]
+    },
+    {
+      "id": "gsl-batch-4",
+      "title": "Batch 4",
+      "subtitle": "Stakeholders, capabilities, projects, IP, and growth options",
+      "questions": [
+        {
+          "id": "gsl-batch-4-q1",
+          "prompt": "A corporation is mapping out the various entities involved in its strategic environment. The planning committee categorizes internal employees, board members, external customers, suppliers, and labor unions under a single, overarching umbrella term. What is the formal term used to collectively describe all of these organizations, groups, and individuals that can affect or be affected by the firm's actions?",
+          "options": [
+            { "key": "A", "text": "Strategic groups" },
+            { "key": "B", "text": "Value chain participants" },
+            { "key": "C", "text": "Stakeholders" },
+            { "key": "D", "text": "Network actors" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"Stakeholders are: organisations, groups, and individuals that can affect or are affected by a firm's actions. Stakeholders can be grouped by whether they are internal (employees and board members) or external (customers, suppliers, and unions) to a firm...\" Location: Pdf_Folio: 96, Module 3, Section 3.1 Understanding key stakeholders."
+        },
+        {
+          "id": "gsl-batch-4-q2",
+          "prompt": "An enterprise needs to take a systematic survey of its internal competencies. To do this, management systematically evaluates and identifies the distinct capabilities housed specifically within each of the firm's distinct departments, such as operations, purchasing, logistics, and human resources. What is the formal name for this specific capability-assessment approach?",
+          "options": [
+            { "key": "A", "text": "Value chain mapping" },
+            { "key": "B", "text": "Functional analysis" },
+            { "key": "C", "text": "Balanced scorecard assessment" },
+            { "key": "D", "text": "Gap analysis" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"An organisation needs to take a systematic survey of its capabilities. A commonly used approach is functional analysis, which identifies organisational capabilities within each of the firm's functional areas (e.g. operations, purchasing, logistics/supply chain management, design, engineering...)\" Location: Pdf_Folio: 110, Module 3, Section 3.6 The role of resources and capabilities in strategy."
+        },
+        {
+          "id": "gsl-batch-4-q3",
+          "prompt": "To execute a newly approved strategic initiative, an organization forms a temporary structural unit designed specifically to deliver a distinct business output outlined in the business case. Once this specific output is delivered, this temporary organizational structure will be formally dissolved. What term formally defines this structure?",
+          "options": [
+            { "key": "A", "text": "An agile amoeba" },
+            { "key": "B", "text": "A strategic business unit" },
+            { "key": "C", "text": "A functional department" },
+            { "key": "D", "text": "A project" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"A project is a temporary organisation structure that is created for the purpose of delivering one or more business outputs according to a specific business case.\" Location: Pdf_Folio: 140, Module 4, Section 4.8 Focusing on strategically important projects."
+        },
+        {
+          "id": "gsl-batch-4-q4",
+          "prompt": "A large financial institution has initiated multiple initiatives to overhaul its IT infrastructure, revise customer service protocols, and update employee training. Because these distinct initiatives share a common strategic goal of improving overall customer retention, the executive team decides to oversee them in a coordinated manner to achieve synergistic benefits that would be impossible to realize if they were managed separately. What specific management discipline does this coordinated oversight represent?",
+          "options": [
+            { "key": "A", "text": "Program management" },
+            { "key": "B", "text": "Portfolio optimization" },
+            { "key": "C", "text": "Matrix management" },
+            { "key": "D", "text": "Strategic alignment" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"Program management is the management of a group of projects sharing common strategic goals, managed in a coordinated way so as to realise benefits otherwise not available by managing projects as separate entities.\" Location: Pdf_Folio: 173, Module 6, Section 6.4 Designing and developing strategy implementation plans."
+        },
+        {
+          "id": "gsl-batch-4-q5",
+          "prompt": "An online software company utilizes rapid prototyping and experimentation to quickly release minimum viable products to the market. By continuously gathering data and modifying the product based on immediate customer feedback, the company successfully minimizes waste, reduces production costs, and overcomes historically long development cycles. This technology-enabled approach is an extension of which specific product development methodology?",
+          "options": [
+            { "key": "A", "text": "Agile service encapsulation" },
+            { "key": "B", "text": "Discovery-driven planning" },
+            { "key": "C", "text": "Lean product development" },
+            { "key": "D", "text": "The double-diamond model" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"It is a technology-enabled extension of lean product development, which aims to minimise waste and maximise value for the customer and organisation by overcoming long development cycles and high production costs.\" Location: Pdf_Folio: 143, Module 4, Section 4.5 E-commerce, internet and platform business models."
+        },
+        {
+          "id": "gsl-batch-4-q6",
+          "prompt": "A franchise coffee chain issues highly detailed operating manuals outlining exact instructions for calibrating espresso machines and texturing milk. Over time, employees repeat these tasks so frequently that they perform them intuitively without consulting the manuals, effectively transforming written operating practices into embedded organizational capabilities. What is the formal term for this essential capability-building step?",
+          "options": [
+            { "key": "A", "text": "Socialisation" },
+            { "key": "B", "text": "Incremental adjustment" },
+            { "key": "C", "text": "Modular transformation" },
+            { "key": "D", "text": "Routinisation" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"Routinisation is an essential step in translating directions and operating practices into capabilities. In every Boost Juice bar or Gloria Jeans coffee shop, operating manuals provide precise directions for the conduct of every activity... through continuous repetition, tasks become routinised.\" Location: Pdf_Folio: 212, Module 7, Section 7.5 Shaping the organisation for new business models."
+        },
+        {
+          "id": "gsl-batch-4-q7",
+          "prompt": "A technology firm successfully creates a revolutionary new microchip that fundamentally solves a complex data-processing bottleneck. To protect this intellectual property, the firm applies for an exclusive legal right that specifically protects this invention and its new technical solution. Which category of intellectual property right is the firm seeking?",
+          "options": [
+            { "key": "A", "text": "Patent" },
+            { "key": "B", "text": "Trademark" },
+            { "key": "C", "text": "Trade secret" },
+            { "key": "D", "text": "Copyright" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"Patents — 'a patent is an exclusive right granted for an invention — a product or process that provides a new way of doing something, or that offers a new technical solution to a problem'.\" Location: Pdf_Folio: 151-152, Module 4, Section 4.6 IP Rights."
+        },
+        {
+          "id": "gsl-batch-4-q8",
+          "prompt": "A global athletic apparel company relies heavily on a distinctive, recognizable symbol stitched onto all its clothing. This symbol guarantees a specific level of quality and allows consumers to instantly identify the company's products in a crowded retail environment. Which category of intellectual property does this symbol specifically represent?",
+          "options": [
+            { "key": "A", "text": "Industrial design" },
+            { "key": "B", "text": "Copyright" },
+            { "key": "C", "text": "Trademark" },
+            { "key": "D", "text": "Utility model" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"Trademarks — consumers are able 'to identify and purchase a product or service based on whether its specific characteristics and quality — as indicated by its unique trademark — meet their needs'.\" Location: Pdf_Folio: 152, Module 4, Section 4.6 IP Rights."
+        },
+        {
+          "id": "gsl-batch-4-q9",
+          "prompt": "An entertainment studio produces a series of training videos and accompanying literary manuals for internal corporate use. To legally protect these specific artistic and literary creations from unauthorized duplication or distribution, which type of intellectual property right must the studio rely on?",
+          "options": [
+            { "key": "A", "text": "Patent" },
+            { "key": "B", "text": "Trademark" },
+            { "key": "C", "text": "Utility model" },
+            { "key": "D", "text": "Copyright" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"Copyright — 'copyright laws grant authors, artists and other creators protection for their literary and artistic creations, generally referred to as works'.\" Location: Pdf_Folio: 152, Module 4, Section 4.6 IP Rights."
+        },
+        {
+          "id": "gsl-batch-4-q10",
+          "prompt": "A consumer goods manufacturer decides to increase the physical size of its popular chocolate bar by 10% while keeping the core recipe entirely unchanged. The strategic goal is simply to sell a higher volume of the existing product to its current customer base. According to the Ansoff product/market matrix, how is this specific strategic action classified?",
+          "options": [
+            { "key": "A", "text": "Market development" },
+            { "key": "B", "text": "Product development" },
+            { "key": "C", "text": "Market penetration" },
+            { "key": "D", "text": "Diversification" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"For example, you might increase the size of your product by 10% to sell more product to the same customers. This often happens with products like chocolate bars and breakfast cereal. The product is virtually unchanged except for a small increase in size. As such, this would be considered to be an example of market penetration.\" Location: Pdf_Folio: 127-128, Module 4, Section 4.4 New product, service and market strategic options."
+        }
+      ]
+    },
+    {
+      "id": "gsl-batch-5",
+      "title": "Batch 5",
+      "subtitle": "Strategic stretch, business types, leadership, and hypercompetition",
+      "questions": [
+        {
+          "id": "gsl-batch-5-q1",
+          "prompt": "A small start-up is devising a strategy to survive against massive industry incumbents. Instead of simply finding and defending a narrow market niche, the executive team decides to leverage their highly unique technological competencies to fundamentally change the \"rules of the game\" and alter customer expectations. According to the framework comparing the leading edges of strategy, which specific approach does this firm's behavior represent?",
+          "options": [
+            { "key": "A", "text": "Strategic fit" },
+            { "key": "B", "text": "Strategic stretch" },
+            { "key": "C", "text": "Risk-reduction portfolio" },
+            { "key": "D", "text": "Mechanistic structuration" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Table 1.2 The leading edge of strategy: fit or stretch... Stretch... Leverage of resources to improve value for money... Change the 'rules of the game'\" Location: Pdf_Folio: 17, Table 1.2 The leading edge of strategy: fit or stretch."
+        },
+        {
+          "id": "gsl-batch-5-q2",
+          "prompt": "A global telecommunications firm is restructuring its divisions based on their distinct core business drivers. One division operates in an environment where the economic cost of customer acquisition is extremely high. Consequently, this division's primary economic imperative is to gain a large share of the customer's wallet, relying heavily on economies of scope to achieve profitability. Which core business type does this division represent?",
+          "options": [
+            { "key": "A", "text": "Product innovation business" },
+            { "key": "B", "text": "Infrastructure business" },
+            { "key": "C", "text": "Platform delivery business" },
+            { "key": "D", "text": "Customer relationship business" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"TABLE 1.3 The three core business types... Customer relationship... Economics: High cost of customer acquisition makes it imperative to gain large wallet share; economies of scope are the key\" Location: Pdf_Folio: 46, Table 1.3 The three core business types."
+        },
+        {
+          "id": "gsl-batch-5-q3",
+          "prompt": "During a period of organizational change, a project director prioritizes high concern for both production outputs and the well-being of the staff. Specifically, the director focuses on building deep commitments to a shared purpose among all employees to drive the project forward. Under the Blake and Mouton leadership grid, which managerial style is this director demonstrating?",
+          "options": [
+            { "key": "A", "text": "Country club manager" },
+            { "key": "B", "text": "Team manager" },
+            { "key": "C", "text": "Middle-of-the-road manager" },
+            { "key": "D", "text": "Authority-obedience manager" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"Team manager Focuses on building commitments to shared purpose\" Location: Pdf_Folio: 51, Figure 1.13 Managerial styles in the Blake and Mouton leadership grid."
+        },
+        {
+          "id": "gsl-batch-5-q4",
+          "prompt": "During the annual strategic planning phase of a mid-sized enterprise, a specific finance executive is tasked with challenging the core assumptions embedded within the proposed business models, conceptualizing new ideas, anticipating future trends, and developing the necessary resource requirements and budgets to support various strategic options. According to the standard matrix of strategy and leadership roles, whose specific responsibility is this?",
+          "options": [
+            { "key": "A", "text": "The Chief Financial Officer" },
+            { "key": "B", "text": "The Internal Auditor" },
+            { "key": "C", "text": "The Financial Controller" },
+            { "key": "D", "text": "The Senior Accountant" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"Financial Controller... Develop resource requirements, challenge assumption in business models, conceptualise ideas, anticipate future trends, develop strategic options and help develop budgets\" Location: Pdf_Folio: 60, Table 1.13 continued: Actions that drive strategy for managers and leaders."
+        },
+        {
+          "id": "gsl-batch-5-q5",
+          "prompt": "A company's board of directors is debating between maintaining a conventional strategic approach or pivoting to a Blue Ocean strategy. If the board officially adopts the Blue Ocean approach, how must they systematically align the firm's overarching activities?",
+          "options": [
+            { "key": "A", "text": "In pursuit of strict differentiation directed purely by market need." },
+            { "key": "B", "text": "In pursuit of either differentiation or low cost, making a definitive strategic trade-off." },
+            { "key": "C", "text": "In pursuit of exploiting existing demand and defending a highly specialized niche." },
+            { "key": "D", "text": "In pursuit of differentiation and low cost simultaneously." }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"Blue Ocean Strategy... Align the whole system of a firm's activities in pursuit of differentiation and low cost.\" Location: Pdf_Folio: 152, Figure 4.9 Conventional thinking versus Blue Ocean strategy thinking."
+        },
+        {
+          "id": "gsl-batch-5-q6",
+          "prompt": "An organization adopts a strategy formulation perspective that views strategic management as a highly deliberate, rational planning process. However, instead of pursuing a single profit-maximizing motive, it assumes a broad, pluralist perspective regarding the outcomes it seeks to achieve, factoring in the behavior of various social institutions. According to the generic perspectives on strategy framework, which specific formulation does this combination of rational process and pluralist outcomes represent?",
+          "options": [
+            { "key": "A", "text": "Classical formulation" },
+            { "key": "B", "text": "Systemic formulation" },
+            { "key": "C", "text": "Evolutionary formulation" },
+            { "key": "D", "text": "Processual formulation" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"FIGURE 7.7 Generic perspectives on strategy... Processes: Rational... Outcomes: Pluralist... Systemic\" Location: Pdf_Folio: 228, Figure 7.7 Generic perspectives on strategy."
+        },
+        {
+          "id": "gsl-batch-5-q7",
+          "prompt": "A strategic planning committee is formally evaluating a newly proposed business strategy. They specifically question how well the proposed strategy aligns with macro-trends—such as technological shifts and new social behaviors—that are actively influencing future industry growth. Which specific evaluation criterion are they testing?",
+          "options": [
+            { "key": "A", "text": "External consistency" },
+            { "key": "B", "text": "Competitive advantage" },
+            { "key": "C", "text": "Internal consistency" },
+            { "key": "D", "text": "Feasibility" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"TABLE 5.9 Checklist for external consistency... How does the business strategic option fit with trends in the external environment that are influencing future industry growth? (See the STEEPLE model factors in module 2.)\" Location: Pdf_Folio: 183, Table 5.9 Checklist for external consistency."
+        },
+        {
+          "id": "gsl-batch-5-q8",
+          "prompt": "A venture capital firm is funding a highly innovative start-up operating in a completely new, disruptive tech space. Because the level of uncertainty is exceptionally high, the project team adopts a specific planning model designed expressly for situations where the \"Unknowns\" are vastly greater than the \"Knowns.\" Based on comparative planning frameworks, which methodology does this fundamental premise describe?",
+          "options": [
+            { "key": "A", "text": "Platform-based planning" },
+            { "key": "B", "text": "Discovery-driven planning" },
+            { "key": "C", "text": "Stage-gate project management" },
+            { "key": "D", "text": "The double-diamond model" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"FIGURE 7.8 Conventional planning versus discovery-driven planning... Discovery-driven planning... Unknowns > Knowns\" Location: Pdf_Folio: 229, Figure 7.8 Conventional planning versus discovery-driven planning."
+        },
+        {
+          "id": "gsl-batch-5-q9",
+          "prompt": "A corporate conglomerate is reviewing its portfolio of subsidiary businesses to determine capital allocation. One specific business unit currently generates low, highly unstable earnings, and its cash flow is consistently neutral or negative. Based on the metrics of the product portfolio matrix, what is the recommended strategic action for this specific business unit?",
+          "options": [
+            { "key": "A", "text": "Analyse potential" },
+            { "key": "B", "text": "Milk" },
+            { "key": "C", "text": "Invest for growth" },
+            { "key": "D", "text": "Divest" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"DOG Earnings: low, unstable Cash flow: neutral or negative Strategy: divest\" Location: Pdf_Folio: 121, Figure 3.7 BCG product matrix."
+        },
+        {
+          "id": "gsl-batch-5-q10",
+          "prompt": "An organization finds itself in a hypercompetitive environment and decides to proactively target disruption to survive. As part of its tactical execution, the firm launches multiple simultaneous and strategic thrusts across different global markets. According to the strategic approach to hypercompetitive environments, what is the primary objective of this specific tactic?",
+          "options": [
+            { "key": "A", "text": "To maintain a proactive lead and keep competitors in a defensive position" },
+            { "key": "B", "text": "To predict windows of opportunity using strategic soothsaying" },
+            { "key": "C", "text": "To maximize stakeholder satisfaction across business partners and investors" },
+            { "key": "D", "text": "To build strongholds and accumulate deep pockets for future defensive acquisitions" }
+          ],
+          "answer": "A",
+          "citation": "Quote: \"Tactics... Simultaneous and strategic thrusts to maintain a proactive lead and to keep competitors in a defensive position\" Location: Pdf_Folio: 234, Figure 7.13 A strategic approach to hypercompetitive environments."
+        }
+      ]
     }
   ]
 }
