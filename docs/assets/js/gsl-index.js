@@ -211,40 +211,47 @@ function uniqueValues(rows, column) {
   });
 }
 
-function renderStats() {
-  const stats = state.data?.stats || [];
-  return `
-    <div class="gsl-stats" aria-label="Index coverage summary">
-      ${stats.slice(0, 8).map(function (stat) {
-        return `
-          <button class="gsl-stat" type="button" data-dataset="${escapeHtml(stat.key)}">
-            <span class="gsl-stat__value">${escapeHtml(stat.value)}</span>
-            <span class="gsl-stat__label">${escapeHtml(stat.label)}</span>
-          </button>
-        `;
-      }).join("")}
-    </div>
-  `;
+function getIndexDownloadHref(key) {
+  return new URL(`../../downloads/gsl-indexes/${key}.xlsx`, DATA_PATH).href;
 }
 
-function renderTabs() {
+function renderIndexDirectory() {
   const datasets = state.data.datasets;
   return `
-    <div class="gsl-tabs" role="tablist" aria-label="GSL index datasets">
+    <div class="gsl-index-directory" aria-label="Available GSL indexes">
       ${getDatasetKeys().map(function (key) {
         const dataset = datasets[key];
         const isActive = key === state.activeKey;
+        const rowCount = dataset.rows.length;
         return `
-          <button
-            id="gsl-tab-${escapeHtml(slugify(key))}"
-            class="gsl-tab${isActive ? " gsl-tab--active" : ""}"
-            type="button"
-            role="tab"
-            aria-selected="${isActive ? "true" : "false"}"
-            data-dataset="${escapeHtml(key)}"
-          >
-            ${escapeHtml(dataset.label)}
-          </button>
+          <article class="gsl-index-card${isActive ? " is-active" : ""}" id="gsl-card-${escapeHtml(slugify(key))}">
+            <div class="gsl-index-card__body">
+              <p class="gsl-index-card__eyebrow">Index option</p>
+              <h3>${escapeHtml(dataset.label)}</h3>
+              <p>${escapeHtml(dataset.description)}</p>
+            </div>
+            <div class="gsl-index-card__count" aria-label="${escapeHtml(rowCount)} entries">
+              <strong>${escapeHtml(rowCount.toLocaleString())}</strong>
+              <span>${rowCount === 1 ? "entry" : "entries"}</span>
+            </div>
+            <div class="gsl-index-card__actions">
+              <button
+                class="quiz-button ${isActive ? "quiz-button--primary" : "quiz-button--ghost"}"
+                type="button"
+                data-dataset="${escapeHtml(key)}"
+                aria-current="${isActive ? "true" : "false"}"
+              >
+                ${isActive ? "Showing" : "Show index"}
+              </button>
+              <a
+                class="quiz-button quiz-button--ghost"
+                href="${escapeHtml(getIndexDownloadHref(key))}"
+                download
+              >
+                Download Excel
+              </a>
+            </div>
+          </article>
         `;
       }).join("")}
     </div>
@@ -354,11 +361,12 @@ function renderIndex() {
   const root = document.getElementById("gsl-index-root");
   if (!root || !state.data) return;
   root.innerHTML = `
-    ${renderStats()}
-    ${renderTabs()}
-    ${renderControls()}
-    <div id="gsl-index-results">
-      ${renderTable()}
+    ${renderIndexDirectory()}
+    <div class="gsl-index-workspace" id="gsl-index-workspace">
+      ${renderControls()}
+      <div id="gsl-index-results">
+        ${renderTable()}
+      </div>
     </div>
   `;
 }
@@ -405,13 +413,19 @@ function renderMap() {
   `;
 }
 
-function setActiveDataset(key) {
+function setActiveDataset(key, scrollToResults) {
   if (!state.data?.datasets?.[key]) return;
   state.activeKey = key;
   state.module = "all";
   state.type = "all";
   state.page = 1;
   renderIndex();
+  if (scrollToResults) {
+    document.getElementById("gsl-index-workspace")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
 }
 
 function bindIndexEvents() {
@@ -424,7 +438,7 @@ function bindIndexEvents() {
 
     const datasetButton = target.closest("[data-dataset]");
     if (datasetButton) {
-      setActiveDataset(datasetButton.getAttribute("data-dataset"));
+      setActiveDataset(datasetButton.getAttribute("data-dataset"), true);
       return;
     }
 

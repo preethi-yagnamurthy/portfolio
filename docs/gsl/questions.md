@@ -4,7 +4,6 @@ This directory owns the private GSL study pages under `docs/gsl/`.
 
 ## Files
 
-- `docs/gsl/index/index.html` is the dedicated GSL index page.
 - `docs/gsl/index.html` serves the exact `/gsl/index` clean URL as an index-only page.
 - `docs/gsl/quiz/index.html` is the dedicated GSL quiz page.
 - `docs/assets/data/gsl-quiz-batches.json` is the GSL question bank loaded by the page.

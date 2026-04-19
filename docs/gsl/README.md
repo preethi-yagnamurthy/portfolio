@@ -7,6 +7,7 @@ This README documents the GSL open-book exam indexes built from the textbook fil
 - Index page: `https://preethi-yagnamurthy.github.io/portfolio/gsl/index`
 - Quiz page: `https://preethi-yagnamurthy.github.io/portfolio/gsl/quiz`
 - Editable workbook download: `docs/downloads/gsl_index_workbook_extended.xlsx`
+- Per-index workbook downloads: `docs/downloads/gsl-indexes/`
 - Web index data: `docs/assets/data/gsl-indexes.json`
 
 ## Indexes Built So Far
@@ -68,10 +69,10 @@ For exam use, prefer `Book Page` when the printed material follows textbook numb
 ## Current Web Implementation
 
 - `docs/gsl/index.html` serves the exact clean URL `/gsl/index`.
-- `docs/gsl/index/index.html` also serves the index page at `/gsl/index/`.
 - `docs/gsl/quiz/index.html` serves the quiz page at `/gsl/quiz`.
-- `docs/assets/js/gsl-index.js` loads `gsl-indexes.json`, renders dataset tabs, search, module/type filters, paginated tables, and the knowledge map.
+- `docs/assets/js/gsl-index.js` loads `gsl-indexes.json`, renders the index directory list, search, module/type filters, paginated tables, download links, and the knowledge map.
 - `docs/assets/js/quiz.js` is the shared quiz renderer used by the existing quiz page and the GSL quiz page.
+- `docs/downloads/gsl-indexes/*.xlsx` contains one downloadable Excel workbook per index option shown on the index page.
 
 ## Caveats
 
