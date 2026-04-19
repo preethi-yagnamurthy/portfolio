@@ -31,6 +31,25 @@ MODULE_RE = re.compile(r"\bMODULE\s+\d+\b.*", re.IGNORECASE)
 FIGURE_RE = re.compile(r"^(FIGURE)\s+([0-9]+(?:\.[0-9]+)+)\b[:.\s-]*(.*)$", re.IGNORECASE)
 TABLE_RE = re.compile(r"^(TABLE)\s+([0-9]+(?:\.[0-9]+)+)\b[:.\s-]*(.*)$", re.IGNORECASE)
 NUMBERED_HEADING_RE = re.compile(r"^[0-9]+(?:\.[0-9]+){0,3}\s+\S+")
+STRUCTURAL_HEADING_RE = re.compile(
+    r"^(?:"
+    r"PREVIEW|REVIEW|REFERENCES?|INDEX|"
+    r"APPENDIX(?:\s+[A-Z0-9]+(?:\.[0-9]+)?)?|"
+    r"TABLE(?:S|\s+[0-9]+)?|"
+    r"FIGURE(?:S|\s+[0-9]+)?|"
+    r"KEY\s+POINTS|LEARNING\s+OBJECTIVES|ASSUMED\s+KNOWLEDGE|OPTIONAL\s+READING"
+    r")$",
+    re.IGNORECASE,
+)
+INSTRUCTIONAL_PROMPT_RE = re.compile(
+    r"^(?:use|using|based on|with reference to|refer(?:ring)? to)\b.{0,140}\b(?:table|figure|example|worksheet|report card)\b",
+    re.IGNORECASE,
+)
+TABLE_CELL_HEADING_RE = re.compile(
+    r"^(?:description|issue|response|risk|factors?|question(?:\(s\))?|option\s+[0-9]+|"
+    r"advantages?|disadvantages?|strengths?|weaknesses?|opportunities|threats)$",
+    re.IGNORECASE,
+)
 AUTHOR_YEAR_RE = re.compile(
     r"\b([A-Z][A-Za-z'`.-]+(?:\s+(?:and|&)\s+[A-Z][A-Za-z'`.-]+)?)\s*\(((?:19|20)[0-9]{2}[a-z]?)\)"
 )
@@ -314,28 +333,110 @@ def table_or_figure_caption(lines: list[LineRow], index: int) -> str:
     return caption
 
 
+def normalized_heading_text(text: str) -> str:
+    return clean_text(re.sub(r"\s+", " ", text)).strip(" .:;")
+
+
+def is_structural_heading_text(text: str) -> bool:
+    return bool(STRUCTURAL_HEADING_RE.match(normalized_heading_text(text)))
+
+
+def is_front_matter_line(line: LineRow) -> bool:
+    # PDF pages 6-14 are the table of contents in this source. Keeping them in
+    # raw extraction is useful, but they should not generate duplicate headings.
+    return line.pdf_page <= 14
+
+
+def looks_like_heading_noise(text: str, element_type: str) -> bool:
+    cleaned = normalized_heading_text(text)
+    if is_structural_heading_text(cleaned):
+        return True
+    if INSTRUCTIONAL_PROMPT_RE.match(cleaned):
+        return True
+    if element_type == "Subheading Candidate" and re.search(r"\b(?:table|figure)\b", cleaned, re.IGNORECASE):
+        return True
+    if element_type == "Subheading Candidate" and cleaned.lower() in {"reference to", "reference to:"}:
+        return True
+    if element_type == "Subheading Candidate" and TABLE_CELL_HEADING_RE.match(cleaned):
+        return True
+    return False
+
+
 def classify_heading(line: LineRow, body_size: float) -> tuple[str, str, float] | None:
     text = line.text
     if is_footer_or_hidden(asdict(line)):
         return None
     if FIGURE_RE.match(text) or TABLE_RE.match(text):
         return None
+    if is_front_matter_line(line):
+        return None
+    if is_structural_heading_text(text):
+        return None
     if len(text) > 220:
         return None
 
-    if MODULE_RE.search(text) and line.y0 < 160:
-        return ("Heading", "Module Heading", 0.96)
+    if text.strip().startswith("MODULE ") and line.y0 < 160:
+        heading = ("Heading", "Module Heading", 0.96)
+        return None if looks_like_heading_noise(text, heading[1]) else heading
     if line.max_size >= body_size + 6:
-        return ("Heading", "Main/Module Heading", 0.95)
+        heading = ("Heading", "Main/Module Heading", 0.95)
+        return None if looks_like_heading_noise(text, heading[1]) else heading
     if line.max_size >= body_size + 3:
-        return ("Heading", "Main Heading", 0.9)
+        heading = ("Heading", "Main Heading", 0.9)
+        return None if looks_like_heading_noise(text, heading[1]) else heading
     if NUMBERED_HEADING_RE.match(text) and (line.max_size >= body_size + 1.5 or line.is_bold):
-        return ("Heading", "Section Heading", 0.9)
+        heading = ("Heading", "Section Heading", 0.9)
+        return None if looks_like_heading_noise(text, heading[1]) else heading
     if line.max_size >= body_size + 1.0 and line.is_bold:
-        return ("Heading", "Section Heading", 0.85)
+        heading = ("Heading", "Section Heading", 0.85)
+        return None if looks_like_heading_noise(text, heading[1]) else heading
     if line.is_bold and len(text) <= 90 and not text.endswith(".") and not text.startswith("•"):
-        return ("Heading", "Subheading Candidate", 0.68)
+        heading = ("Heading", "Subheading Candidate", 0.68)
+        return None if looks_like_heading_noise(text, heading[1]) else heading
     return None
+
+
+def is_heading_continuation(previous: LineRow, candidate: LineRow, body_size: float) -> bool:
+    if candidate.pdf_page != previous.pdf_page:
+        return False
+    if is_footer_or_hidden(asdict(candidate)) or is_front_matter_line(candidate):
+        return False
+    if FIGURE_RE.match(candidate.text) or TABLE_RE.match(candidate.text):
+        return False
+    if is_structural_heading_text(candidate.text):
+        return False
+    if FOOTER_PAGE_RE.match(candidate.text.strip()):
+        return False
+
+    next_heading = classify_heading(candidate, body_size)
+    if not next_heading:
+        return False
+
+    y_gap = candidate.y0 - previous.y0
+    max_gap = max(22.0, previous.max_size * 1.35)
+    if y_gap <= 0 or y_gap > max_gap:
+        return False
+
+    size_close = abs(candidate.max_size - previous.max_size) <= 1.5
+    x_close = abs(candidate.x0 - previous.x0) <= 45
+    same_style = candidate.is_bold == previous.is_bold and candidate.is_italic == previous.is_italic
+    previous_is_major = previous.max_size >= body_size + 3
+    candidate_is_major = candidate.max_size >= body_size + 3
+
+    if previous_is_major and candidate_is_major:
+        return x_close and size_close
+    return x_close and size_close and same_style
+
+
+def merged_heading(lines: list[LineRow], start_index: int, body_size: float) -> tuple[str, list[LineRow]]:
+    merged_lines = [lines[start_index]]
+    while start_index + len(merged_lines) < len(lines):
+        previous = merged_lines[-1]
+        candidate = lines[start_index + len(merged_lines)]
+        if not is_heading_continuation(previous, candidate, body_size):
+            break
+        merged_lines.append(candidate)
+    return clean_text(" ".join(line.text for line in merged_lines)), merged_lines
 
 
 def extract_citations(text: str) -> list[dict[str, str]]:
@@ -405,9 +506,12 @@ def classify(lines: list[LineRow], spans: list[SpanRow], body_size: float) -> tu
 
     for pdf_page in sorted(lines_by_page):
         page_lines = sorted(lines_by_page[pdf_page], key=lambda item: (item.y0, item.x0))
-        for index, line in enumerate(page_lines):
+        index = 0
+        while index < len(page_lines):
+            line = page_lines[index]
             line_dict = asdict(line)
             if is_footer_or_hidden(line_dict):
+                index += 1
                 continue
             heading_by_line_id[line.source_line_id] = current_heading
 
@@ -418,17 +522,42 @@ def classify(lines: list[LineRow], spans: list[SpanRow], body_size: float) -> tu
             if is_actual_figure_label:
                 caption = table_or_figure_caption(page_lines, index)
                 add_row("Figure", "Figure Heading", caption, line, None, 0.94, {"Label": figure_match.group(0).split()[0] + " " + figure_match.group(2)})
+                index += 1
                 continue
             if is_actual_table_label:
                 caption = table_or_figure_caption(page_lines, index)
                 add_row("Table", "Table Heading", caption, line, None, 0.94, {"Label": table_match.group(0).split()[0] + " " + table_match.group(2)})
+                index += 1
+                continue
+
+            if is_structural_heading_text(line.text):
+                current_heading = normalized_heading_text(line.text).upper()
+                heading_by_line_id[line.source_line_id] = current_heading
+                index += 1
                 continue
 
             heading = classify_heading(line, body_size)
             if heading:
                 category, element_type, confidence = heading
-                add_row(category, element_type, line.text, line, None, confidence)
-                current_heading = line.text
+                heading_text, heading_lines = merged_heading(page_lines, index, body_size)
+                source_line_ids = "; ".join(heading_line.source_line_id for heading_line in heading_lines)
+                add_row(
+                    category,
+                    element_type,
+                    heading_text,
+                    line,
+                    None,
+                    confidence,
+                    {
+                        "Source Line ID": source_line_ids,
+                        "Notes": "Merged split heading lines" if len(heading_lines) > 1 else "",
+                    },
+                )
+                current_heading = heading_text
+                for heading_line in heading_lines:
+                    heading_by_line_id[heading_line.source_line_id] = current_heading
+                index += len(heading_lines)
+                continue
 
             for citation in extract_citations(line.text):
                 add_row(
@@ -453,6 +582,8 @@ def classify(lines: list[LineRow], spans: list[SpanRow], body_size: float) -> tu
                     0.62,
                     {"Author String": reference_match.group(1), "Year": reference_match.group(2)},
                 )
+
+            index += 1
 
     for span in spans:
         if span.style_type and span.size >= 1 and span.y0 < 745 and not PDF_FOLIO_RE.search(span.text):

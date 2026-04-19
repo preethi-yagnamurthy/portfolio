@@ -32,6 +32,8 @@ The script uses PyMuPDF as the raw extraction layer. It reads each PDF page as:
 
 A span is the smallest text unit with shared font properties. The script keeps both span-level and line-level data so every classified row can be traced back to its source.
 
+The current classifier treats PyMuPDF output as a draft extraction, not as a final semantic index. It filters structural labels such as `PREVIEW`, `REVIEW`, `REFERENCES`, `APPENDIX A/B`, `INDEX`, and standalone `TABLE`/`FIGURE` markers out of the heading sheets. It also merges adjacent heading lines when the PDF splits one heading across multiple visual lines.
+
 ## Calibration
 
 The script estimates the dominant body font size from the PDF itself instead of hardcoding a universal threshold. In the current run, the estimated body size is `10.0pt`.
@@ -58,8 +60,8 @@ This matters because table text, body text, and headings use different font fami
 - PDF pages processed: 599
 - Raw lines: 38,967
 - Raw spans: 43,943
-- Classified rows: 12,377
-- Headings: 3,774
+- Classified rows: 11,598
+- Headings: 2,995
 - Tables: 100
 - Figures: 127
 - Styled text: 7,792
