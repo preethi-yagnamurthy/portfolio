@@ -1,91 +1,132 @@
 {
   "title": "GSL Study Sets",
   "label": "GSL Quiz",
-  "intro": "Dedicated GSL practice console. Replace the starter setup questions with source-backed GSL questions as the content bank grows.",
+  "intro": "Dedicated GSL practice console with source-backed multiple-choice questions.",
   "batches": [
     {
-      "id": "gsl-setup",
-      "title": "GSL Setup",
-      "subtitle": "Page and content-bank orientation",
+      "id": "gsl-batch-1",
+      "title": "Batch 1",
+      "subtitle": "Strategic leadership, change, and evaluation",
       "questions": [
         {
-          "id": "gsl-setup-q1",
-          "prompt": "Which file powers the questions shown on the GSL study console?",
+          "id": "gsl-batch-1-q1",
+          "prompt": "An established enterprise is evaluating its strategic posture. Rather than solely aligning current organizational assets with existing market demands, the executive team decides to focus on how their existing capabilities can be uniquely utilized and pushed beyond their current boundaries to generate entirely new market opportunities. Which of the following strategic concepts best describes this approach?",
           "options": [
-            { "key": "A", "text": "docs/assets/data/gsl-quiz-batches.json" },
-            { "key": "B", "text": "docs/assets/data/quiz-batches.json" },
-            { "key": "C", "text": "docs/assets/site.css" },
-            { "key": "D", "text": "docs/index.html" }
-          ],
-          "answer": "A",
-          "citation": "The GSL page loads docs/assets/data/gsl-quiz-batches.json through the data-quiz-data attribute on its quiz script tag."
-        },
-        {
-          "id": "gsl-setup-q2",
-          "prompt": "Which page is the dedicated direct-access entry point for GSL practice?",
-          "options": [
-            { "key": "A", "text": "docs/quiz/index.html" },
-            { "key": "B", "text": "docs/gsl/index.html" },
-            { "key": "C", "text": "docs/downloads/index.html" },
-            { "key": "D", "text": "docs/private-22.html" }
+            { "key": "A", "text": "Strategic fit" },
+            { "key": "B", "text": "Strategic stretch" },
+            { "key": "C", "text": "Value proposition refinement" },
+            { "key": "D", "text": "Continuous improvement" }
           ],
           "answer": "B",
-          "citation": "docs/gsl/index.html is the private GSL study page and uses the shared quiz renderer with the GSL question bank."
+          "citation": "Quote: \"Strategic stretch, on the other hand, is resource-led and based on leaders and managers challenging how organisational resources and capabilities can be leveraged ('stretched') to create new opportunities.\" Location: Pdf_Folio: 16, Module 1, Section 1.3 Gaining competitive advantage."
         },
         {
-          "id": "gsl-setup-q3",
-          "prompt": "When adding a new GSL question, which field controls the answer explanation shown after revealing the key?",
+          "id": "gsl-batch-1-q2",
+          "prompt": "When comparing the distinct roles of organizational leadership and management during a period of corporate transition, which of the following represents the primary focus of the management function, according to Kotter's framework?",
           "options": [
-            { "key": "A", "text": "subtitle" },
-            { "key": "B", "text": "citation" },
-            { "key": "C", "text": "label" },
-            { "key": "D", "text": "theme-color" }
-          ],
-          "answer": "B",
-          "citation": "Each question's citation field is rendered inside the answer key after the learner reveals it."
-        }
-      ]
-    },
-    {
-      "id": "gsl-authoring",
-      "title": "GSL Authoring",
-      "subtitle": "Question-bank maintenance checks",
-      "questions": [
-        {
-          "id": "gsl-authoring-q1",
-          "prompt": "What should be done before replacing the starter GSL questions with real study material?",
-          "options": [
-            { "key": "A", "text": "Remove the quiz JavaScript file" },
-            { "key": "B", "text": "Add source-backed prompts, answers, and citations to the GSL JSON file" },
-            { "key": "C", "text": "Move all questions into docs/index.html" },
-            { "key": "D", "text": "Delete the existing private quiz page" }
-          ],
-          "answer": "B",
-          "citation": "The GSL page is content-driven. Real GSL content should be added to docs/assets/data/gsl-quiz-batches.json with source-backed citations."
-        },
-        {
-          "id": "gsl-authoring-q2",
-          "prompt": "Why does the GSL page reuse docs/assets/js/quiz.js instead of duplicating the quiz UI code?",
-          "options": [
-            { "key": "A", "text": "So both quiz pages share the same checked-answer behavior and only differ by data file" },
-            { "key": "B", "text": "So GSL questions are stored in CSS" },
-            { "key": "C", "text": "So the GSL page becomes public on the home page" },
-            { "key": "D", "text": "So answer keys are always visible" }
+            { "key": "A", "text": "Coping with complexity" },
+            { "key": "B", "text": "Coping with change" },
+            { "key": "C", "text": "Aligning people with a vision through communication" },
+            { "key": "D", "text": "Fostering an environment of strategic innovation" }
           ],
           "answer": "A",
-          "citation": "The shared renderer now accepts a page-specific data-quiz-data attribute, so separate question banks can use the same interaction logic."
+          "citation": "Quote: \"Kotter (1990) states that leadership is about coping with change, whereas management is about coping with complexity.\" Location: Pdf_Folio: 38, Module 1, Section 1.6 Introduction to leadership."
         },
         {
-          "id": "gsl-authoring-q3",
-          "prompt": "Which redirect file can be used as a short direct-access URL for the GSL console?",
+          "id": "gsl-batch-1-q3",
+          "prompt": "A multinational corporation decides to implement a major restructuring and technological upgrade. However, this initiative is strictly confined to its logistics and supply chain division, leaving all other global divisions and functional areas unchanged. Under the Dunphy and Stace Intensity of Change Model, how is this specific category of change classified?",
           "options": [
-            { "key": "A", "text": "docs/gsl-console.html" },
-            { "key": "B", "text": "docs/qa-console-aud-7k2m9x4p-batch-gateway.html" },
-            { "key": "C", "text": "docs/Composer.html" },
-            { "key": "D", "text": "docs/contact.html" }
+            { "key": "A", "text": "Corporate transformation" },
+            { "key": "B", "text": "Incremental adjustment" },
+            { "key": "C", "text": "Modular transformation" },
+            { "key": "D", "text": "Fine-tuning" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"modular transformation - a major change but only for part of the organisation\" Location: Pdf_Folio: 46, Module 1, Section 1.7 Leadership styles."
+        },
+        {
+          "id": "gsl-batch-1-q4",
+          "prompt": "A fast-growing technology start-up has successfully captured significant market share and is now transitioning into a more stable, mature phase of its organizational life cycle. The board of directors is looking for a leader whose style is best suited for this specific transitional phase. According to Rothschild's model of strategic leadership, which type of leader should the board appoint?",
+          "options": [
+            { "key": "A", "text": "Risktaker" },
+            { "key": "B", "text": "Surgeon" },
+            { "key": "C", "text": "Undertaker" },
+            { "key": "D", "text": "Caretaker" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"Caretakers - help an organisation move from the growth phase into the maturity phase.\" Location: Pdf_Folio: 49, Module 1, Section 1.7 Leadership styles."
+        },
+        {
+          "id": "gsl-batch-1-q5",
+          "prompt": "During a strategy development workshop, an executive team maps out several potential strategic options using a value/effort assessment tool. One of the proposed options requires intensive capital and human resource investment but is projected to yield very limited competitive value. How should this strategic option be classified within the assessment framework?",
+          "options": [
+            { "key": "A", "text": "Blood, sweat and tears" },
+            { "key": "B", "text": "Low-hanging fruit" },
+            { "key": "C", "text": "Delegate or dump" },
+            { "key": "D", "text": "Dead ducks" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"dead ducks Low-value and high-effort strategic options that are not worth extensive effort, given the expected limited value.\" Location: Pdf_Folio: 499, Glossary."
+        },
+        {
+          "id": "gsl-batch-1-q6",
+          "prompt": "A global consumer goods company is analyzing its diverse product portfolio. The analysis reveals that one of its newer product lines is operating within an industry that is currently experiencing rapid, exponential market growth. However, the product line itself currently holds a highly restricted, minor share of that overall market. According to the Boston Consulting Group (BCG) matrix, how is this product line categorized?",
+          "options": [
+            { "key": "A", "text": "Dog" },
+            { "key": "B", "text": "Star" },
+            { "key": "C", "text": "Question mark" },
+            { "key": "D", "text": "Cash cow" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"question marks (small market share in fast-growing industries)\" Location: Pdf_Folio: 119, Module 3, Section 3.2 Key Points."
+        },
+        {
+          "id": "gsl-batch-1-q7",
+          "prompt": "An organization has adopted the Balanced Scorecard (BSC) framework to evaluate its operations and ensure alignment with its overarching strategic vision. When the management team specifically analyzes the \"internal business process\" quadrant of the scorecard, which core question are they primarily attempting to answer?",
+          "options": [
+            { "key": "A", "text": "To succeed financially, how should we appear to our shareholders?" },
+            { "key": "B", "text": "To achieve our vision, how will we sustain our ability to change and improve?" },
+            { "key": "C", "text": "To satisfy our shareholders and customers, what business processes must we excel at?" },
+            { "key": "D", "text": "To achieve our vision, how should we appear to our customers?" }
+          ],
+          "answer": "C",
+          "citation": "Quote: \"To satisfy our shareholders and customers, what business processes must we excel at?\" Location: Pdf_Folio: 126 / Figure 6.8, Module 6, Section 6.5."
+        },
+        {
+          "id": "gsl-batch-1-q8",
+          "prompt": "An organization operates in an industry characterized by rapid technological shifts and hypercompetition. To survive, the firm relies heavily on its ongoing ability to integrate, build, and reconfigure its internal and external competencies to effectively address its volatile environment. What term formally defines this specific organizational ability?",
+          "options": [
+            { "key": "A", "text": "Dynamic capabilities" },
+            { "key": "B", "text": "Routine capabilities" },
+            { "key": "C", "text": "Strategic stretch" },
+            { "key": "D", "text": "Mechanistic structuring" }
           ],
           "answer": "A",
-          "citation": "docs/gsl-console.html redirects directly to docs/gsl/ for private GSL access."
+          "citation": "Quote: \"dynamic capabilities The firm's ability to integrate, build, and reconfigure internal and external competencies to address rapidly changing environments.\" Location: Pdf_Folio: 499, Glossary."
+        },
+        {
+          "id": "gsl-batch-1-q9",
+          "prompt": "A senior management team is formally evaluating a newly proposed business strategy. As part of their evaluation, they heavily scrutinize whether the marketing, operational, and financial plans derived from this overarching strategy actually align with and support one another without conflict. Which of Rumelt's criteria for evaluating strategic options is the management team applying?",
+          "options": [
+            { "key": "A", "text": "Competitive advantage" },
+            { "key": "B", "text": "Feasibility" },
+            { "key": "C", "text": "External consistency" },
+            { "key": "D", "text": "Internal consistency" }
+          ],
+          "answer": "D",
+          "citation": "Quote: \"Internal consistency aims to answer the question: 'Are the functional strategies (see module 1) that will follow from the business strategy and the desired goals internally consistent with each other?'\" Location: Pdf_Folio: 163, Module 5, Section 5.5 Evaluating strategic options using Rumelt's criteria."
+        },
+        {
+          "id": "gsl-batch-1-q10",
+          "prompt": "To better navigate widespread digital disruption, a CEO restructures a firm's organizational design. The new design ensures that the foundational core of the business remains highly stable, while the surrounding structural elements feature networks of self-managing teams capable of rapid, flexible responses to market and technological shifts. What type of organizational design does this describe?",
+          "options": [
+            { "key": "A", "text": "Mechanistic organisation" },
+            { "key": "B", "text": "Agile organisation" },
+            { "key": "C", "text": "Bureaucratic organisation" },
+            { "key": "D", "text": "Centralised organisation" }
+          ],
+          "answer": "B",
+          "citation": "Quote: \"agile organisation An organisation with a stable core, but with the ability to change quickly to respond to changes in the external environment, market changes, technology changes or changes by competitors.\" Location: Pdf_Folio: 498, Glossary."
         }
       ]
     }
