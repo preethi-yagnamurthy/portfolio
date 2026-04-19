@@ -24,8 +24,7 @@ const DATASET_ORDER = [
   "figure_headings",
   "styled_text",
   "citations",
-  "reference_authors",
-  "authors_index",
+  "author_lookup_index",
   "pdf_classified_master",
   "pdf_headings_all",
   "pdf_section_headings",
@@ -33,8 +32,6 @@ const DATASET_ORDER = [
   "pdf_figure_headings",
   "pdf_styled_text",
   "pdf_citations",
-  "pdf_reference_authors",
-  "pdf_authors_index",
   "pdf_raw_lines",
   "pdf_raw_spans"
 ];
@@ -51,17 +48,14 @@ const SEARCH_COLUMNS = {
   figure_headings: ["Module", "Figure Label", "Figure Heading / Caption", "Book Page", "PDF Page"],
   styled_text: ["Module", "Style Type", "Styled Text", "Book Page", "PDF Page"],
   citations: ["Module", "Citation Type", "Citation Text", "Author String", "Year", "Book Page", "PDF Page"],
-  reference_authors: ["Module", "Source Type", "Author String", "Year", "Book Page", "PDF Page"],
-  authors_index: ["Author Name", "Years", "Book Pages", "Modules", "Source Types"],
+  author_lookup_index: ["Author Name", "Years", "Book Pages", "PDF Pages", "Modules", "Source Types", "Source Indexes"],
   pdf_classified_master: ["Category", "Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_headings_all: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_section_headings: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_table_headings: ["Label", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_figure_headings: ["Label", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_styled_text: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
-  pdf_citations: ["Element Type", "Content/Text", "Author String", "Year", "Module", "Current Heading", "Book Page", "PDF Page"],
-  pdf_reference_authors: ["Content/Text", "Author String", "Year", "Module", "Current Heading", "Book Page", "PDF Page"],
-  pdf_authors_index: ["Author Name", "Years", "Book Pages", "PDF Pages", "Source Types"]
+  pdf_citations: ["Element Type", "Content/Text", "Author String", "Year", "Module", "Current Heading", "Book Page", "PDF Page"]
 };
 
 const KNOWLEDGE_MAP = [
