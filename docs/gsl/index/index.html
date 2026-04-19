@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Private GSL open-book index explorer and knowledge map.">
+    <meta name="theme-color" content="#07080a">
+    <title>GSL Index</title>
+    <link rel="icon" href="../../assets/icons/py-conjunto.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/icons/py-conjunto.png">
+    <link rel="stylesheet" href="../../assets/quiz.css">
+  </head>
+  <body>
+    <main class="quiz-page">
+      <header class="quiz-hero">
+        <p class="quiz-hero__eyebrow">Private GSL access</p>
+        <h1 class="quiz-hero__title">GSL Index</h1>
+        <p class="quiz-hero__intro">
+          Open-book exam support for the GSL textbook: searchable indexes, a compact knowledge map, and a downloadable
+          workbook for editing or printing.
+        </p>
+        <nav class="gsl-linkbar" aria-label="GSL page sections">
+          <a class="gsl-linkbar__item" href="#gsl-index">Index explorer</a>
+          <a class="gsl-linkbar__item" href="#gsl-map-section">Knowledge map</a>
+          <a class="gsl-linkbar__item" href="../quiz/">Quiz console</a>
+          <a class="gsl-linkbar__item gsl-linkbar__item--download" href="../../downloads/gsl_index_workbook_extended.xlsx" download>
+            Download workbook
+          </a>
+        </nav>
+      </header>
+
+      <section id="gsl-index" class="gsl-panel gsl-panel--index" aria-labelledby="gsl-index-title">
+        <div class="gsl-panel__header">
+          <div>
+            <p class="gsl-panel__eyebrow">Open-book index</p>
+            <h2 id="gsl-index-title">Find the right textbook location fast</h2>
+          </div>
+          <p>
+            Use cue-to-framework first during practice, then switch to headings, styled text, citations, or author
+            indexes when the question wording points to a narrower source.
+          </p>
+        </div>
+        <div id="gsl-index-root" class="gsl-index-root" aria-live="polite">
+          <p class="quiz-loading">Loading GSL indexes...</p>
+        </div>
+      </section>
+
+      <section id="gsl-map-section" class="gsl-panel gsl-panel--map" aria-labelledby="gsl-map-title">
+        <div class="gsl-panel__header">
+          <div>
+            <p class="gsl-panel__eyebrow">Knowledge map</p>
+            <h2 id="gsl-map-title">How the exam concepts connect</h2>
+          </div>
+          <p>
+            The map is intentionally compact: it is for orientation before searching, not a replacement for page-level
+            references in the index tables.
+          </p>
+        </div>
+        <div id="gsl-map-root"></div>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="../../assets/js/gsl-index.js"
+      data-gsl-index-data="../../assets/data/gsl-indexes.json"
+    ></script>
+  </body>
+</html>
