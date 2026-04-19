@@ -702,6 +702,12 @@ textarea {
     0 10px 26px rgba(19, 36, 54, 0.1);
 }
 
+.gsl-index-card.is-download-only {
+  background:
+    linear-gradient(135deg, rgba(242, 185, 77, 0.16), rgba(255, 255, 255, 0.96)),
+    #ffffff;
+}
+
 .gsl-index-card__body {
   display: grid;
   gap: 0.25rem;
@@ -756,6 +762,12 @@ textarea {
   min-height: 46px;
   padding: 0 0.85rem;
   text-decoration: none;
+}
+
+.gsl-index-card__actions .quiz-button:disabled {
+  border-color: var(--quiz-line);
+  background: #eef3f6;
+  color: var(--quiz-ink-soft);
 }
 
 .gsl-index-workspace {

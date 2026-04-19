@@ -25,7 +25,18 @@ const DATASET_ORDER = [
   "styled_text",
   "citations",
   "reference_authors",
-  "authors_index"
+  "authors_index",
+  "pdf_classified_master",
+  "pdf_headings_all",
+  "pdf_section_headings",
+  "pdf_table_headings",
+  "pdf_figure_headings",
+  "pdf_styled_text",
+  "pdf_citations",
+  "pdf_reference_authors",
+  "pdf_authors_index",
+  "pdf_raw_lines",
+  "pdf_raw_spans"
 ];
 
 const SEARCH_COLUMNS = {
@@ -41,7 +52,16 @@ const SEARCH_COLUMNS = {
   styled_text: ["Module", "Style Type", "Styled Text", "Book Page", "PDF Page"],
   citations: ["Module", "Citation Type", "Citation Text", "Author String", "Year", "Book Page", "PDF Page"],
   reference_authors: ["Module", "Source Type", "Author String", "Year", "Book Page", "PDF Page"],
-  authors_index: ["Author Name", "Years", "Book Pages", "Modules", "Source Types"]
+  authors_index: ["Author Name", "Years", "Book Pages", "Modules", "Source Types"],
+  pdf_classified_master: ["Category", "Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_headings_all: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_section_headings: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_table_headings: ["Label", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_figure_headings: ["Label", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_styled_text: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_citations: ["Element Type", "Content/Text", "Author String", "Year", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_reference_authors: ["Content/Text", "Author String", "Year", "Module", "Current Heading", "Book Page", "PDF Page"],
+  pdf_authors_index: ["Author Name", "Years", "Book Pages", "PDF Pages", "Source Types"]
 };
 
 const KNOWLEDGE_MAP = [
@@ -123,9 +143,13 @@ function slugify(value) {
 
 function getDatasetKeys() {
   const datasets = state.data?.datasets || {};
-  return DATASET_ORDER.filter(function (key) {
+  const ordered = DATASET_ORDER.filter(function (key) {
     return datasets[key];
   });
+  const remaining = Object.keys(datasets).filter(function (key) {
+    return !DATASET_ORDER.includes(key);
+  });
+  return ordered.concat(remaining);
 }
 
 function getActiveDataset() {
@@ -134,6 +158,10 @@ function getActiveDataset() {
 
 function getRows() {
   return getActiveDataset()?.rows || [];
+}
+
+function getDatasetRowCount(dataset) {
+  return dataset?.rowCount ?? dataset?.rows?.length ?? 0;
 }
 
 function findColumn(columns, options) {
@@ -149,6 +177,8 @@ function getModuleColumn(dataset) {
 function getTypeColumn(dataset) {
   return findColumn(dataset.columns, [
     "Type",
+    "Category",
+    "Element Type",
     "Heading Type",
     "Style Type",
     "Citation Type",
@@ -222,11 +252,12 @@ function renderIndexDirectory() {
       ${getDatasetKeys().map(function (key) {
         const dataset = datasets[key];
         const isActive = key === state.activeKey;
-        const rowCount = dataset.rows.length;
+        const isDownloadOnly = Boolean(dataset.downloadOnly);
+        const rowCount = getDatasetRowCount(dataset);
         return `
-          <article class="gsl-index-card${isActive ? " is-active" : ""}" id="gsl-card-${escapeHtml(slugify(key))}">
+          <article class="gsl-index-card${isActive ? " is-active" : ""}${isDownloadOnly ? " is-download-only" : ""}" id="gsl-card-${escapeHtml(slugify(key))}">
             <div class="gsl-index-card__body">
-              <p class="gsl-index-card__eyebrow">Index option</p>
+              <p class="gsl-index-card__eyebrow">${isDownloadOnly ? "Audit download" : "Index option"}</p>
               <h3>${escapeHtml(dataset.label)}</h3>
               <p>${escapeHtml(dataset.description)}</p>
             </div>
@@ -240,8 +271,9 @@ function renderIndexDirectory() {
                 type="button"
                 data-dataset="${escapeHtml(key)}"
                 aria-current="${isActive ? "true" : "false"}"
+                ${isDownloadOnly ? "disabled" : ""}
               >
-                ${isActive ? "Showing" : "Show index"}
+                ${isDownloadOnly ? "Download only" : isActive ? "Showing" : "Show index"}
               </button>
               <a
                 class="quiz-button quiz-button--ghost"
@@ -415,6 +447,7 @@ function renderMap() {
 
 function setActiveDataset(key, scrollToResults) {
   if (!state.data?.datasets?.[key]) return;
+  if (state.data.datasets[key].downloadOnly) return;
   state.activeKey = key;
   state.module = "all";
   state.type = "all";
