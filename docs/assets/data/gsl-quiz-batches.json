@@ -1,0 +1,93 @@
+{
+  "title": "GSL Study Sets",
+  "label": "GSL Quiz",
+  "intro": "Dedicated GSL practice console. Replace the starter setup questions with source-backed GSL questions as the content bank grows.",
+  "batches": [
+    {
+      "id": "gsl-setup",
+      "title": "GSL Setup",
+      "subtitle": "Page and content-bank orientation",
+      "questions": [
+        {
+          "id": "gsl-setup-q1",
+          "prompt": "Which file powers the questions shown on the GSL study console?",
+          "options": [
+            { "key": "A", "text": "docs/assets/data/gsl-quiz-batches.json" },
+            { "key": "B", "text": "docs/assets/data/quiz-batches.json" },
+            { "key": "C", "text": "docs/assets/site.css" },
+            { "key": "D", "text": "docs/index.html" }
+          ],
+          "answer": "A",
+          "citation": "The GSL page loads docs/assets/data/gsl-quiz-batches.json through the data-quiz-data attribute on its quiz script tag."
+        },
+        {
+          "id": "gsl-setup-q2",
+          "prompt": "Which page is the dedicated direct-access entry point for GSL practice?",
+          "options": [
+            { "key": "A", "text": "docs/quiz/index.html" },
+            { "key": "B", "text": "docs/gsl/index.html" },
+            { "key": "C", "text": "docs/downloads/index.html" },
+            { "key": "D", "text": "docs/private-22.html" }
+          ],
+          "answer": "B",
+          "citation": "docs/gsl/index.html is the private GSL study page and uses the shared quiz renderer with the GSL question bank."
+        },
+        {
+          "id": "gsl-setup-q3",
+          "prompt": "When adding a new GSL question, which field controls the answer explanation shown after revealing the key?",
+          "options": [
+            { "key": "A", "text": "subtitle" },
+            { "key": "B", "text": "citation" },
+            { "key": "C", "text": "label" },
+            { "key": "D", "text": "theme-color" }
+          ],
+          "answer": "B",
+          "citation": "Each question's citation field is rendered inside the answer key after the learner reveals it."
+        }
+      ]
+    },
+    {
+      "id": "gsl-authoring",
+      "title": "GSL Authoring",
+      "subtitle": "Question-bank maintenance checks",
+      "questions": [
+        {
+          "id": "gsl-authoring-q1",
+          "prompt": "What should be done before replacing the starter GSL questions with real study material?",
+          "options": [
+            { "key": "A", "text": "Remove the quiz JavaScript file" },
+            { "key": "B", "text": "Add source-backed prompts, answers, and citations to the GSL JSON file" },
+            { "key": "C", "text": "Move all questions into docs/index.html" },
+            { "key": "D", "text": "Delete the existing private quiz page" }
+          ],
+          "answer": "B",
+          "citation": "The GSL page is content-driven. Real GSL content should be added to docs/assets/data/gsl-quiz-batches.json with source-backed citations."
+        },
+        {
+          "id": "gsl-authoring-q2",
+          "prompt": "Why does the GSL page reuse docs/assets/js/quiz.js instead of duplicating the quiz UI code?",
+          "options": [
+            { "key": "A", "text": "So both quiz pages share the same checked-answer behavior and only differ by data file" },
+            { "key": "B", "text": "So GSL questions are stored in CSS" },
+            { "key": "C", "text": "So the GSL page becomes public on the home page" },
+            { "key": "D", "text": "So answer keys are always visible" }
+          ],
+          "answer": "A",
+          "citation": "The shared renderer now accepts a page-specific data-quiz-data attribute, so separate question banks can use the same interaction logic."
+        },
+        {
+          "id": "gsl-authoring-q3",
+          "prompt": "Which redirect file can be used as a short direct-access URL for the GSL console?",
+          "options": [
+            { "key": "A", "text": "docs/gsl-console.html" },
+            { "key": "B", "text": "docs/qa-console-aud-7k2m9x4p-batch-gateway.html" },
+            { "key": "C", "text": "docs/Composer.html" },
+            { "key": "D", "text": "docs/contact.html" }
+          ],
+          "answer": "A",
+          "citation": "docs/gsl-console.html redirects directly to docs/gsl/ for private GSL access."
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,17 @@
-const DATA_PATH = new URL("../data/quiz-batches.json", import.meta.url).href;
+function getQuizScript() {
+  return Array.from(document.querySelectorAll('script[type="module"][src]')).find(function (script) {
+    const src = script.getAttribute("src");
+    if (!src) return false;
+    return new URL(src, document.baseURI).href === import.meta.url;
+  });
+}
+
+const quizScript = getQuizScript();
+const configuredDataPath = quizScript?.getAttribute("data-quiz-data");
+const DEFAULT_QUIZ_LABEL = quizScript?.getAttribute("data-quiz-label") || "CPA Quiz";
+const DATA_PATH = configuredDataPath
+  ? new URL(configuredDataPath, document.baseURI).href
+  : new URL("../data/quiz-batches.json", import.meta.url).href;
 
 const state = {
   data: null,
@@ -94,6 +107,10 @@ function buildScoreText(batch, score) {
   return parts.join(" • ");
 }
 
+function getQuizLabel() {
+  return state.data?.label || DEFAULT_QUIZ_LABEL;
+}
+
 function renderOption(question, option, questionState) {
   const key = escapeHtml(option.key);
   const text = escapeHtml(option.text);
@@ -183,7 +200,7 @@ function renderQuestionStage(batch, question, questionState, score) {
       <article class="quiz-stage">
         <div class="quiz-stage__topbar">
           <div class="quiz-stage__chips">
-            <span class="quiz-chip">CPA Quiz</span>
+            <span class="quiz-chip">${escapeHtml(getQuizLabel())}</span>
             <span class="quiz-chip">${escapeHtml(batch.title)}</span>
             <span class="quiz-chip">Question ${questionNumber}</span>
           </div>
