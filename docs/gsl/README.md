@@ -27,7 +27,7 @@ This README documents the GSL open-book exam indexes built from the textbook fil
 | Figure Headings | 127 | Dedicated figure index with figure label, caption/heading, book page, and PDF page. |
 | Bold / Italic Text | 5,701 | Extracted styled-text index covering bold, italic, and bold-italic text with book and PDF pages. |
 | Citations | 367 | In-chapter citation index with citation type, citation text, author string, year, book page, and PDF page. |
-| Author Lookup Index | 740 | Exam-facing merged author lookup built from the previous `Author Names` and `PDF Extraction - Author Index` sheets, deduplicated and cleaned to remove initials, organisations, and source-note noise. |
+| Author Lookup Index | 312 | Exam-facing citation-only author lookup built from in-chapter citation rows. Authors that appear only in end-of-chapter reference sections are excluded. |
 
 There is also a compact knowledge-map visualization for orientation. It is not a page-level index; it is a study/navigation aid for major Module 2 and Module 3 concept clusters.
 
@@ -73,7 +73,7 @@ Extraction-based indexes:
 
 These were produced from the PDF/textbook extraction pass and loaded into the Excel workbook. The web page then exports selected workbook sheets into `docs/assets/data/gsl-indexes.json` so the browser can search, filter, and paginate the data.
 
-The previous duplicate author options (`Reference Authors`, `Author Names`, `PDF Extraction - Reference Authors`, and `PDF Extraction - Author Index`) were consolidated into one visible `Author Lookup Index`. The raw reference-author evidence remains in the source/master extraction workbooks, but it is no longer shown as a separate web index option.
+The previous duplicate author options (`Reference Authors`, `Author Names`, `PDF Extraction - Reference Authors`, and `PDF Extraction - Author Index`) were consolidated into one visible `Author Lookup Index`. That visible index is now citation-only: it uses `Citations` and `PDF Extraction - Citations`, and excludes authors that occur only in end-of-chapter `REFERENCES` sections.
 
 ## Page Number Handling
 
@@ -97,7 +97,7 @@ For exam use, prefer `Book Page` when the printed material follows textbook numb
 - Styled text and heading extraction is font/layout based. It is useful for recall and search, but critical entries should be verified against the textbook before relying on them in exam conditions.
 - The PDF heading classifier now removes structural markers such as `PREVIEW`, `REVIEW`, `REFERENCES`, `APPENDIX A/B`, `INDEX`, and standalone `TABLE`/`FIGURE` labels from heading lists. Some diagram/table text can still be extracted as styled text because PDF structure is visual, not semantic.
 - The current quiz JSON is a starter GSL bank. The index data is the main source-backed study material; quiz questions should be expanded separately with source-backed citations.
-- PDF extraction audit indexes are broader than the curated exam index and include confidence/source columns so questionable rows can be reviewed before promotion. Duplicate author/reference audit options are hidden from the web catalog in favor of the cleaned `Author Lookup Index`.
+- PDF extraction audit indexes are broader than the curated exam index and include confidence/source columns so questionable rows can be reviewed before promotion. Duplicate author/reference audit options are hidden from the web catalog in favor of the citation-only `Author Lookup Index`.
 
 ## Recommended Use In The Exam
 

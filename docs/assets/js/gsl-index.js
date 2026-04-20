@@ -48,7 +48,7 @@ const SEARCH_COLUMNS = {
   figure_headings: ["Module", "Figure Label", "Figure Heading / Caption", "Book Page", "PDF Page"],
   styled_text: ["Module", "Style Type", "Styled Text", "Book Page", "PDF Page"],
   citations: ["Module", "Citation Type", "Citation Text", "Author String", "Year", "Book Page", "PDF Page"],
-  author_lookup_index: ["Author Name", "Years", "Book Pages", "PDF Pages", "Modules", "Source Types", "Source Indexes"],
+  author_lookup_index: ["Author Name", "Years", "Book Pages", "PDF Pages", "Modules", "Citation Texts", "Current Headings", "Source Indexes"],
   pdf_classified_master: ["Category", "Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_headings_all: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
   pdf_section_headings: ["Element Type", "Content/Text", "Module", "Current Heading", "Book Page", "PDF Page"],
