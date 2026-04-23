@@ -1,0 +1,156 @@
+flowchart TB
+    subgraph staffingWorkbook["FinOps Staffing Sheet 2026 workbook"]
+        knownJoinersTab["TA Known Joiners worksheet"]
+        openPositionsTab["TA Open Positions worksheet"]
+        businessPartnerExitsTab["BP Exits worksheet"]
+    end
+
+    subgraph employeeRosterWorkbook["Employee Roster March 2026 workbook"]
+        rosterFormatTab["Roster Format worksheet"]
+    end
+
+    subgraph rosterMappingWorkbook["Roster Mapping for Group Lead workbook"]
+        exitsAppendArea["Yellow exits processing area<br/>beginning at row 5,<br/>currently populated through about row 389,<br/>and treated as append-only"]
+        rosterSheetSection["Roster worksheet region<br/>placed after the exits processing area,<br/>with four to five blank spacer rows<br/>left in between"]
+        updatedRosterMappingWorkbook["Updated Roster Mapping for Group Lead workbook"]
+    end
+
+    subgraph profitAndLossWorkbook["Year-to-Date March 2026 Profit and Loss workbook ('YTD March 26 P&L')"]
+        fullTimeEquivalentCostTab["Full-Time-Equivalent Cost worksheet<br/>('FTE Cost')"]
+        fullTimeEquivalentAllocationsTab["Full-Time-Equivalent Allocations worksheet<br/>('FTE Allocations')"]
+    end
+
+    subgraph previousMonthWorkbook["Previous month Level Mix Summary by Client workbook"]
+        previousMonthJanuaryAndFebruaryLevels["Previous month values for Level Jan and Level Feb"]
+    end
+
+    subgraph outputWorkbook["March 2026 Level Mix Summary by Client output workbook"]
+        staffingSummaryDataTab["Staffing Summary Data worksheet<br/>('SS Data')"]
+        clientComparisonTab["Client comparison worksheet<br/>('CMP H by Client'),<br/>with only columns AT through DK<br/>allowed to change"]
+        baseFullTimeEquivalentDataTab["Full-Time-Equivalent Data worksheet<br/>('FTE Data') after loading rows<br/>from FTE Allocations"]
+        levelColumnsRegion["Full-Time-Equivalent Data worksheet<br/>columns Z through AK,<br/>containing Level Jan through Level December"]
+        currentMonthLevelMarchColumn["Level March column<br/>for the March 2026 run"]
+        groupLeadColumnRegion["Full-Time-Equivalent Data worksheet<br/>column I, containing<br/>FinOp Cube Group Lead"]
+        completedFullTimeEquivalentDataTab["Completed Full-Time-Equivalent Data worksheet<br/>after prior-month carry-forward,<br/>current-month level update,<br/>and group lead update"]
+        validatedOutputWorkbook["Validated March 2026 output workbook"]
+    end
+
+    knownJoinersPeriodFilteredRows["TA Known Joiners rows<br/>where Period equals 2026"]
+    knownJoinersReadyRows["TA Known Joiners rows<br/>where Period equals 2026<br/>and Status is not Offer Declined"]
+    openPositionsReadyRows["TA Open Positions rows where Period equals 2026"]
+    businessPartnerExitsReadyRows["BP Exits rows where Period equals 2026"]
+    staffingPayload["Staffing payload containing only<br/>the columns needed by the output workbook"]
+
+    rosterDepartmentFilteredRows["Roster Format rows<br/>where Primary Department equals<br/>Financial Operations"]
+    rosterDepartmentAndLocationFilteredRows["Roster Format rows where<br/>Primary Department equals Financial Operations<br/>and Location is BLR, GGM, or HYD"]
+    redFontExitRows["Red-font exit rows<br/>from the bottom of the filtered<br/>Roster Format worksheet"]
+    remainingRosterRows["Filtered Roster Format rows<br/>excluding the red-font exit rows"]
+    currentMonthLevelRawValues["Current-month level values<br/>from the current Employee Roster workbook,<br/>matched by Login"]
+    currentMonthLevelSuffixValues["Current-month level values<br/>normalized to suffixes only,<br/>such as L1, L2, Intern,<br/>or Contractor"]
+
+    fullTimeEquivalentCostReadyRows["Full-Time-Equivalent Cost rows<br/>where Department equals FinOps"]
+    clientComparisonPayload["Payload for Client comparison worksheet<br/>columns AT through DK"]
+
+    fullTimeEquivalentReadyRows["Full-Time-Equivalent Allocation rows<br/>where Department equals<br/>Financial Operations or FinOps"]
+    loadedFullTimeEquivalentRows["Rows loaded into the output<br/>Full-Time-Equivalent Data worksheet"]
+    januaryAndFebruaryCarryForwardValues["Previous month carry-forward values<br/>for Level Jan and Level Feb"]
+    loginToGroupLeadMapping["Login-to-group-lead mapping<br/>from the updated Roster Mapping workbook,<br/>using Login column G<br/>and Group Lead column N"]
+
+    filterKnownJoinersByPeriod(("Filter TA Known Joiners<br/>so Period equals 2026"))
+    excludeOfferDeclinedRows(("Within the filtered TA Known Joiners rows,<br/>remove rows where Status equals Offer Declined"))
+    filterOpenPositionsByPeriod(("Filter TA Open Positions so Period equals 2026"))
+    filterBusinessPartnerExitsByPeriod(("Filter BP Exits so Period equals 2026"))
+    combineStaffingSources(("Combine the three staffing source datasets<br/>and keep only the columns required<br/>by the output workbook"))
+    writeStaffingSummaryData(("Write the staffing payload into<br/>the Staffing Summary Data worksheet"))
+
+    filterFullTimeEquivalentCostByDepartment(("Filter the Full-Time-Equivalent Cost worksheet<br/>so Department equals FinOps"))
+    keepClientComparisonColumns(("Keep the data needed for the Client comparison worksheet<br/>and target only columns AT through DK"))
+    writeClientComparisonData(("Write the prepared payload into<br/>the Client comparison worksheet,<br/>columns AT through DK only"))
+
+    filterRosterByDepartment(("Filter the Roster Format worksheet<br/>so Primary Department equals<br/>Financial Operations"))
+    filterRosterByLocation(("Within the department-filtered rows,<br/>keep only locations<br/>BLR, GGM, and HYD"))
+    separateRedFontExits(("Separate the red-font exit rows<br/>from the remaining roster rows"))
+    extractCurrentMonthLevelValues(("From the filtered current-month Employee Roster rows,<br/>extract the level-related values<br/>using Login"))
+    normalizeCurrentMonthLevelSuffix(("Normalize the current-month level values<br/>by keeping only the suffix,<br/>such as L1, L2, Intern, or Contractor,<br/>and ignoring number components such as 701"))
+    findNextAvailableExitRow(("Inspect the yellow exits processing area<br/>and find the next available append position<br/>without overwriting existing exit rows"))
+    appendExitsToYellowSection(("Append the red-font exit rows<br/>after the current last populated exit row<br/>in the yellow exits processing area"))
+    placeRosterStartAfterSpacerRows(("After the appended exits block,<br/>leave four to five blank spacer rows<br/>and determine the starting position<br/>for the remaining roster rows"))
+    writeRemainingRosterRows(("Write the remaining roster rows<br/>into the Roster worksheet<br/>at the dynamically determined start position<br/>after the spacer rows"))
+    preserveCalculatedGroupLeadColumn(("Do not overwrite formula-based column N;<br/>allow the Group Lead formulas to calculate"))
+    finalizeRosterMappingWorkbook(("Finalize the updated Roster Mapping workbook<br/>for downstream lookup use"))
+
+    filterFullTimeEquivalentAllocationsByDepartment(("Filter the Full-Time-Equivalent Allocations worksheet<br/>so Department equals Financial Operations<br/>or FinOps"))
+    loadBaseFullTimeEquivalentData(("Load all filtered Full-Time-Equivalent Allocation rows<br/>into the output Full-Time-Equivalent Data worksheet"))
+    identifyLevelColumns(("Identify output columns Z through AK<br/>as the Level Jan through Level December region"))
+    extractPreviousMonthJanuaryAndFebruaryLevels(("Extract the previous month's<br/>Level Jan and Level Feb values<br/>for carry-forward"))
+    writeJanuaryAndFebruaryCarryForward(("Write the carried-forward<br/>Level Jan and Level Feb values<br/>into the Level Jan and Level Feb positions<br/>of the output workbook"))
+    writeCurrentMonthLevelMarch(("Write the normalized current-month level values<br/>into the Level March column<br/>of the output workbook"))
+    buildLoginToGroupLeadMapping(("Read the updated Roster Mapping workbook<br/>and build a Login-to-Group-Lead mapping<br/>using Login column G<br/>and Group Lead column N"))
+    updateGroupLeadColumn(("Update output Full-Time-Equivalent Data worksheet<br/>column I with FinOp Cube Group Lead values"))
+    assembleCompletedFullTimeEquivalentTab(("Assemble the completed Full-Time-Equivalent Data worksheet<br/>from the loaded rows,<br/>prior-month carry-forward values,<br/>current-month Level March values,<br/>and updated Group Lead column"))
+    validateProtectedWriteScope(("Validate that only Staffing Summary Data,<br/>Full-Time-Equivalent Data,<br/>and Client comparison columns AT through DK<br/>were changed,<br/>and that pivot tables and formulas<br/>in other output worksheets<br/>were not overwritten"))
+
+    knownJoinersTab --> filterKnownJoinersByPeriod --> knownJoinersPeriodFilteredRows --> excludeOfferDeclinedRows --> knownJoinersReadyRows
+    openPositionsTab --> filterOpenPositionsByPeriod --> openPositionsReadyRows
+    businessPartnerExitsTab --> filterBusinessPartnerExitsByPeriod --> businessPartnerExitsReadyRows
+    knownJoinersReadyRows --> combineStaffingSources
+    openPositionsReadyRows --> combineStaffingSources
+    businessPartnerExitsReadyRows --> combineStaffingSources --> staffingPayload --> writeStaffingSummaryData --> staffingSummaryDataTab
+
+    fullTimeEquivalentCostTab --> filterFullTimeEquivalentCostByDepartment --> fullTimeEquivalentCostReadyRows --> keepClientComparisonColumns --> clientComparisonPayload --> writeClientComparisonData --> clientComparisonTab
+
+    rosterFormatTab --> filterRosterByDepartment --> rosterDepartmentFilteredRows --> filterRosterByLocation --> rosterDepartmentAndLocationFilteredRows --> separateRedFontExits
+    rosterDepartmentAndLocationFilteredRows --> extractCurrentMonthLevelValues --> currentMonthLevelRawValues --> normalizeCurrentMonthLevelSuffix --> currentMonthLevelSuffixValues
+    separateRedFontExits --> redFontExitRows --> findNextAvailableExitRow --> appendExitsToYellowSection --> exitsAppendArea
+    exitsAppendArea --> placeRosterStartAfterSpacerRows --> writeRemainingRosterRows
+    separateRedFontExits --> remainingRosterRows --> writeRemainingRosterRows --> rosterSheetSection --> preserveCalculatedGroupLeadColumn
+    exitsAppendArea --> finalizeRosterMappingWorkbook --> updatedRosterMappingWorkbook
+    preserveCalculatedGroupLeadColumn --> finalizeRosterMappingWorkbook
+
+    fullTimeEquivalentAllocationsTab --> filterFullTimeEquivalentAllocationsByDepartment --> fullTimeEquivalentReadyRows --> loadBaseFullTimeEquivalentData --> loadedFullTimeEquivalentRows --> baseFullTimeEquivalentDataTab
+    baseFullTimeEquivalentDataTab --> identifyLevelColumns --> levelColumnsRegion
+    previousMonthJanuaryAndFebruaryLevels --> extractPreviousMonthJanuaryAndFebruaryLevels --> januaryAndFebruaryCarryForwardValues --> writeJanuaryAndFebruaryCarryForward --> levelColumnsRegion
+    currentMonthLevelSuffixValues --> writeCurrentMonthLevelMarch --> currentMonthLevelMarchColumn
+    updatedRosterMappingWorkbook --> buildLoginToGroupLeadMapping --> loginToGroupLeadMapping --> updateGroupLeadColumn --> groupLeadColumnRegion
+    loadedFullTimeEquivalentRows --> writeCurrentMonthLevelMarch
+    loadedFullTimeEquivalentRows --> updateGroupLeadColumn
+    baseFullTimeEquivalentDataTab --> assembleCompletedFullTimeEquivalentTab --> completedFullTimeEquivalentDataTab
+    levelColumnsRegion --> assembleCompletedFullTimeEquivalentTab
+    currentMonthLevelMarchColumn --> assembleCompletedFullTimeEquivalentTab
+    groupLeadColumnRegion --> assembleCompletedFullTimeEquivalentTab
+
+    staffingSummaryDataTab --> validateProtectedWriteScope --> validatedOutputWorkbook
+    clientComparisonTab --> validateProtectedWriteScope
+    completedFullTimeEquivalentDataTab --> validateProtectedWriteScope
+
+    subgraph legend["Legend"]
+        legendWorkbook["Workbook or output file"]
+        legendWorksheet["Worksheet, tab, or worksheet area"]
+        legendColumn["Column or column range"]
+        legendDataset["Filtered rows, payload, or mapping"]
+        legendProcess(("Transformation or write step"))
+    end
+
+    classDef workbook fill:#f3f6fb,stroke:#8fa2bf,stroke-width:1.8px,color:#1b2430;
+    classDef worksheet fill:#edf4ff,stroke:#7e99c9,stroke-width:1.5px,color:#1b2430;
+    classDef column fill:#edf8ef,stroke:#7eb08a,stroke-width:1.5px,color:#1b2430;
+    classDef dataset fill:#fff4e8,stroke:#d2a16e,stroke-width:1.5px,color:#1b2430;
+    classDef process fill:#f7f8fa,stroke:#9ca9bb,stroke-width:1.6px,color:#1b2430;
+    classDef output fill:#eef9f0,stroke:#7aa387,stroke-width:1.8px,color:#1b2430;
+
+    class knownJoinersTab,openPositionsTab,businessPartnerExitsTab,rosterFormatTab,exitsAppendArea,rosterSheetSection,fullTimeEquivalentCostTab,fullTimeEquivalentAllocationsTab,previousMonthJanuaryAndFebruaryLevels,staffingSummaryDataTab,clientComparisonTab,baseFullTimeEquivalentDataTab worksheet;
+    class levelColumnsRegion,currentMonthLevelMarchColumn,groupLeadColumnRegion column;
+    class knownJoinersPeriodFilteredRows,knownJoinersReadyRows,openPositionsReadyRows,businessPartnerExitsReadyRows,staffingPayload,rosterDepartmentFilteredRows,rosterDepartmentAndLocationFilteredRows,redFontExitRows,remainingRosterRows,currentMonthLevelRawValues,currentMonthLevelSuffixValues,fullTimeEquivalentCostReadyRows,clientComparisonPayload,fullTimeEquivalentReadyRows,loadedFullTimeEquivalentRows,januaryAndFebruaryCarryForwardValues,loginToGroupLeadMapping dataset;
+    class filterKnownJoinersByPeriod,excludeOfferDeclinedRows,filterOpenPositionsByPeriod,filterBusinessPartnerExitsByPeriod,combineStaffingSources,writeStaffingSummaryData,filterFullTimeEquivalentCostByDepartment,keepClientComparisonColumns,writeClientComparisonData,filterRosterByDepartment,filterRosterByLocation,separateRedFontExits,extractCurrentMonthLevelValues,normalizeCurrentMonthLevelSuffix,findNextAvailableExitRow,appendExitsToYellowSection,placeRosterStartAfterSpacerRows,writeRemainingRosterRows,preserveCalculatedGroupLeadColumn,finalizeRosterMappingWorkbook,filterFullTimeEquivalentAllocationsByDepartment,loadBaseFullTimeEquivalentData,identifyLevelColumns,extractPreviousMonthJanuaryAndFebruaryLevels,writeJanuaryAndFebruaryCarryForward,writeCurrentMonthLevelMarch,buildLoginToGroupLeadMapping,updateGroupLeadColumn,assembleCompletedFullTimeEquivalentTab,validateProtectedWriteScope,legendProcess process;
+    class updatedRosterMappingWorkbook,completedFullTimeEquivalentDataTab,validatedOutputWorkbook,legendWorkbook output;
+    class legendWorksheet worksheet;
+    class legendColumn column;
+    class legendDataset dataset;
+
+    style staffingWorkbook fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430
+    style employeeRosterWorkbook fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430
+    style rosterMappingWorkbook fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430
+    style profitAndLossWorkbook fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430
+    style previousMonthWorkbook fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430
+    style outputWorkbook fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430
+    style legend fill:#f7f9fc,stroke:#a3b1c5,stroke-width:1.8px,color:#1b2430

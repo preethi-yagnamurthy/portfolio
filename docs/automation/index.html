@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Standalone Mermaid to PDF utility">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Mermaid to PDF</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --panel: rgba(255, 255, 255, 0.96);
+        --panel-soft: #fbfcfe;
+        --line: #d8e0eb;
+        --accent: #335fc2;
+        --accent-soft: #eaf0ff;
+        --text: #1b2430;
+        --muted: #617182;
+        --danger: #c44a4a;
+        --success: #2e7d50;
+        --shadow: 0 18px 44px rgba(39, 53, 79, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top right, rgba(51, 95, 194, 0.06), transparent 18%),
+          linear-gradient(180deg, #f8fafc 0%, #f2f5f9 100%);
+        color: var(--text);
+        font-family: "Inter", "Segoe UI", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      textarea {
+        font: inherit;
+      }
+
+      .page {
+        width: min(1080px, calc(100% - 1.5rem));
+        margin: 0 auto;
+        padding: 1rem 0 2.5rem;
+      }
+
+      .hero,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 1.35rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.75rem;
+        color: var(--accent);
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.9rem, 3vw, 3.1rem);
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+      }
+
+      .intro {
+        max-width: 760px;
+        margin: 0.8rem 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .panel__header {
+        padding: 1rem 1.15rem;
+        border-bottom: 1px solid var(--line);
+        background: #f8fafc;
+      }
+
+      .panel__title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .panel__body {
+        padding: 1.15rem;
+      }
+
+      .label {
+        margin: 0 0 0.55rem;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .copy {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 540px;
+        padding: 1rem 1.05rem;
+        border: 1px solid #cad4e2;
+        border-radius: 18px;
+        background: #ffffff;
+        color: var(--text);
+        resize: vertical;
+        line-height: 1.55;
+        font-family: "SFMono-Regular", "Menlo", monospace;
+        font-size: 0.9rem;
+      }
+
+      textarea:focus {
+        outline: 2px solid rgba(51, 95, 194, 0.14);
+        border-color: #9fb4e2;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.85rem;
+        padding: 0.75rem 1.1rem;
+        border: 1px solid #cfd8e6;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.94rem;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        border-color: #b9c8e2;
+        background: #dfe8ff;
+      }
+
+      .button:disabled {
+        cursor: wait;
+        opacity: 0.72;
+        transform: none;
+      }
+
+      .button--ghost {
+        background: #fff;
+        color: var(--text);
+      }
+
+      .button[hidden] {
+        display: none;
+      }
+
+      .status {
+        margin: 0;
+        padding: 0.95rem 1rem;
+        border: 1px solid #dde4ee;
+        border-radius: 16px;
+        background: var(--panel-soft);
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.55;
+      }
+
+      .status strong {
+        color: var(--text);
+      }
+
+      .status--error {
+        border-color: #f0c4c4;
+        color: var(--danger);
+      }
+
+      .status--success {
+        border-color: #c7e6d3;
+        color: var(--success);
+      }
+
+      .details {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .detail {
+        padding: 0.95rem 1rem;
+        border: 1px solid #dde4ee;
+        border-radius: 16px;
+        background: var(--panel-soft);
+      }
+
+      .detail strong {
+        display: block;
+        margin-bottom: 0.28rem;
+        font-size: 0.92rem;
+      }
+
+      .detail span {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .sandbox {
+        position: absolute;
+        left: -99999px;
+        top: 0;
+        width: max-content;
+        height: auto;
+        overflow: hidden;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(100% - 1rem, 100%);
+        }
+
+        .hero,
+        .panel {
+          border-radius: 18px;
+        }
+
+        .hero,
+        .panel__header,
+        .panel__body {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        textarea {
+          min-height: 420px;
+        }
+
+        .actions {
+          gap: 0.6rem;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Standalone Utility</p>
+        <h1>Mermaid to PDF</h1>
+        <p class="intro">
+          Paste Mermaid text, generate a single-page PDF locally in the browser, and then download it. This page does not show the rendered diagram on-screen.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <header class="panel__header">
+            <h2 class="panel__title">Mermaid input</h2>
+          </header>
+          <div class="panel__body">
+            <p class="label">Diagram text</p>
+            <textarea id="mermaid-input" spellcheck="false" placeholder="Paste Mermaid text here"></textarea>
+            <div class="actions">
+              <button class="button" id="generate-pdf" type="button">Generate PDF</button>
+              <a class="button" id="download-pdf" href="#" download="mermaid-diagram.pdf" hidden>Download PDF</a>
+              <button class="button button--ghost" id="load-sample" type="button">Load sample text</button>
+              <button class="button button--ghost" id="clear-text" type="button">Clear</button>
+            </div>
+          </div>
+        </article>
+
+        <aside class="stack">
+          <section class="panel">
+            <header class="panel__header">
+              <h2 class="panel__title">Status</h2>
+            </header>
+            <div class="panel__body">
+              <p class="status" id="status-message">
+                <strong>Ready:</strong> paste Mermaid text or load the sample, then generate a PDF.
+              </p>
+            </div>
+          </section>
+
+          <section class="panel">
+            <header class="panel__header">
+              <h2 class="panel__title">Notes</h2>
+            </header>
+            <div class="panel__body details">
+              <div class="detail">
+                <strong>Single page</strong>
+                <span>The PDF is generated as one fitted page sized to the diagram.</span>
+              </div>
+              <div class="detail">
+                <strong>Local processing</strong>
+                <span>Generation happens in the browser. No Mermaid text is sent to a server from this page.</span>
+              </div>
+              <div class="detail">
+                <strong>Sample source</strong>
+                <span>The sample Mermaid file on this route can still be loaded into the textarea and reused.</span>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <div class="sandbox" id="diagram-sandbox" aria-hidden="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+      const mermaidInput = document.getElementById("mermaid-input");
+      const generatePdfButton = document.getElementById("generate-pdf");
+      const downloadPdfLink = document.getElementById("download-pdf");
+      const loadSampleButton = document.getElementById("load-sample");
+      const clearTextButton = document.getElementById("clear-text");
+      const statusMessage = document.getElementById("status-message");
+      const diagramSandbox = document.getElementById("diagram-sandbox");
+
+      const samplePath = "./level-mix-summary-flowchart.mmd";
+      const pdfFileName = "mermaid-diagram.pdf";
+      const pageMargin = 24;
+      const maxCanvasDimension = 16384;
+      let generatedPdfUrl = "";
+
+      const setStatus = (html, kind = "") => {
+        statusMessage.innerHTML = html;
+        statusMessage.classList.remove("status--error", "status--success");
+        if (kind) {
+          statusMessage.classList.add(kind);
+        }
+      };
+
+      const revokeGeneratedPdf = () => {
+        if (generatedPdfUrl) {
+          URL.revokeObjectURL(generatedPdfUrl);
+          generatedPdfUrl = "";
+        }
+        downloadPdfLink.hidden = true;
+        downloadPdfLink.removeAttribute("href");
+      };
+
+      const initMermaid = () =>
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: "loose",
+          theme: "base",
+          fontFamily: "Inter, Segoe UI, Arial, sans-serif",
+          themeVariables: {
+            background: "#ffffff",
+            primaryColor: "#eef3ff",
+            primaryBorderColor: "#7e99c9",
+            primaryTextColor: "#1b2430",
+            secondaryColor: "#f4f7fb",
+            tertiaryColor: "#ffffff",
+            lineColor: "#8090a8",
+            textColor: "#1b2430",
+            clusterBkg: "#f8fafc",
+            clusterBorder: "#c8d2e1",
+            edgeLabelBackground: "#ffffff"
+          },
+          flowchart: {
+            curve: "basis",
+            useMaxWidth: false,
+            htmlLabels: false,
+            nodeSpacing: 70,
+            rankSpacing: 90,
+            wrappingWidth: 280
+          }
+        });
+
+      const renderToSvgElement = async (sourceText) => {
+        initMermaid();
+        const id = `mermaid-pdf-${Date.now()}`;
+        const { svg } = await mermaid.render(id, sourceText);
+        diagramSandbox.innerHTML = svg;
+
+        const svgElement = diagramSandbox.querySelector("svg");
+        if (!svgElement) {
+          throw new Error("Mermaid did not return an SVG element.");
+        }
+
+        return svgElement;
+      };
+
+      const getSvgDimensions = (svgElement) => {
+        const viewBox = svgElement.viewBox?.baseVal;
+        if (viewBox && viewBox.width > 0 && viewBox.height > 0) {
+          return { width: viewBox.width, height: viewBox.height };
+        }
+
+        const widthAttr = Number.parseFloat(svgElement.getAttribute("width") || "");
+        const heightAttr = Number.parseFloat(svgElement.getAttribute("height") || "");
+        if (Number.isFinite(widthAttr) && Number.isFinite(heightAttr) && widthAttr > 0 && heightAttr > 0) {
+          return { width: widthAttr, height: heightAttr };
+        }
+
+        const bounds = svgElement.getBoundingClientRect();
+        return {
+          width: Math.max(bounds.width, 1),
+          height: Math.max(bounds.height, 1)
+        };
+      };
+
+      const rasterizeSvg = async (svgElement) => {
+        const svgClone = svgElement.cloneNode(true);
+        const serializer = new XMLSerializer();
+        const { width, height } = getSvgDimensions(svgElement);
+        const baseMax = Math.max(width, height);
+        const scale = Math.max(1, Math.min(2, maxCanvasDimension / Math.max(baseMax, 1)));
+
+        svgClone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svgClone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+        svgClone.setAttribute("width", `${width}`);
+        svgClone.setAttribute("height", `${height}`);
+
+        const svgText = serializer.serializeToString(svgClone);
+        const svgBlob = new Blob([svgText], { type: "image/svg+xml;charset=utf-8" });
+        const svgUrl = URL.createObjectURL(svgBlob);
+
+        return new Promise((resolve, reject) => {
+          const image = new Image();
+          image.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.max(1, Math.ceil(width * scale));
+            canvas.height = Math.max(1, Math.ceil(height * scale));
+
+            const context = canvas.getContext("2d");
+            if (!context) {
+              URL.revokeObjectURL(svgUrl);
+              reject(new Error("Canvas export is not available in this browser."));
+              return;
+            }
+
+            context.scale(scale, scale);
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, 0, width, height);
+            context.drawImage(image, 0, 0, width, height);
+            URL.revokeObjectURL(svgUrl);
+            resolve({ canvas, width, height });
+          };
+
+          image.onerror = () => {
+            URL.revokeObjectURL(svgUrl);
+            reject(new Error("The Mermaid SVG could not be rasterized."));
+          };
+
+          image.src = svgUrl;
+        });
+      };
+
+      const buildPdfBlob = async (sourceText) => {
+        const svgElement = await renderToSvgElement(sourceText);
+        const { jsPDF } = window.jspdf;
+        const { canvas, width, height } = await rasterizeSvg(svgElement);
+        const imageDataUrl = canvas.toDataURL("image/png");
+        const pdfWidth = Math.ceil(width + pageMargin * 2);
+        const pdfHeight = Math.ceil(height + pageMargin * 2);
+        const orientation = pdfWidth >= pdfHeight ? "landscape" : "portrait";
+
+        const pdf = new jsPDF({
+          orientation,
+          unit: "pt",
+          format: [pdfWidth, pdfHeight],
+          compress: true
+        });
+
+        pdf.setFillColor(255, 255, 255);
+        pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
+        pdf.addImage(imageDataUrl, "PNG", pageMargin, pageMargin, width, height, undefined, "FAST");
+        return pdf.output("blob");
+      };
+
+      const loadSample = async () => {
+        const response = await fetch(samplePath, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Unable to load sample Mermaid source (${response.status}).`);
+        }
+
+        mermaidInput.value = await response.text();
+      };
+
+      loadSampleButton.addEventListener("click", async () => {
+        try {
+          await loadSample();
+          revokeGeneratedPdf();
+          setStatus("<strong>Ready:</strong> sample Mermaid text loaded.", "status--success");
+        } catch (error) {
+          setStatus(`<strong>Sample load failed:</strong> ${error.message}`, "status--error");
+        }
+      });
+
+      clearTextButton.addEventListener("click", () => {
+        mermaidInput.value = "";
+        revokeGeneratedPdf();
+        setStatus("<strong>Ready:</strong> textarea cleared.", "status--success");
+      });
+
+      generatePdfButton.addEventListener("click", async () => {
+        const sourceText = mermaidInput.value.trim();
+        if (!sourceText) {
+          setStatus("<strong>Mermaid text required:</strong> paste Mermaid text before generating the PDF.", "status--error");
+          return;
+        }
+
+        const originalLabel = generatePdfButton.textContent;
+        generatePdfButton.disabled = true;
+        generatePdfButton.textContent = "Generating PDF...";
+        revokeGeneratedPdf();
+        setStatus("<strong>Working:</strong> rendering Mermaid text and building a single-page PDF.");
+
+        try {
+          const pdfBlob = await buildPdfBlob(sourceText);
+          generatedPdfUrl = URL.createObjectURL(pdfBlob);
+          downloadPdfLink.href = generatedPdfUrl;
+          downloadPdfLink.download = pdfFileName;
+          downloadPdfLink.hidden = false;
+          setStatus("<strong>Ready:</strong> single-page PDF generated. Use the download button now.", "status--success");
+        } catch (error) {
+          setStatus(`<strong>PDF generation failed:</strong> ${error.message}`, "status--error");
+        } finally {
+          generatePdfButton.disabled = false;
+          generatePdfButton.textContent = originalLabel;
+        }
+      });
+
+      downloadPdfLink.addEventListener("click", () => {
+        setStatus("<strong>Ready:</strong> generated PDF download requested.", "status--success");
+      });
+
+      loadSample().then(() => {
+        setStatus("<strong>Ready:</strong> sample Mermaid text loaded. Edit it or replace it, then generate a PDF.", "status--success");
+      }).catch((error) => {
+        setStatus(`<strong>Sample load failed:</strong> ${error.message}`, "status--error");
+      });
+    </script>
+  </body>
+</html>
