@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Story Carousel Tuner</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f0f12;
+        --panel: #17181d;
+        --panel-border: rgba(255, 255, 255, 0.12);
+        --text: #f3f1ea;
+        --muted: rgba(243, 241, 234, 0.72);
+        --accent: #d0a24b;
+        --desktop-height: 420px;
+        --mobile-height: 280px;
+        font-family: "SF Pro Display", "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top, rgba(208, 162, 75, 0.16), transparent 26rem),
+          var(--bg);
+        color: var(--text);
+      }
+
+      .page {
+        width: min(1200px, calc(100vw - 2rem));
+        margin: 0 auto;
+        padding: 1.5rem 0 3rem;
+      }
+
+      .intro {
+        margin-bottom: 1.25rem;
+      }
+
+      h1 {
+        margin: 0 0 0.35rem;
+        font-size: clamp(1.6rem, 3vw, 2.3rem);
+      }
+
+      .intro p,
+      .intro li,
+      .export-panel p {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .card {
+        border: 1px solid var(--panel-border);
+        border-radius: 1.25rem;
+        background: rgba(23, 24, 29, 0.92);
+        padding: 1rem;
+      }
+
+      .card h2 {
+        margin: 0 0 0.2rem;
+        font-size: 1.1rem;
+      }
+
+      .card code {
+        color: var(--accent);
+      }
+
+      .preview-grid {
+        display: grid;
+        gap: 0.9rem;
+        grid-template-columns: minmax(0, 1fr) minmax(15rem, 20rem);
+        align-items: start;
+      }
+
+      .preview-stack {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .story-shell {
+        width: min(calc(100% - 5rem), 1240px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(16rem, 0.82fr);
+        align-items: start;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 1rem;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at top left, rgba(208, 162, 75, 0.14), transparent 32%),
+          radial-gradient(circle at bottom right, rgba(120, 89, 34, 0.12), transparent 28%),
+          linear-gradient(135deg, rgba(18, 13, 7, 0.98), rgba(8, 6, 3, 0.92));
+      }
+
+      .story-shell__copy {
+        min-height: calc(var(--desktop-height) + 3.5rem);
+        padding: 1.85rem 2rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .story-shell__copy h3 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 3vw, 3.1rem);
+        line-height: 1.02;
+      }
+
+      .story-shell__copy p {
+        margin: 0;
+        max-width: 34rem;
+        color: var(--muted);
+        line-height: 1.62;
+      }
+
+      .story-shell__media {
+        display: grid;
+        align-content: start;
+      }
+
+      .preview-frame {
+        overflow: hidden;
+        border-radius: 1rem;
+        background: linear-gradient(180deg, rgba(10, 8, 6, 0.95), rgba(22, 18, 12, 0.86));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        position: relative;
+      }
+
+      .preview-frame--desktop {
+        height: var(--desktop-height);
+        border-radius: 0;
+        border: 0;
+      }
+
+      .preview-frame--mobile {
+        width: min(100%, 18rem);
+        height: var(--mobile-height);
+      }
+
+      .preview-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: var(--fit, cover);
+        object-position: var(--x, 50%) var(--y, 50%);
+        transform: scale(var(--scale, 1));
+        transform-origin: center center;
+        display: block;
+      }
+
+      .preview-label {
+        margin: 0 0 0.35rem;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .controls {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.92rem;
+      }
+
+      input[type="range"],
+      select {
+        width: 100%;
+      }
+
+      .value {
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .export-panel {
+        margin-top: 1rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 0.9rem 0;
+      }
+
+      button {
+        appearance: none;
+        border: 1px solid rgba(208, 162, 75, 0.5);
+        background: rgba(208, 162, 75, 0.14);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 0.7rem 1rem;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 18rem;
+        border-radius: 1rem;
+        border: 1px solid var(--panel-border);
+        background: rgba(9, 10, 13, 0.92);
+        color: var(--text);
+        padding: 1rem;
+        font: 0.9rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+        resize: vertical;
+      }
+
+      @media (max-width: 860px) {
+        .preview-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .story-shell {
+          width: 100%;
+        }
+
+        .preview-frame--mobile {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 1180px) {
+        .story-shell {
+          width: min(calc(100% - 3rem), 1240px);
+          grid-template-columns: 1fr;
+        }
+
+        .story-shell__copy {
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          padding: 1.2rem 1.05rem;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .story-shell {
+          width: min(calc(100% - 2rem), 1240px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <h1>Story Carousel Tuner</h1>
+        <p>Tune these three Story images locally. Adjust fit, x, y, and zoom, then use <strong>Export JSON</strong> and send the output back.</p>
+      </section>
+
+      <section id="tuner-grid" class="grid" aria-live="polite"></section>
+
+      <section class="card export-panel">
+        <h2>Export</h2>
+        <p>This matches the story carousel tuning object format. Once you send it back, I can apply it directly into the site.</p>
+        <div class="actions">
+          <button id="export-json" type="button">Export JSON</button>
+          <button id="copy-json" type="button">Copy JSON</button>
+        </div>
+        <textarea id="export-output" spellcheck="false" aria-label="Exported tuning JSON"></textarea>
+      </section>
+    </main>
+
+    <script src="../assets/js/site-data.js"></script>
+    <script>
+      (function () {
+        const roles = [
+          "story-with-sudha",
+          "story-fullsizerender-2",
+          "story-fullsizerender",
+        ];
+
+        const tuning = {
+          desktopHeight: 420,
+          mobileHeight: 280,
+          values: {
+            "story-with-sudha": { fit: "cover", x: 33, y: 0, scale: 1 },
+            "story-fullsizerender-2": { fit: "cover", x: 50, y: 0, scale: 1 },
+            "story-fullsizerender": { fit: "cover", x: 50, y: 0, scale: 1 },
+          },
+        };
+
+        const gallery = Array.isArray(window.SITE_DATA && window.SITE_DATA.gallery)
+          ? window.SITE_DATA.gallery
+          : [];
+        const media = Object.fromEntries(gallery.map((item) => [item.usageRole, item]));
+        const tunerGrid = document.getElementById("tuner-grid");
+        const output = document.getElementById("export-output");
+        const exportButton = document.getElementById("export-json");
+        const copyButton = document.getElementById("copy-json");
+
+        function formatOutput() {
+          return JSON.stringify(tuning, null, 2);
+        }
+
+        function updatePreview(card, role) {
+          const value = tuning.values[role];
+          card.querySelectorAll("[data-preview]").forEach((frame) => {
+            frame.style.setProperty("--fit", value.fit);
+            frame.style.setProperty("--x", `${value.x}%`);
+            frame.style.setProperty("--y", `${value.y}%`);
+            frame.style.setProperty("--scale", String(value.scale));
+          });
+          card.querySelector("[data-fit-value]").textContent = value.fit;
+          card.querySelector("[data-x-value]").textContent = `${value.x}%`;
+          card.querySelector("[data-y-value]").textContent = `${value.y}%`;
+          card.querySelector("[data-scale-value]").textContent = value.scale.toFixed(2);
+          output.value = formatOutput();
+        }
+
+        function buildCard(item) {
+          const role = item.usageRole;
+          const value = tuning.values[role];
+          const card = document.createElement("section");
+          card.className = "card";
+          card.innerHTML = `
+            <h2>${item.alt}</h2>
+            <p><code>${role}</code></p>
+            <div class="preview-grid">
+              <div class="preview-stack">
+                <div>
+                  <p class="preview-label">Desktop</p>
+                  <div class="story-shell">
+                    <div class="story-shell__copy">
+                      <h3>Story</h3>
+                      <p>This shell mirrors the real Story card width and split. The image preview sits inside the same right-side media column geometry used on the page.</p>
+                    </div>
+                    <div class="story-shell__media">
+                      <div class="preview-frame preview-frame--desktop" data-preview>
+                        <img src="../${item.path}" alt="${item.alt}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p class="preview-label">Mobile</p>
+                  <div class="preview-frame preview-frame--mobile" data-preview>
+                    <img src="../${item.path}" alt="${item.alt}">
+                  </div>
+                </div>
+              </div>
+              <div class="controls">
+                <label>
+                  Fit
+                  <select data-control="fit">
+                    <option value="cover">cover</option>
+                    <option value="contain">contain</option>
+                  </select>
+                  <span class="value" data-fit-value></span>
+                </label>
+                <label>
+                  X position
+                  <input data-control="x" type="range" min="0" max="100" step="1">
+                  <span class="value" data-x-value></span>
+                </label>
+                <label>
+                  Y position
+                  <input data-control="y" type="range" min="0" max="100" step="1">
+                  <span class="value" data-y-value></span>
+                </label>
+                <label>
+                  Zoom
+                  <input data-control="scale" type="range" min="1" max="2.5" step="0.01">
+                  <span class="value" data-scale-value></span>
+                </label>
+              </div>
+            </div>
+          `;
+
+          card.querySelector('[data-control="fit"]').value = value.fit;
+          card.querySelector('[data-control="x"]').value = String(value.x);
+          card.querySelector('[data-control="y"]').value = String(value.y);
+          card.querySelector('[data-control="scale"]').value = String(value.scale);
+
+          card.querySelectorAll("[data-control]").forEach((control) => {
+            control.addEventListener("input", () => {
+              const field = control.getAttribute("data-control");
+              if (field === "fit") {
+                value.fit = control.value;
+              } else if (field === "scale") {
+                value.scale = Number(control.value);
+              } else {
+                value[field] = Number(control.value);
+              }
+              updatePreview(card, role);
+            });
+          });
+
+          updatePreview(card, role);
+          return card;
+        }
+
+        roles
+          .map((role) => media[role])
+          .filter(Boolean)
+          .forEach((item) => tunerGrid.appendChild(buildCard(item)));
+
+        exportButton.addEventListener("click", () => {
+          output.value = formatOutput();
+        });
+
+        copyButton.addEventListener("click", async () => {
+          output.value = formatOutput();
+          try {
+            await navigator.clipboard.writeText(output.value);
+            copyButton.textContent = "Copied";
+            window.setTimeout(() => {
+              copyButton.textContent = "Copy JSON";
+            }, 1200);
+          } catch (error) {
+            copyButton.textContent = "Copy failed";
+          }
+        });
+
+        output.value = formatOutput();
+      })();
+    </script>
+  </body>
+</html>

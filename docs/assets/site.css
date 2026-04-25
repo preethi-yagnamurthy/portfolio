@@ -1530,6 +1530,8 @@ h1 {
   height: 100%;
   object-fit: var(--story-object-fit, cover);
   object-position: var(--story-object-position-x, 50%) var(--story-object-position-y, 50%);
+  transform: scale(var(--story-scale, 1));
+  transform-origin: center center;
   display: block;
 }
 
@@ -2124,6 +2126,15 @@ h1 {
   color: #d9c8a2;
   font-size: 0.98rem;
   line-height: 1.58;
+}
+
+.voiceover-list__media {
+  width: min(100%, 28rem);
+  margin-top: 0.1rem;
+}
+
+.voiceover-list__video {
+  max-height: min(44svh, 22rem);
 }
 
 .voiceover-list__actions {

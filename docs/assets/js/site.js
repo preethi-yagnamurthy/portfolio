@@ -15,6 +15,9 @@
     media["story-st-marys-felicitation"],
     media["story-vidyajyothi-felicitation"],
     media["story-incois-felicitation"],
+    media["story-with-sudha"],
+    media["story-fullsizerender-2"],
+    media["story-fullsizerender"],
   ].filter(Boolean);
   const storyCarouselTuning = {
     desktopHeight: 420,
@@ -28,6 +31,9 @@
       "story-st-marys-felicitation": { fit: "cover", x: 50, y: 38 },
       "story-vidyajyothi-felicitation": { fit: "cover", x: 50, y: 45 },
       "story-incois-felicitation": { fit: "contain", x: 50, y: 50 },
+      "story-with-sudha": { fit: "cover", x: 33, y: 0, scale: 1 },
+      "story-fullsizerender-2": { fit: "cover", x: 50, y: 0, scale: 1 },
+      "story-fullsizerender": { fit: "cover", x: 50, y: 0, scale: 1 },
     },
   };
   const listeningRoom = site.listeningRoom || null;
@@ -39,8 +45,8 @@
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
-    "Dubbed for a Telugu movie",
-    "Dubbed for a web series on Youtube",
+    "The voice for female lead in the movie, Gedelaraju Kakinada Taluka (2026)",
+    "VoiceOver for a web series on YouTube",
     "Actor - Apple Ad",
     "Actor - LRSA Battery Ad",
   ];
@@ -317,11 +323,29 @@
   }
 
   function renderVoiceoverEntry(item) {
+    const mediaMarkup = item.videoPath
+      ? `
+        <div class="voiceover-list__media">
+          <video
+            class="music-video-feature__player voiceover-list__video"
+            controls
+            preload="metadata"
+            playsinline
+            aria-label="${item.title}"
+          >
+            <source src="${item.videoPath}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      `
+      : "";
+
     return `
       <article class="voiceover-list__item">
         <div class="voiceover-list__body">
           <h3>${item.title}</h3>
           <p class="voiceover-list__desc">${item.description}</p>
+          ${mediaMarkup}
           ${renderHighlightActions(item, "voiceover-list__link", "voiceover-list__actions")}
         </div>
       </article>
@@ -642,11 +666,13 @@
                   fit: "cover",
                   x: 50,
                   y: 50,
+                  scale: 1,
                 };
                 const slideStyle = [
                   `--story-object-fit: ${tuning.fit}`,
                   `--story-object-position-x: ${tuning.x}%`,
                   `--story-object-position-y: ${tuning.y}%`,
+                  `--story-scale: ${tuning.scale || 1}`,
                 ].join("; ");
 
                 return `

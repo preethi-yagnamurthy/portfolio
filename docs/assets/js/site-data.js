@@ -117,9 +117,10 @@ window.SITE_DATA = {
     },
     {
       year: "2025",
-      title: "Dubbed for a Telugu movie",
+      title: "The voice for female lead in the movie, Gedelaraju Kakinada Taluka (2026)",
       description:
-        "Dubbed for the female lead in the movie Gedela Raju Kakinada Taluka, pending release.",
+        "VoiceOver for the female lead in the movie Gedela Raju Kakinada Taluka, pending release.",
+      videoPath: "assets/media/gedelaraju-kakinada-taluka-voice-female-lead-2026.mp4",
       trust: "artist-provided",
     },
     {
@@ -131,9 +132,9 @@ window.SITE_DATA = {
     },
     {
       year: "Recent",
-      title: "Dubbed for a web series on Youtube",
+      title: "VoiceOver for a web series on YouTube",
       description:
-        "Dubbed for the female lead in the YouTube web series Avida ma Avide hosted on the channel What The Fun Telugu and Anaganaga Talks.",
+        "VoiceOver for the female lead in the YouTube web series Avida ma Avide hosted on the channel What The Fun Telugu and Anaganaga Talks.",
       url: "https://youtube.com/playlist?list=PLTty8pC_QV5iK_agBIUnHrzFCV7tcluW_&si=pMVsdKp6M08ghaaY",
       linkLabel: "Open on youtube",
       trust: "artist-provided",
@@ -204,6 +205,12 @@ window.SITE_DATA = {
       title: "Private song - Hindi",
       description:
         "A Hindi private song is part of the upcoming slate.",
+    },
+    {
+      year: "Upcoming",
+      title: "Kondalalonelagonna fusion",
+      description:
+        "Sang and acted for the song, Kondalalonelagonna fusion for the Katha Sudha series on ETV Win.",
     },
   ],
   press: {
@@ -672,6 +679,27 @@ window.SITE_DATA = {
       usageRole: "story-incois-felicitation",
       alt: "Preethi Yagnamurthy on stage at the International Indian Ocean Science Conference.",
       cropPreference: "landscape-event",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-with-sudha.jpeg",
+      usageRole: "story-with-sudha",
+      alt: "Preethi Yagnamurthy with Sudha and fellow performers in a group portrait.",
+      cropPreference: "portrait-group",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-fullsizerender-2.jpeg",
+      usageRole: "story-fullsizerender-2",
+      alt: "Preethi Yagnamurthy posing with a fellow performer indoors.",
+      cropPreference: "portrait-event",
+      placement: "story",
+    },
+    {
+      path: "assets/media/story-fullsizerender.jpeg",
+      usageRole: "story-fullsizerender",
+      alt: "Preethi Yagnamurthy posing with a collaborator outdoors.",
+      cropPreference: "portrait-event",
       placement: "story",
     },
     {
