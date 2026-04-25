@@ -46,7 +46,7 @@
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
     "The voice for female lead in the movie, Gedelaraju Kakinada Taluka (2026)",
-    "VoiceOver for a web series on YouTube",
+    "Voice-over for a web series on YouTube",
     "Actor - Apple Ad",
     "Actor - LRSA Battery Ad",
   ];
@@ -58,7 +58,7 @@
       href: "#covers-special-performances",
       section: "music",
     },
-    { label: "Voiceover & Ads", href: "#voiceovers-ads", section: "voiceovers-ads" },
+    { label: "Voice-over & Ads", href: "#voiceovers-ads", section: "voiceovers-ads" },
   ];
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
@@ -359,7 +359,7 @@
     return `
       <article class="music-topic-card music-topic-card--voiceovers">
         <div class="music-topic-card__head">
-          <p class="section-micro">Voiceover & Ads</p>
+          <p class="section-micro">Voice-over & Ads</p>
         </div>
         <div class="music-topic-card__body">
           <div class="voiceover-list">

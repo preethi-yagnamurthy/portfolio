@@ -119,7 +119,7 @@ window.SITE_DATA = {
       year: "2025",
       title: "The voice for female lead in the movie, Gedelaraju Kakinada Taluka (2026)",
       description:
-        "VoiceOver for the female lead in the movie Gedela Raju Kakinada Taluka, pending release.",
+        "Voice-over for the female lead in the movie Gedela Raju Kakinada Taluka, pending release.",
       videoPath: "assets/media/gedelaraju-kakinada-taluka-voice-female-lead-2026.mp4",
       trust: "artist-provided",
     },
@@ -132,9 +132,9 @@ window.SITE_DATA = {
     },
     {
       year: "Recent",
-      title: "VoiceOver for a web series on YouTube",
+      title: "Voice-over for a web series on YouTube",
       description:
-        "VoiceOver for the female lead in the YouTube web series Avida ma Avide hosted on the channel What The Fun Telugu and Anaganaga Talks.",
+        "Voice-over for the female lead in the YouTube web series Avida ma Avide hosted on the channel What The Fun Telugu and Anaganaga Talks.",
       url: "https://youtube.com/playlist?list=PLTty8pC_QV5iK_agBIUnHrzFCV7tcluW_&si=pMVsdKp6M08ghaaY",
       linkLabel: "Open on youtube",
       trust: "artist-provided",
