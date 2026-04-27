@@ -117,7 +117,7 @@ window.SITE_DATA = {
     },
     {
       year: "2025",
-      title: "Voice-over: Gedelaraju Kakinada Taluka (2026)",
+      title: "Voice-over: Movie - \"Gedelaraju Kakinada Taluka (2026)\"",
       description:
         "Voice-over for the female lead in the movie Gedela Raju Kakinada Taluka.",
       videoPath: "assets/media/gedelaraju-kakinada-taluka-voice-female-lead-2026.mp4",
@@ -132,7 +132,7 @@ window.SITE_DATA = {
     },
     {
       year: "Recent",
-      title: "Voice-over for a web series on YouTube",
+      title: "Voice-over : Web Series - \"Avida ma Avide\"",
       description:
         "Voice-over for the female lead in the YouTube web series Avida ma Avide hosted on the channel What The Fun Telugu and Anaganaga Talks.",
       url: "https://youtube.com/playlist?list=PLTty8pC_QV5iK_agBIUnHrzFCV7tcluW_&si=pMVsdKp6M08ghaaY",
@@ -208,9 +208,9 @@ window.SITE_DATA = {
     },
     {
       year: "Upcoming",
-      title: "Kondalalonelagonna fusion",
+      title: "Kondalalo Nelakonna fusion",
       description:
-        "Sang and acted for the song, Kondalalonelagonna fusion for the Katha Sudha series on ETV Win.",
+        "Sang and acted for the song, Kondalalo Nelakonna fusion for the Katha Sudha series on ETV Win.",
     },
   ],
   press: {

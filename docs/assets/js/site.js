@@ -45,8 +45,8 @@
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
-    "Voice-over: Gedelaraju Kakinada Taluka (2026)",
-    "Voice-over for a web series on YouTube",
+    "Voice-over: Movie - \"Gedelaraju Kakinada Taluka (2026)\"",
+    "Voice-over : Web Series - \"Avida ma Avide\"",
     "Actor - Apple Ad",
     "Actor - LRSA Battery Ad",
   ];
