@@ -45,7 +45,7 @@
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
-    "The voice for female lead in the movie, Gedelaraju Kakinada Taluka (2026)",
+    "Voice-over: Gedelaraju Kakinada Taluka (2026)",
     "Voice-over for a web series on YouTube",
     "Actor - Apple Ad",
     "Actor - LRSA Battery Ad",

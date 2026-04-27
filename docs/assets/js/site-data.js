@@ -117,9 +117,9 @@ window.SITE_DATA = {
     },
     {
       year: "2025",
-      title: "The voice for female lead in the movie, Gedelaraju Kakinada Taluka (2026)",
+      title: "Voice-over: Gedelaraju Kakinada Taluka (2026)",
       description:
-        "Voice-over for the female lead in the movie Gedela Raju Kakinada Taluka, pending release.",
+        "Voice-over for the female lead in the movie Gedela Raju Kakinada Taluka.",
       videoPath: "assets/media/gedelaraju-kakinada-taluka-voice-female-lead-2026.mp4",
       trust: "artist-provided",
     },
