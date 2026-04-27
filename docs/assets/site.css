@@ -2129,12 +2129,18 @@ h1 {
 }
 
 .voiceover-list__media {
-  width: min(100%, 28rem);
+  width: fit-content;
+  max-width: 100%;
   margin-top: 0.1rem;
 }
 
 .voiceover-list__video {
-  max-height: min(44svh, 22rem);
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(58svh, 30rem);
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .voiceover-list__actions {
