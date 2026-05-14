@@ -45,8 +45,8 @@
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
-    "Voice-over: Movie - \"Gedelaraju Kakinada Taluka (2026)\"",
-    "Voice-over : Web Series - \"Avida ma Avide\"",
+    "Voice artist: Movie - \"Gedelaraju Kakinada Taluka (2026)\"",
+    "Voice artist : Web Series - \"Avida ma Avide\"",
     "Actor - Apple Ad",
     "Actor - LRSA Battery Ad",
   ];
@@ -58,7 +58,7 @@
       href: "#covers-special-performances",
       section: "music",
     },
-    { label: "Voice-over & Ads", href: "#voiceovers-ads", section: "voiceovers-ads" },
+    { label: "Voice artist & Ads", href: "#voiceovers-ads", section: "voiceovers-ads" },
   ];
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
@@ -359,7 +359,7 @@
     return `
       <article class="music-topic-card music-topic-card--voiceovers">
         <div class="music-topic-card__head">
-          <p class="section-micro">Voice-over & Ads</p>
+          <p class="section-micro">Voice artist & Ads</p>
         </div>
         <div class="music-topic-card__body">
           <div class="voiceover-list">
