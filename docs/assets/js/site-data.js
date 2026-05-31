@@ -323,6 +323,15 @@ window.SITE_DATA = {
   },
   playbackFeatures: [
     {
+      title: "Kondalalo Nelakonna",
+      description:
+        "OTT: Nishabdham episode in Katha Sudha series<br>Director: Anthony Mattipalli<br>Music: Subash Anand<br>Style: Carnatic fusion",
+      videoPath: "assets/media/kondalalo-nelakonna-katha-sudha.mp4",
+      posterPath: "assets/media/kondalalo-nelakonna-katha-sudha-poster.jpg",
+      posterAlt:
+        "Poster frame for Kondalalo Nelakonna from the Nishabdham episode in Katha Sudha.",
+    },
+    {
       title: "Soul Trip",
       description:
         "OTT: Soul Trip (Travel Talk Show)<br>Director: Vijay Datla<br>Music: Sahityaa Sagar<br>Co-singer: Yazin Nizar<br>Style: Western",
