@@ -1709,6 +1709,18 @@ h1 {
   background: #000;
 }
 
+.music-video-feature__frame {
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: min(38svh, 20rem);
+  display: block;
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 0.35rem);
+  background: #000;
+}
+
 .music-video-feature__poster {
   width: 100%;
   min-height: 0;

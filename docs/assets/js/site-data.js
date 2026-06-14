@@ -323,6 +323,20 @@ window.SITE_DATA = {
   },
   playbackFeatures: [
     {
+      title: "Tabahi",
+      description:
+        "YouTube video: Tabahi<br>Music: Adhipati<br>Label: MajorThrusts<br>Style: Break up / western pathos",
+      embedUrl: "https://www.youtube.com/embed/QyqWj85Ooko?si=3eG1C6iKDfVrAOGH",
+      embedTitle: "Tabahi by Preethi Yagnamurthy on YouTube",
+      musicLinks: [
+        {
+          label: "YouTube",
+          url: "https://www.youtube.com/watch?v=QyqWj85Ooko",
+          iconPath: "assets/icons/youtube.svg",
+        },
+      ],
+    },
+    {
       title: "Kondalalo Nelakonna",
       description:
         "OTT: Nishabdham episode in Katha Sudha series<br>Director: Anthony Mattipalli<br>Music: Subash Anand<br>Style: Carnatic fusion",

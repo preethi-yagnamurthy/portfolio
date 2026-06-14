@@ -445,6 +445,20 @@
             </audio>
           </div>
         `
+        : feature.embedUrl
+          ? `
+            <div class="music-video-feature__media">
+              <iframe
+                class="music-video-feature__frame"
+                src="${feature.embedUrl}"
+                title="${feature.embedTitle || feature.title}"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          `
         : `
           <div class="music-video-feature__media">
             <video
