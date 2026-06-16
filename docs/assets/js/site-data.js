@@ -325,9 +325,9 @@ window.SITE_DATA = {
     {
       title: "Tabahi",
       description:
-        "YouTube video: Tabahi<br>Music: Adhipati<br>Label: MajorThrusts<br>Style: Break up / western pathos",
-      embedUrl: "https://www.youtube.com/embed/QyqWj85Ooko?si=fn_T6F2vxOrJKyhl&start=17",
-      embedTitle: "Tabahi by Preethi Yagnamurthy on YouTube",
+        "Released on: YouTube<br>Music: Adhipati<br>Label: MajorThrusts<br>Style: Break up / western pathos",
+      videoPath: "assets/media/tabahi-music-video.mp4",
+      videoStartTime: 17,
       musicLinks: [
         {
           label: "YouTube",

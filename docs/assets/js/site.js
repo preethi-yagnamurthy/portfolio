@@ -469,6 +469,7 @@
               playsinline
               poster="${feature.posterPath}"
               data-reset-poster
+              ${feature.videoStartTime ? `data-start-time="${feature.videoStartTime}"` : ""}
               aria-label="${feature.title}"
             >
               <source src="${feature.videoPath}" type="video/mp4">
@@ -1283,6 +1284,26 @@
     });
   }
 
+  function wireVideoTimestamps() {
+    const players = Array.from(document.querySelectorAll("video[data-start-time]"));
+    players.forEach(function (player) {
+      const startTime = parseFloat(player.getAttribute("data-start-time"));
+      if (isNaN(startTime)) return;
+
+      const setTime = function () {
+        if (player.currentTime < 1) {
+          player.currentTime = startTime;
+        }
+      };
+
+      if (player.readyState >= 1) {
+        setTime();
+      } else {
+        player.addEventListener("loadedmetadata", setTime);
+      }
+    });
+  }
+
   function wireStoryCarousel() {
     const carousels = Array.from(document.querySelectorAll("[data-story-carousel]"));
     if (!carousels.length) return;
@@ -1439,6 +1460,7 @@
   wireFeaturedReleaseReveal();
   wireVideoPosterReset();
   wireExclusiveMediaPlayback();
+  wireVideoTimestamps();
   wireStoryCarousel();
   wireHighlightCarousels();
   scrollToHash(window.location.hash, "auto");
