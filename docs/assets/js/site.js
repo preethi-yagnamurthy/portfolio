@@ -1,3 +1,4 @@
+// Test commit to verify push access
 (function () {
   const site = window.SITE_DATA;
   const app = document.getElementById("app");
