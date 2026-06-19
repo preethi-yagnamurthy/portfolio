@@ -95,8 +95,9 @@ window.SITE_DATA = {
     {
       year: "Recent",
       title: "Published in Times of India",
-      description: "As Preethi Yagnamurthy’s lilting vocals drift through the production, the mood gradually turns reflective.",
+      description: "",
       imagePath: "assets/media/toi-clipping.png",
+      imageStyle: "width: 8in; height: 2in; object-fit: cover; margin-top: 1rem; border-radius: 4px;",
       url: "https://timesofindia.indiatimes.com/salar-jung-iii-the-man-who-collected-the-world-theatre-review-a-moving-ode-to-hyderabads-greatest-collector-of-artefacts/articleshow/131772001.cms",
       linkLabel: "Read the full article on Times Of India",
       trust: "verified-public-source",

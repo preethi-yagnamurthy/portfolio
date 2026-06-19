@@ -256,10 +256,10 @@
                     <h3>${item.title}</h3>
                     ${
                       item.imagePath
-                        ? `<img src="${item.imagePath}" alt="${item.title}" style="max-width: 100%; height: auto; margin-top: 1rem; border-radius: 4px;" loading="lazy">`
+                        ? `<img src="${item.imagePath}" alt="${item.title}" style="${item.imageStyle || 'max-width: 100%; height: auto; margin-top: 1rem; border-radius: 4px;'}" loading="lazy">`
                         : ""
                     }
-                    <p class="highlight-carousel-card__desc">${item.description}</p>
+                    ${item.description ? `<p class="highlight-carousel-card__desc">${item.description}</p>` : ""}
                     ${renderHighlightActions(
                       item,
                       "highlight-carousel-card__link",
