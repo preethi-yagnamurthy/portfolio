@@ -46,6 +46,7 @@
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
+    "Theatre play: Salar Jung iii (Directed by Padmashri Qadir Ali Baig)",
     "Voice artist: Movie - \"Gedelaraju Kakinada Taluka (2026)\"",
     "Voice artist : Web Series - \"Avida ma Avide\"",
     "Actor - Apple Ad",
@@ -59,7 +60,7 @@
       href: "#covers-special-performances",
       section: "music",
     },
-    { label: "Voice artist & Ads", href: "#voiceovers-ads", section: "voiceovers-ads" },
+    { label: "Voice artist, Ads, Theatre", href: "#voiceovers-ads", section: "voiceovers-ads" },
   ];
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
@@ -253,6 +254,11 @@
                 (item) => `
                   <article class="highlight-carousel-card__slide">
                     <h3>${item.title}</h3>
+                    ${
+                      item.imagePath
+                        ? `<img src="${item.imagePath}" alt="${item.title}" style="max-width: 100%; height: auto; margin-top: 1rem; border-radius: 4px;" loading="lazy">`
+                        : ""
+                    }
                     <p class="highlight-carousel-card__desc">${item.description}</p>
                     ${renderHighlightActions(
                       item,
@@ -324,8 +330,62 @@
   }
 
   function renderVoiceoverEntry(item) {
-    const mediaMarkup = item.videoPath
-      ? `
+    let mediaMarkup = "";
+
+    if (item.mediaList && item.mediaList.length) {
+      const carouselStyle = [
+        `--story-desktop-height: 400px`,
+        `--story-mobile-height: 300px`,
+      ].join("; ");
+
+      mediaMarkup = `
+        <figure class="spotlight-card__media story-carousel" data-story-carousel data-story-no-auto aria-label="${item.title} media" style="${carouselStyle}; margin-top: 1.5rem;">
+          <div class="story-carousel__viewport">
+            <div class="story-carousel__track">
+              ${item.mediaList.map((media) => {
+                const slideStyle = [
+                  `--story-object-fit: contain`,
+                  `--story-object-position-x: 50%`,
+                  `--story-object-position-y: 50%`,
+                  `--story-scale: 1`,
+                  `background: var(--color-black-800)`
+                ].join("; ");
+
+                if (media.type === "video") {
+                  return `
+                    <div class="story-carousel__slide" style="${slideStyle}">
+                      <video class="music-video-feature__player" controls playsinline style="width:100%; height:100%; object-fit:contain;">
+                        <source src="${media.path}" type="video/mp4">
+                      </video>
+                    </div>
+                  `;
+                } else {
+                  return `
+                    <div class="story-carousel__slide" style="${slideStyle}">
+                      <img src="${media.path}" alt="" loading="lazy">
+                    </div>
+                  `;
+                }
+              }).join("")}
+            </div>
+          </div>
+          <div class="story-carousel__controls">
+            <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Previous" data-story-prev>
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="story-carousel__dots" aria-label="Media navigation">
+              ${item.mediaList.map((_, index) => `
+                <button class="story-carousel__dot${index === 0 ? " is-active" : ""}" type="button" aria-label="Slide ${index + 1}" data-story-dot="${index}"></button>
+              `).join("")}
+            </div>
+            <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Next" data-story-next>
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </figure>
+      `;
+    } else if (item.videoPath) {
+      mediaMarkup = `
         <div class="voiceover-list__media">
           <video
             class="music-video-feature__player voiceover-list__video"
@@ -338,8 +398,8 @@
             Your browser does not support the video tag.
           </video>
         </div>
-      `
-      : "";
+      `;
+    }
 
     return `
       <article class="voiceover-list__item">
@@ -360,7 +420,7 @@
     return `
       <article class="music-topic-card music-topic-card--voiceovers">
         <div class="music-topic-card__head">
-          <p class="section-micro">Voice artist & Ads</p>
+          <p class="section-micro">Voice artist, Ads, Theatre</p>
         </div>
         <div class="music-topic-card__body">
           <div class="voiceover-list">
@@ -1335,8 +1395,9 @@
         intervalId = null;
       };
 
+      const noAuto = carousel.hasAttribute("data-story-no-auto");
       const start = function () {
-        if (prefersReducedMotion.matches) return;
+        if (prefersReducedMotion.matches || noAuto) return;
         stop();
         intervalId = window.setInterval(function () {
           currentIndex = (currentIndex + 1) % slides.length;

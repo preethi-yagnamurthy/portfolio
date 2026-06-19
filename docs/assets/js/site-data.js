@@ -93,6 +93,22 @@ window.SITE_DATA = {
   },
   highlights: [
     {
+      year: "Recent",
+      title: "Published in Times of India",
+      description: "As Preethi Yagnamurthy’s lilting vocals drift through the production, the mood gradually turns reflective.",
+      imagePath: "assets/media/toi-clipping.png",
+      url: "https://timesofindia.indiatimes.com/salar-jung-iii-the-man-who-collected-the-world-theatre-review-a-moving-ode-to-hyderabads-greatest-collector-of-artefacts/articleshow/131772001.cms",
+      linkLabel: "Read the full article on Times Of India",
+      trust: "verified-public-source",
+    },
+    {
+      year: "Recent",
+      title: "'Padmashri' Qadir Ali Baig's theatre show, 'Salar Jung the third'",
+      description:
+        "Singer in the theatre show directed and acted by the reputed Padmashri awardee Mr. Qadir Ali Baig.",
+      trust: "artist-provided",
+    },
+    {
       year: "Jul 2023",
       title: "Mirchi Singistan winner",
       description:
@@ -114,6 +130,20 @@ window.SITE_DATA = {
       description:
         "Hyderabad-based live band, built around female lead vocals, and an energetic team performing across genres, languages on multiple platforms including TV shows and live shows.",
       trust: "credible-third-party-profile",
+    },
+    {
+      year: "2024",
+      title: "Theatre play: Salar Jung iii (Directed by Padmashri Qadir Ali Baig)",
+      description: "Singer in the reputed play 'Salar Jung the third : The man who collected the world'",
+      mediaList: [
+        { type: "image", path: "assets/media/salarjung-1.jpg" },
+        { type: "image", path: "assets/media/salarjung-2.jpg" },
+        { type: "image", path: "assets/media/salarjung-3.jpg" },
+        { type: "video", path: "assets/media/salarjung-video.mp4" },
+        { type: "image", path: "assets/media/salarjung-4.jpg" },
+        { type: "image", path: "assets/media/salarjung-5.jpg" }
+      ],
+      trust: "artist-provided",
     },
     {
       year: "2025",
@@ -202,15 +232,9 @@ window.SITE_DATA = {
     },
     {
       year: "Upcoming",
-      title: "Private song - Hindi",
+      title: "Bonalu special folk song",
       description:
-        "A Hindi private song is part of the upcoming slate.",
-    },
-    {
-      year: "Upcoming",
-      title: "Kondalalo Nelakonna fusion",
-      description:
-        "Sang and acted for the song, Kondalalo Nelakonna fusion for the Katha Sudha series on ETV Win.",
+        "Getting ready to be released is a high energy Bonalu telugu folk song 'Jai ellamma jai jai ellamma'",
     },
   ],
   press: {
