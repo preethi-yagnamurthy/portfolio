@@ -632,7 +632,7 @@ window.SITE_DATA = {
   ],
   gallery: [
     {
-      path: "assets/media/preethi-hero-new.jpg",
+      path: "assets/media/preethi-hero-new.webp",
       usageRole: "home-hero",
       caption: "Preethi holding a mic and performing",
       alt: "Preethi Yagnamurthy singing into a microphone outdoors in Hyderabad.",

@@ -38,15 +38,15 @@
     },
   };
   const photoCarouselItems = [
-    { type: "image", path: "assets/media/photo-1.jpg" },
-    { type: "image", path: "assets/media/photo-2.jpg" },
-    { type: "image", path: "assets/media/photo-3.jpg" },
-    { type: "image", path: "assets/media/photo-4.jpg" },
-    { type: "image", path: "assets/media/photo-5.jpg" },
-    { type: "image", path: "assets/media/photo-6.jpg" },
-    { type: "image", path: "assets/media/photo-7.jpg" },
-    { type: "image", path: "assets/media/photo-8.jpg" },
-    { type: "image", path: "assets/media/photo-9.jpg" },
+    { type: "image", path: "assets/media/photo-1.webp" },
+    { type: "image", path: "assets/media/photo-2.webp" },
+    { type: "image", path: "assets/media/photo-3.webp" },
+    { type: "image", path: "assets/media/photo-4.webp" },
+    { type: "image", path: "assets/media/photo-5.webp" },
+    { type: "image", path: "assets/media/photo-6.webp" },
+    { type: "image", path: "assets/media/photo-7.webp" },
+    { type: "image", path: "assets/media/photo-8.webp" },
+    { type: "image", path: "assets/media/photo-9.webp" },
   ];
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
