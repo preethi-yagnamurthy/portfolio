@@ -2771,6 +2771,11 @@ body.nav-open .consent-banner {
     height: 3.35rem;
   }
 
+  .hero-panel__bg {
+    background-size: auto 120svh !important;
+    background-position: 30% 100% !important;
+  }
+
   .hero-panel__content {
     padding: 7rem 1.25rem 8rem;
     grid-template-columns: 1fr;

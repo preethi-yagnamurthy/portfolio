@@ -37,6 +37,17 @@
       "story-fullsizerender": { fit: "cover", x: 50, y: 0, scale: 1 },
     },
   };
+  const photoCarouselItems = [
+    { type: "image", path: "assets/media/photo-1.jpg" },
+    { type: "image", path: "assets/media/photo-2.jpg" },
+    { type: "image", path: "assets/media/photo-3.jpg" },
+    { type: "image", path: "assets/media/photo-4.jpg" },
+    { type: "image", path: "assets/media/photo-5.jpg" },
+    { type: "image", path: "assets/media/photo-6.jpg" },
+    { type: "image", path: "assets/media/photo-7.jpg" },
+    { type: "image", path: "assets/media/photo-8.jpg" },
+    { type: "image", path: "assets/media/photo-9.jpg" },
+  ];
   const listeningRoom = site.listeningRoom || null;
   const musicFeature = site.musicFeature || null;
   const featuredRelease = site.featuredRelease || null;
@@ -65,6 +76,7 @@
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
     { label: "MUSIC", href: "#music", section: "music", children: musicSubsections },
+    { label: "<span style=\"text-align: center; line-height: 1.2; letter-spacing: 0.24em;\">PHOTO<br>PORTFOLIO</span>", href: "#photo-portfolio", section: "photo-portfolio" },
     { label: "STORY", href: "#story", section: "story" },
   ];
   const consentStorageKey = "preethi-cookie-consent";
@@ -73,6 +85,7 @@
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
     { label: "Music", href: "#music", section: "music", children: musicSubsections },
+    { label: "<span style=\"text-align: center; line-height: 1.2; letter-spacing: 0.24em;\">Photo<br>Portfolio</span>", href: "#photo-portfolio", section: "photo-portfolio" },
     { label: "Story", href: "#story", section: "story" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
     { label: "Contact", href: "#contact", section: "contact" },
@@ -724,6 +737,66 @@
       .join("");
   }
 
+  function renderPhotoPortfolioCarousel() {
+    if (!photoCarouselItems.length) return "";
+
+    const carouselStyle = [
+      `--story-desktop-height: 600px`,
+      `--story-mobile-height: 400px`,
+    ].join("; ");
+
+    return `
+      <section id="photo-portfolio" class="spotlight-section">
+        <div class="section-head section-head--center">
+          <p class="section-label" style="letter-spacing: 0.08em;">Photo Portfolio</p>
+          <h2>A visual journey.</h2>
+        </div>
+        <article class="spotlight-card" style="grid-template-columns: 1fr;">
+          <figure class="spotlight-card__media story-carousel" data-story-carousel aria-label="Photo portfolio" style="${carouselStyle}">
+            <div class="story-carousel__viewport">
+              <div class="story-carousel__track">
+                ${photoCarouselItems
+                  .map((item) => {
+                    const slideStyle = [
+                      `--story-object-fit: contain`,
+                      `--story-object-position-x: 50%`,
+                      `--story-object-position-y: 50%`,
+                      `--story-scale: 1`,
+                      `background: var(--color-black-800)`
+                    ].join("; ");
+                    return `
+                      <div class="story-carousel__slide" style="${slideStyle}">
+                        <img src="${item.path}" alt="Photo portfolio image" loading="lazy">
+                      </div>
+                    `;
+                  })
+                  .join("")}
+              </div>
+            </div>
+            <div class="story-carousel__controls">
+              <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Previous" data-story-prev>
+                <span aria-hidden="true">‹</span>
+              </button>
+              <div class="story-carousel__dots" aria-label="Media navigation">
+                ${photoCarouselItems
+                  .map((_, index) => `
+                    <button class="story-carousel__dot${index === 0 ? " is-active" : ""}" type="button" aria-label="Slide ${index + 1}" data-story-dot="${index}"></button>
+                  `)
+                  .join("")}
+              </div>
+              <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Next" data-story-next>
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <a href="https://drive.google.com/drive/folders/1MbiASdn1np4Qk_VS5ovd77NvMISdAdCe?usp=drive_link" target="_blank" rel="noopener noreferrer" class="button button--solid">View gallery</a>
+            </div>
+          </figure>
+        </article>
+      </section>
+    `;
+  }
+
   function renderStoryCarousel() {
     if (!storyCarouselItems.length) return "";
 
@@ -875,6 +948,8 @@
         <section id="voiceovers-ads" class="voiceovers-section">
           ${renderVoiceoversAdsPanels()}
         </section>
+
+        ${renderPhotoPortfolioCarousel()}
 
         <section id="story" class="spotlight-section">
           <div class="section-head section-head--center">
