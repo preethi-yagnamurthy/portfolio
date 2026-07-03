@@ -345,7 +345,7 @@ window.SITE_DATA = {
       title: "Bonalu 2026 telugu folk song",
       description:
         "Released on: YouTube<br>Music: Gopinadh Konda<br>Label: Om Shakthi creations<br>Style: Telugu folk",
-      videoPath: "assets/media/bonalu-2026-v2.mp4",
+      videoPath: "assets/media/bonalu-2026-v4.mp4",
       videoStartTime: 50,
       musicLinks: [
         {
