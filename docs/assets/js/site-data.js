@@ -231,12 +231,6 @@ window.SITE_DATA = {
       description:
         "A folk-led private song is also lined up.",
     },
-    {
-      year: "Upcoming",
-      title: "Bonalu special folk song",
-      description:
-        "Getting ready to be released is a high energy Bonalu telugu folk song 'Jai ellamma jai jai ellamma'",
-    },
   ],
   press: {
     heading: "A breakthrough moment, carried into print.",
@@ -347,6 +341,20 @@ window.SITE_DATA = {
     releaseUrl: "https://music.amazon.in/albums/B0GP2XYRZN",
   },
   playbackFeatures: [
+    {
+      title: "Bonalu 2026 telugu folk song",
+      description:
+        "Released on: YouTube<br>Music: Gopinadh Konda<br>Label: Om Shakthi creations<br>Style: Telugu folk",
+      videoPath: "assets/media/bonalu-2026-v2.mp4",
+      videoStartTime: 50,
+      musicLinks: [
+        {
+          label: "YouTube",
+          url: "https://youtu.be/c7h_yp_4ODg?si=3uYBVyIIrexBzhYY",
+          iconPath: "assets/icons/youtube.svg",
+        },
+      ],
+    },
     {
       title: "Tabahi",
       description:

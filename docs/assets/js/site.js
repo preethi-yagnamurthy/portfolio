@@ -545,7 +545,7 @@
               ${feature.videoStartTime ? `data-start-time="${feature.videoStartTime}"` : ""}
               aria-label="${feature.title}"
             >
-              <source src="${feature.videoPath}" type="video/mp4">
+              <source src="${feature.videoPath}${feature.videoStartTime ? '#t=' + feature.videoStartTime : ''}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -968,7 +968,7 @@
         <section id="highlights" class="awards-section">
           <div class="section-head section-head--center">
             <p class="section-label">Highlights</p>
-            <h2>Milestones in a voice still gathering momentum.</h2>
+            <h2>Milestones</h2>
           </div>
           ${renderHighlightsPanels()}
         </section>
@@ -1426,11 +1426,14 @@
       if (isNaN(startTime)) return;
 
       const setTime = function () {
-        if (player.currentTime < 1) {
+        if (!player.hasAttribute("data-seeked") && player.currentTime < 1) {
           player.currentTime = startTime;
+          player.setAttribute("data-seeked", "true");
         }
       };
 
+      player.addEventListener("play", setTime);
+      
       if (player.readyState >= 1) {
         setTime();
       } else {
