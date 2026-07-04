@@ -540,7 +540,7 @@
               controls
               preload="metadata"
               playsinline
-              poster="${feature.posterPath}"
+              ${feature.posterPath ? `poster="${feature.posterPath}"` : ""}
               data-reset-poster
               ${feature.videoStartTime ? `data-start-time="${feature.videoStartTime}"` : ""}
               aria-label="${feature.title}"
@@ -1432,12 +1432,25 @@
         }
       };
 
-      player.addEventListener("play", setTime);
+      // Native fallback: attempt to seek as soon as enough data is loaded
+      player.addEventListener("loadedmetadata", setTime);
+      player.addEventListener("loadeddata", setTime);
+      player.addEventListener("canplay", setTime);
+      
+      // Force seek on play if the browser ignored pre-play seeks
+      player.addEventListener("play", function() {
+        if (!player.hasAttribute("data-seeked-play") && player.currentTime < 1) {
+           setTimeout(function() {
+             if (player.currentTime < 1) {
+               player.currentTime = startTime;
+             }
+           }, 100);
+           player.setAttribute("data-seeked-play", "true");
+        }
+      });
       
       if (player.readyState >= 1) {
         setTime();
-      } else {
-        player.addEventListener("loadedmetadata", setTime);
       }
     });
   }
