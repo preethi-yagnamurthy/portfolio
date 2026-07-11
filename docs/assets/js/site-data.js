@@ -134,7 +134,7 @@ window.SITE_DATA = {
     },
     {
       year: "2024",
-      title: "Theatre play: Salar Jung iii (Directed by Padmashri Qadir Ali Baig)",
+      title: "Theatre play: Salar Jung iii (Directed by Padmashri Mohammad Ali Baig)",
       description: "Singer in the reputed play 'Salar Jung the third : The man who collected the world'",
       mediaList: [
         { type: "image", path: "assets/media/salarjung-1.jpg" },

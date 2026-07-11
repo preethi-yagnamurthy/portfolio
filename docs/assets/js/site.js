@@ -57,7 +57,7 @@
       : [musicFeature, featuredRelease].filter(Boolean);
   const activeMusicLinks = site.musicLinks.filter((item) => item.active);
   const voiceoversAdsTitles = [
-    "Theatre play: Salar Jung iii (Directed by Padmashri Qadir Ali Baig)",
+    "Theatre play: Salar Jung iii (Directed by Padmashri Mohammad Ali Baig)",
     "Voice artist: Movie - \"Gedelaraju Kakinada Taluka (2026)\"",
     "Voice artist : Web Series - \"Avida ma Avide\"",
     "Actor - Apple Ad",
