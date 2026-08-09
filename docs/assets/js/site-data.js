@@ -455,12 +455,12 @@ window.SITE_DATA = {
   coverSongs: [
     {
       title: "Jhoom jhoom jhoom baba",
-      description: "Cover song",
+      description: "Movie: Kasam Paida Karne Wale Ki<br>Singer: Salma Agha",
       videoPath: "assets/media/jhoom-jhoom-cover.mp4"
     },
     {
       title: "Zara zara",
-      description: "Cover song",
+      description: "Movie: Rehna hai tere dil mei<br>Singer: Bombay Jayashree",
       videoPath: "assets/media/zara-zara-cover.mp4"
     }
   ],
