@@ -452,6 +452,18 @@ window.SITE_DATA = {
       posterAlt: "Poster artwork for Yevevo Kalale Kannale from Rudrakshapuram 3KM.",
     },
   ],
+  coverSongs: [
+    {
+      title: "Jhoom jhoom jhoom baba",
+      description: "Cover song",
+      videoPath: "assets/media/jhoom-jhoom-cover.mp4"
+    },
+    {
+      title: "Zara zara",
+      description: "Cover song",
+      videoPath: "assets/media/zara-zara-cover.mp4"
+    }
+  ],
   musicLinks: [
     {
       label: "Amazon Music",
