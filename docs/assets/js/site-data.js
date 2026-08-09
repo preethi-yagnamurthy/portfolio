@@ -349,11 +349,11 @@ window.SITE_DATA = {
       videoStartTime: 50,
       musicLinks: [
         {
-          label: "YouTube",
-          url: "https://youtu.be/c7h_yp_4ODg?si=3uYBVyIIrexBzhYY",
-          iconPath: "assets/icons/youtube.svg",
-        },
-      ],
+          label: "Listen full",
+          url: "https://youtu.be/c7h_yp_4ODg?si=6T3c0Y7RzN-jR5p9",
+          icon: "assets/icons/youtube.svg"
+        }
+      ]
     },
     {
       title: "Tabahi",

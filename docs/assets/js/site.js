@@ -614,6 +614,21 @@
     `;
   }
 
+  function renderCoverSongsSection() {
+    if (!site.coverSongs || !site.coverSongs.length) return "";
+
+    return `
+      <article id="cover-songs" class="music-topic-card music-topic-card--cover-songs">
+        <div class="music-topic-card__head">
+          <p class="section-micro">Cover songs</p>
+        </div>
+        <div class="music-topic-card__body">
+          ${site.coverSongs.map(renderPlaybackFeature).join("")}
+        </div>
+      </article>
+    `;
+  }
+
   function renderRawVocalsSection() {
     const { voiceOnlyFolders } = getListeningRoomParts();
     if (!voiceOnlyFolders.length) return "";
@@ -941,6 +956,7 @@
           </div>
 
           ${renderPlaybackSection()}
+          ${renderCoverSongsSection()}
           ${renderRawVocalsSection()}
           ${renderOtherWorksSection()}
         </section>
