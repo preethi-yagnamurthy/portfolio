@@ -464,6 +464,13 @@ window.SITE_DATA = {
       videoPath: "assets/media/zara-zara-cover.mp4"
     }
   ],
+  saregamapaPerformances: [
+    {
+      title: "Jara Jara",
+      description: "Song: Jara Jara (Rakhi)<br>Song style: Western melody",
+      videoPath: "assets/media/saregamapa-jara-jara.mp4"
+    }
+  ],
   musicLinks: [
     {
       label: "Amazon Music",

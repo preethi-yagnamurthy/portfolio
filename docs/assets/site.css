@@ -427,6 +427,79 @@ main {
   align-items: end;
 }
 
+.saregamapa-badge {
+  position: absolute;
+  top: 100px; /* Below the upper ribbon */
+  right: 5.4vw; /* Align with right edge padding */
+  background-color: #000000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(214, 181, 106, 0.4);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: badge-fade-in 1s ease 1s forwards;
+}
+
+@keyframes badge-fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.saregamapa-badge__logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.saregamapa-badge__text {
+  font-family: "Rothek Normal", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(
+    45deg,
+    #bf953f 0%,
+    #fcf6ba 25%,
+    #b38728 50%,
+    #fbf5b7 75%,
+    #aa771c 100%
+  );
+  background-size: 200% auto;
+  color: #ffd700;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-glitter 3s linear infinite;
+}
+
+@keyframes gold-glitter {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+@media (max-width: 768px) {
+  .saregamapa-badge {
+    top: 80px;
+    right: 20px;
+    padding: 8px 16px;
+  }
+  .saregamapa-badge__text {
+    font-size: 0.85rem;
+  }
+}
+
 .hero-copy {
   max-width: 34rem;
   position: relative;

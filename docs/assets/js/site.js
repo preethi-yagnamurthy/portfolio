@@ -65,6 +65,7 @@
   ];
   const musicSubsections = [
     { label: "Playback", href: "#playback", section: "music" },
+    { label: "Zee Saregamapa performances", href: "#saregamapa-performances", section: "music" },
     { label: "Vocals", href: "#vocals", section: "music" },
     {
       label: "Covers & special performances",
@@ -614,6 +615,21 @@
     `;
   }
 
+  function renderSaregamapaPerformancesSection() {
+    if (!site.saregamapaPerformances || !site.saregamapaPerformances.length) return "";
+
+    return `
+      <article id="saregamapa-performances" class="music-topic-card music-topic-card--saregamapa">
+        <div class="music-topic-card__head">
+          <p class="section-micro">Zee Saregamapa performances</p>
+        </div>
+        <div class="music-topic-card__body">
+          ${site.saregamapaPerformances.map(renderPlaybackFeature).join("")}
+        </div>
+      </article>
+    `;
+  }
+
   function renderCoverSongsSection() {
     if (!site.coverSongs || !site.coverSongs.length) return "";
 
@@ -939,6 +955,9 @@
       <main>
         <section id="home" class="hero-panel">
           <div class="hero-panel__bg" style="background-image:url('${media["home-hero"].path}')"></div>
+          <div class="saregamapa-badge">
+            <span class="saregamapa-badge__text">Zee Telugu Saregamapa'26 Top 20</span>
+          </div>
           <div class="hero-panel__content">
             <div class="hero-copy">
               <h1>${site.artist.name}</h1>
@@ -956,6 +975,7 @@
           </div>
 
           ${renderPlaybackSection()}
+          ${renderSaregamapaPerformancesSection()}
           ${renderCoverSongsSection()}
           ${renderRawVocalsSection()}
           ${renderOtherWorksSection()}
