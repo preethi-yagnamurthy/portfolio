@@ -469,6 +469,12 @@ window.SITE_DATA = {
       title: "Jara Jara",
       description: "Song: Jara Jara (Rakhi)<br>Song style: Western melody",
       videoPath: "assets/media/saregamapa-jara-jara.mp4"
+    },
+    {
+      title: "College Papa",
+      description: "Song: College Papa (MAD)<br>Song style: Fast beat",
+      videoPath: "assets/media/saregamapa-college-papa.mp4?v=2",
+      posterPath: "assets/media/saregamapa-college-papa-poster.jpg"
     }
   ],
   musicLinks: [
