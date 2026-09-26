@@ -475,6 +475,12 @@ window.SITE_DATA = {
       description: "Song: College Papa (MAD)<br>Song style: Fast beat",
       videoPath: "assets/media/saregamapa-college-papa.mp4?v=2",
       posterPath: "assets/media/saregamapa-college-papa-poster.jpg"
+    },
+    {
+      title: "Yeshanagula",
+      description: "Song: Yeshanagula (Paradise)<br>Song style: Folk",
+      videoPath: "assets/media/saregamapa-yeshanagula.mp4?v=1",
+      posterPath: "assets/media/saregamapa-yeshanagula-poster.jpg?v=2"
     }
   ],
   musicLinks: [

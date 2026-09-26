@@ -442,6 +442,7 @@ main {
   justify-content: center;
   opacity: 0;
   animation: badge-fade-in 1s ease 1s forwards;
+  text-decoration: none;
 }
 
 @keyframes badge-fade-in {

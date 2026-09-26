@@ -955,9 +955,9 @@
       <main>
         <section id="home" class="hero-panel">
           <div class="hero-panel__bg" style="background-image:url('${media["home-hero"].path}')"></div>
-          <div class="saregamapa-badge">
-            <span class="saregamapa-badge__text">Zee Telugu Saregamapa'26 Top 19</span>
-          </div>
+          <a href="#saregamapa-performances" class="saregamapa-badge">
+            <span class="saregamapa-badge__text">Zee Telugu Saregamapa'26</span>
+          </a>
           <div class="hero-panel__content">
             <div class="hero-copy">
               <h1>${site.artist.name}</h1>
