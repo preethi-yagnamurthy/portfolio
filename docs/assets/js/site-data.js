@@ -812,4 +812,22 @@ window.SITE_DATA = {
       placement: "highlights",
     },
   ],
+  directorsPhotos: [
+    { path: "assets/media/directors/20260528_152104939_iOS_1 (1).jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG-20260524-WA0008.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260122_123006.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260130_173051.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260404_163411.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260408_141338.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260416_130604.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260602_195621.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260605_214911.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260605_214955.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260620_185726.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260622_130009.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260625_114751.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_20260625_114903.jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/Raghu kunche (1).jpg", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/SS Jayram (1).png", alt: "With my directors and music directors" }
+  ]
 };

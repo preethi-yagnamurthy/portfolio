@@ -768,13 +768,62 @@
       .join("");
   }
 
-  function renderPhotoPortfolioCarousel() {
-    if (!photoCarouselItems.length) return "";
-
+  function renderGalleryCard(title, items, linkUrl) {
+    if (!items || !items.length) return "";
     const carouselStyle = [
-      `--story-desktop-height: 600px`,
+      `--story-desktop-height: 500px`,
       `--story-mobile-height: 400px`,
     ].join("; ");
+
+    return `
+      <article class="spotlight-card" style="grid-template-columns: 1fr; display: flex; flex-direction: column; background: var(--color-black-900); padding: 1rem; border-radius: 12px;">
+        <h3 style="text-align: center; margin: 1rem 0;">${title}</h3>
+        <figure class="spotlight-card__media story-carousel" data-story-carousel aria-label="${title}" style="${carouselStyle}">
+          <div class="story-carousel__viewport">
+            <div class="story-carousel__track">
+              ${items
+                .map((item) => {
+                  const slideStyle = [
+                    `--story-object-fit: contain`,
+                    `--story-object-position-x: 50%`,
+                    `--story-object-position-y: 50%`,
+                    `--story-scale: 1`,
+                    `background: var(--color-black-800)`
+                  ].join("; ");
+                  return `
+                    <div class="story-carousel__slide" style="${slideStyle}">
+                      <img src="${item.path}" alt="${item.alt || 'Gallery image'}" loading="lazy">
+                    </div>
+                  `;
+                })
+                .join("")}
+            </div>
+          </div>
+          <div class="story-carousel__controls">
+            <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Previous" data-story-prev>
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="story-carousel__dots" aria-label="Media navigation">
+              ${items
+                .map((_, index) => `
+                  <button class="story-carousel__dot${index === 0 ? " is-active" : ""}" type="button" aria-label="Slide ${index + 1}" data-story-dot="${index}"></button>
+                `)
+                .join("")}
+            </div>
+            <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Next" data-story-next>
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+          <div style="text-align: center; margin-bottom: 1rem; margin-top: 1rem;">
+            <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="button button--solid">View gallery</a>
+          </div>
+        </figure>
+      </article>
+    `;
+  }
+
+  function renderPhotoPortfolioCarousel() {
+    if (!photoCarouselItems.length && !site.directorsPhotos?.length) return "";
 
     return `
       <section id="photo-portfolio" class="spotlight-section">
@@ -782,48 +831,10 @@
           <p class="section-label" style="letter-spacing: 0.08em;">Photo Portfolio</p>
           <h2>A visual journey.</h2>
         </div>
-        <article class="spotlight-card" style="grid-template-columns: 1fr;">
-          <figure class="spotlight-card__media story-carousel" data-story-carousel aria-label="Photo portfolio" style="${carouselStyle}">
-            <div class="story-carousel__viewport">
-              <div class="story-carousel__track">
-                ${photoCarouselItems
-                  .map((item) => {
-                    const slideStyle = [
-                      `--story-object-fit: contain`,
-                      `--story-object-position-x: 50%`,
-                      `--story-object-position-y: 50%`,
-                      `--story-scale: 1`,
-                      `background: var(--color-black-800)`
-                    ].join("; ");
-                    return `
-                      <div class="story-carousel__slide" style="${slideStyle}">
-                        <img src="${item.path}" alt="Photo portfolio image" loading="lazy">
-                      </div>
-                    `;
-                  })
-                  .join("")}
-              </div>
-            </div>
-            <div class="story-carousel__controls">
-              <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Previous" data-story-prev>
-                <span aria-hidden="true">‹</span>
-              </button>
-              <div class="story-carousel__dots" aria-label="Media navigation">
-                ${photoCarouselItems
-                  .map((_, index) => `
-                    <button class="story-carousel__dot${index === 0 ? " is-active" : ""}" type="button" aria-label="Slide ${index + 1}" data-story-dot="${index}"></button>
-                  `)
-                  .join("")}
-              </div>
-              <button class="story-carousel__arrow highlight-carousel-card__arrow" type="button" aria-label="Next" data-story-next>
-                <span aria-hidden="true">›</span>
-              </button>
-            </div>
-            <div style="text-align: center; margin-bottom: 2rem;">
-              <a href="https://drive.google.com/drive/folders/1MbiASdn1np4Qk_VS5ovd77NvMISdAdCe?usp=drive_link" target="_blank" rel="noopener noreferrer" class="button button--solid">View gallery</a>
-            </div>
-          </figure>
-        </article>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          ${renderGalleryCard("Me. Myself ❤️", photoCarouselItems, "https://drive.google.com/drive/folders/1MbiASdn1np4Qk_VS5ovd77NvMISdAdCe?usp=drive_link")}
+          ${renderGalleryCard("With my directors and music directors", site.directorsPhotos || [], "https://drive.google.com/drive/folders/1IcBkK4f1WvlpZqugSUBoLAV1FH8jG9iA?usp=drive_link")}
+        </div>
       </section>
     `;
   }
