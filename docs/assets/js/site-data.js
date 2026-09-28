@@ -481,6 +481,12 @@ window.SITE_DATA = {
       description: "Song: Yeshanagula (Paradise)<br>Song style: Folk",
       videoPath: "assets/media/saregamapa-yeshanagula.mp4?v=1",
       posterPath: "assets/media/saregamapa-yeshanagula-poster.jpg?v=2"
+    },
+    {
+      title: "Sandepoddula kaada",
+      description: "Movie: Abhilasha<br>Singer: S Janaki, SP Balasubramian",
+      videoPath: "assets/media/Sandepoddulakaada_ep_4.mp4",
+      posterPath: "assets/media/Sandepoddulakaada_ep_4_poster.jpg"
     }
   ],
   musicLinks: [
