@@ -340,6 +340,218 @@ window.SITE_DATA = {
     posterAlt: "Poster image for Soul Trip featuring Preethi Yagnamurthy.",
     releaseUrl: "https://music.amazon.in/albums/B0GP2XYRZN",
   },
+  newYearsEveVideos: [
+    {
+      "title": "Meet the band then count with us",
+      "videoPath": "assets/media/new-years-eve/clip-01.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-01.jpg"
+    },
+    {
+      "title": "Happy New Year hands up audience exchange",
+      "videoPath": "assets/media/new-years-eve/clip-02.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-02.jpg"
+    },
+    {
+      "title": "Dum Maro Dum question into the song",
+      "videoPath": "assets/media/new-years-eve/clip-03.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-03.jpg"
+    },
+    {
+      "title": "Deva Deva opening fragment",
+      "videoPath": "assets/media/new-years-eve/clip-04.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-04.jpg"
+    },
+    {
+      "title": "Kabira",
+      "videoPath": "assets/media/new-years-eve/clip-05.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-05.jpg"
+    },
+    {
+      "title": "Channa Mereya verse entry",
+      "videoPath": "assets/media/new-years-eve/clip-06.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-06.jpg"
+    },
+    {
+      "title": "Channa Mereya refrain late section",
+      "videoPath": "assets/media/new-years-eve/clip-07.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-07.jpg"
+    },
+    {
+      "title": "Khaike Paan Banaraswala verse entry",
+      "videoPath": "assets/media/new-years-eve/clip-08.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-08.jpg"
+    },
+    {
+      "title": "Khaike Paan Banaraswala refrain late section",
+      "videoPath": "assets/media/new-years-eve/clip-09.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-09.jpg"
+    },
+    {
+      "title": "Oye Oye 176 Beach House",
+      "videoPath": "assets/media/new-years-eve/clip-10.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-10.jpg"
+    },
+    {
+      "title": "Unidentified dance section A",
+      "videoPath": "assets/media/new-years-eve/clip-11.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-11.jpg"
+    },
+    {
+      "title": "Unidentified dance section B",
+      "videoPath": "assets/media/new-years-eve/clip-12.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-12.jpg"
+    },
+    {
+      "title": "Yaaron O Yaara Mila Le (probable)",
+      "videoPath": "assets/media/new-years-eve/clip-13.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-13.jpg"
+    },
+    {
+      "title": "Unidentified song with counted entry",
+      "videoPath": "assets/media/new-years-eve/clip-14.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-14.jpg"
+    },
+    {
+      "title": "Dum Maro Dum audience question section",
+      "videoPath": "assets/media/new-years-eve/clip-15.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-15.jpg"
+    },
+    {
+      "title": "Unresolved transition into Gajuvaka section",
+      "videoPath": "assets/media/new-years-eve/clip-16.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-16.jpg"
+    },
+    {
+      "title": "Gajuvaka Pilla",
+      "videoPath": "assets/media/new-years-eve/clip-17.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-17.jpg"
+    },
+    {
+      "title": "Unidentified Telugu dance section",
+      "videoPath": "assets/media/new-years-eve/clip-18.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-18.jpg"
+    },
+    {
+      "title": "Balayya fan request and song title unresolved",
+      "videoPath": "assets/media/new-years-eve/clip-19.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-19.jpg"
+    },
+    {
+      "title": "Sauda Khara Khara (probable)",
+      "videoPath": "assets/media/new-years-eve/clip-20.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-20.jpg"
+    },
+    {
+      "title": "Unidentified Punjabi dance hook",
+      "videoPath": "assets/media/new-years-eve/clip-21.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-21.jpg"
+    },
+    {
+      "title": "Ishq Tera Tadpave Oh Ho Ho Ho",
+      "videoPath": "assets/media/new-years-eve/clip-22.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-22.jpg"
+    },
+    {
+      "title": "Unidentified closing dance refrain",
+      "videoPath": "assets/media/new-years-eve/clip-23.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-23.jpg"
+    },
+    {
+      "title": "Can you repeat this singer visits the audience",
+      "videoPath": "assets/media/new-years-eve/clip-24.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-24.jpg"
+    },
+    {
+      "title": "Audience takes the microphone full participation arc",
+      "videoPath": "assets/media/new-years-eve/clip-25.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-25.jpg"
+    },
+    {
+      "title": "Deva Deva",
+      "videoPath": "assets/media/new-years-eve/clip-26.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-26.jpg"
+    },
+    {
+      "title": "From audience guest back to the performance",
+      "videoPath": "assets/media/new-years-eve/clip-27.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-27.jpg"
+    },
+    {
+      "title": "Roop Tera Mastana",
+      "videoPath": "assets/media/new-years-eve/clip-28.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-28.jpg"
+    },
+    {
+      "title": "Andamaina Premarani",
+      "videoPath": "assets/media/new-years-eve/clip-29.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-29.jpg"
+    },
+    {
+      "title": "Performance excerpt A",
+      "videoPath": "assets/media/new-years-eve/clip-30.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-30.jpg"
+    },
+    {
+      "title": "Unidentified Telugu song section",
+      "videoPath": "assets/media/new-years-eve/clip-31.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-31.jpg"
+    },
+    {
+      "title": "Ilahi",
+      "videoPath": "assets/media/new-years-eve/clip-32.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-32.jpg"
+    },
+    {
+      "title": "London Thumakda verse entry",
+      "videoPath": "assets/media/new-years-eve/clip-33.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-33.jpg"
+    },
+    {
+      "title": "London Thumakda refrain late section",
+      "videoPath": "assets/media/new-years-eve/clip-34.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-34.jpg"
+    },
+    {
+      "title": "Unidentified Hindi dance section",
+      "videoPath": "assets/media/new-years-eve/clip-35.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-35.jpg"
+    },
+    {
+      "title": "One Two Three Four Get on the Dance Floor (probable)",
+      "videoPath": "assets/media/new-years-eve/clip-36.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-36.jpg"
+    },
+    {
+      "title": "Performance excerpt B",
+      "videoPath": "assets/media/new-years-eve/clip-37.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-37.jpg"
+    },
+    {
+      "title": "Unidentified Telugu phone themed hook",
+      "videoPath": "assets/media/new-years-eve/clip-38.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-38.jpg"
+    },
+    {
+      "title": "Performance excerpt C",
+      "videoPath": "assets/media/new-years-eve/clip-39.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-39.jpg"
+    },
+    {
+      "title": "DJ Tillu (probable)",
+      "videoPath": "assets/media/new-years-eve/clip-40.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-40.jpg"
+    },
+    {
+      "title": "My Name Is Lakhan",
+      "videoPath": "assets/media/new-years-eve/clip-41.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-41.jpg"
+    },
+    {
+      "title": "Chaiyya Chaiyya (probable)",
+      "videoPath": "assets/media/new-years-eve/clip-42.mp4",
+      "posterPath": "assets/media/new-years-eve/clip-42.jpg"
+    }
+  ],
   playbackFeatures: [
     {
       title: "Bonalu 2026 telugu folk song",

@@ -1722,6 +1722,55 @@ h1 {
   margin: 0;
 }
 
+.new-years-eve__heading {
+  font-size: clamp(1.65rem, 2.45vw, 2.35rem);
+  line-height: 1.15;
+}
+
+.new-years-eve__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.new-years-eve__clip {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.new-years-eve__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  background: #000;
+}
+
+.new-years-eve__clip figcaption {
+  padding: 0.75rem;
+  color: var(--muted-strong);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1000px) {
+  .new-years-eve__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .new-years-eve__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+}
+
+@media (max-width: 360px) {
+  .new-years-eve__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
 .music-video-feature__art,
 .music-video-feature__media {
   border: 1px solid var(--line);

@@ -65,6 +65,7 @@
   ];
   const musicSubsections = [
     { label: "Playback", href: "#playback", section: "music" },
+    { label: "New Year's Eve", href: "#new-years-eve", section: "music" },
     { label: "Zee Saregamapa performances", href: "#saregamapa-performances", section: "music" },
     { label: "Vocals", href: "#vocals", section: "music" },
     {
@@ -645,6 +646,31 @@
     `;
   }
 
+  function renderNewYearsEveSection() {
+    const videos = site.newYearsEveVideos || [];
+    if (!videos.length) return "";
+
+    return `
+      <article id="new-years-eve" class="music-topic-card">
+        <div class="music-topic-card__head">
+          <h3 class="new-years-eve__heading">New Year's Eve</h3>
+        </div>
+        <div class="new-years-eve__grid">
+          ${videos.map((video) => `
+            <figure class="new-years-eve__clip">
+              <video class="new-years-eve__player" controls playsinline preload="none"
+                poster="${video.posterPath}" aria-label="${video.title}">
+                <source src="${video.videoPath}" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+              <figcaption>${video.title}</figcaption>
+            </figure>
+          `).join("")}
+        </div>
+      </article>
+    `;
+  }
+
   function renderRawVocalsSection() {
     const { voiceOnlyFolders } = getListeningRoomParts();
     if (!voiceOnlyFolders.length) return "";
@@ -988,6 +1014,7 @@
           ${renderPlaybackSection()}
           ${renderSaregamapaPerformancesSection()}
           ${renderCoverSongsSection()}
+          ${renderNewYearsEveSection()}
           ${renderRawVocalsSection()}
           ${renderOtherWorksSection()}
         </section>
@@ -1452,7 +1479,7 @@
 
   function wireExclusiveMediaPlayback() {
     const players = Array.from(
-      document.querySelectorAll(".music-video-feature__player, .music-audio-feature__player")
+      document.querySelectorAll(".music-video-feature__player, .music-audio-feature__player, .new-years-eve__player")
     );
     if (players.length < 2) return;
 
