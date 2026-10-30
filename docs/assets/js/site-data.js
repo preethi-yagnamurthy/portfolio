@@ -834,6 +834,7 @@ window.SITE_DATA = {
     { path: "assets/media/directors/IMG_20260625_114751.jpg?v=2", alt: "With my directors and music directors" },
     { path: "assets/media/directors/IMG_20260625_114903.jpg?v=2", alt: "With my directors and music directors" },
     { path: "assets/media/directors/Raghu kunche (1).jpg?v=2", alt: "With my directors and music directors" },
-    { path: "assets/media/directors/SS Jayram (1).png?v=2", alt: "With my directors and music directors" }
+    { path: "assets/media/directors/SS Jayram (1).png?v=2", alt: "With my directors and music directors" },
+    { path: "assets/media/directors/IMG_6181.webp", alt: "With my directors and music directors" }
   ]
 };
