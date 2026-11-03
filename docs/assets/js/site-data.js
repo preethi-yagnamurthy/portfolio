@@ -94,6 +94,13 @@ window.SITE_DATA = {
   highlights: [
     {
       year: "Recent",
+      title: "Interview on Rainbow FM",
+      description: "Preethi Yagnamurthy's interview on Rainbow FM.",
+      imagePath: "assets/media/rainbow-fm-interview.jpg",
+      trust: "artist-provided",
+    },
+    {
+      year: "Recent",
       title: "Published in Times of India",
       description: "",
       imagePath: "assets/media/toi-clipping.png",
