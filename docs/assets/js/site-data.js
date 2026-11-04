@@ -97,6 +97,7 @@ window.SITE_DATA = {
       title: "Interview on Rainbow FM",
       description: "Preethi Yagnamurthy's interview on Rainbow FM.",
       imagePath: "assets/media/rainbow-fm-interview.jpg",
+      imageStyle: "display: block; width: 100%; height: clamp(240px, 45svh, 420px); object-fit: contain; margin-top: 1rem; border-radius: 4px;",
       trust: "artist-provided",
     },
     {
