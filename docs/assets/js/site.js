@@ -64,6 +64,7 @@
     "Actor - LRSA Battery Ad",
   ];
   const musicSubsections = [
+    { label: "Cover songs", href: "#cover-songs", section: "music" },
     { label: "Playback", href: "#playback", section: "music" },
     { label: "Zee Saregamapa performances", href: "#saregamapa-performances", section: "music" },
     { label: "Vocals", href: "#vocals", section: "music" },
@@ -77,6 +78,7 @@
   const desktopNav = [
     { label: "HOME", href: "#home", section: "home" },
     { label: "MUSIC", href: "#music", section: "music", children: musicSubsections },
+    { label: "COVER SONGS", href: "#cover-songs", section: "music" },
     { label: "<span style=\"text-align: center; line-height: 1.2; letter-spacing: 0.24em;\">PHOTO<br>PORTFOLIO</span>", href: "#photo-portfolio", section: "photo-portfolio" },
     { label: "STORY", href: "#story", section: "story" },
   ];
@@ -86,6 +88,7 @@
   const mobileNav = [
     { label: "Home", href: "#home", section: "home" },
     { label: "Music", href: "#music", section: "music", children: musicSubsections },
+    { label: "Cover songs", href: "#cover-songs", section: "music" },
     { label: "<span style=\"text-align: center; line-height: 1.2; letter-spacing: 0.24em;\">Photo<br>Portfolio</span>", href: "#photo-portfolio", section: "photo-portfolio" },
     { label: "Story", href: "#story", section: "story" },
     { label: "Highlights", href: "#highlights", section: "highlights" },
@@ -639,7 +642,14 @@
           <p class="section-micro">Cover songs</p>
         </div>
         <div class="music-topic-card__body">
-          ${site.coverSongs.map(renderPlaybackFeature).join("")}
+          <section aria-labelledby="covers-tamil-heading">
+            <h3 id="covers-tamil-heading">Tamil</h3>
+            ${(site.tamilCoverSongs || []).map(renderPlaybackFeature).join("")}
+          </section>
+          <section aria-labelledby="covers-hindi-heading">
+            <h3 id="covers-hindi-heading">Hindi</h3>
+            ${site.coverSongs.map(renderPlaybackFeature).join("")}
+          </section>
         </div>
       </article>
     `;

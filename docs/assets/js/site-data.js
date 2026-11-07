@@ -460,6 +460,22 @@ window.SITE_DATA = {
       posterAlt: "Poster artwork for Yevevo Kalale Kannale from Rudrakshapuram 3KM.",
     },
   ],
+  tamilCoverSongs: [
+    {
+      title: "Vaseegara",
+      description: "Tamil cover",
+      mediaType: "audio",
+      audioPath: "assets/media/vaseegara-tamil.m4a",
+      posterPath: "assets/media/vaseegara-tamil.jpg",
+      posterAlt: "Preethi Yagnamurthy seated outdoors in a red top."
+    },
+    {
+      title: "Ennulle ennulle",
+      description: "Tamil cover",
+      videoPath: "assets/media/ennulle-ennulle-tamil.mp4",
+      posterPath: "assets/media/ennulle-ennulle-tamil.jpg"
+    }
+  ],
   coverSongs: [
     {
       title: "Jhoom jhoom jhoom baba",
