@@ -350,6 +350,19 @@ window.SITE_DATA = {
   },
   playbackFeatures: [
     {
+      title: "Aragadiya aagalenu",
+      description: "Released on: YouTube<br>Music: Om Jha<br>Style: Telugu romantic number",
+      embedUrl: "https://www.youtube.com/embed/nhqSmFLoBxI?start=22",
+      posterPath: "assets/media/aragadiya-aagalenu-poster.jpg",
+      musicLinks: [
+        {
+          label: "YouTube",
+          url: "https://youtu.be/nhqSmFLoBxI?t=22",
+          iconPath: "assets/icons/youtube.svg"
+        }
+      ]
+    },
+    {
       title: "Bonalu 2026 telugu folk song",
       description:
         "Released on: YouTube<br>Music: Gopinadh Konda<br>Label: Om Shakthi creations<br>Style: Telugu folk",

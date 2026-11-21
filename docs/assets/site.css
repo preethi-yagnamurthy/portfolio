@@ -425,6 +425,39 @@ main {
   margin-inline: auto;
 }
 
+.playback-embed-poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 0.35rem);
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.playback-embed-poster img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+.playback-embed-poster__play {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 28px;
+}
+
 .hero-panel {
   position: relative;
   min-height: 100svh;

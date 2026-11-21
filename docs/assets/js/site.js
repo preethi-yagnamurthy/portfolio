@@ -523,6 +523,15 @@
             </audio>
           </div>
         `
+        : feature.embedUrl && feature.posterPath
+          ? `
+            <div class="music-video-feature__media">
+              <button class="playback-embed-poster" type="button" data-playback-embed="${feature.embedUrl}" aria-label="Play ${feature.title}">
+                <img src="${feature.posterPath}" alt="" loading="lazy">
+                <span class="playback-embed-poster__play" aria-hidden="true">&#9654;</span>
+              </button>
+            </div>
+          `
         : feature.embedUrl
           ? `
             <div class="music-video-feature__media">
@@ -1660,6 +1669,19 @@
       start();
     });
   }
+
+  app.addEventListener("click", function (event) {
+    const button = event.target.closest("[data-playback-embed]");
+    if (!button) return;
+    const frame = document.createElement("iframe");
+    frame.className = "music-video-feature__frame";
+    frame.src = button.dataset.playbackEmbed + "&autoplay=1";
+    frame.title = button.getAttribute("aria-label");
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.allowFullscreen = true;
+    button.replaceWith(frame);
+  });
 
   updateMeta();
   wireForm();
