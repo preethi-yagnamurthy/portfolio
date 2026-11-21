@@ -372,7 +372,7 @@ window.SITE_DATA = {
         {
           label: "Listen full",
           url: "https://youtu.be/c7h_yp_4ODg?si=6T3c0Y7RzN-jR5p9",
-          icon: "assets/icons/youtube.svg"
+          iconPath: "assets/icons/youtube.svg"
         }
       ]
     },
