@@ -350,6 +350,12 @@ window.SITE_DATA = {
   },
   playbackFeatures: [
     {
+      title: "Abba na soku",
+      description: "Movie: Love Lo Seetha<br>Music: Om Jha",
+      videoPath: "assets/media/abba-na-soku.mp4",
+      posterPath: "assets/media/abba-na-soku.webp"
+    },
+    {
       title: "Aragadiya aagalenu",
       description: "Released on: YouTube<br>Music: Om Jha<br>Style: Telugu romantic number",
       embedUrl: "https://www.youtube.com/embed/nhqSmFLoBxI?start=22",
