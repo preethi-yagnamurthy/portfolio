@@ -653,11 +653,19 @@
         <div class="music-topic-card__body">
           <section aria-labelledby="covers-tamil-heading">
             <h3 id="covers-tamil-heading">Tamil</h3>
-            ${(site.tamilCoverSongs || []).map(renderPlaybackFeature).join("")}
+            <div class="cover-language-grid cover-language-grid--tamil">
+              ${(site.tamilCoverSongs || []).map(renderPlaybackFeature).join("")}
+            </div>
+          </section>
+          <section aria-labelledby="covers-telugu-heading">
+            <h3 id="covers-telugu-heading">Telugu</h3>
+            ${(site.teluguCoverSongs || []).map(renderPlaybackFeature).join("")}
           </section>
           <section aria-labelledby="covers-hindi-heading">
             <h3 id="covers-hindi-heading">Hindi</h3>
-            ${site.coverSongs.map(renderPlaybackFeature).join("")}
+            <div class="cover-language-grid cover-language-grid--hindi">
+              ${site.coverSongs.map(renderPlaybackFeature).join("")}
+            </div>
           </section>
         </div>
       </article>

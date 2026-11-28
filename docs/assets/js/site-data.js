@@ -489,6 +489,14 @@ window.SITE_DATA = {
       posterPath: "assets/media/ennulle-ennulle-tamil.jpg"
     }
   ],
+  teluguCoverSongs: [
+    {
+      title: "Srilatha",
+      description: "Telugu cover",
+      videoPath: "assets/media/srilatha-cover.mp4",
+      posterPath: "assets/media/srilatha-cover.webp"
+    }
+  ],
   coverSongs: [
     {
       title: "Jhoom jhoom jhoom baba",

@@ -401,8 +401,42 @@ main {
 }
 
 #covers-tamil-heading,
+#covers-telugu-heading,
 #covers-hindi-heading {
   margin-bottom: 1rem;
+}
+
+#cover-songs .cover-language-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+#cover-songs .cover-language-grid .music-video-feature {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+#cover-songs .cover-language-grid .music-video-feature__art {
+  min-width: 0;
+}
+
+#cover-songs .cover-language-grid--tamil .music-video-feature__player,
+#cover-songs .cover-language-grid--tamil .music-audio-feature__poster {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  #cover-songs .cover-language-grid--hindi {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 #cover-songs .music-audio-feature__poster {
@@ -423,6 +457,19 @@ main {
   aspect-ratio: auto;
   object-fit: contain;
   margin-inline: auto;
+}
+
+@media (min-width: 861px) {
+  #cover-songs .cover-language-grid--tamil .music-video-feature__player,
+  #cover-songs .cover-language-grid--tamil .music-audio-feature__poster {
+    width: auto;
+    max-width: 100%;
+    height: min(560px, max(120px, calc(100svh - 340px)));
+    max-height: min(560px, max(120px, calc(100svh - 340px)));
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+    margin-inline: auto;
+  }
 }
 
 .playback-embed-poster {
